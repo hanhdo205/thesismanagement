@@ -1,7 +1,7 @@
 /*==============================================
     GENERAL  STYLES    
     =============================================*/
-@import url("https://fonts.googleapis.com/css?family=Noto+Serif+JP:400,500,600,700&display=swap&subset=japanese");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700,900&display=swap&subset=japanese");
 :root {
   font-size: 16px; }
 
@@ -39,7 +39,7 @@ body {
         display: block;
         padding: 6px 15px;
         color: #214761;
-        font-weight: 700;
+        font-weight: 500;
         font-size: 1rem;
         text-decoration: none; }
         .sidebar .sidebar-collapse .nav > li > a > i {

@@ -2,7 +2,7 @@
     GENERAL  STYLES    
     =============================================*/
 	
-@import url("https://fonts.googleapis.com/css?family=Noto+Serif+JP:400,500,600,700&display=swap&subset=japanese");
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700,900&display=swap&subset=japanese');
 
 $sidebar_bg: #FFF;
 $sidebar_text_color: #214761;
@@ -15,8 +15,8 @@ $sidebar_width: 260px;
 $font_family: 'Noto Sans JP', sans-serif;
 $font_light: 400;
 $font_normal: 500;
-$font_bold: 600;
-$font_bolder: 700;
+$font_bold: 700;
+$font_bolder: 900;
 
 :root {
     font-size: 16px;
@@ -60,7 +60,7 @@ body {
 					display: block;
 					padding:6px 15px;
 					color: $sidebar_text_color;
-					font-weight: $font_bolder;
+					font-weight: $font_normal;
 					font-size: 1rem;
 					text-decoration: none;
 					> i {
@@ -93,7 +93,7 @@ body {
 	}
 }
 .navbar-brand {
-	font-weight: $font_bolder;
+	font-weight: $font_bold;
 }
 
 /*==============================================
