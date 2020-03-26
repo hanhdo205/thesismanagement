@@ -2,73 +2,80 @@
     GENERAL  STYLES    
     =============================================*/
 @import url("https://fonts.googleapis.com/css?family=Noto+Serif+JP:400,500,600,700&display=swap&subset=japanese");
+:root {
+  font-size: 16px; }
+
 body {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   line-height: 30px; }
 
 #wrapper {
   width: 100%;
   position: relative;
-  background-color: #ebedef; }
+  background-color: #EBEDEF; }
 
 #page-wrapper {
-  padding: 15px 15px; }
+  border-top: 1px solid #E1E1E1; }
 
 #page-inner {
-  width: 100%;
-  margin: 10px 20px 10px 0px; }
+  padding: 0 15px 15px;
+  width: 100%; }
 
 /*==============================================
     MENU STYLES    
     =============================================*/
 .sidebar {
   border: none;
-  background-color: #fff; }
+  background-color: #FFF; }
   .sidebar .sidebar-collapse .nav {
     padding: 0; }
     .sidebar .sidebar-collapse .nav > li {
-      border-bottom: 1px dashed #e1e1e1;
+      border-top: 1px solid #E1E1E1;
       width: 100%; }
+      .sidebar .sidebar-collapse .nav > li.active {
+        background-color: #F3F3F3; }
       .sidebar .sidebar-collapse .nav > li > a {
         position: relative;
         display: block;
-        padding: 0.53rem 1rem;
+        padding: 6px 15px;
         color: #214761;
         font-weight: 700;
-        font-size: 16px;
+        font-size: 1rem;
         text-decoration: none; }
         .sidebar .sidebar-collapse .nav > li > a > i {
-          margin-right: 10px; }
+          margin-right: 15px; }
         .sidebar .sidebar-collapse .nav > li > a:hover, .sidebar .sidebar-collapse .nav > li > a:focus {
           background-color: #F3F3F3;
           outline: 0; }
-    .sidebar .sidebar-collapse .nav .active {
-      background-color: #f3f3f3; }
 
+/*==============================================
+    TOPBAR STYLES   
+    =============================================*/
 .navbar-custom {
-  background-color: #fff; }
+  background-color: #FFF; }
 
 .nav-breadcrumb .breadcrumb {
-  background-color: #fff;
+  background-color: #FFF;
   border-radius: 0;
-  padding: 0.5rem 1rem; }
+  padding: 6px 15px;
+  box-shadow: 0 2px 2px 0 rgba(60, 75, 100, 0.14), 0 3px 1px -2px rgba(60, 75, 100, 0.12), 0 1px 5px 0 rgba(60, 75, 100, 0.2); }
 
 .navbar-brand {
   font-weight: 700; }
 
 /*==============================================
-    DASHBOARD STYLES    
+    TABLE STYLES   
     =============================================*/
-.div-square {
-  padding: 5px;
-  border: 3px double #e1e1e1;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  margin: 5px; }
-  .div-square > a, .div-square > a:hover {
-    color: #808080;
-    text-decoration: none; }
+.table-scroll {
+  overflow-x: auto; }
+
+.table thead tr th.fix-width, .table tbody tr td.fix-width {
+  width: 56px; }
+
+.table thead tr th {
+  white-space: nowrap; }
+.table tbody tr td {
+  vertical-align: middle; }
 
 /*==============================================
     MEDIA QUERIES     
@@ -76,23 +83,25 @@ body {
 @media (min-width: 768px) {
   #page-wrapper {
     margin: 0 0 0 260px;
-    padding: 1px 0;
     min-height: 100vh; }
 
   #page-inner {
-    padding: 10px; }
+    padding: 14px 30px 30px; }
 
   .navbar-custom {
-    padding: 0 1rem; }
+    padding: 0 15px; }
     .navbar-custom .aligner {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-left: -1rem;
       width: 260px;
-      min-height: 56px; }
+      min-height: 56px;
+      margin-left: -15px;
+      background-color: #FFF; }
     .navbar-custom .aligner-item {
       max-width: 50%; }
+      .navbar-custom .aligner-item.navbar-brand {
+        color: #214761; }
 
   .sidebar {
     z-index: 1;

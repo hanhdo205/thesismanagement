@@ -1,0 +1,102 @@
+/*==============================================
+    Overwrite Bootstrap 4's scss values for checkbox and radiobuttons  
+    =============================================*/
+/* Customize the label (the container) */
+.custom-check {
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Hide the browser's default checkbox */
+  /* Create a custom checkbox */
+  /* On mouse-over, add a grey background color */
+  /* When the checkbox is checked, add a blue background */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */ }
+  .custom-check input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0; }
+  .custom-check .checkmark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #E1E6EB; }
+  .custom-check:hover input ~ .checkmark {
+    background-color: #ffffff; }
+  .custom-check input:checked ~ .checkmark {
+    background-color: #ffffff;
+    border: 1px solid #E1E6EB;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .custom-check .checkmark:after {
+    content: url('data:image/svg+xml;charset=utf-8,<svg width="14" height="11" xmlns="http://www.w3.org/2000/svg"><path d="M1.978 5.125L.75 6.353 4.697 10.3l8.772-8.772L12.241.3 4.697 7.844z" fill="%230B97B7" fill-rule="nonzero"/></svg>');
+    position: absolute;
+    display: none; }
+  .custom-check input:checked ~ .checkmark:after {
+    display: block; }
+
+.custom-radio {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-family: cormorantlightitalic;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Hide the browser's default radio button */
+  /* Create a custom radio button */
+  /* On mouse-over, add a grey background color */
+  /* When the radio button is checked, add a blue background */
+  /* Show the indicator (dot/circle) when checked */
+  /* Style the indicator (dot/circle) */ }
+  .custom-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer; }
+  .custom-radio .checkmark {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #E1E6EB;
+    border-radius: 50%;
+    /* Create the indicator (the dot/circle - hidden when not checked) */ }
+    .custom-radio .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none; }
+  .custom-radio:hover input ~ .checkmark {
+    background-color: #fff;
+    border: 1px solid #0093B4; }
+  .custom-radio input:checked ~ .checkmark {
+    background-color: #fff;
+    border: 1px solid #0093B4; }
+  .custom-radio input:checked ~ .checkmark:after {
+    display: block; }
+  .custom-radio .checkmark:after {
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #0093B4; }
+
+/*# sourceMappingURL=custom.css.map */

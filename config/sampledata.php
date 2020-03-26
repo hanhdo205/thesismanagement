@@ -48,31 +48,36 @@ return [
 			   'id' => '1',
 			   'title' => 'Review 1',
 			   'name' => 'Brenden Wagner',
-			   'date' => '03/25/2020'
+			   'date' => '03/25/2020',
+			   'status' => '査読依頼済み'
 			],
 			[
 			   'id' => '2',
 			   'title' => 'Review 2',
 			   'name' => 'Brielle Williamson',
-			   'date' => '03/22/2020'
+			   'date' => '03/22/2020',
+			   'status' => '査読依頼済み'
 			],
 			[
 			   'id' => '3',
 			   'title' => 'Review 3',
 			   'name' => 'Bruno Nash',
-			   'date' => '0323/2020'
+			   'date' => '0323/2020',
+			   'status' => '査読依頼済み'
 			],
 			[
 			   'id' => '4',
 			   'title' => 'Review 4',
 			   'name' => 'Caesar Vance',
-			   'date' => '03/24/2020'
+			   'date' => '03/24/2020',
+			   'status' => '査読依頼済み'
 			],
 			[
 			   'id' => '5',
 			   'title' => 'Review 5',
 			   'name' => 'Cedric Kelly',
-			   'date' => '03/24/2020'
+			   'date' => '03/24/2020',
+			   'status' => '査読依頼済み'
 			]
 		],
 	'academic' => [

@@ -15,8 +15,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
      <!-- Font-awesome style -->
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
-	<!-- Custom styles for this template-->
+	<!-- Styles for this template-->
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+	<!-- Custom styles for this template-->
+	<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 	
     <!-- Scripts -->
     <script>
