@@ -16,7 +16,7 @@
      <!-- Font-awesome style -->
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
 	<!-- Custom styles for this template-->
-	<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 	
     <!-- Scripts -->
     <script>
