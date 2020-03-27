@@ -54,7 +54,8 @@ body {
         .sidebar .sidebar-collapse .nav > li > a > i {
           margin-right: 15px; }
         .sidebar .sidebar-collapse .nav > li > a:hover, .sidebar .sidebar-collapse .nav > li > a:focus {
-          background-color: #321FDB;
+          background-color: rgba(0, 0, 21, 0.2);
+          color: #fff;
           outline: 0; }
 
 /*==============================================
