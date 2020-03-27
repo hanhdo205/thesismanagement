@@ -1,7 +1,10 @@
 /*==============================================
     GENERAL  STYLES    
     =============================================*/
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700,900&display=swap&subset=japanese");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
+.table thead tr th.fix-width, .table tbody tr td.fix-width {
+  width: 56px; }
+
 :root {
   font-size: 16px; }
 
@@ -42,19 +45,20 @@ body {
         background-color: rgba(255, 255, 255, 0.05); }
         .sidebar .sidebar-collapse .nav > li.active > a {
           color: #fff; }
+      .sidebar .sidebar-collapse .nav > li:hover {
+        background-color: rgba(0, 0, 21, 0.2);
+        transition: background .25s,color .25s; }
       .sidebar .sidebar-collapse .nav > li > a {
         position: relative;
         display: block;
         padding: 10px 15px;
         color: rgba(255, 255, 255, 0.6);
-        font-weight: 400;
+        font-weight: 300;
         font-size: 1rem;
-        text-decoration: none;
-        transition: background .25s,color .25s; }
+        text-decoration: none; }
         .sidebar .sidebar-collapse .nav > li > a > i {
           margin-right: 15px; }
         .sidebar .sidebar-collapse .nav > li > a:hover, .sidebar .sidebar-collapse .nav > li > a:focus {
-          background-color: rgba(0, 0, 21, 0.2);
           color: #fff;
           outline: 0; }
 
@@ -74,16 +78,13 @@ body {
     padding: 10px 15px; }
 
 .navbar-brand {
-  font-weight: 700; }
+  font-weight: 500; }
 
 /*==============================================
     TABLE STYLES   
     =============================================*/
 .table-scroll {
   overflow-x: auto; }
-
-.table thead tr th.fix-width, .table tbody tr td.fix-width {
-  width: 56px; }
 
 .table thead tr th {
   white-space: nowrap; }

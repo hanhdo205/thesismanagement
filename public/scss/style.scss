@@ -2,24 +2,9 @@
     GENERAL  STYLES    
     =============================================*/
 	
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700,900&display=swap&subset=japanese');
-
-$sidebar_bg: #3C4B64;
-$sidebar_text_color: rgba(255,255,255,.6);
-$sidebar_active_text_color: #fff;
-$topbar_bg: #FFF;
-$brand_bg: rgba(0,0,21,.2);
-$breadcrumb_bg: #FFF;
-$wrapper_bg: #EBEDEF;
-$sidebar_active_bg: rgba(255,255,255,.05);
-$sidebar_hover_bg: rgba(0,0,21,.2);
-$border_color: #E1E1E1;
-$sidebar_width: 260px;
-$font_family: 'Noto Sans JP', sans-serif;
-$font_light: 400;
-$font_normal: 500;
-$font_bold: 700;
-$font_bolder: 900;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+@import 'mixins';
+@import 'vars';
 
 :root {
     font-size: 16px;
@@ -66,6 +51,10 @@ body {
 						color: $sidebar_active_text_color;
 					}
 				}
+				&:hover {
+						background-color:$sidebar_hover_bg;
+						transition: background .25s,color .25s;
+					}
 				> a {
 					position: relative;
 					display: block;
@@ -74,12 +63,10 @@ body {
 					font-weight: $font_light;
 					font-size: 1rem;
 					text-decoration: none;
-					transition: background .25s,color .25s;
 					> i {
 						margin-right:15px;
 					}
 					&:hover, &:focus {
-						background-color:$sidebar_hover_bg;
 						color: $sidebar_active_text_color;
 						outline:0;
 					}
@@ -108,7 +95,7 @@ body {
 	}
 }
 .navbar-brand {
-	font-weight: $font_bold;
+	font-weight: $font_medium;
 }
 
 /*==============================================
@@ -116,9 +103,6 @@ body {
     =============================================*/
 .table-scroll {
 	overflow-x:auto;
-}
-%column_fix_width {
-	width:56px;
 }
 .table {
 	thead {
