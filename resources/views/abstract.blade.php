@@ -10,10 +10,10 @@
 
 @section('content')
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">演題管理</li>
-  </ol>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/">Home</a></li>
+		<li class="breadcrumb-item active" aria-current="page">演題管理</li>
+	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
@@ -24,7 +24,7 @@
 			<div class="card-text">
 				<div class="form-group">
 					<div class="form-inline">
-						<select name="target_academic" class="form-control mb-2" id="target_academic">
+						<select name="target_academic" class="form-control" id="target_academic">
 							<option>対象学術大会を選択してください</option>
 							<option>2</option>
 							<option>3</option>
@@ -34,10 +34,10 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>演題提出URL： https://example.com/endai_teisyutu/02</label>
+					<label>演題提出URL： <a href="#">https://example.com/endai_teisyutu/02</a></label>
 				</div>
 				<div class="form-group">
-					<div class="form-inline">
+					<div class="form-inline custom-inline">
 						<div class="alert alert-secondary" role="alert">
 							<form class="form-inline">
 								<input type="text" name="fullname" class="form-control mt-1 mb-1 mr-sm-2" id="fullname" placeholder="氏名">
@@ -56,12 +56,12 @@
 				<div class="form-group">
 					<form action="/review/request" class="form-inline" method="POST">
 						@csrf <!-- {{ csrf_field() }} -->
-						<select name="select" class="form-control mb-3 mr-sm-2" id="select">
+						<select name="select" class="form-control mr-sm-2" id="select">
 							<option>選択してください</option>
 							<option>査読依頼</option>
 							<option>CSVダウンロード</option>
 						</select>
-						<button type="submit" class="form-control btn btn-primary pl-5 pr-5 mb-3">検索</button>
+						<button type="submit" class="form-control btn btn-primary pl-5 pr-5">検索</button>
 					</form>
 				</div>
 				<div class="table-scroll">
@@ -84,6 +84,10 @@
 						</thead>
 						<tbody>
 						@foreach($data['abstract'] as $abstract)
+							@php
+								$date = date_create($abstract['date']);
+								$abs_date = date_format($date,"Y年m月d日");
+							@endphp
 							<tr>
 								<td class="fix-width text-center">
 									<label class="custom-check">
@@ -96,7 +100,7 @@
 								<td>{{ $abstract['name'] }}</td>
 								<td>{{ $abstract['status'] }}</td>
 								<td>{{ $abstract['review'] }}</td>
-								<td>{{ $abstract['date'] }}</td>
+								<td>{{ $abs_date }}</td>
 							</tr>
 						@endforeach
 						</tbody>

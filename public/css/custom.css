@@ -1,6 +1,9 @@
 /*==============================================
     Overwrite Bootstrap 4's scss values for checkbox and radiobuttons  
     =============================================*/
+.custom-inline .alert {
+  margin-bottom: 0; }
+
 /* Customize the label (the container) */
 .custom-check {
   position: relative;

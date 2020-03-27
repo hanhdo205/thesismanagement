@@ -10,9 +10,9 @@
 
 @section('content')
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Home</li>
-  </ol>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item active" aria-current="page">Home</li>
+	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card mb-3">

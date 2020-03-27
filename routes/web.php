@@ -25,10 +25,6 @@ Route::get('/abstract', function () {
     return view('abstract');
 });
 
-Route::post('/abstract/detail', function () {
-    return view('abstract.detail');
-});
-
 Route::get('/review', function () {
     return view('review');
 });
@@ -39,4 +35,8 @@ Route::post('/review/request', function () {
 
 Route::post('/review/confirmation', function () {
     return view('review.confirmation');
+});
+
+Route::post('/review/detail', function () {
+    return view('review.detail');
 });

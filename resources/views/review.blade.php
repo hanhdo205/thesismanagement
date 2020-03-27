@@ -10,10 +10,10 @@
 
 @section('content')
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">査読者管理</li>
-  </ol>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/">Home</a></li>
+		<li class="breadcrumb-item active" aria-current="page">査読者管理</li>
+	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
@@ -24,7 +24,7 @@
 			<div class="card-text">
 				<div class="form-group">
 					<div class="form-inline">
-						<select name="target_academic" class="form-control mb-3 " id="target_academic">
+						<select name="target_academic" class="form-control" id="target_academic">
 							<option>対象学術大会を選択してください</option>
 							<option>2</option>
 							<option>3</option>
@@ -35,8 +35,8 @@
 				</div>
 				<div class="form-group">
 					<div class="form-inline">
-						<button class="form-control btn btn-primary mb-3 mr-sm-2 pl-5 pr-5">CSV一括取り込み</button>
-						<button class="form-control btn btn-primary mb-3 pl-5 pr-5">新規追加</button>
+						<button class="form-control btn btn-primary mr-sm-2 pl-5 pr-5">CSV一括取り込み</button>
+						<button class="form-control btn btn-primary pl-5 pr-5">新規追加</button>
 					</div>
 				</div>
 				<div class="table-scroll mb-5">
