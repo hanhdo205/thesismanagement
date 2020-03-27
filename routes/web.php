@@ -25,6 +25,10 @@ Route::get('/abstract', function () {
     return view('abstract');
 });
 
+Route::post('/abstract/detail', function () {
+    return view('abstract.detail');
+});
+
 Route::get('/review', function () {
     return view('review');
 });

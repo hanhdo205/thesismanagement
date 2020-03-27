@@ -23,18 +23,20 @@
 		<div class="card-body">
 			<div class="card-text">
 				<div class="form-group">
-					<select name="target_academic" class="form-control col-md-5" id="target_academic">
-						<option>対象学術大会を選択してください</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
+					<div class="form-inline">
+						<select name="target_academic" class="form-control mb-3 " id="target_academic">
+							<option>対象学術大会を選択してください</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+					</div>
 				</div>
-				<div class="row">
-					<div class="form-inline col-md-6 d-flex flex-row-reverse">
-						<button class="form-control btn btn-primary mb-3 p-2">新規追加</button>
-						<button class="form-control btn btn-primary mb-3 mr-sm-2 p-2">CSV一括取り込み</button>
+				<div class="form-group">
+					<div class="form-inline">
+						<button class="form-control btn btn-primary mb-3 mr-sm-2 pl-5 pr-5">CSV一括取り込み</button>
+						<button class="form-control btn btn-primary mb-3 pl-5 pr-5">新規追加</button>
 					</div>
 				</div>
 				<div class="table-scroll mb-5">
@@ -69,17 +71,11 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="container">
-					<div class="row">
-					
-						<div class="col-sm"></div>
-						<form action="/review/confirmation" class="col-sm" method="POST">
-						@csrf <!-- {{ csrf_field() }} -->
-						<button type="submit" class="btn btn-primary btn-lg btn-block ">査読対応確認</button>
-						</form>
-						<div class="col-sm"></div>
-						
-					</div>
+				<div class="form-group">
+					<form action="/review/confirmation" class="d-flex justify-content-center" method="POST">
+					@csrf <!-- {{ csrf_field() }} -->
+					<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5">査読対応確認</button>
+					</form>
 				</div>
 			</div>
 		</div>
