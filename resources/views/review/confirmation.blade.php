@@ -37,7 +37,7 @@
 							<input type="destination" class="form-control" id="destination" placeholder="田中太郎先生、田中五郎先生、田中一郎先生">
 						</div>
 						<div class="d-flex justify-content-end">
-							<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5">送信</button>
+							<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4">送信</button>
 						</div>
 					</form>
 						

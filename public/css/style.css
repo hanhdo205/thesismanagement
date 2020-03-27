@@ -29,30 +29,33 @@ body {
     =============================================*/
 .sidebar {
   border: none;
-  background-color: #FFF; }
+  background-color: #3C4B64;
+  will-change: auto;
+  transition: box-shadow .25s,margin-left .25s,margin-right .25s,width .25s,z-index 0s ease .25s,-webkit-transform .25s;
+  transition: box-shadow .25s,transform .25s,margin-left .25s,margin-right .25s,width .25s,z-index 0s ease .25s;
+  transition: box-shadow .25s,transform .25s,margin-left .25s,margin-right .25s,width .25s,z-index 0s ease .25s,-webkit-transform .25s; }
   .sidebar .sidebar-collapse .nav {
     padding: 0; }
     .sidebar .sidebar-collapse .nav > li {
-      border-top: 1px solid #E1E1E1;
       width: 100%; }
       .sidebar .sidebar-collapse .nav > li.active {
-        background-color: #F3F3F3; }
+        background-color: rgba(255, 255, 255, 0.05); }
+        .sidebar .sidebar-collapse .nav > li.active > a {
+          color: #fff; }
       .sidebar .sidebar-collapse .nav > li > a {
         position: relative;
         display: block;
-        padding: 6px 15px;
-        color: #214761;
-        font-weight: 500;
+        padding: 10px 15px;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 400;
         font-size: 1rem;
-        text-decoration: none; }
+        text-decoration: none;
+        transition: background .25s,color .25s; }
         .sidebar .sidebar-collapse .nav > li > a > i {
           margin-right: 15px; }
         .sidebar .sidebar-collapse .nav > li > a:hover, .sidebar .sidebar-collapse .nav > li > a:focus {
-          background-color: #F3F3F3;
+          background-color: #321FDB;
           outline: 0; }
-
-.ps-scrollbar-y-rail {
-  top: 0 !important; }
 
 /*==============================================
     TOPBAR STYLES   
@@ -67,7 +70,7 @@ body {
   .nav-breadcrumb .breadcrumb {
     background-color: #FFF;
     border-radius: 0;
-    padding: 6px 15px; }
+    padding: 10px 15px; }
 
 .navbar-brand {
   font-weight: 700; }
@@ -100,28 +103,36 @@ body {
   #page-inner {
     padding: 30px;
     overflow-y: auto;
-    height: calc(100vh - 98px); }
+    height: calc(100vh - 105px); }
 
   .navbar-custom {
     padding: 0 15px; }
-    .navbar-custom .aligner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 260px;
-      min-height: 56px;
+    .navbar-custom .brand-bg {
+      background-color: #3C4B64;
       margin-left: -15px;
-      background-color: #FFF; }
-    .navbar-custom .aligner-item {
-      max-width: 50%; }
-      .navbar-custom .aligner-item.navbar-brand {
-        color: #214761; }
+      width: 260px; }
+      .navbar-custom .brand-bg .aligner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 56px;
+        margin-left: -15px;
+        background: rgba(0, 0, 21, 0.2); }
+        .navbar-custom .brand-bg .aligner .aligner-item {
+          max-width: 50%; }
+          .navbar-custom .brand-bg .aligner .aligner-item.navbar-brand {
+            color: #fff; }
 
   .sidebar {
     z-index: 99;
     position: absolute;
     width: 260px;
-    min-height: calc(100vh - 56px); }
+    min-height: calc(100vh - 56px);
+    background: #3c4b64;
+    will-change: auto;
+    transition: box-shadow .25s,margin-left .25s,margin-right .25s,width .25s,z-index 0s ease .25s,-webkit-transform .25s;
+    transition: box-shadow .25s,transform .25s,margin-left .25s,margin-right .25s,width .25s,z-index 0s ease .25s;
+    transition: box-shadow .25s,transform .25s,margin-left .25s,margin-right .25s,width .25s,z-index 0s ease .25s,-webkit-transform .25s; }
     .sidebar .sidebar-collapse {
       display: -webkit-box !important;
       display: -ms-flexbox !important;

@@ -29,7 +29,7 @@
 									</textarea>
 								</div>
 								<div class="d-flex justify-content-end">
-									<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5">査読依頼</button>
+									<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4">査読依頼</button>
 								</div>
 							<!-- </form> -->
 						

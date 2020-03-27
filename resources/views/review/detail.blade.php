@@ -73,7 +73,7 @@
 							<textarea name="comment" class="form-control" id="comment" rows="3">ユニークな視点の研究でした。Good</textarea>
 						</div>
 						<div class="d-flex justify-content-end">
-							<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5">変更</button>
+							<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4">変更</button>
 						</div>
 					<!-- </form> -->
 				</div>

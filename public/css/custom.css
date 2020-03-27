@@ -1,5 +1,11 @@
 /*==============================================
-    Overwrite Bootstrap 4's scss values for checkbox and radiobuttons  
+    Overwrite Perfect scrollbar
+    =============================================*/
+.ps-scrollbar-y-rail {
+  top: 0 !important; }
+
+/*==============================================
+    Overwrite Bootstrap 4's
     =============================================*/
 .custom-inline .alert {
   margin-bottom: 0; }
