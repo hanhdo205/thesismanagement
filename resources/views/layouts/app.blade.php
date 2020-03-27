@@ -19,6 +19,8 @@
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 	<!-- Custom styles for this template-->
 	<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+	<!-- Scrollbar styles for sidebar-->
+	<link href="{{ asset('css/perfect-scrollbar.css') }}" rel="stylesheet">
 	
     <!-- Scripts -->
     <script>
@@ -40,7 +42,9 @@
 	
     <!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"></script>
-      <!-- Custom script -->
+	<!-- Scrollbar script -->
+    <script src="{{ asset('js/perfect-scrollbar.jquery.js') }}"></script>
+    <!-- Custom script -->
     <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>
