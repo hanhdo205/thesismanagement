@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Users Management')
+@section('title', '演題提出者管理')
 @section('description', 'The SIS management')
 @section('keyword', 'management')
 
@@ -8,13 +8,13 @@
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">Users Management</li>
+		<li class="breadcrumb-item active" aria-current="page">演題提出者管理</li>
 	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
 		<div class="card-header">
-			Users Management
+			演題提出者管理
 			<span class="float-right">
 				<a class="btn btn-sm btn-primary" href="{{ route('users.create') }}"> Create New User</a>
 			</span>

@@ -8,7 +8,7 @@
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-		<li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users Management</a></li>
+		<li class="breadcrumb-item"><a href="{{ route('users.index') }}">演題提出者管理</a></li>
 		<li class="breadcrumb-item active" aria-current="page">Show User</li>
 	</ol>
 </nav>

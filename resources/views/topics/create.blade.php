@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create New Conference')
+@section('title', 'Create New Topic')
 @section('description', 'The SIS management')
 @section('keyword', 'management')
 
@@ -8,13 +8,13 @@
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">Create New Conference</li>
+		<li class="breadcrumb-item active" aria-current="page">Create New Topic</li>
 	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
 		<div class="card-header">
-			Create New Conference
+			Create New Topic
 		</div>
 		<div class="card-body">
 			<div class="card-text">
