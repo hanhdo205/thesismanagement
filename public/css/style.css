@@ -2,9 +2,6 @@
     GENERAL  STYLES    
     =============================================*/
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
-.table thead tr th.fix-width, .table tbody tr td.fix-width {
-  width: 56px; }
-
 :root {
   font-size: 16px; }
 
@@ -88,8 +85,12 @@ body {
 
 .table thead tr th {
   white-space: nowrap; }
+  .table thead tr th.fix-width {
+    width: 56px; }
 .table tbody tr td {
   vertical-align: middle; }
+  .table tbody tr td.fix-width {
+    width: 56px; }
 
 /*==============================================
     MEDIA QUERIES     

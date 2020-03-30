@@ -110,7 +110,7 @@ body {
 			th {
 				white-space: nowrap;
 				&.fix-width {
-					@extend %column_fix_width;
+					@include  column_fix_width;
 				}
 			}
 		}
@@ -120,7 +120,7 @@ body {
 			td {
 				vertical-align: middle;
 				&.fix-width {
-					@extend %column_fix_width;
+					@include  column_fix_width;
 				}
 			}
 		}
