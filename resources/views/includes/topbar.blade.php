@@ -4,10 +4,27 @@
 	</button>
 	<div class="brand-bg">
 		<div class="align-middle text-center aligner">
-			<a class="aligner-item navbar-brand" href="/">査読管理システム</a>
+			<a class="aligner-item navbar-brand" href="{{ url('/') }}">査読管理システム</a>
 		</div>
 	</div>
 	<div class="inline my-2 my-lg-0">
-		  Account
+		<div class="btn-group">
+			<button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			My account
+			</button>
+			<div class="dropdown-menu dropdown-menu-right">
+				<a class="dropdown-item" href="#">My profile</a>
+				<a class="dropdown-item" href="{{ route('roles.index') }}">Manage Role</a>
+				<div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+			</div>
+		</div>
 	</div>
 </div>

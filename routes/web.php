@@ -11,32 +11,43 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Route::get('/', function () {
-    return view('home');
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+	Route::resource('roles', 'RoleController');
+	Route::resource('users', 'UserController');
+	Route::resource('topics', 'TopicController');
+	Route::resource('esays', 'EsayController');
 });
 
 Route::get('/academic', function () {
-    return view('academic');
+	return view('academic');
 });
 
 Route::get('/abstract', function () {
-    return view('abstract');
+	return view('abstract');
 });
 
 Route::get('/review', function () {
-    return view('review');
+	return view('review');
 });
 
 Route::post('/review/request', function () {
-    return view('review.request');
+	return view('review.request');
 });
 
 Route::post('/review/confirmation', function () {
-    return view('review.confirmation');
+	return view('review.confirmation');
 });
 
 Route::post('/review/detail', function () {
-    return view('review.detail');
+	return view('review.detail');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
