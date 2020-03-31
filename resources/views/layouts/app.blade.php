@@ -27,6 +27,8 @@
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
         <!-- Scrollbar styles for sidebar-->
         <link href="{{ asset('css/perfect-scrollbar.css') }}" rel="stylesheet">
+        <!-- Datepicker styles-->
+        <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
         <!-- Scripts -->
         <script>
             window.Laravel = {!! json_encode([
@@ -46,6 +48,11 @@
             <!-- /# WRAPPER  -->
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
+        <!-- Scripts -->
+        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+        <!-- Datepicker script -->
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="{{ asset('js/datepicker-ja.js') }}"></script>
         <!-- Scrollbar script -->
         <script src="{{ asset('js/perfect-scrollbar.jquery.js') }}"></script>
         <!-- Custom script -->

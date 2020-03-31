@@ -36,14 +36,18 @@
 								<th>タイトル</th>
 								<th>応募期間</th>
 								<th>ステータス</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
 					    	@foreach ($topics as $topic)
+					    	@php
+					    		$period = $topic->start_date . ' ~ ' . $topic->end_date;
+				    		@endphp
 					    	<tr>
 					        <td>{{ ++$i }}</td>
 					        <td>{{ $topic->title }}</td>
-					        <td>{{ $topic->period }}</td>
+					        <td>{{ $period }}</td>
 					        <td>{{ $topic->status }}</td>
 					        <td>
 				                <form action="{{ route('topics.destroy',$topic->id) }}" method="POST">

@@ -19,10 +19,10 @@ class PermissionTableSeeder extends Seeder {
 			'topic-create',
 			'topic-edit',
 			'topic-delete',
-			'esay-list',
-			'esay-create',
-			'esay-edit',
-			'esay-delete',
+			'essay-list',
+			'essay-create',
+			'essay-edit',
+			'essay-delete',
 		];
 
 		foreach ($permissions as $permission) {

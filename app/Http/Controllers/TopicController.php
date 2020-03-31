@@ -46,11 +46,11 @@ class TopicController extends Controller {
 	public function store(Request $request) {
 		request()->validate([
 			'title' => 'required',
-			'period' => 'required',
-			'status' => 'required',
+			'start_date' => 'required',
+			'end_date' => 'required',
 		]);
 
-		Essay::create($request->all());
+		Topic::create($request->all());
 
 		return redirect()->route('topics.index')
 			->with('success', 'Topic created successfully.');
@@ -86,8 +86,8 @@ class TopicController extends Controller {
 	public function update(Request $request, Topic $topic) {
 		request()->validate([
 			'title' => 'required',
-			'period' => 'required',
-			'status' => 'required',
+			'start_date' => 'required',
+			'endd_ate' => 'required',
 		]);
 
 		$topic->update($request->all());

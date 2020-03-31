@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+App::setLocale('ja');
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
