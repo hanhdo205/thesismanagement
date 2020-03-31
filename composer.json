@@ -6,6 +6,11 @@
         "framework",
         "laravel"
     ],
+    "repositories": [{
+        "type": "git",
+        "url": "D:/xampp7430/htdocs/fss_projects/laravel-gettext"
+    }],
+
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
@@ -16,7 +21,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
-        "spatie/laravel-permission": "^3.11"
+        "spatie/laravel-permission": "^3.11",
+        "zerospam/laravel-gettext": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

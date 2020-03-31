@@ -4,7 +4,7 @@
 	</button>
 	<div class="brand-bg">
 		<div class="align-middle text-center aligner">
-			<a class="aligner-item navbar-brand" href="{{ url('/') }}">査読管理システム</a>
+			<a class="aligner-item navbar-brand" href="<?php echo e(url('/')); ?>">査読管理システム</a>
 		</div>
 	</div>
 	<div class="inline my-2 my-lg-0">
@@ -14,15 +14,16 @@
 			</button>
 			<div class="dropdown-menu dropdown-menu-right">
 				<a class="dropdown-item" href="#">My profile</a>
-				<a class="dropdown-item" href="{{ route('roles.index') }}">Manage Role</a>
+				<a class="dropdown-item" href="<?php echo e(route('roles.index')); ?>">Manage Role</a>
 				<div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ route('logout') }}"
+                <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                    {{ _i('Logout') }}
+                    <?php echo e(_i('Logout')); ?>
+
                 </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
+                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                    <?php echo csrf_field(); ?>
                 </form>
 			</div>
 		</div>

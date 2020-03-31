@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-App::setLocale('ja');
+LaravelGettext::setLocale('ja_JP');
 
 Auth::routes();
 
