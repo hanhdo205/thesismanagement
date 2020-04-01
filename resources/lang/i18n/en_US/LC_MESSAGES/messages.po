@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MultilanguageLaravelApplication\n"
+"POT-Creation-Date: 2020-03-31 10:01+0000\n"
+"PO-Revision-Date: 2020-03-31 10:01+0000\n"
+"Last-Translator: James Translator <james@translations.colm>\n"
+"Language-Team: James Translator <james@translations.colm>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;__;_i;_s;gettext;_n:1,2;ngettext:1,2;dgettext:2\n"
+"X-Poedit-Basepath: ../../../../../app\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: Http\n"
+"X-Poedit-SearchPath-1: ../resources/views\n"
+"X-Poedit-SearchPath-2: Console\n"
+"X-Poedit-SearchPath-3: ../storage/framework/messages/\n"
+
+#: ../storage/framework/messages/001bcd7f45c17c330cc50fc93a16b3a3901d209c.php.php:6
+msgid "Verify Your Email Address"
+msgstr ""
+
+#: ../storage/framework/messages/001bcd7f45c17c330cc50fc93a16b3a3901d209c.php.php:11
+msgid "A fresh verification link has been sent to your email address."
+msgstr ""
+
+#: ../storage/framework/messages/001bcd7f45c17c330cc50fc93a16b3a3901d209c.php.php:16
+msgid "Before proceeding, please check your email for a verification link."
+msgstr ""
+
+#: ../storage/framework/messages/001bcd7f45c17c330cc50fc93a16b3a3901d209c.php.php:18
+msgid "If you did not receive the email"
+msgstr ""
+
+#: ../storage/framework/messages/001bcd7f45c17c330cc50fc93a16b3a3901d209c.php.php:21
+msgid "click here to request another"
+msgstr ""
+
+#: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:22
+msgid "Logout"
+msgstr ""
+
+#: ../storage/framework/messages/1c75fcf38583744f276efa6a915b34a6cb555949.php.php:6
+#: ../storage/framework/messages/1c75fcf38583744f276efa6a915b34a6cb555949.php.php:46
+#: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:97
+#: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:71
+msgid "Confirm Password"
+msgstr ""
+
+#: ../storage/framework/messages/1c75fcf38583744f276efa6a915b34a6cb555949.php.php:9
+msgid "Please confirm your password before continuing."
+msgstr ""
+
+#: ../storage/framework/messages/1c75fcf38583744f276efa6a915b34a6cb555949.php.php:16
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:41
+#: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:69
+#: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:43
+msgid "Password"
+msgstr ""
+
+#: ../storage/framework/messages/1c75fcf38583744f276efa6a915b34a6cb555949.php.php:52
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:90
+msgid "Forgot Your Password?"
+msgstr ""
+
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:6
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:84
+msgid "Login"
+msgstr ""
+
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:13
+#: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:41
+#: ../storage/framework/messages/b28877d31316cb7d1d62cedb54353e0a93563ae2.php.php:20
+#: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:15
+msgid "E-Mail Address"
+msgstr ""
+
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:74
+msgid "Remember Me"
+msgstr ""
+
+#: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:6
+#: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:107
+msgid "Register"
+msgstr ""
+
+#: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:13
+msgid "Name"
+msgstr ""
+
+#: ../storage/framework/messages/b28877d31316cb7d1d62cedb54353e0a93563ae2.php.php:6
+#: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:6
+#: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:81
+msgid "Reset Password"
+msgstr ""
+
+#: ../storage/framework/messages/b28877d31316cb7d1d62cedb54353e0a93563ae2.php.php:50
+msgid "Send Password Reset Link"
+msgstr ""

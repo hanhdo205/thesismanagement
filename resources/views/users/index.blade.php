@@ -23,7 +23,8 @@
 			<div class="card-text">
 				@if ($message = Session::get('success'))
 					<div class="alert alert-success">
-					  <p>{{ $message }}</p>
+						<button type="button" class="close" data-dismiss="alert">×</button>
+					  	{{ $message }}
 					</div>
 				@endif
 				<table class="table table-bordered">

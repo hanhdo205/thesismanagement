@@ -8,13 +8,13 @@
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">Create New Topic</li>
+		<li class="breadcrumb-item active" aria-current="page">{{ _i('Create New Topic') }}</li>
 	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
 		<div class="card-header">
-			Create New Topic
+			{{ _i('Create New Topic') }}
 		</div>
 		<div class="card-body">
 			<div class="card-text">
@@ -32,8 +32,8 @@
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>タイトル:</strong>
-					            {!! Form::text('title', null, array('placeholder' => 'タイトル','class' => 'form-control')) !!}
+					            <strong>{{ _i('Title') }}:</strong>
+					            {!! Form::text('title', null, array('placeholder' => _i('Title'),'class' => 'form-control')) !!}
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
