@@ -17,13 +17,16 @@ LaravelGettext::setLocale('ja_JP');
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => ['auth']], function () {
+	Route::get('/', 'HomeController@index')->name('home');
 	Route::resource('roles', 'RoleController');
 	Route::resource('users', 'UserController');
+	Route::resource('opponents', 'OpponentController');
 	Route::resource('topics', 'TopicController');
 	Route::resource('esays', 'EsayController');
+	Route::get('export', 'ImExController@export')->name('export');
+	Route::get('importExportView', 'ImExController@importExportView');
+	Route::post('import', 'ImExController@import')->name('import');
 });
 
 Route::get('/academic', function () {

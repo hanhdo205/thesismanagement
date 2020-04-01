@@ -1,43 +1,35 @@
 @extends('layouts.app')
 
-@section('title', 'Show Role')
-@section('description', 'The SIS management')
-@section('keyword', 'management')
+@section('title',  $topic->title  )
+@section('description', _i('The SIS management'))
+@section('keyword', _i('management'))
 
 @section('content')
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="/">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">Show Role</li>
+		<li class="breadcrumb-item"><a href="/">{{ _i('Home') }}</a></li>
+		<li class="breadcrumb-item"><a href="{{ route('topics.index') }}">{{ _i('Topic management') }}</a></li>
+		<li class="breadcrumb-item active" aria-current="page">{{ $topic->title }}</li>
 	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
 		<div class="card-header">
-			Show Role
-			@can('role-create')
-				<span class="float-right">
-					<a class="btn btn-sm btn-primary" href="{{ route('roles.index') }}"> Back</a>
-				</span>
-            @endcan
+			{{ $topic->title }}
 		</div>
 		<div class="card-body">
 			<div class="card-text">
 				<div class="row">
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
-				            <strong>Name:</strong>
-				            {{ $role->name }}
+				            <strong>{{ _i('Title') }}</strong>
+				            {{ $topic->title }}
 				        </div>
 				    </div>
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
-				            <strong>Permissions:</strong>
-				            @if(!empty($rolePermissions))
-				                @foreach($rolePermissions as $v)
-				                    <label class="label label-success">{{ $v->name }},</label>
-				                @endforeach
-				            @endif
+				            <strong>{{ _i('Period') }}</strong>
+				            {{ $topic->start_date . ' ~ ' . $topic->end_date }}
 				        </div>
 				    </div>
 				</div>

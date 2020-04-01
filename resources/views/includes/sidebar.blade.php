@@ -13,8 +13,8 @@
 			<li>
 				<a href="{{ route('users.index') }}"><i class="fa fa-clipboard"></i>演題提出者管理</a>
 			</li>
-			<li class="{{ request()->is('review') ||  request()->is('review/confirmation') ||  request()->is('review/detail') ? 'active' : '' }}">
-				<a href="/review"><i class="fa fa-clipboard"></i>査読者管理</a>
+			<li class="{{ request()->is('opponents') ||  request()->is('review/confirmation') ||  request()->is('review/detail') ? 'active' : '' }}">
+				<a href="/opponents"><i class="fa fa-clipboard"></i>査読者管理</a>
 			</li>
 		</ul>
 	</div>

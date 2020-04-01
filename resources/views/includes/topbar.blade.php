@@ -13,8 +13,8 @@
 			My account
 			</button>
 			<div class="dropdown-menu dropdown-menu-right">
-				<a class="dropdown-item" href="#">My profile</a>
-				<a class="dropdown-item" href="{{ route('roles.index') }}">Manage Role</a>
+				<a class="dropdown-item" href="#">{{ _i('My profile') }}</a>
+				<a class="dropdown-item" href="{{ route('roles.index') }}">{{ _i('Manage Role') }}</a>
 				<div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
