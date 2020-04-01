@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed416e5556d2626e9556becb949c8f8d",
+    "content-hash": "756bae9f9fc1b4948240422dbdb1d8a7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -689,6 +689,74 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
+            "name": "hanhdo205/laravel-gettext",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hanhdo205/laravel-gettext.git",
+                "reference": "b3b8e63b42d53de99f116be79c788f7d8caded5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hanhdo205/laravel-gettext/zipball/b3b8e63b42d53de99f116be79c788f7d8caded5d",
+                "reference": "b3b8e63b42d53de99f116be79c788f7d8caded5d",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.6 || ^6.0 || ^7.0",
+                "laravel/helpers": "^1.1",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "laravel/laravel": "^5.6 || ^6.0",
+                "mockery/mockery": "dev-master",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "~7.0 || ^8",
+                "squizlabs/php_codesniffer": "1.5.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Xinax\\LaravelGettext\\LaravelGettextServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Xinax\\LaravelGettext\\": "src/"
+                },
+                "files": [
+                    "src/Xinax/LaravelGettext/Support/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolás Daniel Palumbo",
+                    "email": "n@xinax.net"
+                },
+                {
+                    "name": "Antoine Aflalo",
+                    "email": "dev+laravel_gettext@zerospam.ca"
+                }
+            ],
+            "description": "Adds localization support to laravel applications in an easy way using Poedit and GNU gettext.",
+            "homepage": "https://github.com/zerospam/laravel-gettext",
+            "keywords": [
+                "gettext",
+                "laravel",
+                "laravel-gettext",
+                "localization",
+                "poEdit",
+                "translation"
+            ],
+            "time": "2020-03-31T10:30:21+00:00"
+        },
+        {
             "name": "jakub-onderka/php-console-color",
             "version": "v0.2",
             "source": {
@@ -778,16 +846,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.3.0",
+            "version": "v7.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "36d8958b5b8058ef0641806e490f91102fdea70d"
+                "reference": "dafdd1e19f86add02e48fa9f6cac9be2c5329772"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/36d8958b5b8058ef0641806e490f91102fdea70d",
-                "reference": "36d8958b5b8058ef0641806e490f91102fdea70d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/dafdd1e19f86add02e48fa9f6cac9be2c5329772",
+                "reference": "dafdd1e19f86add02e48fa9f6cac9be2c5329772",
                 "shasum": ""
             },
             "require": {
@@ -925,7 +993,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-03-24T15:17:51+00:00"
+            "time": "2020-03-31T15:01:12+00:00"
         },
         {
             "name": "laravel/helpers",
@@ -1408,16 +1476,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.32.1",
+            "version": "2.32.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "ecb525c766deb3bbbb6a0082ea0e41d3d9ae477c"
+                "reference": "f10e22cf546704fab1db4ad4b9dedbc5c797a0dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ecb525c766deb3bbbb6a0082ea0e41d3d9ae477c",
-                "reference": "ecb525c766deb3bbbb6a0082ea0e41d3d9ae477c",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/f10e22cf546704fab1db4ad4b9dedbc5c797a0dc",
+                "reference": "f10e22cf546704fab1db4ad4b9dedbc5c797a0dc",
                 "shasum": ""
             },
             "require": {
@@ -1475,7 +1543,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2020-03-26T13:04:10+00:00"
+            "time": "2020-03-31T13:43:19+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -3748,70 +3816,6 @@
                 "php"
             ],
             "time": "2020-03-13T01:23:26+00:00"
-        },
-        {
-            "name": "zerospam/laravel-gettext",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "D:/xampp7430/htdocs/fss_projects/laravel-gettext",
-                "reference": "fa677447f7bab9f796813f0e79157b132ada71e9"
-            },
-            "require": {
-                "laravel/framework": "^5.6 || ^6.0 || ^7.0",
-                "laravel/helpers": "^1.1",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "laravel/laravel": "^5.6 || ^6.0",
-                "mockery/mockery": "dev-master",
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "~7.0 || ^8",
-                "squizlabs/php_codesniffer": "1.5.*"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Xinax\\LaravelGettext\\LaravelGettextServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Xinax\\LaravelGettext\\": "src/"
-                },
-                "files": [
-                    "src/Xinax/LaravelGettext/Support/helpers.php"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolás Daniel Palumbo",
-                    "email": "n@xinax.net"
-                },
-                {
-                    "name": "Antoine Aflalo",
-                    "email": "dev+laravel_gettext@zerospam.ca"
-                }
-            ],
-            "description": "Adds localization support to laravel applications in an easy way using Poedit and GNU gettext.",
-            "homepage": "https://github.com/zerospam/laravel-gettext",
-            "keywords": [
-                "gettext",
-                "laravel",
-                "laravel-gettext",
-                "localization",
-                "poedit",
-                "translation"
-            ],
-            "support": {
-                "issues": "https://github.com/zerospam/laravel-gettext/issues"
-            },
-            "time": "2020-03-31T08:08:10+00:00"
         }
     ],
     "packages-dev": [
@@ -4952,16 +4956,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.5.2",
+            "version": "8.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "018b6ac3c8ab20916db85fa91bf6465acb64d1e0"
+                "reference": "67750516bc02f300e2742fed2f50177f8f37bedf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/018b6ac3c8ab20916db85fa91bf6465acb64d1e0",
-                "reference": "018b6ac3c8ab20916db85fa91bf6465acb64d1e0",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/67750516bc02f300e2742fed2f50177f8f37bedf",
+                "reference": "67750516bc02f300e2742fed2f50177f8f37bedf",
                 "shasum": ""
             },
             "require": {
@@ -5031,7 +5035,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-01-08T08:49:49+00:00"
+            "time": "2020-03-31T08:52:04+00:00"
         },
         {
             "name": "scrivo/highlight.php",
@@ -5809,7 +5813,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "zerospam/laravel-gettext": 20
+        "hanhdo205/laravel-gettext": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
