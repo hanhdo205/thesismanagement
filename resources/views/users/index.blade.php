@@ -22,44 +22,43 @@
 		<div class="card-body">
 			<div class="card-text">
 				@if ($message = Session::get('success'))
-					<div class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert">×</button>
-					  	{{ $message }}
-					</div>
+					<script>
+						toastr.success('{{ $message }}');
+					</script>
 				@endif
-				<table class="table table-bordered">
-					 <tr>
-					   <th>{{ _i('No.') }}</th>
-					   <th>{{ _i('Name') }}</th>
-					   <th>{{ _i('Email') }}</th>
-					   <th>{{ _i('Roles') }}</th>
-					   <th width="280px">{{ _i('Action') }}</th>
-					 </tr>
-					 @foreach ($data as $key => $user)
-					  <tr>
-					    <td>{{ ++$i }}</td>
-					    <td>{{ $user->name }}</td>
-					    <td>{{ $user->email }}</td>
-					    <td>
-					      @if(!empty($user->getRoleNames()))
-					        @foreach($user->getRoleNames() as $v)
-					           <label class="badge badge-success">{{ $v }}</label>
-					        @endforeach
-					      @endif
-					    </td>
-					    <td>
-					       <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">{{ _i('Show') }}</a>
-					       <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">{{ _i('Edit') }}</a>
-					        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-					            {!! Form::submit(_i('Delete'), ['class' => 'btn btn-danger']) !!}
-					        {!! Form::close() !!}
-					    </td>
-					  </tr>
-					 @endforeach
-				</table>
-
-
-					{!! $data->render() !!}
+				<div class="table-scroll">
+					<table class="table table-bordered">
+						 <tr>
+						   <th>{{ _i('No.') }}</th>
+						   <th>{{ _i('Name') }}</th>
+						   <th>{{ _i('Email') }}</th>
+						   <th>{{ _i('Roles') }}</th>
+						   <th>{{ _i('Action') }}</th>
+						 </tr>
+						 @foreach ($data as $key => $user)
+						  <tr>
+						    <td>{{ ++$i }}</td>
+						    <td>{{ $user->name }}</td>
+						    <td>{{ $user->email }}</td>
+						    <td>
+						      @if(!empty($user->getRoleNames()))
+						        @foreach($user->getRoleNames() as $v)
+						           <label class="badge badge-success">{{ $v }}</label>
+						        @endforeach
+						      @endif
+						    </td>
+						    <td nowrap>
+						       <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">{{ _i('Show') }}</a>
+						       <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">{{ _i('Edit') }}</a>
+						        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'id' => 'formDelete','style'=>'display:inline']) !!}
+						            {!! Form::button(_i('Delete'), ['id' => 'btn-delete','class' => 'btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']) !!}
+						        {!! Form::close() !!}
+						    </td>
+						  </tr>
+						 @endforeach
+					</table>
+				{!! $data->render() !!}
+				</div>
 			</div>
 		</div>
 	</div>

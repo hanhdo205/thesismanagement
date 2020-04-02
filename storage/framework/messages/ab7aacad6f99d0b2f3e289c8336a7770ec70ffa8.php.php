@@ -1,42 +1,43 @@
 
 
-<?php $__env->startSection('title', '学術管理'); ?>
-<?php $__env->startSection('description', 'The SIS management'); ?>
-<?php $__env->startSection('keyword', 'management'); ?>
+<?php $__env->startSection('title', _i('Topic management')); ?>
+<?php $__env->startSection('description', _i('The SIS management')); ?>
+<?php $__env->startSection('keyword', _i('management')); ?>
 
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="/">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">学術管理</li>
+		<li class="breadcrumb-item"><a href="/"><?php echo e(_i('Home')); ?></a></li>
+		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('Topic management')); ?></li>
 	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
 		<div class="card-header">
-			学術管理
+			<?php echo e(_i('Topic management')); ?>
+
 			<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-create')): ?>
 				<span class="float-right">
-					<a class="btn btn-sm btn-primary" href="<?php echo e(route('topics.create')); ?>"> 新規作成</a>
+					<a class="btn btn-sm btn-primary" href="<?php echo e(route('topics.create')); ?>"> <?php echo e(_i('Add new topic')); ?></a>
 				</span>
             <?php endif; ?>
 		</div>
 		<div class="card-body">
 			<div class="card-text">
 				<?php if($message = Session::get('success')): ?>
-				    <div class="alert alert-success">
-				        <p><?php echo e($message); ?></p>
-				    </div>
+				    <script>
+						toastr.success('<?php echo e($message); ?>');
+					</script>
 				<?php endif; ?>
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th class="fix-width">No.</th>
-								<th>タイトル</th>
-								<th>応募期間</th>
-								<th>ステータス</th>
-								<th>Action</th>
+								<th class="fix-width"><?php echo e(_i('No.')); ?></th>
+								<th><?php echo e(_i('Title')); ?></th>
+								<th><?php echo e(_i('Period')); ?></th>
+								<th><?php echo e(_i('Status')); ?></th>
+								<th><?php echo e(_i('Action')); ?></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -49,18 +50,18 @@
 					        <td><?php echo e($topic->title); ?></td>
 					        <td><?php echo e($period); ?></td>
 					        <td><?php echo e($topic->status); ?></td>
-					        <td>
-				                <form action="<?php echo e(route('topics.destroy',$topic->id)); ?>" method="POST">
-				                    <a class="btn btn-info" href="<?php echo e(route('topics.show',$topic->id)); ?>">Show</a>
+					        <td nowrap>
+				                <form action="<?php echo e(route('topics.destroy',$topic->id)); ?>" id="formDelete" method="POST">
+				                    <a class="btn btn-info" href="<?php echo e(route('topics.show',$topic->id)); ?>"><?php echo e(_i('Show')); ?></a>
 				                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-edit')): ?>
-				                    <a class="btn btn-primary" href="<?php echo e(route('topics.edit',$topic->id)); ?>">Edit</a>
+				                    <a class="btn btn-primary" href="<?php echo e(route('topics.edit',$topic->id)); ?>"><?php echo e(_i('Edit')); ?></a>
 				                    <?php endif; ?>
 
 
 				                    <?php echo csrf_field(); ?>
 				                    <?php echo method_field('DELETE'); ?>
 				                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-delete')): ?>
-				                    <button type="submit" class="btn btn-danger">Delete</button>
+				                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm"><?php echo e(_i('Delete')); ?></button>
 				                    <?php endif; ?>
 				                </form>
 					        </td>

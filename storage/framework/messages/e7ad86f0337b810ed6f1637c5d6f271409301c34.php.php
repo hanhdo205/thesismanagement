@@ -25,20 +25,9 @@ class OpponentController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Request $request) {
-		$topics = Topic::pluck('title', 'id')->all();
+		$topics = Topic::latest()->get();
 		$data = User::orderBy('id', 'DESC')->paginate(5);
 		return view('opponents.index', compact(['data', 'topics']))
 			->with('i', ($request->input('page', 1) - 1) * 5);
-	}
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request) {
-		$topic = $request->input('topic');
-		$checkboxs = $request->input('opponents');
-		$opponents = User::whereIn('id', $checkboxs)->pluck('name', 'id');
-		return view('opponents.confirmation', compact(['topic', 'opponents', 'checkboxs']));
 	}
 }

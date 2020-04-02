@@ -1,22 +1,24 @@
 
 
-<?php $__env->startSection('title', 'Edit Role'); ?>
-<?php $__env->startSection('description', 'The SIS management'); ?>
-<?php $__env->startSection('keyword', 'management'); ?>
+<?php $__env->startSection('title', _i('Edit Role')); ?>
+<?php $__env->startSection('description', _i('The SIS management')); ?>
+<?php $__env->startSection('keyword', _i('management')); ?>
 
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="<?php echo e(url('/')); ?>">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">Edit Role</li>
+		<li class="breadcrumb-item"><a href="<?php echo e(url('/')); ?>"><?php echo e(_i('Home')); ?></a></li>
+		<li class="breadcrumb-item"><a href="<?php echo e(route('roles.index')); ?>"><?php echo e(_i('Role Management')); ?></a></li>
+		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('Edit Role')); ?></li>
 	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
 		<div class="card-header">
-			Edit Role
+			<?php echo e(_i('Edit Role')); ?>
+
 			<span class="float-right">
-				<a class="btn btn-primary" href="<?php echo e(route('roles.index')); ?>"> Back</a>
+				<a class="btn btn-sm btn-primary" href="<?php echo e(route('roles.index')); ?>"> <?php echo e(_i('Back')); ?></a>
 			</span>
 		</div>
 		<div class="card-body">
@@ -36,25 +38,42 @@
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>Name:</strong>
-					            <?php echo Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')); ?>
+					            <strong><?php echo e(_i('Name')); ?>:</strong>
+					            <?php echo Form::text('name', null, array('placeholder' => _i('Name'),'class' => 'form-control')); ?>
 
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>Permission:</strong>
+					            <strong><?php echo e(_i('Permission')); ?>:</strong>
 					            <br/>
+					            <?php
+					            $new_permission = [];
+					            ?>
 					            <?php $__currentLoopData = $permission; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-					                <label><?php echo e(Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name'))); ?>
-
-					                <?php echo e($value->name); ?></label>
-					            <br/>
+					            	<?php
+					            	$permission_arr = explode("-", $value->name);
+					            	$group_permission = $permission_arr[0];
+					            	$new_permission[$group_permission][] = ['id' => $value->id,'name'=>$value->name];
+					            	?>
 					            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					            <div class="row">
+						            <?php $__currentLoopData = $new_permission; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $group): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						            	<div class="col-md-3">
+							            	<strong><?php echo e($key); ?> </strong><br/>
+							            	<?php $__currentLoopData = $group; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						            			<label><?php echo e(Form::checkbox('permission[]', $gr['id'], in_array($gr['id'], $rolePermissions) ? true : false, array('class' => 'name'))); ?>
+
+							                	<?php echo e(_i($gr['name'])); ?></label>
+							            		<br/>
+							            	<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						            	</div>
+						            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					        	</div>
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					        <button type="submit" class="btn btn-primary">Submit</button>
+					        <button type="submit" class="btn btn-primary"><?php echo e(_i('Submit')); ?></button>
 					    </div>
 					</div>
 				<?php echo Form::close(); ?>

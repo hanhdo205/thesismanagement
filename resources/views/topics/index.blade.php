@@ -24,9 +24,9 @@
 		<div class="card-body">
 			<div class="card-text">
 				@if ($message = Session::get('success'))
-				    <div class="alert alert-success">
-				        <p>{{ $message }}</p>
-				    </div>
+				    <script>
+						toastr.success('{{ $message }}');
+					</script>
 				@endif
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered table-hover">
@@ -49,8 +49,8 @@
 					        <td>{{ $topic->title }}</td>
 					        <td>{{ $period }}</td>
 					        <td>{{ $topic->status }}</td>
-					        <td>
-				                <form action="{{ route('topics.destroy',$topic->id) }}" method="POST">
+					        <td nowrap>
+				                <form action="{{ route('topics.destroy',$topic->id) }}" id="formDelete" method="POST">
 				                    <a class="btn btn-info" href="{{ route('topics.show',$topic->id) }}">{{ _i('Show') }}</a>
 				                    @can('topic-edit')
 				                    <a class="btn btn-primary" href="{{ route('topics.edit',$topic->id) }}">{{ _i('Edit') }}</a>
@@ -60,7 +60,7 @@
 				                    @csrf
 				                    @method('DELETE')
 				                    @can('topic-delete')
-				                    <button type="submit" class="btn btn-danger">{{ _i('Delete') }}</button>
+				                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm">{{ _i('Delete') }}</button>
 				                    @endcan
 				                </form>
 					        </td>

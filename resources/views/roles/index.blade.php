@@ -24,35 +24,37 @@
 		<div class="card-body">
 			<div class="card-text">
 				@if ($message = Session::get('success'))
-				    <div class="alert alert-success">
-				        <p>{{ $message }}</p>
-				    </div>
+				    <script>
+						toastr.success('{{ $message }}');
+					</script>
 				@endif
-				<table class="table table-bordered">
-				  <tr>
-				     <th>{{ _i('No.') }}</th>
-				     <th>{{ _i('Name') }}</th>
-				     <th width="280px">{{ _i('Action') }}</th>
-				  </tr>
-				    @foreach ($roles as $key => $role)
-				    <tr>
-				        <td>{{ ++$i }}</td>
-				        <td>{{ $role->name }}</td>
-				        <td>
-				            <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">{{ _i('Show') }}</a>
-				            @can('role-edit')
-				                <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">{{ _i('Edit') }}</a>
-				            @endcan
-				            @can('role-delete')
-				                {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-				                    {!! Form::submit(_i('Delete'), ['class' => 'btn btn-danger']) !!}
-				                {!! Form::close() !!}
-				            @endcan
-				        </td>
-				    </tr>
-				    @endforeach
-				</table>
-				{!! $roles->render() !!}
+				<div class="table-scroll">
+					<table class="table table-bordered">
+					  <tr>
+					     <th>{{ _i('No.') }}</th>
+					     <th>{{ _i('Name') }}</th>
+					     <th>{{ _i('Action') }}</th>
+					  </tr>
+					    @foreach ($roles as $key => $role)
+					    <tr>
+					        <td>{{ ++$i }}</td>
+					        <td>{{ $role->name }}</td>
+					        <td nowrap>
+					            <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">{{ _i('Show') }}</a>
+					            @can('role-edit')
+					                <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">{{ _i('Edit') }}</a>
+					            @endcan
+					            @can('role-delete')
+					                {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'id' => 'formDelete','style'=>'display:inline']) !!}
+					                    {!! Form::button(_i('Delete'), ['class' => 'btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']) !!}
+					                {!! Form::close() !!}
+					            @endcan
+					        </td>
+					    </tr>
+					    @endforeach
+					</table>
+					{!! $roles->render() !!}
+				</div>
 			</div>
 		</div>
 	</div>

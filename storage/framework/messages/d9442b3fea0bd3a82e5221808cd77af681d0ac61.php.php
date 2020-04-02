@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title', _i('Create New User')); ?>
+<?php $__env->startSection('title', _i('Edit User')); ?>
 <?php $__env->startSection('description', _i('The SIS management')); ?>
 <?php $__env->startSection('keyword', _i('management')); ?>
 
@@ -9,14 +9,17 @@
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="<?php echo e(url('/')); ?>"><?php echo e(_i('Home')); ?></a></li>
 		<li class="breadcrumb-item"><a href="<?php echo e(route('users.index')); ?>"><?php echo e(_i('User management')); ?></a></li>
-		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('Create New User')); ?></li>
+		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('Edit User')); ?></li>
 	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
 		<div class="card-header">
-			<?php echo e(_i('Create New User')); ?>
+			<?php echo e(_i('Edit User')); ?>
 
+			<span class="float-right">
+				<a class="btn btn-sm btn-primary" href="<?php echo e(route('users.index')); ?>"> <?php echo e(_i('Back')); ?></a>
+			</span>
 		</div>
 		<div class="card-body">
 			<div class="card-text">
@@ -30,7 +33,7 @@
 				    </ul>
 				  </div>
 				<?php endif; ?>
-				<?php echo Form::open(array('route' => 'users.store','method'=>'POST')); ?>
+				<?php echo Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]); ?>
 
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
@@ -64,7 +67,7 @@
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
 					            <strong><?php echo e(_i('Role')); ?>:</strong>
-					            <?php echo Form::select('roles[]', $roles,[], array('class' => 'form-control select2','multiple')); ?>
+					            <?php echo Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')); ?>
 
 					        </div>
 					    </div>

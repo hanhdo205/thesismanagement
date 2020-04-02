@@ -1,8 +1,8 @@
 
 
-<?php $__env->startSection('title', 'Create New Topic'); ?>
-<?php $__env->startSection('description', 'The SIS management'); ?>
-<?php $__env->startSection('keyword', 'management'); ?>
+<?php $__env->startSection('title', _i('Create New Topic')); ?>
+<?php $__env->startSection('description', _i('The SIS management')); ?>
+<?php $__env->startSection('keyword', _i('management')); ?>
 
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
@@ -41,21 +41,21 @@
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>Start date:</strong>
-					            <?php echo Form::text('start_date', null, array('placeholder' => 'Begin date','id' => 'startDate','class' => 'form-control','autocomplete' => 'off')); ?>
+					            <strong><?php echo e(_i('Start date')); ?>:</strong>
+					            <?php echo Form::text('start_date', null, array('placeholder' => _i('Start date'),'id' => 'startDate','class' => 'form-control','autocomplete' => 'off')); ?>
 
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>End date:</strong>
-					            <?php echo Form::text('end_date', null, array('placeholder' => 'End date','id' => 'endDate', 'class' => 'form-control','autocomplete' => 'off')); ?>
+					            <strong><?php echo e(_I('End date')); ?>:</strong>
+					            <?php echo Form::text('end_date', null, array('placeholder' => _i('End date'),'id' => 'endDate', 'class' => 'form-control','autocomplete' => 'off')); ?>
 
 					        </div>
 					    </div>
 
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					        <button type="submit" class="btn btn-primary">Submit</button>
+					        <button type="submit" class="btn btn-primary"><?php echo e(_i('Submit')); ?></button>
 					    </div>
 					</div>
 				<?php echo Form::close(); ?>

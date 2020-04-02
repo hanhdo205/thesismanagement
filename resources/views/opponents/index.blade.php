@@ -18,29 +18,18 @@
 		</div>
 		<div class="card-body">
 			<div class="card-text">
+				{!! Form::open(array('route' => 'opponents.store','method'=>'POST')) !!}
 				<div class="form-group">
 					<div class="form-inline">
-						<select name="target_academic" class="form-control" id="target_academic">
-							<option>対象学術大会を選択してください</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						</select>
+						{!! Form::select('topic', array_merge(['' => _i('Please select topic')],$topics),[], array('class' => 'form-control')) !!}
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="form-inline">
-						<button class="form-control btn btn-primary mr-sm-2 pl-5 pr-5" data-toggle="modal" data-target="#importUsers">{{ _i('Import from CSV') }}</button>
-						<button class="form-control btn btn-primary pl-5 pr-5">新規追加</button>
+						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5" href="javascript:void(0);"data-toggle="modal" data-target="#importUsers">{{ _i('Import from CSV') }}</a>
+						<a class="form-control btn btn-primary pl-5 pr-5" href="{{ route('users.create') }}">新規追加</a>
 					</div>
 				</div>
-				@if ($message = Session::get('success'))
-					<div class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert">×</button>
-					  	{{ $message }}
-					</div>
-				@endif
 				<div class="table-scroll mb-5">
 					<table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 						<thead>
@@ -61,7 +50,7 @@
 							<tr>
 								<td class="fix-width text-center">
 									<label class="custom-check">
-										<input type="checkbox" id="{{ ++$i }}" />
+										{!! Form::checkbox('opponents[]', $user->id, array('id' => ++$i)) !!}
 										<span class="checkmark"></span>
 									</label>
 								</td>
@@ -75,11 +64,11 @@
 					{!! $data->render() !!}
 				</div>
 				<div class="form-group">
-					<form action="/review/confirmation" class="d-flex justify-content-center" method="POST">
-					@csrf <!-- {{ csrf_field() }} -->
-					<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5">査読対応確認</button>
-					</form>
+					<div class="d-flex justify-content-center">
+						{!! Form::submit(_i('Go to letter confirm'), array('class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5')) !!}
+					</div>
 				</div>
+				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>
@@ -90,23 +79,26 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">{{ _i('Import from CSV') }}</h5>
+        <h5 class="modal-title" id="importUsersTitle">{{ _i('Import from CSV') }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       	</div>
       	<div class="modal-body">
-        	<form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="file" class="form-control">
-                <br>
-                <button class="btn btn-success">Import User Data</button>
-                <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a>
-            </form>
+        	{!! Form::open(array('id' => 'csv_upload_form','method'=>'POST', 'enctype' => 'multipart/form-data')) !!}
+                <span class="input-group div-select-csv-file">
+                	{!! Form::text('csv_file_name_txt',null,array('class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off')) !!}
+					<span class="input-group-append">
+						<label for="csv_upload_file" class="btn btn-primary">{{ _i('Choose file') }}</label></span>
+					</span>
+				</span>
+				<small class="help-block"> {!! _i('※Data format .csv<br>※Maximum upload file size: 2MB') !!}</small>
+				{!! Form::file('file', array('id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;')) !!}
+            {!! Form::close() !!}
       	</div>
       	<div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _i('Cancel') }}</button>
-        <button type="button" class="btn btn-primary">{{ _i('Import') }}</button>
+        <button type="button" id="csv_upload_cancel" class="btn btn-secondary" data-dismiss="modal">{{ _i('Cancel') }}</button>
+        <button type="button" id="csv_upload_button" class="btn btn-primary">{{ _i('Import') }}</button>
       </div>
     </div>
   </div>

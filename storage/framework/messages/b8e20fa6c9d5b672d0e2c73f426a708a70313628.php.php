@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><?php echo e(__('Reset Password')); ?></div>
+                <div class="card-header"><?php echo e(_i('Reset Password')); ?></div>
 
                 <div class="card-body">
                     <form method="POST" action="<?php echo e(route('password.update')); ?>">
@@ -12,7 +12,7 @@
                         <input type="hidden" name="token" value="<?php echo e($token); ?>">
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right"><?php echo e(__('E-Mail Address')); ?></label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right"><?php echo e(_i('E-Mail Address')); ?></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control <?php $__errorArgs = ['email'];
@@ -40,7 +40,7 @@ unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Password')); ?></label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right"><?php echo e(_i('Password')); ?></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];
@@ -68,7 +68,7 @@ unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Confirm Password')); ?></label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right"><?php echo e(_i('Confirm Password')); ?></label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -78,7 +78,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <?php echo e(__('Reset Password')); ?>
+                                    <?php echo e(_i('Reset Password')); ?>
 
                                 </button>
                             </div>

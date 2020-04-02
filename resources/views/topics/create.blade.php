@@ -50,7 +50,7 @@
 					    </div>
 
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					        <button type="submit" class="btn btn-primary">{{ _i('Submit') }}</button>
+					    	{!! Form::submit(_i('Submit'), array('class' => 'btn btn-primary')) !!}
 					    </div>
 					</div>
 				{!! Form::close() !!}

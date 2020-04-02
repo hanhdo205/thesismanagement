@@ -87,7 +87,7 @@ class TopicController extends Controller {
 		request()->validate([
 			'title' => 'required',
 			'start_date' => 'required',
-			'endd_ate' => 'required',
+			'end_date' => 'required',
 		]);
 
 		$topic->update($request->all());

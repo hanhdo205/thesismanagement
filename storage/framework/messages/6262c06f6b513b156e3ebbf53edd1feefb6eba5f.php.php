@@ -17,6 +17,9 @@
 		<div class="card-header">
 			<?php echo e(_i('Create New User')); ?>
 
+			<span class="float-right">
+				<a class="btn btn-sm btn-primary" href="<?php echo e(route('users.index')); ?>"> <?php echo e(_i('Back')); ?></a>
+			</span>
 		</div>
 		<div class="card-body">
 			<div class="card-text">
@@ -64,7 +67,7 @@
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
 					            <strong><?php echo e(_i('Role')); ?>:</strong>
-					            <?php echo Form::select('roles[]', $roles,[], array('class' => 'form-control select2','multiple')); ?>
+					            <?php echo Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')); ?>
 
 					        </div>
 					    </div>

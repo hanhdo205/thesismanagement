@@ -1,23 +1,24 @@
 
 
-<?php $__env->startSection('title', 'Edit User'); ?>
-<?php $__env->startSection('description', 'The SIS management'); ?>
-<?php $__env->startSection('keyword', 'management'); ?>
+<?php $__env->startSection('title', _i('Edit User')); ?>
+<?php $__env->startSection('description', _i('The SIS management')); ?>
+<?php $__env->startSection('keyword', _i('management')); ?>
 
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="<?php echo e(url('/')); ?>">Home</a></li>
-		<li class="breadcrumb-item"><a href="<?php echo e(route('users.index')); ?>">演題提出者管理</a></li>
-		<li class="breadcrumb-item active" aria-current="page">Edit User</li>
+		<li class="breadcrumb-item"><a href="<?php echo e(url('/')); ?>"><?php echo e(_i('Home')); ?></a></li>
+		<li class="breadcrumb-item"><a href="<?php echo e(route('users.index')); ?>"><?php echo e(_i('User management')); ?></a></li>
+		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('Edit User')); ?></li>
 	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
 		<div class="card-header">
-			Edit User
+			<?php echo e(_i('Edit User')); ?>
+
 			<span class="float-right">
-				<a class="btn btn-primary" href="<?php echo e(route('users.index')); ?>"> Back</a>
+				<a class="btn btn-sm btn-primary" href="<?php echo e(route('users.index')); ?>"> <?php echo e(_i('Back')); ?></a>
 			</span>
 		</div>
 		<div class="card-body">
@@ -37,41 +38,41 @@
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>Name:</strong>
-					            <?php echo Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')); ?>
+					            <strong><?php echo e(_i('Name')); ?>:</strong>
+					            <?php echo Form::text('name', null, array('placeholder' => _i('Name'),'class' => 'form-control')); ?>
 
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>Email:</strong>
-					            <?php echo Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')); ?>
+					            <strong><?php echo e(_i('Email')); ?>:</strong>
+					            <?php echo Form::text('email', null, array('placeholder' => _i('Email'),'class' => 'form-control')); ?>
 
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>Password:</strong>
-					            <?php echo Form::password('password', array('placeholder' => 'Password','class' => 'form-control')); ?>
+					            <strong><?php echo e(_i('Password')); ?>:</strong>
+					            <?php echo Form::password('password', array('placeholder' => _i('Password'),'class' => 'form-control')); ?>
 
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>Confirm Password:</strong>
-					            <?php echo Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')); ?>
+					            <strong><?php echo e(_i('Confirm Password')); ?>:</strong>
+					            <?php echo Form::password('confirm-password', array('placeholder' => _i('Confirm Password'),'class' => 'form-control')); ?>
 
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>Role:</strong>
-					            <?php echo Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')); ?>
+					            <strong><?php echo e(_i('Role')); ?>:</strong>
+					            <?php echo Form::select('roles[]', $roles,$userRole, array('class' => 'form-control select2','multiple')); ?>
 
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					        <button type="submit" class="btn btn-primary">Submit</button>
+					        <button type="submit" class="btn btn-primary"><?php echo e(_i('Submit')); ?></button>
 					    </div>
 					</div>
 				<?php echo Form::close(); ?>

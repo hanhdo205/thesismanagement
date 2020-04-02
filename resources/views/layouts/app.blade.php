@@ -29,12 +29,19 @@
         <link href="{{ asset('css/perfect-scrollbar.css') }}" rel="stylesheet">
         <!-- Datepicker styles-->
         <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+        <!-- Select2 styles-->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
         <!-- Scripts -->
         <script>
             window.Laravel = {!! json_encode([
                 'csrfToken' => csrf_token(),
             ]) !!};
+            var base_url = '{{ url('/') }}';
         </script>
+        <!-- Jquery scripts -->
+        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+        <!-- App scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
     </head>
     <body>
             <div id="wrapper">
@@ -44,12 +51,11 @@
                         @yield('content')
                     </div>
                     <!-- /. PAGE WRAPPER  -->
+                    @include('includes.footer')
             </div>
             <!-- /# WRAPPER  -->
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}"></script>
-        <!-- Scripts -->
-        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+        <!-- Select2 script -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
         <!-- Datepicker script -->
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="{{ asset('js/datepicker-ja.js') }}"></script>

@@ -17,7 +17,7 @@
 		<div class="card-header">
 			{{ _i('Edit Role') }}
 			<span class="float-right">
-				<a class="btn btn-primary" href="{{ route('roles.index') }}"> {{ _i('Back') }}</a>
+				<a class="btn btn-sm btn-primary" href="{{ route('roles.index') }}"> {{ _i('Back') }}</a>
 			</span>
 		</div>
 		<div class="card-body">
@@ -44,15 +44,32 @@
 					        <div class="form-group">
 					            <strong>{{ _i('Permission') }}:</strong>
 					            <br/>
+					            @php
+					            $new_permission = [];
+					            @endphp
 					            @foreach($permission as $value)
-					                <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-					                {{ $value->name }}</label>
-					            <br/>
+					            	@php
+					            	$permission_arr = explode("-", $value->name);
+					            	$group_permission = $permission_arr[0];
+					            	$new_permission[$group_permission][] = ['id' => $value->id,'name'=>$value->name];
+					            	@endphp
 					            @endforeach
+					            <div class="row">
+						            @foreach($new_permission as $key => $group)
+						            	<div class="col-md-3">
+							            	<strong>{{ _i($key) }} </strong><br/>
+							            	@foreach($group as $gr)
+						            			<label>{{ Form::checkbox('permission[]', $gr['id'], in_array($gr['id'], $rolePermissions) ? true : false, array('class' => 'name')) }}
+							                	{{ _i($gr['name']) }}</label>
+							            		<br/>
+							            	@endforeach
+						            	</div>
+						            @endforeach
+					        	</div>
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					        <button type="submit" class="btn btn-primary">{{ _i('Submit') }}</button>
+					    	{!! Form::submit(_i('Submit'), array('class' => 'btn btn-primary')) !!}
 					    </div>
 					</div>
 				{!! Form::close() !!}

@@ -16,9 +16,6 @@
 	<div class="card">
 		<div class="card-header">
 			{{ _i('Create New User') }}
-			<span class="float-right">
-				<a class="btn btn-sm btn-primary" href="{{ route('users.index') }}"> {{ _i('Back') }}</a>
-			</span>
 		</div>
 		<div class="card-body">
 			<div class="card-text">
@@ -61,11 +58,11 @@
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
 					            <strong>{{ _i('Role') }}:</strong>
-					            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+					            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control select2','multiple')) !!}
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					        <button type="submit" class="btn btn-primary">{{ _i('Submit') }}</button>
+					    	{!! Form::submit(_i('Submit'), array('class' => 'btn btn-primary')) !!}
 					    </div>
 					</div>
 				{!! Form::close() !!}

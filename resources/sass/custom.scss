@@ -9,6 +9,11 @@
 /*==============================================
     Overwrite Bootstrap 4's
     =============================================*/
+body {
+    &.modal-open {
+        padding-right: 0 !important;
+    }
+}
 	
 .custom-inline {
 	.alert {

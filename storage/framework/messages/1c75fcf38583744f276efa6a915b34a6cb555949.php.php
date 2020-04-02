@@ -3,17 +3,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><?php echo e(__('Confirm Password')); ?></div>
+                <div class="card-header"><?php echo e(_i('Confirm Password')); ?></div>
 
                 <div class="card-body">
-                    <?php echo e(__('Please confirm your password before continuing.')); ?>
+                    <?php echo e(_i('Please confirm your password before continuing.')); ?>
 
 
                     <form method="POST" action="<?php echo e(route('password.confirm')); ?>">
                         <?php echo csrf_field(); ?>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Password')); ?></label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right"><?php echo e(_i('Password')); ?></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];
@@ -43,13 +43,13 @@ unset($__errorArgs, $__bag); ?>
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <?php echo e(__('Confirm Password')); ?>
+                                    <?php echo e(_i('Confirm Password')); ?>
 
                                 </button>
 
                                 <?php if(Route::has('password.request')): ?>
                                     <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>">
-                                        <?php echo e(__('Forgot Your Password?')); ?>
+                                        <?php echo e(_i('Forgot Your Password?')); ?>
 
                                     </a>
                                 <?php endif; ?>
