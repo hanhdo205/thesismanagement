@@ -18,7 +18,7 @@
 		</div>
 		<div class="card-body">
 			<div class="card-text">
-				{!! Form::open(array('route' => 'opponents.store','method'=>'POST')) !!}
+				{!! Form::open(array('route' => 'opponents.confirmation','method'=>'POST')) !!}
 				<div class="form-group">
 					<div class="form-inline">
 						{!! Form::select('topic', array_merge(['' => _i('Please select topic')],$topics),[], array('class' => 'form-control')) !!}

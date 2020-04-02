@@ -35,10 +35,20 @@ class OpponentController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request) {
+	public function confirmation(Request $request) {
 		$topic = $request->input('topic');
 		$checkboxs = $request->input('opponents');
 		$opponents = User::whereIn('id', $checkboxs)->pluck('name', 'id');
 		return view('opponents.confirmation', compact(['topic', 'opponents', 'checkboxs']));
+	}
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \App\Topic  $topic
+	 * @return \Illuminate\Http\Response
+	 */
+	public function send(Request $request) {
+		return view('opponents.send');
 	}
 }
