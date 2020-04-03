@@ -50,8 +50,8 @@
 						    <td nowrap>
 						       <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">{{ _i('Show') }}</a>
 						       <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">{{ _i('Edit') }}</a>
-						        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'id' => 'formDelete','style'=>'display:inline']) !!}
-						            {!! Form::button(_i('Delete'), ['id' => 'btn-delete','class' => 'btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']) !!}
+						        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'id' => 'formDelete_'.$user->id,'style'=>'display:inline']) !!}
+						            {!! Form::button(_i('Delete'), ['id' => 'btn-delete','class' => 'btnDel btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']) !!}
 						        {!! Form::close() !!}
 						    </td>
 						  </tr>

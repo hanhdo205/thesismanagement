@@ -27,6 +27,8 @@ class PermissionTableSeeder extends Seeder {
 			'essay-create',
 			'essay-edit',
 			'essay-delete',
+			'opponent-sendrequest',
+			'opponent-confirmation',
 		];
 
 		foreach ($permissions as $permission) {

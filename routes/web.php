@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('import', 'ImExController@import')->name('import');
 	Route::get('/opponents', 'OpponentController@index')->name('opponents');
 	Route::post('/opponents/confirmation', 'OpponentController@confirmation')->name('opponents.confirmation');
-	Route::post('/opponents/send', 'OpponentController@send')->name('opponents.send');
+	Route::post('/opponents/send', 'OpponentController@sendMail')->name('opponents.sendmail');
 });
 
 Route::get('/academic', function () {

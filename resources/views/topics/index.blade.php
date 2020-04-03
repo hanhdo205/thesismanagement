@@ -50,7 +50,7 @@
 					        <td>{{ $period }}</td>
 					        <td>{{ $topic->status }}</td>
 					        <td nowrap>
-				                <form action="{{ route('topics.destroy',$topic->id) }}" id="formDelete" method="POST">
+				                <form action="{{ route('topics.destroy',$topic->id) }}" id="formDelete_{{ $topic->id }}" method="POST">
 				                    <a class="btn btn-info" href="{{ route('topics.show',$topic->id) }}">{{ _i('Show') }}</a>
 				                    @can('topic-edit')
 				                    <a class="btn btn-primary" href="{{ route('topics.edit',$topic->id) }}">{{ _i('Edit') }}</a>
@@ -60,7 +60,7 @@
 				                    @csrf
 				                    @method('DELETE')
 				                    @can('topic-delete')
-				                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm">{{ _i('Delete') }}</button>
+				                    <button type="button" class="btnDel btn btn-danger" data-toggle="modal" data-target="#confirm">{{ _i('Delete') }}</button>
 				                    @endcan
 				                </form>
 					        </td>

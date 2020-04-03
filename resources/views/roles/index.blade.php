@@ -45,8 +45,8 @@
 					                <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">{{ _i('Edit') }}</a>
 					            @endcan
 					            @can('role-delete')
-					                {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'id' => 'formDelete','style'=>'display:inline']) !!}
-					                    {!! Form::button(_i('Delete'), ['class' => 'btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']) !!}
+					                {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'id' => 'formDelete_'.$role->id,'style'=>'display:inline']) !!}
+					                    {!! Form::button(_i('Delete'), ['class' => 'btnDel btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']) !!}
 					                {!! Form::close() !!}
 					            @endcan
 					        </td>

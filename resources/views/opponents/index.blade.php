@@ -18,10 +18,10 @@
 		</div>
 		<div class="card-body">
 			<div class="card-text">
-				{!! Form::open(array('route' => 'opponents.confirmation','method'=>'POST')) !!}
+				{!! Form::open(array('route' => 'opponents.confirmation','method'=>'POST', 'class' => 'opponent_management')) !!}
 				<div class="form-group">
 					<div class="form-inline">
-						{!! Form::select('topic', array_merge(['' => _i('Please select topic')],$topics),[], array('class' => 'form-control')) !!}
+						{!! Form::select('topic', $topics,[], array('id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic'))) !!}
 					</div>
 				</div>
 				<div class="form-group">
@@ -50,7 +50,7 @@
 							<tr>
 								<td class="fix-width text-center">
 									<label class="custom-check">
-										{!! Form::checkbox('opponents[]', $user->id, array('id' => ++$i)) !!}
+										{!! Form::checkbox('opponents[]', $user->id, false, array('id' => ++$i, 'class' => 'field')) !!}
 										<span class="checkmark"></span>
 									</label>
 								</td>
@@ -65,7 +65,7 @@
 				</div>
 				<div class="form-group">
 					<div class="d-flex justify-content-center">
-						{!! Form::submit(_i('Go to letter confirm'), array('class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5')) !!}
+						{!! Form::submit(_i('Go to letter confirm'), array('id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5')) !!}
 					</div>
 				</div>
 				{!! Form::close() !!}

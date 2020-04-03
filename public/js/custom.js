@@ -1,10 +1,50 @@
 (function ($) {
     "use strict";
     jQuery(document).ready(function ($) {
-    	var flag = true;
+    	let flag = true;
+    	let $form;
     	if($('select').hasClass('select2')) {
     		$('.select2').select2();
     	}
+
+    	if($('form').hasClass('opponent_management')) {
+    			let $submit = $('#formSubmit');
+	    		$submit.prop('disabled', true);
+	    		let $topic,$checkbox;
+
+    		$('#topic_select').on('change', function () {
+    			 $topic = $(this).val();
+				  $checkbox = $('[name="opponents[]"]:checked');
+    			if (($topic > 0) && ($checkbox.length > 0)) {
+				    $submit.removeAttr('disabled');
+				  } else {
+				    $submit.prop('disabled', true);
+				  }
+		    });
+			
+			$('input[type=checkbox]').on('click', function(){
+				 $topic = $('#topic_select').val();
+				  $checkbox = $('[name="opponents[]"]:checked');
+    			if (($topic > 0) && ($checkbox.length > 0)) {
+				    $submit.removeAttr('disabled');
+				  } else {
+				    $submit.prop('disabled', true);
+				  }
+			});
+
+			$('#selectAll').on('click', function(){
+				if($('#selectAll:checkbox:checked').length > 0) {
+				 $topic = $('#topic_select').val();
+    			if (($topic > 0)) {
+				    $submit.removeAttr('disabled');
+				  }
+				} else {
+				    $submit.prop('disabled', true);
+				  }
+			});
+
+    	}
+		
     	//table check all rows
 		$('#selectAll').click(function(e){
 			var table= $(e.target).closest('table');
@@ -28,10 +68,15 @@
 			}
 		}
 
-		// delete confirm
+		// delete button click -> get form id
+		$('form').on('click', '.btnDel', function(e){
+		    e.preventDefault();
+		    $form=$(this).closest('form');
+		});
+
+		// delete confirmation
 		$('#confirm').on('click', '#delete-btn', function(e){
 		    e.preventDefault();
-		    var $form=$('#formDelete');
 	        $form.submit();
 		});
 
