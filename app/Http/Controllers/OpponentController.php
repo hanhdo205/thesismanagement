@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Topic;
 use App\User;
 use Illuminate\Http\Request;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class OpponentController extends Controller {
 	/**
@@ -52,12 +52,15 @@ class OpponentController extends Controller {
 	public function sendMail(Request $request) {
 		//Get Content From The Form
 		$opponents = $request->input('opponents');
-		$message = $request->input('mailbody');
+		$mailbody = $request->input('mailbody');
 
-		$to_name = 'hanhnq';
-		$to_email = 'hanhnq@feelsyncsystem.vn';
+		if (preg_match_all("/{(.*?)}/", $mailbody, $m)) {
+			foreach ($m[1] as $i => $varname) {
+				$mailbody = str_replace($m[0][$i], sprintf('{{ $%s }}', $varname), $mailbody);
+			}
+		}
 
-		$contents = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body><p>' . nl2br($message) . '</p></body></html>';
+		$contents = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body><p>' . nl2br($mailbody) . '</p></body></html>';
 
 		//Store the content on a file with .blad.php extension in the view/email folder
 		$myfile = fopen("../resources/views/emails/opponents.blade.php", "w") or die("Unable to open file!");
@@ -65,12 +68,20 @@ class OpponentController extends Controller {
 		fwrite($myfile, $contents);
 		fclose($myfile);
 
-		$data = array('name' => 'HanhNQ(sender_name)', 'body' => 'A test mail');
-		Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
-			$message->to($to_email, $to_name)
-				->subject('Test email');
-			$message->from('hanhdo205@gmail.com', 'Test email');
-		});
+		foreach ($opponents as $key => $value) {
+			$user = User::find($value);
+			$to_name = $user->name;
+			$to_email = $user->email;
+			$data = array(
+				'Name' => $user->name,
+				'Link' => 'http://facebook.com',
+			);
+			Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
+				$message->to($to_email, $to_name)
+					->subject('査読対応確認');
+				$message->from('hanhdo205@gmail.com', 'thesisManagement');
+			});
+		}
 
 		return view('opponents.send');
 	}
