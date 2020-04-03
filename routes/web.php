@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 LaravelGettext::setLocale('ja_JP');
 
+Route::get('/endai_teisyutu/{id}', 'TopicController@endai_teisyutu')->name('topic.endai_teisyutu');
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
