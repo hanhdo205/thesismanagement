@@ -11,3 +11,7 @@ body {
   vertical-align: middle;
 }
 
+.ui-datepicker-title {
+  display: flex;
+}
+

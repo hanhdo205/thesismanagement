@@ -72,9 +72,10 @@ class OpponentController extends Controller {
 			$user = User::find($value);
 			$to_name = $user->name;
 			$to_email = $user->email;
+			$token = csrf_token();
 			$data = array(
 				'Name' => $user->name,
-				'Link' => 'http://facebook.com',
+				'Link' => url('/request/confirm/' . $token),
 			);
 			Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
 				$message->to($to_email, $to_name)

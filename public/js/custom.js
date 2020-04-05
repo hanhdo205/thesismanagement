@@ -115,6 +115,12 @@
     //date picker
     $( function() {
 	    var dateFormat = "yy/mm/dd",
+	    dob = $( "#dateOfBirth" )
+	        .datepicker({
+	          locale: 'ja-jp',
+	          changeMonth: true,
+	          changeYear: true
+	      }),
 	      from = $( "#startDate" )
 	        .datepicker({
 	          locale: 'ja-jp',

@@ -23,10 +23,6 @@ class PermissionTableSeeder extends Seeder {
 			'topic-create',
 			'topic-edit',
 			'topic-delete',
-			'essay-list',
-			'essay-create',
-			'essay-edit',
-			'essay-delete',
 			'opponent-sendrequest',
 			'opponent-confirmation',
 		];

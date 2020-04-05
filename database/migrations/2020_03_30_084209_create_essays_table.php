@@ -13,13 +13,22 @@ class CreateEssaysTable extends Migration {
 	public function up() {
 		Schema::create('essays', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->bigInteger('topic_id');
-			$table->bigInteger('reviewer_id');
-			$table->string('title');
-			$table->string('student');
-			$table->smallInteger('result');
-			$table->smallInteger('status');
+			$table->string('essay_title');
+			$table->string('essay_file');
+			$table->string('student_name');
+			$table->char('student_gender', 6);
+			$table->string('student_dob');
+			$table->string('student_email');
+			$table->smallInteger('review_result')->nullable();
+			$table->smallInteger('review_status')->nullable();
 			$table->timestamps();
+
+		});
+		Schema::table('essays', function (Blueprint $table) {
+			$table->bigInteger('topic_id')->unsigned();
+			$table->bigInteger('reviewer_id')->unsigned()->nullable();
+			$table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
+			$table->foreign('reviewer_id')->references('id')->on('users')->onDelete('cascade');
 		});
 	}
 

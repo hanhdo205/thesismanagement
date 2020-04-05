@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 LaravelGettext::setLocale('ja_JP');
 
-Route::get('/endai_teisyutu/{id}', 'TopicController@endai_teisyutu')->name('topic.endai_teisyutu');
+Route::get('/endai_teisyutu/{id}', 'TopicController@registerEssay')->name('topic.endai_teisyutu');
+Route::post('/endai_teisyutu/register', 'EssayController@store')->name('register.endai_teisyutu');
 
 Auth::routes();
 
@@ -24,7 +25,6 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('roles', 'RoleController');
 	Route::resource('users', 'UserController');
 	Route::resource('topics', 'TopicController');
-	Route::resource('esays', 'EsayController');
 	Route::get('export', 'ImExController@export')->name('export');
 	Route::get('importExportView', 'ImExController@importExportView');
 	Route::post('import', 'ImExController@import')->name('import');

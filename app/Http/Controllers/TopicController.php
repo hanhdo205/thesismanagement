@@ -72,7 +72,7 @@ class TopicController extends Controller {
 	 * @param  \App\Topic  $topic
 	 * @return \Illuminate\Http\Response
 	 */
-	public function endai_teisyutu(Request $request) {
+	public function registerEssay(Request $request) {
 		$id = $request->id;
 		$topic = Topic::where('id', $id)->first();
 		return view('detail', compact('topic'));
