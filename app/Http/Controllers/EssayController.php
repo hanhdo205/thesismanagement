@@ -38,7 +38,6 @@ class EssayController extends Controller {
 		]);
 
 		$path = $request->file('essay_file')->store('essays');
-
 		Essay::create([
 			'topic_id' => $request->input('topic_id'),
 			'essay_title' => $request->input('essay_title'),

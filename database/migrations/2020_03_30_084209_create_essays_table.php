@@ -19,16 +19,12 @@ class CreateEssaysTable extends Migration {
 			$table->char('student_gender', 6);
 			$table->string('student_dob');
 			$table->string('student_email');
-			$table->smallInteger('review_result')->nullable();
-			$table->smallInteger('review_status')->nullable();
-			$table->timestamps();
-
-		});
-		Schema::table('essays', function (Blueprint $table) {
 			$table->bigInteger('topic_id')->unsigned();
 			$table->bigInteger('reviewer_id')->unsigned()->nullable();
-			$table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
-			$table->foreign('reviewer_id')->references('id')->on('users')->onDelete('cascade');
+			$table->smallInteger('review_result')->nullable();
+			$table->text('review_comment')->nullable();
+			$table->char('review_status', 10)->nullable();
+			$table->timestamps();
 		});
 	}
 

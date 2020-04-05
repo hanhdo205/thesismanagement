@@ -56,9 +56,9 @@
 							            <strong>{{ _i('Gender') }}</strong>
 							            <div class="form-group mt-3">
 								            {!! Form::radio('student_gender', 'male' , true,  array('id'=>'male')) !!}
-											{!! Form::label('male', 'Male') !!}
+											{!! Form::label('male', _i('Male')) !!}
 								            {!! Form::radio('student_gender', 'female' , false,  array('id'=>'female')) !!}
-	  										{!! Form::label('female', 'Female') !!}
+	  										{!! Form::label('female', _i('Female')) !!}
 								        </div>
 							        </div>
 							    </div>

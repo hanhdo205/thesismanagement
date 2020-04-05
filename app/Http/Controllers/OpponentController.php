@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Review;
 use App\Topic;
 use App\User;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class OpponentController extends Controller {
 	/**
@@ -53,6 +56,7 @@ class OpponentController extends Controller {
 		//Get Content From The Form
 		$opponents = $request->input('opponents');
 		$mailbody = $request->input('mailbody');
+		$topic_id = $request->input('topic_id');
 
 		if (preg_match_all("/{(.*?)}/", $mailbody, $m)) {
 			foreach ($m[1] as $i => $varname) {
@@ -72,18 +76,65 @@ class OpponentController extends Controller {
 			$user = User::find($value);
 			$to_name = $user->name;
 			$to_email = $user->email;
-			$token = csrf_token();
+			$token = Str::random(32);
 			$data = array(
 				'Name' => $user->name,
 				'Link' => url('/request/confirm/' . $token),
 			);
-			Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
-				$message->to($to_email, $to_name)
-					->subject('査読対応確認');
-				$message->from('hanhdo205@gmail.com', 'thesisManagement');
-			});
+			try {
+				Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
+					$message->to($to_email, $to_name)
+						->subject('査読対応確認');
+					$message->from('hanhdo205@gmail.com', 'thesisManagement');
+				});
+				$reviewer_status = 'mail_send';
+			} catch (Exception $ex) {
+				$reviewer_status = 'mail_fail';
+			}
 		}
+		Review::create([
+			'topic_id' => $topic_id,
+			'user_id' => $value,
+			'review_status' => $reviewer_status,
+			'review_token' => $token,
+		]);
 
 		return view('opponents.send');
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  \App\Essay  $essay
+	 * @return \Illuminate\Http\Response
+	 */
+	public function requestConfirmation(Request $request) {
+		$review_token = $request->review_token;
+		$rows = DB::table('reviews')
+			->join('topics', 'topics.id', '=', 'reviews.topic_id')
+			->where('reviews.review_token', $review_token)
+			->select('topics.title', 'topics.start_date', 'topics.end_date')
+			->first();
+		return view('opponents.reply', compact('rows'));
+		/*return back()
+			->with('success', _i('Thank you for your confirmation.'));*/
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  \App\Essay  $essay
+	 * @return \Illuminate\Http\Response
+	 */
+	public function requestReply(Request $request) {
+		request()->validate([
+			'review_status' => 'required',
+		]);
+
+		$review_token = $request->review_token;
+		$request = Review::where('review_token', $review_token)->first();
+
+		return back()
+			->with('success', _i('Thank you for your confirmation.'));
 	}
 }

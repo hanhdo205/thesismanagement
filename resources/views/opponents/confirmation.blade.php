@@ -20,6 +20,7 @@
 				</div>
 				<div class="card-body">
 				{!! Form::open(array('route' => 'opponents.sendmail','method'=>'POST')) !!}
+				{!! Form::hidden('topic_id', $topic) !!}
 						<div class="form-group">
 							<label for="mailcontent">メール内容</label>
 							{!! Form::textarea('mailbody', '{Name}先生

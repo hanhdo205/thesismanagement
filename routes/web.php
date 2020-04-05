@@ -17,6 +17,8 @@ LaravelGettext::setLocale('ja_JP');
 
 Route::get('/endai_teisyutu/{id}', 'TopicController@registerEssay')->name('topic.endai_teisyutu');
 Route::post('/endai_teisyutu/register', 'EssayController@store')->name('register.endai_teisyutu');
+Route::get('/request/confirm/{review_token}', 'OpponentController@requestConfirmation');
+Route::post('/request/confirmed', 'OpponentController@requestReply')->name('request.reply');
 
 Auth::routes();
 
