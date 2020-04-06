@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Review;
 use App\Topic;
 use App\User;
-use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -28,8 +28,7 @@ class OpponentController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Request $request) {
-		$topics = Topic::pluck('title', 'id');
-		//$topics->prepend(_i('Please select topic'));
+		$topics = Topic::whereDate('end_date', '>', NOW())->pluck('title', 'id');
 		$data = User::orderBy('id', 'DESC')->paginate(5);
 		return view('opponents.index', compact(['data', 'topics']))
 			->with('i', ($request->input('page', 1) - 1) * 5);
@@ -115,9 +114,10 @@ class OpponentController extends Controller {
 			->where('reviews.review_token', $review_token)
 			->select('topics.title', 'topics.start_date', 'topics.end_date')
 			->first();
-		return view('opponents.reply', compact('rows'));
-		/*return back()
-			->with('success', _i('Thank you for your confirmation.'));*/
+		if (empty($rows)) {
+			return abort(404);
+		}
+		return view('opponents.reply', compact(['rows', 'review_token']));
 	}
 
 	/**
@@ -132,8 +132,8 @@ class OpponentController extends Controller {
 		]);
 
 		$review_token = $request->review_token;
-		$request = Review::where('review_token', $review_token)->first();
-
+		$review = Review::where('review_token', $review_token)->first();
+		$review->update(['review_status' => $request->input('review_status')]);
 		return back()
 			->with('success', _i('Thank you for your confirmation.'));
 	}

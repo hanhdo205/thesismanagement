@@ -21,9 +21,9 @@ class CreateEssaysTable extends Migration {
 			$table->string('student_email');
 			$table->bigInteger('topic_id')->unsigned();
 			$table->bigInteger('reviewer_id')->unsigned()->nullable();
-			$table->smallInteger('review_result')->nullable();
+			$table->char('review_result', 10)->default('fresh');
 			$table->text('review_comment')->nullable();
-			$table->char('review_status', 10)->nullable();
+			$table->char('review_status', 10)->default('pending');
 			$table->timestamps();
 		});
 	}

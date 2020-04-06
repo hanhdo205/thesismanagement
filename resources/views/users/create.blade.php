@@ -4,6 +4,11 @@
 @section('description', _i('The SIS management'))
 @section('keyword', _i('management'))
 
+@push('head')
+<!-- Select2 styles-->
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+@endpush
+
 @section('content')
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -72,3 +77,8 @@
 </div>
 <!-- /. PAGE INNER  -->
 @endsection
+
+@push('foot')
+<!-- Select2 script -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+@endpush

@@ -4,6 +4,11 @@
 @section('description', _i('The SIS management'))
 @section('keyword', _i('management'))
 
+@push('head')
+<!-- Datepicker styles-->
+<link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+@endpush
+
 @section('content')
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -60,3 +65,11 @@
 </div>
 <!-- /. PAGE INNER  -->
 @endsection
+
+@push('foot')
+<!-- Datepicker script -->
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ asset('js/datepicker-ja.js') }}"></script>
+<!-- Custom script -->
+<script src="{{ asset('js/datepicker-custom.js') }}"></script>
+@endpush

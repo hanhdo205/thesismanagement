@@ -15,15 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 LaravelGettext::setLocale('ja_JP');
 
-Route::get('/endai_teisyutu/{id}', 'TopicController@registerEssay')->name('topic.endai_teisyutu');
-Route::post('/endai_teisyutu/register', 'EssayController@store')->name('register.endai_teisyutu');
+Route::get('/endai_teisyutu/{id}', 'EssayController@createEssay')->name('topic.endai_teisyutu');
+Route::post('/endai_teisyutu/register', 'EssayController@storeEssay')->name('register.endai_teisyutu');
 Route::get('/request/confirm/{review_token}', 'OpponentController@requestConfirmation');
 Route::post('/request/confirmed', 'OpponentController@requestReply')->name('request.reply');
+Route::get('/essay-list', 'EssayController@essayList');
 
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/', 'HomeController@index')->name('home');
+	Route::get('/essay', 'EssayController@index');
+
 	Route::resource('roles', 'RoleController');
 	Route::resource('users', 'UserController');
 	Route::resource('topics', 'TopicController');

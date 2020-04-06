@@ -27,10 +27,9 @@
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
         <!-- Scrollbar styles for sidebar-->
         <link href="{{ asset('css/perfect-scrollbar.css') }}" rel="stylesheet">
-        <!-- Datepicker styles-->
-        <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
-        <!-- Select2 styles-->
-        <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
+        @stack('head')
+
         <!-- Scripts -->
         <script>
             window.Laravel = {!! json_encode([
@@ -54,11 +53,9 @@
                     @include('includes.footer')
             </div>
             <!-- /# WRAPPER  -->
-        <!-- Select2 script -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-        <!-- Datepicker script -->
-        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="{{ asset('js/datepicker-ja.js') }}"></script>
+
+        @stack('foot')
+
         <!-- Scrollbar script -->
         <script src="{{ asset('js/perfect-scrollbar.jquery.js') }}"></script>
         <!-- Custom script -->

@@ -43,28 +43,42 @@
 					    	@foreach ($topics as $topic)
 					    	@php
 					    		$period = $topic->start_date . ' ~ ' . $topic->end_date;
+					    		$start_date = new DateTime($topic->start_date);
+					    		$end_date = new DateTime($topic->end_date);
+								$now = new DateTime();
+								$status = _i('Available');
 				    		@endphp
-					    	<tr>
-					        <td>{{ ++$i }}</td>
-					        <td>{{ $topic->title }}</td>
-					        <td>{{ $period }}</td>
-					        <td>{{ $topic->status }}</td>
-					        <td nowrap>
-				                <form action="{{ route('topics.destroy',$topic->id) }}" id="formDelete_{{ $topic->id }}" method="POST">
-				                    <a class="btn btn-info" href="{{ route('topics.show',$topic->id) }}">{{ _i('Show') }}</a>
-				                    @can('topic-edit')
-				                    <a class="btn btn-primary" href="{{ route('topics.edit',$topic->id) }}">{{ _i('Edit') }}</a>
-				                    @endcan
+				    		@if($end_date < $now)
+							    @php
+							    $status = _i('Expired');
+							    @endphp
+							@endif
+							@if($start_date > $now)
+								@php
+								$status = _i('Comming soon');
+								@endphp
+							@endif
+							<tr>
+						        <td>{{ ++$i }}</td>
+						        <td>{{ $topic->title }}</td>
+						        <td>{{ $period }}</td>
+						        <td>{{ $status }}</td>
+						        <td nowrap>
+					                <form action="{{ route('topics.destroy',$topic->id) }}" id="formDelete_{{ $topic->id }}" method="POST">
+					                    <a class="btn btn-info" href="{{ route('topics.show',$topic->id) }}">{{ _i('Show') }}</a>
+					                    @can('topic-edit')
+					                    <a class="btn btn-primary" href="{{ route('topics.edit',$topic->id) }}">{{ _i('Edit') }}</a>
+					                    @endcan
 
 
-				                    @csrf
-				                    @method('DELETE')
-				                    @can('topic-delete')
-				                    <button type="button" class="btnDel btn btn-danger" data-toggle="modal" data-target="#confirm">{{ _i('Delete') }}</button>
-				                    @endcan
-				                </form>
-					        </td>
-					    </tr>
+					                    @csrf
+					                    @method('DELETE')
+					                    @can('topic-delete')
+					                    <button type="button" class="btnDel btn btn-danger" data-toggle="modal" data-target="#confirm">{{ _i('Delete') }}</button>
+					                    @endcan
+					                </form>
+						        </td>
+						    </tr>
 					    @endforeach
 				    	</tbody>
 			    	</table>

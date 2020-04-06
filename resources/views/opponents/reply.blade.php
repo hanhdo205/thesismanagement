@@ -43,10 +43,11 @@
 						    </div>
 						</div>
 						{!! Form::open(array('route' => 'request.reply','method'=>'POST')) !!}
+						{!! Form::hidden('review_token', $review_token) !!}
 							<div class="row">
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
-							            <strong>{{ _i('Yes, I can join to become a member of the thesis') }}</strong>
+							            <strong>{{ _i('Can you join to become a member of the thesis?') }}</strong>
 							            <div class="form-group mt-3">
 								            {!! Form::radio('review_status', 'yes' , true,  array('id'=>'yes')) !!}
 											{!! Form::label('yes', _i('Yes')) !!}

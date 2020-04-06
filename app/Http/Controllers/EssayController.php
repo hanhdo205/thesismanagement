@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Essay;
+use App\Topic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,10 +16,48 @@ class EssayController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	function __construct() {
-		/*$this->middleware('permission:essay-list|essay-create|essay-edit|essay-delete', ['only' => ['index', 'show']]);
-			$this->middleware('permission:essay-create', ['only' => ['create', 'store']]);
-			$this->middleware('permission:essay-edit', ['only' => ['edit', 'update']]);
-		*/
+		//$this->middleware('permission:essay-list|essay-create|essay-edit|essay-delete', ['only' => ['index', 'show']]);
+		//$this->middleware('permission:essay-create', ['only' => ['create', 'store']]);
+		//$this->middleware('permission:essay-edit', ['only' => ['edit', 'update']]);
+	}
+
+	/**
+	 * Display a listing of the keywords.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index(Request $request) {
+		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
+		$last_topic = $topics->toArray();
+		end($last_topic);
+		//$last_topic_id = key($last_topic);
+		$last_topic_id = array_key_first($last_topic);
+		$essays = self::essayList($last_topic_id);
+		return view('essays.index', compact(['essays', 'topics', 'last_topic_id']))
+			->with('i', ($request->input('page', 1) - 1) * 5);
+	}
+
+	public function essayList($topic_id) {
+		$rows = DB::table('essays')
+			->join('topics', 'essays.topic_id', '=', 'topics.id')
+			->where('essays.topic_id', $topic_id)
+			->get();
+		return $rows;
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  \App\Topic  $topic
+	 * @return \Illuminate\Http\Response
+	 */
+	public function createEssay(Request $request) {
+		$id = $request->id;
+		$topic = Topic::where('id', $id)->first();
+		if (empty($topic)) {
+			return abort(404);
+		}
+		return view('detail', compact('topic'));
 	}
 
 	/**
@@ -26,7 +66,7 @@ class EssayController extends Controller {
 	 * @param  \App\Essay  $essay
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request) {
+	public function storeEssay(Request $request) {
 		request()->validate([
 			'essay_title' => 'required',
 			//'essay_file' => 'required|mimes:doc,docx,pdf,txt|max:2048',

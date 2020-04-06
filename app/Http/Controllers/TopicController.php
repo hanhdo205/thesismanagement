@@ -67,18 +67,6 @@ class TopicController extends Controller {
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Topic  $topic
-	 * @return \Illuminate\Http\Response
-	 */
-	public function registerEssay(Request $request) {
-		$id = $request->id;
-		$topic = Topic::where('id', $id)->first();
-		return view('detail', compact('topic'));
-	}
-
-	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  \App\Topic  $topic
