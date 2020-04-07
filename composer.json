@@ -20,6 +20,7 @@
         "maatwebsite/excel": "^3.1",
         "nesbot/carbon": "^2.32",
         "spatie/laravel-permission": "^3.11",
+        "yajra/laravel-datatables-buttons": "^4.0",
         "yajra/laravel-datatables-oracle": "^9.9"
     },
     "require-dev": {

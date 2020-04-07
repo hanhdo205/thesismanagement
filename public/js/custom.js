@@ -9,12 +9,19 @@
 
     	if($('form').hasClass('opponent_management')) {
     			let $submit = $('#formSubmit');
+    			let $action_btn = $('#action-button a');
 	    		$submit.prop('disabled', true);
 	    		let $topic,$checkbox;
 
     		$('#topic_select').on('change', function () {
     			 $topic = $(this).val();
 				  $checkbox = $('[name="opponents[]"]:checked');
+				  if ($topic > 0) {
+					$action_btn.removeClass('disabled');
+				  } else {
+				    $action_btn.click(false);
+				    $action_btn.addClass('disabled');
+				  }
     			if (($topic > 0) && ($checkbox.length > 0)) {
 				    $submit.removeAttr('disabled');
 				  } else {

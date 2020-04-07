@@ -25,7 +25,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="form-inline">
+					<div id="action-button" class="form-inline">
 						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5" href="javascript:void(0);"data-toggle="modal" data-target="#importUsers">{{ _i('Import from CSV') }}</a>
 						<a class="form-control btn btn-primary pl-5 pr-5" href="{{ route('users.create') }}">新規追加</a>
 					</div>

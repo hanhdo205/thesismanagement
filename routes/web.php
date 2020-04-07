@@ -20,6 +20,7 @@ Route::post('/endai_teisyutu/register', 'EssayController@storeEssay')->name('reg
 Route::get('/request/confirm/{review_token}', 'OpponentController@requestConfirmation');
 Route::post('/request/confirmed', 'OpponentController@requestReply')->name('request.reply');
 Route::get('/essay-list', 'EssayController@essayList');
+Route::post('/opponent-list', 'OpponentController@opponentList');
 
 Auth::routes();
 
