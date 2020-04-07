@@ -51,9 +51,9 @@
 						    <td nowrap>
 						       <a class="btn btn-info" href="<?php echo e(route('users.show',$user->id)); ?>"><?php echo e(_i('Show')); ?></a>
 						       <a class="btn btn-primary" href="<?php echo e(route('users.edit',$user->id)); ?>"><?php echo e(_i('Edit')); ?></a>
-						        <?php echo Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'id' => 'formDelete','style'=>'display:inline']); ?>
+						        <?php echo Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'id' => 'formDelete_'.$user->id,'style'=>'display:inline']); ?>
 
-						            <?php echo Form::button(_i('Delete'), ['id' => 'btn-delete','class' => 'btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']); ?>
+						            <?php echo Form::button(_i('Delete'), ['id' => 'btn-delete','class' => 'btnDel btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']); ?>
 
 						        <?php echo Form::close(); ?>
 

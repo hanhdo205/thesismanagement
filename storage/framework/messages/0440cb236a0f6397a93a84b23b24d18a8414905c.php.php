@@ -46,9 +46,9 @@
 					                <a class="btn btn-primary" href="<?php echo e(route('roles.edit',$role->id)); ?>"><?php echo e(_i('Edit')); ?></a>
 					            <?php endif; ?>
 					            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role-delete')): ?>
-					                <?php echo Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'id' => 'formDelete','style'=>'display:inline']); ?>
+					                <?php echo Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'id' => 'formDelete_'.$role->id,'style'=>'display:inline']); ?>
 
-					                    <?php echo Form::button(_i('Delete'), ['class' => 'btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']); ?>
+					                    <?php echo Form::button(_i('Delete'), ['class' => 'btnDel btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']); ?>
 
 					                <?php echo Form::close(); ?>
 

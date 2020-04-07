@@ -28,13 +28,26 @@ class OpponentController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Request $request) {
-		$topics = Topic::whereDate('end_date', '>', NOW())->pluck('title', 'id');
-		$data = User::orderBy('id', 'DESC')->paginate(5);
-		return view('opponents.index', compact(['data', 'topics']))
+		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
+		$last_topic_id = array_key_first($topics->toArray());
+		//$data = User::orderBy('id', 'DESC')->paginate(5);
+		$data = $essays = self::opponentList($last_topic_id);
+		return view('opponents.index', compact(['data', 'topics', 'last_topic_id']))
 			->with('i', ($request->input('page', 1) - 1) * 5);
 	}
+
+	public function opponentList($topic_id) {
+		$rows = DB::table('reviews')
+			->join('topics', 'reviews.topic_id', '=', 'topics.id')
+			->join('users', 'reviews.user_id', '=', 'users.id')
+			->where('reviews.topic_id', $topic_id)
+			->select('users.id', 'users.name', 'reviews.review_status')
+			->paginate(5);
+		return $rows;
+	}
+
 	/**
-	 * Display a listing of the resource.
+	 * Show the form for prepare send mail.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
@@ -45,10 +58,9 @@ class OpponentController extends Controller {
 		return view('opponents.confirmation', compact(['topic', 'opponents', 'checkboxs']));
 	}
 	/**
-	 * Update the specified resource in storage.
+	 * Send mail.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Topic  $topic
 	 * @return \Illuminate\Http\Response
 	 */
 	public function sendMail(Request $request) {
@@ -90,21 +102,20 @@ class OpponentController extends Controller {
 			} catch (Exception $ex) {
 				$reviewer_status = 'mail_fail';
 			}
+
+			DB::table('reviews')
+				->updateOrInsert(
+					['topic_id' => $topic_id, 'user_id' => $value],
+					['review_status' => $reviewer_status, 'review_token' => $token]
+				);
 		}
-		Review::create([
-			'topic_id' => $topic_id,
-			'user_id' => $value,
-			'review_status' => $reviewer_status,
-			'review_token' => $token,
-		]);
 
 		return view('opponents.send');
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Show the form for confirm the resource.
 	 *
-	 * @param  \App\Essay  $essay
 	 * @return \Illuminate\Http\Response
 	 */
 	public function requestConfirmation(Request $request) {

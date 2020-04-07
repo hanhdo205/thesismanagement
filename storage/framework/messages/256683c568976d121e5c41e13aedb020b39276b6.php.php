@@ -1,10 +1,10 @@
-@extends('layouts.app')
 
-@section('title', _i('演題管理'))
-@section('description', _i('The SIS management'))
-@section('keyword', _i('management'))
 
-@section('content')
+<?php $__env->startSection('title', _i('演題管理')); ?>
+<?php $__env->startSection('description', _i('The SIS management')); ?>
+<?php $__env->startSection('keyword', _i('management')); ?>
+
+<?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -20,11 +20,12 @@
 			<div class="card-text">
 				<div class="form-group">
 					<div class="form-inline">
-						{!! Form::select('topic', $topics,$last_topic_id, array('id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic'))) !!}
+						<?php echo Form::select('topic', $topics,$last_topic_id, array('id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic'))); ?>
+
 					</div>
 				</div>
 				<div class="form-group">
-					<label>演題提出URL： <a href="{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}">{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}</a></label>
+					<label>演題提出URL： <a href="<?php echo e(route('topic.endai_teisyutu', ['id' => $last_topic_id])); ?>"><?php echo e(route('topic.endai_teisyutu', ['id' => $last_topic_id])); ?></a></label>
 				</div>
 				<div class="form-group">
 					<div class="form-inline custom-inline">
@@ -45,7 +46,7 @@
 				</div>
 				<div class="form-group">
 					<form action="/review/request" class="form-inline" method="POST">
-						@csrf <!-- {{ csrf_field() }} -->
+						<?php echo csrf_field(); ?> <!-- <?php echo e(csrf_field()); ?> -->
 						<select name="select" class="form-control mr-sm-2" id="select">
 							<option>選択してください</option>
 							<option>査読依頼</option>
@@ -73,30 +74,31 @@
 							</tr>
 						</thead>
 						<tbody>
-						@foreach($essays as $essay)
-							@php
+						<?php $__currentLoopData = $essays; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $essay): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<?php
 								$date = date_create($essay->created_at);
 								$abs_date = date_format($date,"Y年m月d日");
-							@endphp
+							?>
 							<tr>
 								<td class="fix-width text-center">
 									<label class="custom-check">
-										<input type="checkbox" id="{{ $essay->id }}" />
+										<input type="checkbox" id="<?php echo e($essay->id); ?>" />
 										<span class="checkmark"></span>
 									</label>
 								</td>
-								<td class="fix-width">{{ ++$i }}</td>
-								<td>{{ $essay->essay_title }}</td>
-								<td>{{ $essay->student_name }}</td>
-								<td>{{ $essay->review_status }}</td>
-								<td>{{ $essay->review_result }}</td>
-								<td>{{ $abs_date }}</td>
+								<td class="fix-width"><?php echo e(++$i); ?></td>
+								<td><?php echo e($essay->essay_title); ?></td>
+								<td><?php echo e($essay->student_name); ?></td>
+								<td><?php echo e($essay->review_status); ?></td>
+								<td><?php echo e($essay->review_result); ?></td>
+								<td><?php echo e($abs_date); ?></td>
 							</tr>
-						@endforeach
+						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 						</tbody>
 					</table>
 				</div>
-				{!! $essays->links() !!}
+				<?php echo $essays->links(); ?>
+
 			</div>
 		</div>
 	</div>
@@ -112,7 +114,7 @@
                   }
               });
                jQuery.ajax({
-                  url: "{{ url('/grocery/post') }}",
+                  url: "<?php echo e(url('/grocery/post')); ?>",
                   method: 'post',
                   data: {
                      name: jQuery('#name').val(),
@@ -126,4 +128,5 @@
                });
             });
       </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

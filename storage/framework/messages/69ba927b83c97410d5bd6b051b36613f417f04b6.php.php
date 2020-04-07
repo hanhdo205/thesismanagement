@@ -4,6 +4,11 @@
 <?php $__env->startSection('description', _i('The SIS management')); ?>
 <?php $__env->startSection('keyword', _i('management')); ?>
 
+<?php $__env->startPush('head'); ?>
+<!-- Datepicker styles-->
+<link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+<?php $__env->stopPush(); ?>
+
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -58,7 +63,8 @@
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					        <button type="submit" class="btn btn-primary"><?php echo e(_i('Submit')); ?></button>
+					    	<?php echo Form::submit(_i('Submit'), array('class' => 'btn btn-primary')); ?>
+
 					    </div>
 					</div>
 				<?php echo Form::close(); ?>
@@ -69,4 +75,12 @@
 </div>
 <!-- /. PAGE INNER  -->
 <?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('foot'); ?>
+<!-- Datepicker script -->
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="<?php echo e(asset('js/datepicker-ja.js')); ?>"></script>
+<!-- Custom script -->
+<script src="<?php echo e(asset('js/datepicker-custom.js')); ?>"></script>
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

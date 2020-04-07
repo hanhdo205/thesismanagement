@@ -21,7 +21,7 @@
 				{!! Form::open(array('route' => 'opponents.confirmation','method'=>'POST', 'class' => 'opponent_management')) !!}
 				<div class="form-group">
 					<div class="form-inline">
-						{!! Form::select('topic', $topics,[], array('id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic'))) !!}
+						{!! Form::select('topic', $topics,$last_topic_id, array('id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic'))) !!}
 					</div>
 				</div>
 				<div class="form-group">
@@ -46,17 +46,17 @@
 							</tr>
 						</thead>
 						<tbody>
-						@foreach ($data as $key => $user)
+						@foreach ($data as $key => $value)
 							<tr>
 								<td class="fix-width text-center">
 									<label class="custom-check">
-										{!! Form::checkbox('opponents[]', $user->id, false, array('id' => ++$i, 'class' => 'field')) !!}
+										{!! Form::checkbox('opponents[]', $value->id, false, array('id' => ++$i, 'class' => 'field')) !!}
 										<span class="checkmark"></span>
 									</label>
 								</td>
 								<td class="fix-width">{{ $i }}</td>
-								<td>{{ $user->name }}</td>
-								<td></td>
+								<td>{{ $value->name }}</td>
+								<td>{{ $value->review_status }}</td>
 							</tr>
 						@endforeach
 						</tbody>

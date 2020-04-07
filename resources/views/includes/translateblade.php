@@ -18,3 +18,8 @@
 {{ __('role') }}
 {{ __('topic') }}
 {{ __('essay') }}
+{{ __('opponent') }}
+{{ __('opponent-sendrequest') }}
+{{ __('opponent-confirmation') }}
+{{ __('Admin') }}
+{{ __('Teacher') }}

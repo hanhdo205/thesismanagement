@@ -60,7 +60,7 @@
 					            <div class="row">
 						            <?php $__currentLoopData = $new_permission; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $group): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						            	<div class="col-md-3">
-							            	<strong><?php echo e($key); ?> </strong><br/>
+							            	<strong><?php echo e(_i($key)); ?> </strong><br/>
 							            	<?php $__currentLoopData = $group; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						            			<label><?php echo e(Form::checkbox('permission[]', $gr['id'], in_array($gr['id'], $rolePermissions) ? true : false, array('class' => 'name'))); ?>
 
@@ -73,7 +73,8 @@
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					        <button type="submit" class="btn btn-primary"><?php echo e(_i('Submit')); ?></button>
+					    	<?php echo Form::submit(_i('Submit'), array('class' => 'btn btn-primary')); ?>
+
 					    </div>
 					</div>
 				<?php echo Form::close(); ?>

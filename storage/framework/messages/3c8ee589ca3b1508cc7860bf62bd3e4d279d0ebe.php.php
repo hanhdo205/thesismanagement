@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Essay;
+use App\Topic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 class EssayController extends Controller {
 	/**
@@ -12,20 +16,30 @@ class EssayController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	function __construct() {
-		$this->middleware('permission:essay-list|essay-create|essay-edit|essay-delete', ['only' => ['index', 'show']]);
-		$this->middleware('permission:essay-create', ['only' => ['create', 'store']]);
-		$this->middleware('permission:essay-edit', ['only' => ['edit', 'update']]);
-		$this->middleware('permission:essay-delete', ['only' => ['destroy']]);
+		//$this->middleware('permission:essay-list|essay-create|essay-edit|essay-delete', ['only' => ['index', 'show']]);
+		//$this->middleware('permission:essay-create', ['only' => ['create', 'store']]);
+		//$this->middleware('permission:essay-edit', ['only' => ['edit', 'update']]);
 	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index() {
-		$essays = Essay::latest()->paginate(5);
-		return view('essays.index', compact('essays'))
-			->with('i', (request()->input('page', 1) - 1) * 5);
+	public function index(Request $request) {
+		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
+		$last_topic_id = array_key_first($topics->toArray());
+		$essays = self::essayList($last_topic_id);
+		return view('essays.index', compact(['essays', 'topics', 'last_topic_id']))
+			->with('i', ($request->input('page', 1) - 1) * 5);
+	}
+
+	public function essayList($topic_id) {
+		$rows = DB::table('essays')
+			->join('topics', 'essays.topic_id', '=', 'topics.id')
+			->where('essays.topic_id', $topic_id)
+			->paginate(5);
+		return $rows;
 	}
 
 	/**
@@ -33,8 +47,13 @@ class EssayController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function create() {
-		return view('essays.create');
+	public function createEssay(Request $request) {
+		$id = $request->id;
+		$topic = Topic::where('id', $id)->first();
+		if (empty($topic)) {
+			return abort(404);
+		}
+		return view('detail', compact('topic'));
 	}
 
 	/**
@@ -43,69 +62,29 @@ class EssayController extends Controller {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request) {
+	public function storeEssay(Request $request) {
 		request()->validate([
-			'title' => 'required',
-			'period' => 'required',
-			'status' => 'required',
+			'essay_title' => 'required',
+			//'essay_file' => 'required|mimes:doc,docx,pdf,txt|max:2048',
+			'essay_file' => 'required',
+			'student_name' => 'required',
+			'student_gender' => 'required',
+			'student_dob' => 'required',
+			'student_email' => 'required',
 		]);
 
-		Essay::create($request->all());
-
-		return redirect()->route('essays.index')
-			->with('success', 'Essay created successfully.');
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Essay  $essay
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show(Essay $essay) {
-		return view('essays.show', compact('essay'));
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\Essay  $essay
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit(Statement $essay) {
-		return view('essay.edit', compact('essay'));
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Essay  $essay
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, Statement $essay) {
-		request()->validate([
-			'title' => 'required',
-			'period' => 'required',
-			'status' => 'required',
+		$path = $request->file('essay_file')->store('essays');
+		Essay::create([
+			'topic_id' => $request->input('topic_id'),
+			'essay_title' => $request->input('essay_title'),
+			'student_name' => $request->input('student_name'),
+			'student_gender' => $request->input('student_gender'),
+			'student_dob' => $request->input('student_dob'),
+			'student_email' => $request->input('student_email'),
+			'essay_file' => $path,
 		]);
 
-		$essay->update($request->all());
-
-		return redirect()->route('essays.index')
-			->with('success', 'Essay updated successfully');
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Essay  $essay
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(Essay $essay) {
-		$essay->delete();
-
-		return redirect()->route('essays.index')
-			->with('success', 'Essay deleted successfully');
+		return back()
+			->with('success', _i('Registration successfully.'));
 	}
 }

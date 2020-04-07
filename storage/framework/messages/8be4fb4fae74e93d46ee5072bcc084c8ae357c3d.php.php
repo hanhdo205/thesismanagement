@@ -19,29 +19,20 @@
 		</div>
 		<div class="card-body">
 			<div class="card-text">
+				<?php echo Form::open(array('route' => 'opponents.confirmation','method'=>'POST', 'class' => 'opponent_management')); ?>
+
 				<div class="form-group">
 					<div class="form-inline">
-						<select name="target_academic" class="form-control" id="target_academic">
-							<option>対象学術大会を選択してください</option>
-							<?php $__currentLoopData = $topics; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $topic): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-								<option><?php echo e($topic->title); ?></option>
-							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-						</select>
+						<?php echo Form::select('topic', $topics,$last_topic_id, array('id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic'))); ?>
+
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="form-inline">
-						<button class="form-control btn btn-primary mr-sm-2 pl-5 pr-5" data-toggle="modal" data-target="#importUsers"><?php echo e(_i('Import from CSV')); ?></button>
+						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5" href="javascript:void(0);"data-toggle="modal" data-target="#importUsers"><?php echo e(_i('Import from CSV')); ?></a>
 						<a class="form-control btn btn-primary pl-5 pr-5" href="<?php echo e(route('users.create')); ?>">新規追加</a>
 					</div>
 				</div>
-				<?php if($message = Session::get('success')): ?>
-					<div class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert">×</button>
-					  	<?php echo e($message); ?>
-
-					</div>
-				<?php endif; ?>
 				<div class="table-scroll mb-5">
 					<table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 						<thead>
@@ -58,17 +49,18 @@
 							</tr>
 						</thead>
 						<tbody>
-						<?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							<tr>
 								<td class="fix-width text-center">
 									<label class="custom-check">
-										<input type="checkbox" id="<?php echo e(++$i); ?>" />
+										<?php echo Form::checkbox('opponents[]', $value->id, false, array('id' => ++$i, 'class' => 'field')); ?>
+
 										<span class="checkmark"></span>
 									</label>
 								</td>
 								<td class="fix-width"><?php echo e($i); ?></td>
-								<td><?php echo e($user->name); ?></td>
-								<td></td>
+								<td><?php echo e($value->name); ?></td>
+								<td><?php echo e($value->review_status); ?></td>
 							</tr>
 						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 						</tbody>
@@ -77,11 +69,13 @@
 
 				</div>
 				<div class="form-group">
-					<form action="/review/confirmation" class="d-flex justify-content-center" method="POST">
-					<?php echo csrf_field(); ?> <!-- <?php echo e(csrf_field()); ?> -->
-					<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5">査読対応確認</button>
-					</form>
+					<div class="d-flex justify-content-center">
+						<?php echo Form::submit(_i('Go to letter confirm'), array('id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5')); ?>
+
+					</div>
 				</div>
+				<?php echo Form::close(); ?>
+
 			</div>
 		</div>
 	</div>
@@ -98,17 +92,20 @@
         </button>
       	</div>
       	<div class="modal-body">
-        	<form method="POST" id="csv_upload_form" enctype="multipart/form-data">
-                <?php echo csrf_field(); ?>
+        	<?php echo Form::open(array('id' => 'csv_upload_form','method'=>'POST', 'enctype' => 'multipart/form-data')); ?>
+
                 <span class="input-group div-select-csv-file">
-                	<input type="text" name="csv_file_name_txt" class="csv_file_name_txt input full upload form-control" placeholder="<?php echo e(_i('No file chosen')); ?>" autocomplete="off" >
+                	<?php echo Form::text('csv_file_name_txt',null,array('class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off')); ?>
+
 					<span class="input-group-append">
 						<label for="csv_upload_file" class="btn btn-primary"><?php echo e(_i('Choose file')); ?></label></span>
 					</span>
 				</span>
 				<small class="help-block"> <?php echo _i('※Data format .csv<br>※Maximum upload file size: 2MB'); ?></small>
-                <input type="file" name="file" id="csv_upload_file" class="form-control" style="visibility:hidden;height:0;padding:0;">
-            </form>
+				<?php echo Form::file('file', array('id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;')); ?>
+
+            <?php echo Form::close(); ?>
+
       	</div>
       	<div class="modal-footer">
         <button type="button" id="csv_upload_cancel" class="btn btn-secondary" data-dismiss="modal"><?php echo e(_i('Cancel')); ?></button>

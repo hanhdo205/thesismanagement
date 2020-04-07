@@ -30,8 +30,9 @@ class ImExController extends Controller {
 		$validation = Validator::make($request->all(), [
 			'file' => 'required|mimes:csv,txt|max:2048',
 		]);
+		$topic_id = $request->input('topic_id');
 		if ($validation->passes()) {
-			Excel::import(new UsersImport, request()->file('file'));
+			Excel::import(new UsersImport($topic_id), request()->file('file'));
 			return response()->json([
 				'success' => 1,
 				'message' => 'CSV Upload Successfully',

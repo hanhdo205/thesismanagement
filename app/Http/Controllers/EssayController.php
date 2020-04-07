@@ -22,16 +22,13 @@ class EssayController extends Controller {
 	}
 
 	/**
-	 * Display a listing of the keywords.
+	 * Display a listing of the resource.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Request $request) {
 		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
-		$last_topic = $topics->toArray();
-		end($last_topic);
-		//$last_topic_id = key($last_topic);
-		$last_topic_id = array_key_first($last_topic);
+		$last_topic_id = array_key_first($topics->toArray());
 		$essays = self::essayList($last_topic_id);
 		return view('essays.index', compact(['essays', 'topics', 'last_topic_id']))
 			->with('i', ($request->input('page', 1) - 1) * 5);
@@ -41,14 +38,13 @@ class EssayController extends Controller {
 		$rows = DB::table('essays')
 			->join('topics', 'essays.topic_id', '=', 'topics.id')
 			->where('essays.topic_id', $topic_id)
-			->get();
+			->paginate(5);
 		return $rows;
 	}
 
 	/**
-	 * Display the specified resource.
+	 * Show the form for creating a new resource.
 	 *
-	 * @param  \App\Topic  $topic
 	 * @return \Illuminate\Http\Response
 	 */
 	public function createEssay(Request $request) {
@@ -61,9 +57,9 @@ class EssayController extends Controller {
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Store a newly created resource in storage.
 	 *
-	 * @param  \App\Essay  $essay
+	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function storeEssay(Request $request) {

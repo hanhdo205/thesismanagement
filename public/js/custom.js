@@ -85,6 +85,7 @@
 			e.preventDefault();
 			if(flag) {
 				var csvFormData = new FormData();
+				csvFormData.append('topic_id', $('#topic_select').val());
 				csvFormData.append('file', $('#csv_upload_file').prop('files')[0]);
 				csvFormData.append('_token', $('input[name="_token"]').val());
 				flag = false;

@@ -4,6 +4,11 @@
 <?php $__env->startSection('description', _i('The SIS management')); ?>
 <?php $__env->startSection('keyword', _i('management')); ?>
 
+<?php $__env->startPush('head'); ?>
+<!-- Select2 styles-->
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<?php $__env->stopPush(); ?>
+
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -69,7 +74,8 @@
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					        <button type="submit" class="btn btn-primary"><?php echo e(_i('Submit')); ?></button>
+					    	<?php echo Form::submit(_i('Submit'), array('class' => 'btn btn-primary')); ?>
+
 					    </div>
 					</div>
 				<?php echo Form::close(); ?>
@@ -80,4 +86,9 @@
 </div>
 <!-- /. PAGE INNER  -->
 <?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('foot'); ?>
+<!-- Select2 script -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

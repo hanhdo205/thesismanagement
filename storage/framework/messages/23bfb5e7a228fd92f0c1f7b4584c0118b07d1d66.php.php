@@ -104,7 +104,6 @@ class TopicController extends Controller {
 	 */
 	public function destroy(Topic $topic) {
 		$topic->delete();
-
 		return redirect()->route('topics.index')
 			->with('success', 'Topic deleted successfully');
 	}

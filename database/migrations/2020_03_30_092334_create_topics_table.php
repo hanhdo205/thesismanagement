@@ -13,7 +13,7 @@ class CreateTopicsTable extends Migration {
 	public function up() {
 		Schema::enableForeignKeyConstraints();
 		Schema::create('topics', function (Blueprint $table) {
-			$table->bigIncrements('id');
+			$table->id();
 			$table->string('title');
 			$table->string('start_date', 10);
 			$table->string('end_date', 10);

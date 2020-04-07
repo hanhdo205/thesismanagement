@@ -53,7 +53,8 @@
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					        <button type="submit" class="btn btn-primary"><?php echo e(_i('Submit')); ?></button>
+					    	<?php echo Form::submit(_i('Submit'), array('class' => 'btn btn-primary')); ?>
+
 					    </div>
 					</div>
 				<?php echo Form::close(); ?>

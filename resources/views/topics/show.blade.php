@@ -35,7 +35,7 @@
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
 				            <strong>{{ _i('Registration form for essay writing competetion URL') }}</strong>
-				            <a href="{{ url('/endai_teisyutu') }}/{{ $topic->id }}">{{ url('/endai_teisyutu') }}/{{ $topic->id }}</a>
+				            <a href="{{ route('topic.endai_teisyutu', ['id' => $topic->id]) }}">{{ route('topic.endai_teisyutu', ['id' => $topic->id]) }}</a>
 				        </div>
 				    </div>
 				</div>

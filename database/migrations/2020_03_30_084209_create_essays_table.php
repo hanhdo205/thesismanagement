@@ -12,7 +12,7 @@ class CreateEssaysTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('essays', function (Blueprint $table) {
-			$table->bigIncrements('id');
+			$table->id();
 			$table->string('essay_title');
 			$table->string('essay_file');
 			$table->string('student_name');

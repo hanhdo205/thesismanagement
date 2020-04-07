@@ -44,28 +44,42 @@
 					    	<?php $__currentLoopData = $topics; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $topic): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					    	<?php
 					    		$period = $topic->start_date . ' ~ ' . $topic->end_date;
+					    		$start_date = new DateTime($topic->start_date);
+					    		$end_date = new DateTime($topic->end_date);
+								$now = new DateTime();
+								$status = _i('Available');
 				    		?>
-					    	<tr>
-					        <td><?php echo e(++$i); ?></td>
-					        <td><?php echo e($topic->title); ?></td>
-					        <td><?php echo e($period); ?></td>
-					        <td><?php echo e($topic->status); ?></td>
-					        <td nowrap>
-				                <form action="<?php echo e(route('topics.destroy',$topic->id)); ?>" id="formDelete" method="POST">
-				                    <a class="btn btn-info" href="<?php echo e(route('topics.show',$topic->id)); ?>"><?php echo e(_i('Show')); ?></a>
-				                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-edit')): ?>
-				                    <a class="btn btn-primary" href="<?php echo e(route('topics.edit',$topic->id)); ?>"><?php echo e(_i('Edit')); ?></a>
-				                    <?php endif; ?>
+				    		<?php if($end_date < $now): ?>
+							    <?php
+							    $status = _i('Expired');
+							    ?>
+							<?php endif; ?>
+							<?php if($start_date > $now): ?>
+								<?php
+								$status = _i('Comming soon');
+								?>
+							<?php endif; ?>
+							<tr>
+						        <td><?php echo e(++$i); ?></td>
+						        <td><?php echo e($topic->title); ?></td>
+						        <td><?php echo e($period); ?></td>
+						        <td><?php echo e($status); ?></td>
+						        <td nowrap>
+					                <form action="<?php echo e(route('topics.destroy',$topic->id)); ?>" id="formDelete_<?php echo e($topic->id); ?>" method="POST">
+					                    <a class="btn btn-info" href="<?php echo e(route('topics.show',$topic->id)); ?>"><?php echo e(_i('Show')); ?></a>
+					                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-edit')): ?>
+					                    <a class="btn btn-primary" href="<?php echo e(route('topics.edit',$topic->id)); ?>"><?php echo e(_i('Edit')); ?></a>
+					                    <?php endif; ?>
 
 
-				                    <?php echo csrf_field(); ?>
-				                    <?php echo method_field('DELETE'); ?>
-				                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-delete')): ?>
-				                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm"><?php echo e(_i('Delete')); ?></button>
-				                    <?php endif; ?>
-				                </form>
-					        </td>
-					    </tr>
+					                    <?php echo csrf_field(); ?>
+					                    <?php echo method_field('DELETE'); ?>
+					                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-delete')): ?>
+					                    <button type="button" class="btnDel btn btn-danger" data-toggle="modal" data-target="#confirm"><?php echo e(_i('Delete')); ?></button>
+					                    <?php endif; ?>
+					                </form>
+						        </td>
+						    </tr>
 					    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				    	</tbody>
 			    	</table>

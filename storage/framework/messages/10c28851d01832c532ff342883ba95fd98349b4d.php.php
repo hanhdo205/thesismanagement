@@ -35,6 +35,12 @@
 
 				        </div>
 				    </div>
+				    <div class="col-xs-12 col-sm-12 col-md-12">
+				        <div class="form-group">
+				            <strong><?php echo e(_i('Registration form for essay writing competetion URL')); ?></strong>
+				            <a href="<?php echo e(route('topic.endai_teisyutu', ['id' => $topic->id])); ?>"><?php echo e(route('topic.endai_teisyutu', ['id' => $topic->id])); ?></a>
+				        </div>
+				    </div>
 				</div>
 			</div>
 		</div>

@@ -38,7 +38,7 @@
 					    @foreach ($roles as $key => $role)
 					    <tr>
 					        <td>{{ ++$i }}</td>
-					        <td>{{ $role->name }}</td>
+					        <td>{{ _i($role->name) }}</td>
 					        <td nowrap>
 					            <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">{{ _i('Show') }}</a>
 					            @can('role-edit')

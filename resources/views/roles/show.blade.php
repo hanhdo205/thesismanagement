@@ -27,7 +27,7 @@
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
 				            <strong>{{ _i('Name') }}:</strong>
-				            {{ $role->name }}
+				            {{ _i($role->name) }}
 				        </div>
 				    </div>
 				    <div class="col-xs-12 col-sm-12 col-md-12">
@@ -35,7 +35,7 @@
 				            <strong>{{ _i('Permission') }}:</strong>
 				            @if(!empty($rolePermissions))
 				                @foreach($rolePermissions as $v)
-				                    <label class="label label-success">{{ $v->name }},</label>
+				                    <label class="label label-success">{{ _i($v->name) }},</label>
 				                @endforeach
 				            @endif
 				        </div>

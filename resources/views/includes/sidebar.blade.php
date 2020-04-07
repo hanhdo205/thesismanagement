@@ -9,8 +9,8 @@
 				<a href="{{ route('topics.index') }}"><i class="fa fa-clipboard "></i>学術大会管理</a>
 			</li>
 			@endcan
-			<li class="{{ request()->is('abstract') || request()->is('review/request') ? 'active' : '' }}">
-				<a href="/abstract"><i class="fa fa-clipboard "></i>演題管理</a>
+			<li class="{{ request()->is('essays') || request()->is('essays/request') ? 'active' : '' }}">
+				<a href="/essays"><i class="fa fa-clipboard "></i>演題管理</a>
 			</li>
 			@can('user-list')
 			<li>
