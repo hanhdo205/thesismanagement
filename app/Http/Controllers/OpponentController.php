@@ -30,10 +30,10 @@ class OpponentController extends Controller {
 	public function index(Request $request) {
 		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
 		$last_topic_id = array_key_first($topics->toArray());
-		//$data = User::orderBy('id', 'DESC')->paginate(5);
-		$data = $essays = self::opponentList($last_topic_id);
-		return view('opponents.index', compact(['data', 'topics', 'last_topic_id']))
-			->with('i', ($request->input('page', 1) - 1) * 5);
+		return view('opponents.index', compact(['topics', 'last_topic_id']));
+		/*$data = $essays = self::opponentList($last_topic_id);
+			return view('opponents.index', compact(['data', 'topics', 'last_topic_id']))
+		*/
 	}
 
 	public function opponentList($topic_id) {
@@ -44,6 +44,65 @@ class OpponentController extends Controller {
 			->select('users.id', 'users.name', 'reviews.review_status')
 			->paginate(5);
 		return $rows;
+	}
+
+	/**
+	 * Ajax for listing
+	 */
+	public function opponentAjaxList(Request $request) {
+		$columns = [
+			0 => 'id',
+			1 => 'no',
+			2 => 'name',
+			3 => 'status',
+		];
+		$order_by = 'id';
+		$order_sort = 'desc';
+		$offset = 0;
+		$limit = '';
+		if ($request->input('order')) {
+			$order_by = $columns[$request->input('order')[0]['column']];
+			$order_sort = $request->input('order')[0]['dir'];
+		}
+		if ($request->input('length') != -1) {
+			$offset = $request->input('start');
+			$limit = $request->input('length');
+		}
+		DB::statement(DB::raw("SET @row = '0'"));
+		$rows = DB::table('reviews')
+			->join('topics', 'reviews.topic_id', '=', 'topics.id')
+			->join('users', 'reviews.user_id', '=', 'users.id')
+			->where('reviews.topic_id', $request->input('topic_id'))
+			->select(DB::raw("@row:=@row+1 AS no"), 'users.id', 'users.name', 'reviews.review_status')
+			->offset($offset)
+			->limit($limit)
+			->orderBy($order_by, $order_sort)
+			->get();
+		$data = [];
+
+		$totalData = count($rows);
+		$totalFiltered = count($rows);
+
+		foreach ($rows as $key => $value) {
+			$sub_data = [];
+			$sub_data[] = '<label class="custom-check">
+										<input type="checkbox" name="opponents[]" id="' . $value->id . '" class="field" value="' . $value->id . '">
+										<span class="checkmark"></span>
+									</label>';
+			$sub_data[] = $value->no;
+			$sub_data[] = $value->name;
+			$sub_data[] = $value->review_status;
+			$data[] = $sub_data;
+		}
+
+		$json_data = array(
+			"draw" => intval($request->input('draw')),
+			"recordsTotal" => $totalData,
+			"recordsFiltered" => $totalFiltered,
+			"data" => $data,
+		);
+		echo json_encode($json_data);
+		die();
 	}
 
 	/**

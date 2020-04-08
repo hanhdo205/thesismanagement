@@ -16,6 +16,17 @@
 	}
 }
 /* Customize the label (the container) */
+.table-with-checkbox {
+    tbody {
+        tr {
+            
+                &:first-child {
+                    text-align: center !important;
+                }
+            
+        }
+    }
+}
 .custom-check {
 	position: relative;
     cursor: pointer;

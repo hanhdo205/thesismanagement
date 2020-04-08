@@ -20,6 +20,10 @@ body.modal-open {
 
 /* Customize the label (the container) */
 
+.table-with-checkbox tbody tr td:first-child {
+  text-align: center !important;
+}
+
 .custom-check {
   position: relative;
   cursor: pointer;

@@ -4,7 +4,15 @@
 @section('description', _i('The SIS management'))
 @section('keyword', _i('management'))
 
+@push('head')
+<!-- Datatable -->
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet">
+<link  href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link  href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" rel="stylesheet">
+@endpush
+
 @section('content')
+
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{ url('/') }}">{{ _i('Home') }}</a></li>
@@ -31,7 +39,7 @@
 					</div>
 				</div>
 				<div class="table-scroll mb-5">
-					<table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th class="fix-width text-center">
@@ -45,23 +53,7 @@
 								<th>{{ _i('Status') }}</th>
 							</tr>
 						</thead>
-						<tbody>
-						@foreach ($data as $key => $value)
-							<tr>
-								<td class="fix-width text-center">
-									<label class="custom-check">
-										{!! Form::checkbox('opponents[]', $value->id, false, array('id' => ++$i, 'class' => 'field')) !!}
-										<span class="checkmark"></span>
-									</label>
-								</td>
-								<td class="fix-width">{{ $i }}</td>
-								<td>{{ $value->name }}</td>
-								<td>{{ $value->review_status }}</td>
-							</tr>
-						@endforeach
-						</tbody>
 					</table>
-					{!! $data->render() !!}
 				</div>
 				<div class="form-group">
 					<div class="d-flex justify-content-center">
@@ -105,4 +97,18 @@
 </div>
 <!-- End Modal -->
 <!-- /. PAGE INNER  -->
+@push('foot')
+<!-- Datatable -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+<!-- Custom script -->
+<script type="text/javascript">
+	var ajax_url = {table:'{{ url('opponent-ajax') }}',import:'{{ url('import') }}'}
+	var last_topic_id = '{{ $last_topic_id }}';
+</script>
+<script src="{{ asset('js/opponents-index.js') }}"></script>
+@endpush
+
 @endsection

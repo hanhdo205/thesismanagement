@@ -4,6 +4,13 @@
 @section('description', _i('The SIS management'))
 @section('keyword', _i('management'))
 
+@push('head')
+<!-- Datatable -->
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet">
+<link  href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link  href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" rel="stylesheet">
+@endpush
+
 @section('content')
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -24,7 +31,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>演題提出URL： <a href="{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}">{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}</a></label>
+					<label>演題提出URL： <a href="{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}" id="topic_url">{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}</a></label>
 				</div>
 				<div class="form-group">
 					<div class="form-inline custom-inline">
@@ -46,16 +53,16 @@
 				<div class="form-group">
 					<form action="/review/request" class="form-inline" method="POST">
 						@csrf <!-- {{ csrf_field() }} -->
-						<select name="select" class="form-control mr-sm-2" id="select">
+						<select name="select" class="form-control mr-sm-2" id="requestSelect">
 							<option>選択してください</option>
-							<option>査読依頼</option>
-							<option>CSVダウンロード</option>
+							<option value="mail">査読依頼</option>
+							<option value="csv">CSVダウンロード</option>
 						</select>
-						<button type="submit" class="form-control btn btn-primary pl-5 pr-5">検索</button>
+						<button type="button" id="selectBtn" class="form-control btn btn-primary pl-5 pr-5">検索</button>
 					</form>
 				</div>
 				<div class="table-scroll">
-					<table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th class="fix-width text-center">
@@ -72,58 +79,25 @@
 								<th>提出日</th>
 							</tr>
 						</thead>
-						<tbody>
-						@foreach($essays as $essay)
-							@php
-								$date = date_create($essay->created_at);
-								$abs_date = date_format($date,"Y年m月d日");
-							@endphp
-							<tr>
-								<td class="fix-width text-center">
-									<label class="custom-check">
-										<input type="checkbox" id="{{ $essay->id }}" />
-										<span class="checkmark"></span>
-									</label>
-								</td>
-								<td class="fix-width">{{ ++$i }}</td>
-								<td>{{ $essay->essay_title }}</td>
-								<td>{{ $essay->student_name }}</td>
-								<td>{{ $essay->review_status }}</td>
-								<td>{{ $essay->review_result }}</td>
-								<td>{{ $abs_date }}</td>
-							</tr>
-						@endforeach
-						</tbody>
 					</table>
 				</div>
-				{!! $essays->links() !!}
 			</div>
 		</div>
 	</div>
 </div>
 <!-- /. PAGE INNER  -->
- <script>
-         jQuery(document).ready(function(){
-            jQuery('#ajaxSubmit').click(function(e){
-               e.preventDefault();
-               $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                  }
-              });
-               jQuery.ajax({
-                  url: "{{ url('/grocery/post') }}",
-                  method: 'post',
-                  data: {
-                     name: jQuery('#name').val(),
-                     type: jQuery('#type').val(),
-                     price: jQuery('#price').val()
-                  },
-                  success: function(result){
-                     jQuery('.alert').show();
-                     jQuery('.alert').html(result.success);
-                  }});
-               });
-            });
-      </script>
 @endsection
+
+@push('foot')
+<!-- Datatable -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+<!-- Custom script -->
+<script type="text/javascript">
+	var ajax_url = {table:'{{ url('essay-ajax') }}',csv:'{{ url('essay-csv') }}'};
+	var last_topic_id = '{{ $last_topic_id }}';
+</script>
+<script src="{{ asset('js/essays-index.js') }}"></script>
+@endpush

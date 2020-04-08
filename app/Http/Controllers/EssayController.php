@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Essay;
+use App\Exports\EssaysExport;
 use App\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EssayController extends Controller {
 	/**
@@ -29,17 +31,100 @@ class EssayController extends Controller {
 	public function index(Request $request) {
 		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
 		$last_topic_id = array_key_first($topics->toArray());
-		$essays = self::essayList($last_topic_id);
-		return view('essays.index', compact(['essays', 'topics', 'last_topic_id']))
-			->with('i', ($request->input('page', 1) - 1) * 5);
+		return view('essays.index', compact(['topics', 'last_topic_id']));
+		/*$essays = self::essayList($last_topic_id);
+			return view('essays.index', compact(['essays', 'topics', 'last_topic_id']))
+		*/
 	}
 
-	public function essayList($topic_id) {
+	public function essayCSVList($topic_id) {
 		$rows = DB::table('essays')
 			->join('topics', 'essays.topic_id', '=', 'topics.id')
 			->where('essays.topic_id', $topic_id)
 			->paginate(5);
 		return $rows;
+	}
+
+	/**
+	 * @return \Illuminate\Support\Collection
+	 */
+	public function export(Request $request) {
+		$essays = $request->input('essays');
+		Excel::store(new EssaysExport($essays), 'essays.csv');
+
+		$myFile = file_get_contents(storage_path('app/essays.csv'));
+		$response = array(
+			'name' => 'essays.csv',
+			'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile), //mime type of used format
+		);
+		return response()->json($response);
+	}
+
+	/**
+	 * Ajax for listing
+	 * @return json
+	 */
+	public function essayAjaxList(Request $request) {
+		$columns = [
+			0 => 'id',
+			1 => 'no',
+			2 => 'title',
+			3 => 'student_name',
+			4 => 'review_status',
+			5 => 'review_result',
+			6 => 'created_at',
+		];
+		$order_by = 'id';
+		$order_sort = 'desc';
+		$offset = 0;
+		$limit = '';
+		if ($request->input('order')) {
+			$order_by = $columns[$request->input('order')[0]['column']];
+			$order_sort = $request->input('order')[0]['dir'];
+		}
+		if ($request->input('length') != -1) {
+			$offset = $request->input('start');
+			$limit = $request->input('length');
+		}
+		DB::statement(DB::raw("SET @row = '0'"));
+		$rows = DB::table('essays')
+			->join('topics', 'essays.topic_id', '=', 'topics.id')
+			->where('essays.topic_id', $request->input('topic_id'))
+			->select(DB::raw("@row:=@row+1 AS no"), 'essays.id', 'essays.essay_title', 'essays.student_name', 'essays.review_status', 'essays.review_result', 'essays.created_at')
+			->offset($offset)
+			->limit($limit)
+			->orderBy($order_by, $order_sort)
+			->get();
+		$data = [];
+
+		$totalData = count($rows);
+		$totalFiltered = count($rows);
+
+		foreach ($rows as $key => $value) {
+			$sub_data = [];
+			$sub_data[] = '<label class="custom-check">
+										<input type="checkbox" name="essays[]" id="' . $value->id . '" class="field" value="' . $value->id . '">
+										<span class="checkmark"></span>
+									</label>';
+			$date = date_create($value->created_at);
+			$abs_date = date_format($date, "Y年m月d日");
+			$sub_data[] = $value->no;
+			$sub_data[] = $value->essay_title;
+			$sub_data[] = $value->student_name;
+			$sub_data[] = $value->review_status;
+			$sub_data[] = $value->review_result;
+			$sub_data[] = $abs_date;
+			$data[] = $sub_data;
+		}
+
+		$json_data = array(
+			"draw" => intval($request->input('draw')),
+			"recordsTotal" => $totalData,
+			"recordsFiltered" => $totalFiltered,
+			"data" => $data,
+		);
+		echo json_encode($json_data);
+		die();
 	}
 
 	/**

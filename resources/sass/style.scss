@@ -135,6 +135,9 @@ body {
 	body {
 		overflow: hidden;
 	}
+	.table-scroll {
+		overflow-x:hidden;
+	}
     #page-wrapper{
 		margin: 0 0 0 $sidebar_width;
 		min-height: 100vh;

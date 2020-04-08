@@ -36,6 +36,7 @@
                 'csrfToken' => csrf_token(),
             ]) !!};
             var base_url = '{{ url('/') }}';
+            var dataTable;
         </script>
         <!-- Jquery scripts -->
         <script src="//code.jquery.com/jquery-1.12.4.js"></script>
@@ -60,6 +61,7 @@
         <script src="{{ asset('js/perfect-scrollbar.jquery.js') }}"></script>
         <!-- Custom script -->
         <script src="{{ asset('js/custom.js') }}"></script>
+
 @endguest
 </body>
 </html>

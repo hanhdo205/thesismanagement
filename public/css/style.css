@@ -140,6 +140,10 @@ body {
     overflow: hidden;
   }
 
+  .table-scroll {
+    overflow-x: hidden;
+  }
+
   #page-wrapper {
     margin: 0 0 0 260px;
     min-height: 100vh;

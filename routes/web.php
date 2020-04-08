@@ -20,7 +20,10 @@ Route::post('/endai_teisyutu/register', 'EssayController@storeEssay')->name('reg
 Route::get('/request/confirm/{review_token}', 'OpponentController@requestConfirmation');
 Route::post('/request/confirmed', 'OpponentController@requestReply')->name('request.reply');
 Route::get('/essay-list', 'EssayController@essayList');
-Route::post('/opponent-list', 'OpponentController@opponentList');
+Route::post('/essay-ajax', 'EssayController@essayAjaxList');
+Route::post('/essay-csv', 'EssayController@export');
+Route::get('/opponent-list', 'OpponentController@opponentList');
+Route::post('/opponent-ajax', 'OpponentController@opponentAjaxList');
 
 Auth::routes();
 
