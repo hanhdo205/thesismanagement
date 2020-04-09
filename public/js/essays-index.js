@@ -1,7 +1,8 @@
 (function ($) {
     "use strict";
     jQuery(document).ready(function ($) {
-		let $topic,$checkbox,
+		let $topic = $('#topic_select').val(),
+		$checkbox,
 		flag = true,
 		$url = $('#topic_url').attr('href'),
     	$parts = $url.split("/"),
@@ -10,7 +11,7 @@
     	$selectBtn = $('#selectBtn');
     	$selectBtn.prop('disabled', true);
 
-		fetch_data(parseInt(last_topic_id));
+		fetch_data(parseInt($topic));
 
 		$('#topic_select').on('change', function () {
 			 $topic = $(this).val();
@@ -22,16 +23,6 @@
 				fetch_data(parseInt($topic));
 			  }
 	    });
-
-	    $('input[type=checkbox]').on('click', function(){
-			 $topic = $('#topic_select').val();
-			  $checkbox = $('[name="essays[]"]:checked');
-			if (($topic > 0) && ($checkbox.length > 0)) {
-			    $selectBtn.removeAttr('disabled');
-			  } else {
-			    $selectBtn.prop('disabled', true);
-			  }
-		});
 
 		$('#selectAll').on('click', function(){
 			if($('#selectAll:checkbox:checked').length > 0) {
@@ -55,7 +46,6 @@
 					      return $(this).val();
 					    }).get();
 						$csvFormData.append('essays', $essays);
-						//csvFormData.append('_token', $('input[name="_token"]').val());
 						flag = false;
 						$.ajax({
 						  url: ajax_url.csv,
@@ -64,7 +54,7 @@
 						  processData: false, // important
 						  contentType: false, // important
 						  dataType : 'json',
-						  data: csvFormData,
+						  data: $csvFormData,
 						  success: function (response, textStatus, request) {
 					        var a = document.createElement("a");
 					        a.href = response.file; 
@@ -81,12 +71,28 @@
 					}
 				});
 			} else if($(this).val()=='mail') {
-				$('#selectBtn').click(function(event) {
-				    $(this).closest('form').submit();
+				$('#selectBtn').click(function(e) {
+					e.preventDefault();
+					//$(this).closest('form').submit();
+					$('#reviewRequest').submit();
 				 });
 			}
 		});
-		
+
+
+		//call a function in success of datatable ajax call
+		function checkbox_callback() {
+			$('input[type=checkbox]').on('click', function(){
+				 $topic = $('#topic_select').val();
+				  $checkbox = $('[name="essays[]"]:checked');
+				if (($topic > 0) && ($checkbox.length > 0)) {
+				    $selectBtn.removeAttr('disabled');
+				  } else {
+				    $selectBtn.prop('disabled', true);
+				  }
+			});
+		}
+
 		//dataTable
 		function fetch_data($topic_id) {
 			dataTable = $('.data-table').DataTable({
@@ -109,7 +115,10 @@
 				   	data: {
 				        "topic_id": $topic_id
 				        }
-				   }
+				   },
+			        "initComplete":function( settings, json){
+			            checkbox_callback();
+			        }
 
 				});
 		}

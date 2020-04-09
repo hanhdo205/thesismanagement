@@ -6,9 +6,8 @@
 
 @push('head')
 <!-- Datatable -->
-<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet">
-<link  href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-<link  href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" rel="stylesheet">
+<link  href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<link  href="{{ asset('css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -34,8 +33,8 @@
 				</div>
 				<div class="form-group">
 					<div id="action-button" class="form-inline">
-						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5" href="javascript:void(0);"data-toggle="modal" data-target="#importUsers">{{ _i('Import from CSV') }}</a>
-						<a class="form-control btn btn-primary pl-5 pr-5" href="{{ route('users.create') }}">新規追加</a>
+						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5" href="javascript:void(0);" data-toggle="modal" data-target="#importUsers">{{ _i('Import from CSV') }}</a>
+						<a class="form-control btn btn-primary pl-5 pr-5" href="javascript:void(0);" data-toggle="modal" data-target="#newUser">{{ _i('Add new') }}</a>
 					</div>
 				</div>
 				<div class="table-scroll mb-5">
@@ -66,7 +65,7 @@
 	</div>
 </div>
 
-<!-- Modal -->
+<!-- CSV Modal -->
 <div class="modal fade" id="importUsers" tabindex="-1" role="dialog" aria-labelledby="importUsers" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -96,17 +95,50 @@
   </div>
 </div>
 <!-- End Modal -->
+
+<!-- New User Modal -->
+<div class="modal fade" id="newUser" tabindex="-1" role="dialog" aria-labelledby="importUsers" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="importUsersTitle">{{ _i('Add New Opponent') }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      	</div>
+      	<div class="modal-body">
+        	{!! Form::open(array('id' => 'new_user_form','method'=>'POST')) !!}
+				<div class="form-group">
+					<label for="inputEmail">{{ _i('Email address') }}</label>
+					{!! Form::email('email',null,array('id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off')) !!}
+				</div>
+				<div class="form-group">
+					<label for="inputName">{{ _i('Full name') }}</label>
+					{!! Form::text('name',null,array('id' => 'inputName','class' => 'fullname input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off')) !!}
+				</div>
+            {!! Form::close() !!}
+      	</div>
+      	<div class="modal-footer">
+        <button type="button" id="new_opponent_cancel" class="btn btn-secondary" data-dismiss="modal">{{ _i('Cancel') }}</button>
+        <button type="button" id="new_opponent_button" class="btn btn-primary">{{ _i('Save') }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
 <!-- /. PAGE INNER  -->
 @push('foot')
 <!-- Datatable -->
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
 <!-- Custom script -->
 <script type="text/javascript">
-	var ajax_url = {table:'{{ url('opponent-ajax') }}',import:'{{ url('import') }}'}
-	var last_topic_id = '{{ $last_topic_id }}';
+	var ajax_url = {table:'{{ url('opponent-ajax') }}',import_csv:'{{ url('import_csv') }}',create_new:'{{ url('create-new-opponent') }}'};
+	var translate = {
+		opponent_created:'{{ _i('New opponent added successfully') }}',
+	};
 </script>
 <script src="{{ asset('js/opponents-index.js') }}"></script>
 @endpush

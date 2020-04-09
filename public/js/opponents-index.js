@@ -4,10 +4,18 @@
     	let flag = true,
 		$submit = $('#formSubmit'),
 		$action_btn = $('#action-button a'),
-		$topic,$checkbox;
+		$topic = $('#topic_select').val(),
+		$checkbox;
 		$submit.prop('disabled', true);
-		
-		fetch_data(parseInt(last_topic_id));
+
+		if($topic > 0) {
+			$action_btn.removeClass('disabled');
+		} else {
+			$action_btn.click(false);
+	    	$action_btn.addClass('disabled');
+		}
+
+		fetch_data(parseInt($topic));
 
 		$('#topic_select').on('change', function () {
 			 $topic = $(this).val();
@@ -18,7 +26,7 @@
 				$('.data-table').DataTable().destroy();
 				fetch_data(parseInt($topic));
 			  } else {
-			    $action_btn.click(false);
+			    //$action_btn.click(false);
 			    $action_btn.addClass('disabled');
 			  }
 			if (($topic > 0) && ($checkbox.length > 0)) {
@@ -28,16 +36,6 @@
 			  }
 	    });
 		
-		$('input[type=checkbox]').on('click', function(){
-			 $topic = $('#topic_select').val();
-			  $checkbox = $('[name="opponents[]"]:checked');
-			if (($topic > 0) && ($checkbox.length > 0)) {
-			    $submit.removeAttr('disabled');
-			  } else {
-			    $submit.prop('disabled', true);
-			  }
-		});
-
 		$('#selectAll').on('click', function(){
 			if($('#selectAll:checkbox:checked').length > 0) {
 			 $topic = $('#topic_select').val();
@@ -63,6 +61,19 @@
 			}
 		}
 
+		//call a function in success of datatable ajax call
+		function checkbox_callback() {
+			$('input[type=checkbox]').on('click', function(){
+				 $topic = $('#topic_select').val();
+				  $checkbox = $('[name="opponents[]"]:checked');
+				if (($topic > 0) && ($checkbox.length > 0)) {
+				    $submit.removeAttr('disabled');
+				  } else {
+				    $submit.prop('disabled', true);
+				  }	
+			});
+		}
+
 		//dataTable
 		function fetch_data(topic_id) {
 			dataTable = $('.data-table').DataTable({
@@ -85,7 +96,10 @@
 				   	data: {
 				        "topic_id": topic_id
 				        }
-				   }
+				   },
+			        "initComplete":function( settings, json){
+			            checkbox_callback();
+			        }
 
 				});
 		}
@@ -97,10 +111,9 @@
 				var csvFormData = new FormData();
 				csvFormData.append('topic_id', $('#topic_select').val());
 				csvFormData.append('file', $('#csv_upload_file').prop('files')[0]);
-				//csvFormData.append('_token', $('input[name="_token"]').val());
 				flag = false;
 				$.ajax({
-				  url: ajax_url.import,
+				  url: ajax_url.import_csv,
 				  type: 'POST',
 				  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
 				  processData: false, // important
@@ -118,6 +131,41 @@
 					   	} else {
 					   		toastr.error(data.message);
 						}
+					   }
+				});
+				flag = true;
+			}
+		});
+
+		//ajax for create new opponent
+		$('#new_opponent_button').click(function(e){
+			e.preventDefault();
+			if(flag) {
+				var csvFormData = new FormData();
+				csvFormData.append('topic_id', $('#topic_select').val());
+				csvFormData.append('email', $('#inputEmail').val());
+				csvFormData.append('name', $('#inputName').val());
+				flag = false;
+				$.ajax({
+				  url: ajax_url.create_new,
+				  type: 'POST',
+				  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+				  processData: false, // important
+				  contentType: false, // important
+				  dataType : 'json',
+				  data: csvFormData,
+				  success:function(data)
+					   {
+					   	if(data.id) {
+					   		$('#newUser').modal('hide');
+					   		toastr.success(translate.opponent_created);
+				   			dataTable.draw();
+					   	} else {
+					   		data.forEach(function(e) {
+							  toastr.error(e.error);
+							});
+					   		
+					   	}
 					   }
 				});
 				flag = true;

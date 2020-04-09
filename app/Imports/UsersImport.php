@@ -55,6 +55,13 @@ class UsersImport implements ToModel, WithStartRow {
 		} else {
 			$user = User::where('email', '=', $row[1])->first();
 			$user->update(['name' => $row[0]]);
+			$role = DB::table('roles')->where('name', 'Teacher')->value('name');
+			if (empty($role)) {
+				Role::create(['name' => 'Teacher']);
+			}
+
+			$user->assignRole('Teacher');
+			$user->save();
 			DB::table('reviews')
 				->updateOrInsert(
 					['topic_id' => $this->topic_id, 'user_id' => $user->id],

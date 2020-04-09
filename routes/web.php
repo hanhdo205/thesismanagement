@@ -30,16 +30,17 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/', 'HomeController@index')->name('home');
 	Route::get('/essays', 'EssayController@index');
+	Route::post('/review/request', 'EssayController@reviewRequest')->name('review.request');
 
 	Route::resource('roles', 'RoleController');
 	Route::resource('users', 'UserController');
 	Route::resource('topics', 'TopicController');
-	Route::get('export', 'ImExController@export')->name('export');
-	Route::get('importExportView', 'ImExController@importExportView');
-	Route::post('import', 'ImExController@import')->name('import');
+	Route::post('import_csv', 'ImExController@import')->name('import_csv');
+	Route::post('create-new-opponent', 'UserController@register');
 	Route::get('/opponents', 'OpponentController@index')->name('opponents');
 	Route::post('/opponents/confirmation', 'OpponentController@confirmation')->name('opponents.confirmation');
 	Route::post('/opponents/send', 'OpponentController@sendMail')->name('opponents.sendmail');
+	Route::post('/review/send', 'EssayController@sendMail')->name('review.sendmail');
 });
 
 Route::get('/academic', function () {
@@ -52,10 +53,6 @@ Route::get('/abstract', function () {
 
 Route::get('/review', function () {
 	return view('review');
-});
-
-Route::post('/review/request', function () {
-	return view('review.request');
 });
 
 Route::post('/review/confirmation', function () {

@@ -1,4 +1,4 @@
-<div class="navbar-custom navbar-expand-lg navbar-light d-flex justify-content-between">
+<div class="navbar navbar-custom navbar-expand-lg navbar-light d-flex justify-content-between">
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Review;
 use App\Topic;
 use App\User;
 use Illuminate\Http\Request;
@@ -73,7 +72,7 @@ class OpponentController extends Controller {
 			->join('topics', 'reviews.topic_id', '=', 'topics.id')
 			->join('users', 'reviews.user_id', '=', 'users.id')
 			->where('reviews.topic_id', $request->input('topic_id'))
-			->select(DB::raw("@row:=@row+1 AS no"), 'users.id', 'users.name', 'reviews.review_status')
+			->select(DB::raw("@row:=@row+1 AS no"), 'users.id', 'users.name', 'reviews.request_status')
 			->offset($offset)
 			->limit($limit)
 			->orderBy($order_by, $order_sort)
@@ -91,7 +90,7 @@ class OpponentController extends Controller {
 									</label>';
 			$sub_data[] = $value->no;
 			$sub_data[] = $value->name;
-			$sub_data[] = $value->review_status;
+			$sub_data[] = $value->request_status;
 			$data[] = $sub_data;
 		}
 
@@ -165,7 +164,7 @@ class OpponentController extends Controller {
 			DB::table('reviews')
 				->updateOrInsert(
 					['topic_id' => $topic_id, 'user_id' => $value],
-					['review_status' => $reviewer_status, 'review_token' => $token]
+					['request_status' => $reviewer_status, 'review_token' => $token]
 				);
 		}
 
@@ -198,12 +197,13 @@ class OpponentController extends Controller {
 	 */
 	public function requestReply(Request $request) {
 		request()->validate([
-			'review_status' => 'required',
+			'request_status' => 'required',
 		]);
 
-		$review_token = $request->review_token;
-		$review = Review::where('review_token', $review_token)->first();
-		$review->update(['review_status' => $request->input('review_status')]);
+		$affected = DB::table('reviews')
+			->where('review_token', $request->input('review_token'))
+			->update(['request_status' => $request->input('request_status')]);
+
 		return back()
 			->with('success', _i('Thank you for your confirmation.'));
 	}

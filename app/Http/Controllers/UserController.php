@@ -7,6 +7,7 @@ use App\User;
 use DB;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller {
@@ -17,7 +18,7 @@ class UserController extends Controller {
 	 */
 	function __construct() {
 		$this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index', 'show']]);
-		$this->middleware('permission:user-create', ['only' => ['create', 'store']]);
+		$this->middleware('permission:user-create', ['only' => ['create', 'store', 'register']]);
 		$this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
 		$this->middleware('permission:user-delete', ['only' => ['destroy']]);
 	}
@@ -64,6 +65,68 @@ class UserController extends Controller {
 
 		return redirect()->route('users.index')
 			->with('success', 'User created successfully');
+	}
+
+	/**
+	 * Store a newly created resource in opponent management screen.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function register(Request $request) {
+		$validator = Validator::make($request->all(), [
+			'name' => 'required',
+			'email' => 'required|email',
+		]);
+
+		if ($validator->fails()) {
+			$errors = $validator->errors();
+			$response = [];
+			foreach ($errors->all() as $message) {
+				$response[] = ['error' => $message];
+			}
+			return $response;
+		}
+		$email = $request->input('email');
+		$name = $request->input('name');
+		$topic_id = $request->input('topic_id');
+
+		if (!User::where('email', '=', $email)->exists()) {
+			$user = new User([
+				'name' => $name,
+				'email' => $email,
+				'password' => \Hash::make('123456'),
+			]);
+			$role = DB::table('roles')->where('name', 'Teacher')->value('name');
+			if (empty($role)) {
+				Role::create(['name' => 'Teacher']);
+			}
+
+			$user->assignRole('Teacher');
+			$user->save();
+			DB::table('reviews')
+				->updateOrInsert(
+					['topic_id' => $topic_id, 'user_id' => $user->id],
+					['topic_id' => $topic_id, 'user_id' => $user->id]
+				);
+			return $user;
+		} else {
+			$user = User::where('email', '=', $email)->first();
+			$user->update(['name' => $name]);
+			$role = DB::table('roles')->where('name', 'Teacher')->value('name');
+			if (empty($role)) {
+				Role::create(['name' => 'Teacher']);
+			}
+
+			$user->assignRole('Teacher');
+			$user->save();
+			DB::table('reviews')
+				->updateOrInsert(
+					['topic_id' => $topic_id, 'user_id' => $user->id],
+					['topic_id' => $topic_id, 'user_id' => $user->id]
+				);
+			return $user;
+		}
 	}
 
 	/**

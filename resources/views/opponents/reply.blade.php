@@ -49,9 +49,25 @@
 							        <div class="form-group">
 							            <strong>{{ _i('Can you join to become a member of the thesis?') }}</strong>
 							            <div class="form-group mt-3">
-								            {!! Form::radio('review_status', 'yes' , true,  array('id'=>'yes')) !!}
+							            	@php
+												$yes = 'true';
+						            			$no = 'false';
+							            	@endphp
+							            	@if($request->input('request_status')=='yes')
+							            		@php
+							            			$yes = 'true';
+							            			$no = 'false';
+							            		@endphp
+							            	@elseif($request->input('request_status')=='no')
+							            		@php
+							            			$yes = 'false';
+							            			$no = 'true';
+							            		@endphp
+							            	@endif
+
+								            {!! Form::radio('request_status', 'yes' , $yes,  array('id'=>'yes')) !!}
 											{!! Form::label('yes', _i('Yes')) !!}
-								            {!! Form::radio('review_status', 'no' , false,  array('id'=>'no')) !!}
+								            {!! Form::radio('request_status', 'no' , $no,  array('id'=>'no')) !!}
 	  										{!! Form::label('no', _i('No')) !!}
 								        </div>
 							        </div>

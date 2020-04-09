@@ -30,6 +30,10 @@ class EssayController extends Controller {
 	 */
 	public function index(Request $request) {
 		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
+		if ($topics->isEmpty()) {
+			return view('essays.empty');
+		}
+
 		$last_topic_id = array_key_first($topics->toArray());
 		return view('essays.index', compact(['topics', 'last_topic_id']));
 		/*$essays = self::essayList($last_topic_id);
@@ -138,7 +142,7 @@ class EssayController extends Controller {
 		if (empty($topic)) {
 			return abort(404);
 		}
-		return view('detail', compact('topic'));
+		return view('essays.register', compact('topic'));
 	}
 
 	/**
@@ -171,5 +175,24 @@ class EssayController extends Controller {
 
 		return back()
 			->with('success', _i('Registration successfully.'));
+	}
+
+	/**
+	 * Show the review request form.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function reviewRequest(Request $request) {
+		$essays_request = $request->input('essays');
+		$topic_id = $request->input('topic');
+		$essays = Essay::whereIn('id', $essays_request)->pluck('essay_title', 'student_name');
+		if (empty($essays)) {
+			return abort(404);
+		}
+		$textarea = '';
+		foreach ($essays as $key => $value) {
+			$textarea .= $value . ' - 著: ' . $key . '&#13;&#10;';
+		}
+		return view('review.request', compact(['textarea', 'topic_id']));
 	}
 }

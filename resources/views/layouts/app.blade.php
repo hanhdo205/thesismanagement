@@ -39,7 +39,7 @@
             var dataTable;
         </script>
         <!-- Jquery scripts -->
-        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="{{ asset('js/jquery-1.12.4.js') }}"></script>
         <!-- App scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
     </head>
