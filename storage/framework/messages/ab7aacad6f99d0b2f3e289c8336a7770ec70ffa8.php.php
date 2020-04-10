@@ -4,6 +4,12 @@
 <?php $__env->startSection('description', _i('The SIS management')); ?>
 <?php $__env->startSection('keyword', _i('management')); ?>
 
+<?php $__env->startPush('head'); ?>
+<!-- Datatable -->
+<link  href="<?php echo e(asset('css/datatables/dataTables.bootstrap4.min.css')); ?>" rel="stylesheet">
+<link  href="<?php echo e(asset('css/datatables/responsive.bootstrap4.min.css')); ?>" rel="stylesheet">
+<?php $__env->stopPush(); ?>
+
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -18,19 +24,19 @@
 
 			<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-create')): ?>
 				<span class="float-right">
-					<a class="btn btn-sm btn-primary" href="<?php echo e(route('topics.create')); ?>"> <?php echo e(_i('Add new topic')); ?></a>
+					<a class="btn btn-sm btn-primary" id="createNewTopic" href="javascript:void(0)"> <?php echo e(_i('Add new topic')); ?></a>
 				</span>
             <?php endif; ?>
 		</div>
 		<div class="card-body">
 			<div class="card-text">
-				<?php if($message = Session::get('success')): ?>
+				<!-- <?php if($message = Session::get('success')): ?>
 				    <script>
 						toastr.success('<?php echo e($message); ?>');
 					</script>
-				<?php endif; ?>
+				<?php endif; ?> -->
 				<div class="table-scroll">
-					<table class="table table-striped table-bordered table-hover">
+					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th class="fix-width"><?php echo e(_i('No.')); ?></th>
@@ -41,50 +47,9 @@
 							</tr>
 						</thead>
 						<tbody>
-					    	<?php $__currentLoopData = $topics; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $topic): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-					    	<?php
-					    		$period = $topic->start_date . ' ~ ' . $topic->end_date;
-					    		$start_date = new DateTime($topic->start_date);
-					    		$end_date = new DateTime($topic->end_date);
-								$now = new DateTime();
-								$status = _i('Available');
-				    		?>
-				    		<?php if($end_date < $now): ?>
-							    <?php
-							    $status = _i('Expired');
-							    ?>
-							<?php endif; ?>
-							<?php if($start_date > $now): ?>
-								<?php
-								$status = _i('Comming soon');
-								?>
-							<?php endif; ?>
-							<tr>
-						        <td><?php echo e(++$i); ?></td>
-						        <td><?php echo e($topic->title); ?></td>
-						        <td><?php echo e($period); ?></td>
-						        <td><?php echo e($status); ?></td>
-						        <td nowrap>
-					                <form action="<?php echo e(route('topics.destroy',$topic->id)); ?>" id="formDelete_<?php echo e($topic->id); ?>" method="POST">
-					                    <a class="btn btn-info" href="<?php echo e(route('topics.show',$topic->id)); ?>"><?php echo e(_i('Show')); ?></a>
-					                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-edit')): ?>
-					                    <a class="btn btn-primary" href="<?php echo e(route('topics.edit',$topic->id)); ?>"><?php echo e(_i('Edit')); ?></a>
-					                    <?php endif; ?>
-
-
-					                    <?php echo csrf_field(); ?>
-					                    <?php echo method_field('DELETE'); ?>
-					                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-delete')): ?>
-					                    <button type="button" class="btnDel btn btn-danger" data-toggle="modal" data-target="#confirm"><?php echo e(_i('Delete')); ?></button>
-					                    <?php endif; ?>
-					                </form>
-						        </td>
-						    </tr>
-					    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				    	</tbody>
 			    	</table>
 			    </div>
-				<?php echo $topics->links(); ?>
 
 			</div>
 		</div>
@@ -92,4 +57,103 @@
 </div>
 <!-- /. PAGE INNER  -->
 <?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('foot'); ?>
+<!-- Datatable -->
+<script src="<?php echo e(asset('js/datatables/jquery.dataTables.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/datatables/dataTables.bootstrap4.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/datatables/dataTables.responsive.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/datatables/responsive.bootstrap4.min.js')); ?>"></script>
+<!-- Custom script -->
+<script type="text/javascript">
+	var topics = {index:'<?php echo e(route("topics.index")); ?>',store:'<?php echo e(route("topics.store")); ?>'};
+	var translate = {
+		save_changes:'<?php echo e(_i("Save Changes")); ?>',
+		are_you_sure:'<?php echo e(_i("Are you sure want to delete ?")); ?>',
+		sending:'<?php echo e(_i("Sending..")); ?>',
+		edit_topic:'<?php echo e(_i("Edit Topic")); ?>',
+		new_topic:'<?php echo e(_i("Create New Topic")); ?>',
+	};
+</script>
+<script src="<?php echo e(asset('js/topics-index.js')); ?>"></script>
+
+<div class="modal fade" id="ajaxModel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modelHeading"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <?php echo Form::open(array('id' => 'topicForm','name' => 'topicForm', 'class' => 'form-horizontal')); ?>
+
+                <?php echo Form::hidden('topic_id', null, array('id' => 'topic_id')); ?>
+
+					<div class="row">
+					    <div class="col-xs-12 col-sm-12 col-md-12">
+					        <div class="form-group">
+					            <strong><?php echo e(_i('Title')); ?>:</strong>
+					            <?php echo Form::text('title', null, array('id' => 'title','class' => 'form-control','placeholder' => _i('Title'))); ?>
+
+					        </div>
+					    </div>
+					    <div class="col-xs-12 col-sm-12 col-md-12">
+					        <div class="form-group">
+					            <strong><?php echo e(_i('Start date')); ?>:</strong>
+					            <?php echo Form::text('start_date', null, array('placeholder' => _i('Start date'),'id' => 'startDate','class' => 'form-control','autocomplete' => 'off')); ?>
+
+					        </div>
+					    </div>
+					    <div class="col-xs-12 col-sm-12 col-md-12">
+					        <div class="form-group">
+					            <strong><?php echo e(_I('End date')); ?>:</strong>
+					            <?php echo Form::text('end_date', null, array('placeholder' => _i('End date'),'id' => 'endDate', 'class' => 'form-control','autocomplete' => 'off')); ?>
+
+					        </div>
+					    </div>
+
+					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+					    	<?php echo Form::submit(_i('Submit'), array('id' => 'saveBtn','class' => 'btn btn-primary', 'value' => 'create')); ?>
+
+					    </div>
+					</div>
+				<?php echo Form::close(); ?>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="showDetail" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="detailHeading"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+				    <div class="col-xs-12 col-sm-12 col-md-12">
+				        <div class="form-group">
+				            <strong><?php echo e(_i('Title')); ?></strong>
+				            <span id="detailTitle"></span>
+				        </div>
+				    </div>
+				    <div class="col-xs-12 col-sm-12 col-md-12">
+				        <div class="form-group">
+				            <strong><?php echo e(_i('Period')); ?></strong>
+				            <span id="detailStartDate"></span> ~ <span id="detailEndDate"></span>
+				        </div>
+				    </div>
+				    <div class="col-xs-12 col-sm-12 col-md-12">
+				        <div class="form-group">
+				            <strong><?php echo e(_i('Registration form for essay writing competetion URL')); ?></strong>
+				            <a id="detailUrl" href="" target="_blank"></a>
+				        </div>
+				    </div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

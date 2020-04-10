@@ -28,7 +28,7 @@
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
 				            <strong><?php echo e(_i('Name')); ?>:</strong>
-				            <?php echo e($role->name); ?>
+				            <?php echo e(_i($role->name)); ?>
 
 				        </div>
 				    </div>
@@ -37,7 +37,7 @@
 				            <strong><?php echo e(_i('Permission')); ?>:</strong>
 				            <?php if(!empty($rolePermissions)): ?>
 				                <?php $__currentLoopData = $rolePermissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-				                    <label class="label label-success"><?php echo e($v->name); ?>,</label>
+				                    <label class="label label-success"><?php echo e(_i($v->name)); ?>,</label>
 				                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				            <?php endif; ?>
 				        </div>

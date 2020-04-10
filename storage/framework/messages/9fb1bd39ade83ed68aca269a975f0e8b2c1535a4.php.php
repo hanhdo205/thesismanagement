@@ -13,10 +13,18 @@
 
                 <div class="card-body">
                     <div class="card-text">
+                    	<?php
+					   		$yes = true;
+					   		$no = false;
+					   ?>
                     	<?php if($message = Session::get('success')): ?>
 							<div class="alert alert-success" role="alert">
-							   <?php echo e($message); ?>
+							   <?php echo e($message[0]); ?>
 
+							   <?php
+							   		$yes = ($message[1] == 'u_yes') ? true : false;
+							   		$no = ($message[1] == 'u_no') ? true : false;
+							   ?>
 							</div>
 						<?php endif; ?>
 						<?php if(count($errors) > 0): ?>
@@ -54,11 +62,11 @@
 							        <div class="form-group">
 							            <strong><?php echo e(_i('Can you join to become a member of the thesis?')); ?></strong>
 							            <div class="form-group mt-3">
-								            <?php echo Form::radio('review_status', 'yes' , true,  array('id'=>'yes')); ?>
+								            <?php echo Form::radio('request_status', 'u_yes' , $yes,  array('id'=>'yes')); ?>
 
 											<?php echo Form::label('yes', _i('Yes')); ?>
 
-								            <?php echo Form::radio('review_status', 'no' , false,  array('id'=>'no')); ?>
+								            <?php echo Form::radio('request_status', 'u_no' , $no,  array('id'=>'no')); ?>
 
 	  										<?php echo Form::label('no', _i('No')); ?>
 

@@ -13,9 +13,17 @@
 
                 <div class="card-body">
                     <div class="card-text">
+                    	@php
+					   		$yes = true;
+					   		$no = false;
+					   @endphp
                     	@if ($message = Session::get('success'))
 							<div class="alert alert-success" role="alert">
-							   {{ $message }}
+							   {{ $message[0] }}
+							   @php
+							   		$yes = ($message[1] == 'u_yes') ? true : false;
+							   		$no = ($message[1] == 'u_no') ? true : false;
+							   @endphp
 							</div>
 						@endif
 						@if (count($errors) > 0)
@@ -49,25 +57,9 @@
 							        <div class="form-group">
 							            <strong>{{ _i('Can you join to become a member of the thesis?') }}</strong>
 							            <div class="form-group mt-3">
-							            	@php
-												$yes = 'true';
-						            			$no = 'false';
-							            	@endphp
-							            	@if($request->input('request_status')=='yes')
-							            		@php
-							            			$yes = 'true';
-							            			$no = 'false';
-							            		@endphp
-							            	@elseif($request->input('request_status')=='no')
-							            		@php
-							            			$yes = 'false';
-							            			$no = 'true';
-							            		@endphp
-							            	@endif
-
-								            {!! Form::radio('request_status', 'yes' , $yes,  array('id'=>'yes')) !!}
+								            {!! Form::radio('request_status', 'u_yes' , $yes,  array('id'=>'yes')) !!}
 											{!! Form::label('yes', _i('Yes')) !!}
-								            {!! Form::radio('request_status', 'no' , $no,  array('id'=>'no')) !!}
+								            {!! Form::radio('request_status', 'u_no' , $no,  array('id'=>'no')) !!}
 	  										{!! Form::label('no', _i('No')) !!}
 								        </div>
 							        </div>

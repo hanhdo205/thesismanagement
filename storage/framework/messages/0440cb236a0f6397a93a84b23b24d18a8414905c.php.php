@@ -39,7 +39,7 @@
 					    <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					    <tr>
 					        <td><?php echo e(++$i); ?></td>
-					        <td><?php echo e($role->name); ?></td>
+					        <td><?php echo e(_i($role->name)); ?></td>
 					        <td nowrap>
 					            <a class="btn btn-info" href="<?php echo e(route('roles.show',$role->id)); ?>"><?php echo e(_i('Show')); ?></a>
 					            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role-edit')): ?>

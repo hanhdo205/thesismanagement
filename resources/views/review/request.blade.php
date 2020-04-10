@@ -23,6 +23,8 @@
 					<div>問題ない場合は、査読依頼ボタンを押してください。</div>
 					<div class="mb-3">査読依頼を先生へとメールで依頼します。</div>
 							{!! Form::open(array('route' => 'review.sendmail','method'=>'POST')) !!}
+							{!! Form::hidden('topic_id', $topic_id) !!}
+							{!! Form::hidden('essays', $essay_lst) !!}
 								<div class="form-group">
 									{!! Form::textarea('mailbody', $textarea, array('id' => 'mailcontent','class' => 'form-control','rows' => '10')) !!}
 								</div>

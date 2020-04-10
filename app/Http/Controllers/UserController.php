@@ -80,12 +80,7 @@ class UserController extends Controller {
 		]);
 
 		if ($validator->fails()) {
-			$errors = $validator->errors();
-			$response = [];
-			foreach ($errors->all() as $message) {
-				$response[] = ['error' => $message];
-			}
-			return $response;
+			return response()->json(['error' => $validator->errors()->all()]);
 		}
 		$email = $request->input('email');
 		$name = $request->input('name');

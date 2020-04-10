@@ -6,8 +6,8 @@
 
 @push('head')
 <!-- Datatable -->
-<link  href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-<link  href="{{ asset('css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
+<link  href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<link  href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -38,10 +38,10 @@
 					</div>
 				</div>
 				<div class="table-scroll mb-5">
-					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" cellspacing="0" width="100%">
+					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" width="100%">
 						<thead>
 							<tr>
-								<th class="fix-width text-center">
+								<th class="fix-width text-center sorting_disabled">
 									<label class="custom-check">
 										<input type="checkbox" id="selectAll" />
 										<span class="checkmark"></span>
@@ -129,15 +129,15 @@
 <!-- /. PAGE INNER  -->
 @push('foot')
 <!-- Datatable -->
-<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/datatables/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('js/datatables/responsive.bootstrap4.min.js') }}"></script>
 <!-- Custom script -->
 <script type="text/javascript">
-	var ajax_url = {table:'{{ url('opponent-ajax') }}',import_csv:'{{ url('import_csv') }}',create_new:'{{ url('create-new-opponent') }}'};
+	var opponents = {index:'{{ route("opponents.index") }}',import_csv:'{{ url("import_csv") }}',create_new:'{{ url("create-new-opponent") }}'};
 	var translate = {
-		opponent_created:'{{ _i('New opponent added successfully') }}',
+		opponent_created:'{{ _i("New opponent added successfully") }}',
 	};
 </script>
 <script src="{{ asset('js/opponents-index.js') }}"></script>

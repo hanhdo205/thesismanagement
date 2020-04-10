@@ -15,29 +15,27 @@ use Illuminate\Support\Facades\Route;
 
 LaravelGettext::setLocale('ja_JP');
 
+Auth::routes();
+
 Route::get('/endai_teisyutu/{id}', 'EssayController@createEssay')->name('topic.endai_teisyutu');
 Route::post('/endai_teisyutu/register', 'EssayController@storeEssay')->name('register.endai_teisyutu');
 Route::get('/request/confirm/{review_token}', 'OpponentController@requestConfirmation');
 Route::post('/request/confirmed', 'OpponentController@requestReply')->name('request.reply');
-Route::get('/essay-list', 'EssayController@essayList');
-Route::post('/essay-ajax', 'EssayController@essayAjaxList');
-Route::post('/essay-csv', 'EssayController@export');
-Route::get('/opponent-list', 'OpponentController@opponentList');
-Route::post('/opponent-ajax', 'OpponentController@opponentAjaxList');
-
-Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
+
 	Route::get('/', 'HomeController@index')->name('home');
-	Route::get('/essays', 'EssayController@index');
-	Route::post('/review/request', 'EssayController@reviewRequest')->name('review.request');
 
 	Route::resource('roles', 'RoleController');
 	Route::resource('users', 'UserController');
 	Route::resource('topics', 'TopicController');
+	Route::resource('opponents', 'OpponentController');
+	Route::resource('essays', 'EssayController');
+
+	Route::post('/essays-export', 'EssayController@export')->name('essays.export');
+	Route::post('/review/request', 'EssayController@reviewRequest')->name('review.request');
 	Route::post('import_csv', 'ImExController@import')->name('import_csv');
 	Route::post('create-new-opponent', 'UserController@register');
-	Route::get('/opponents', 'OpponentController@index')->name('opponents');
 	Route::post('/opponents/confirmation', 'OpponentController@confirmation')->name('opponents.confirmation');
 	Route::post('/opponents/send', 'OpponentController@sendMail')->name('opponents.sendmail');
 	Route::post('/review/send', 'EssayController@sendMail')->name('review.sendmail');

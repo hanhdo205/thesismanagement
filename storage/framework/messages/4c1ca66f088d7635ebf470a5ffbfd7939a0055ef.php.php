@@ -36,9 +36,10 @@
                 'csrfToken' => csrf_token(),
             ]); ?>;
             var base_url = '<?php echo e(url('/')); ?>';
+            var dataTable;
         </script>
         <!-- Jquery scripts -->
-        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="<?php echo e(asset('js/jquery-1.12.4.js')); ?>"></script>
         <!-- App scripts -->
         <script src="<?php echo e(asset('js/app.js')); ?>"></script>
     </head>
@@ -60,6 +61,7 @@
         <script src="<?php echo e(asset('js/perfect-scrollbar.jquery.js')); ?>"></script>
         <!-- Custom script -->
         <script src="<?php echo e(asset('js/custom.js')); ?>"></script>
+
 <?php endif; ?>
 </body>
 </html>

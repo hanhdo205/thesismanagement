@@ -6,8 +6,8 @@
 
 @push('head')
 <!-- Datatable -->
-<link  href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-<link  href="{{ asset('css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
+<link  href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<link  href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -37,12 +37,11 @@
 					<div class="form-inline custom-inline">
 						<div class="alert alert-secondary" role="alert">
 							<div class="form-inline">
-								<input type="text" name="fullname" class="form-control mt-1 mb-1 mr-sm-2" id="fullname" placeholder="氏名">
-								<select name="review_result" class="form-control mb-1 mt-1 mr-sm-2" id="review_result">
-									<option>査読結果</option>
-									<option value="ok">OK</option>
-								</select>
-								<button type="submit" class="form-control btn btn-primary pl-5 pr-5 mt-1 mb-1">検索</button>
+								{!! Form::text('student_name', null, array('id' => 'student_name','class' => 'form-control mt-1 mb-1 mr-sm-2','placeholder' => _i('Enter student name'))) !!}
+
+								{!! Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],null, array('id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2','placeholder' => _i('Review result'))) !!}
+
+								{!! Form::button(_i('Search'), array('id' => 'searchBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mt-1 mb-1')) !!}
 							</div>
 						</div>
 					</div>
@@ -72,6 +71,7 @@
 								<th>提出日</th>
 							</tr>
 						</thead>
+						<tbody></tbody>
 					</table>
 				</div>
 				{!! Form::close() !!}
@@ -84,13 +84,13 @@
 
 @push('foot')
 <!-- Datatable -->
-<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/datatables/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('js/datatables/responsive.bootstrap4.min.js') }}"></script>
 <!-- Custom script -->
 <script type="text/javascript">
-	var ajax_url = {table:'{{ url('essay-ajax') }}',csv:'{{ url('essay-csv') }}',review_request:'{{ url('review-request') }}'};
+	var essays = {index:'{{ route("essays.index") }}',export:'{{ route("essays.export") }}'};
 	var last_topic_id = '{{ $last_topic_id }}';
 </script>
 <script src="{{ asset('js/essays-index.js') }}"></script>

@@ -44,7 +44,7 @@
 						    <td>
 						      <?php if(!empty($user->getRoleNames())): ?>
 						        <?php $__currentLoopData = $user->getRoleNames(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-						           <label class="badge badge-success"><?php echo e($v); ?></label>
+						           <label class="badge badge-success"><?php echo e(_i($v)); ?></label>
 						        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 						      <?php endif; ?>
 						    </td>

@@ -22,17 +22,23 @@
 					<div>以下の演題に対して査読依頼を実施しますか？</div>
 					<div>問題ない場合は、査読依頼ボタンを押してください。</div>
 					<div class="mb-3">査読依頼を先生へとメールで依頼します。</div>
-							<!-- <form> -->
+							<?php echo Form::open(array('route' => 'review.sendmail','method'=>'POST')); ?>
+
+							<?php echo Form::hidden('topic_id', $topic_id); ?>
+
+							<?php echo Form::hidden('essays', $essay_lst); ?>
+
 								<div class="form-group">
-									<textarea name="reviews" class="form-control" id="reviews" rows="5">膝関節に関するリハビリ- 著:田中太郎
-膝関節に関するリハビリ- 著:田中太郎
-									</textarea>
+									<?php echo Form::textarea('mailbody', $textarea, array('id' => 'mailcontent','class' => 'form-control','rows' => '10')); ?>
+
 								</div>
 								<div class="d-flex justify-content-end">
-									<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4">査読依頼</button>
+									<?php echo Form::submit(_i('Send review request'), array('class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4')); ?>
+
 								</div>
-							<!-- </form> -->
-						
+							<?php echo Form::close(); ?>
+
+
 				</div>
 			</div>
 		</div>

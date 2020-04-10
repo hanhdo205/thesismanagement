@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Review;
 use App\Topic;
 use App\User;
+use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -30,20 +30,26 @@ class OpponentController extends Controller {
 	public function index(Request $request) {
 		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
 		$last_topic_id = array_key_first($topics->toArray());
-		//$data = User::orderBy('id', 'DESC')->paginate(5);
-		$data = $essays = self::opponentList($last_topic_id);
-		return view('opponents.index', compact(['data', 'topics', 'last_topic_id']))
-			->with('i', ($request->input('page', 1) - 1) * 5);
-	}
 
-	public function opponentList($topic_id) {
-		$rows = DB::table('reviews')
-			->join('topics', 'reviews.topic_id', '=', 'topics.id')
-			->join('users', 'reviews.user_id', '=', 'users.id')
-			->where('reviews.topic_id', $topic_id)
-			->select('users.id', 'users.name', 'reviews.review_status')
-			->paginate(5);
-		return $rows;
+		if ($request->ajax()) {
+			$data = DB::table('reviews')
+				->join('topics', 'reviews.topic_id', '=', 'topics.id')
+				->join('users', 'reviews.user_id', '=', 'users.id')
+				->where('reviews.topic_id', $request->input('topic_id'))
+				->select('users.id', 'users.name', 'reviews.request_status')
+				->get();
+			return Datatables::of($data)
+				->addColumn('checkbox', function ($row) {
+
+					$checkbox = '<label class="custom-check"><input type="checkbox" name="opponents[]" id="' . $row->id . '" class="field" value="' . $row->id . '"><span class="checkmark"></span></label>';
+					return $checkbox;
+				})
+				->rawColumns(['checkbox'])
+				->addIndexColumn()
+				->make(true);
+		}
+
+		return view('opponents.index', compact(['topics', 'last_topic_id']));
 	}
 
 	/**
@@ -106,7 +112,7 @@ class OpponentController extends Controller {
 			DB::table('reviews')
 				->updateOrInsert(
 					['topic_id' => $topic_id, 'user_id' => $value],
-					['review_status' => $reviewer_status, 'review_token' => $token]
+					['request_status' => $reviewer_status, 'review_token' => $token]
 				);
 		}
 
@@ -139,13 +145,14 @@ class OpponentController extends Controller {
 	 */
 	public function requestReply(Request $request) {
 		request()->validate([
-			'review_status' => 'required',
+			'request_status' => 'required',
 		]);
 
-		$review_token = $request->review_token;
-		$review = Review::where('review_token', $review_token)->first();
-		$review->update(['review_status' => $request->input('review_status')]);
+		$affected = DB::table('reviews')
+			->where('review_token', $request->input('review_token'))
+			->update(['request_status' => $request->input('request_status')]);
+
 		return back()
-			->with('success', _i('Thank you for your confirmation.'));
+			->with('success', [_i('Thank you for your confirmation.'), $request->input('request_status')]);
 	}
 }

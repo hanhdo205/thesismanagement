@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Topic;
+use Carbon\Carbon;
+use DataTables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TopicController extends Controller {
 	/**
@@ -22,10 +25,53 @@ class TopicController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index() {
-		$topics = Topic::latest()->paginate(5);
-		return view('topics.index', compact('topics'))
-			->with('i', (request()->input('page', 1) - 1) * 5);
+	public function index(Request $request) {
+		/*$topics = Topic::latest()->paginate(5);
+			return view('topics.index', compact('topics'))
+		*/
+		if ($request->ajax()) {
+			$data = Topic::latest()->get();
+			return Datatables::of($data)
+				->addIndexColumn()
+				->addColumn('period', function ($row) {
+					$duration = $row->start_date . ' ~ ' . $row->end_date;
+					return $duration;
+				})
+				->addColumn('status', function ($row) {
+					$start_date = Carbon::createFromDate($row->start_date);
+					$end_date = Carbon::createFromDate($row->end_date);
+					$now = Carbon::today();
+					$status = _i('Available');
+					switch (true) {
+					case ($end_date < $now):
+						$status = _i('Expired');
+						break;
+					case ($start_date > $now):
+						$status = _i('Comming soon');
+						break;
+					default:
+						$status = _i('Available');
+						break;
+					}
+					return $status;
+				})
+				->addColumn('action', function ($row) {
+
+					$btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-url="' . route('topic.endai_teisyutu', ['id' => $row->id]) . '" data-original-title="Show" class="edit btn btn-info btn-sm showTopic">' . _i('Show') . '</a>';
+
+					$btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editTopic">' . _i('Edit') . '</a>';
+
+					$btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteTopic">' . _i('Delete') . '</a>';
+
+					return $btn;
+				})
+				->rawColumns(['period'])
+				->rawColumns(['status'])
+				->rawColumns(['action'])
+				->make(true);
+		}
+
+		return view('topics.index');
 	}
 
 	/**
@@ -44,16 +90,25 @@ class TopicController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request) {
-		request()->validate([
+		/*request()->validate([
+				'title' => 'required',
+				'start_date' => 'required',
+				'end_date' => 'required',
+			]);
+
+		*/
+		$validator = Validator::make($request->all(), [
 			'title' => 'required',
 			'start_date' => 'required',
 			'end_date' => 'required',
 		]);
 
-		Topic::create($request->all());
-
-		return redirect()->route('topics.index')
-			->with('success', 'Topic created successfully.');
+		if ($validator->fails()) {
+			return response()->json(['error' => $validator->errors()->all()]);
+		}
+		Topic::updateOrCreate(['id' => $request->topic_id],
+			['title' => $request->title, 'start_date' => $request->start_date, 'end_date' => $request->end_date]);
+		return response()->json(['success' => _i('Topic saved successfully.')]);
 	}
 
 	/**
@@ -73,7 +128,8 @@ class TopicController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(Topic $topic) {
-		return view('topics.edit', compact('topic'));
+		/*return view('topics.edit', compact('topic'));*/
+		return response()->json($topic);
 	}
 
 	/**
@@ -92,8 +148,9 @@ class TopicController extends Controller {
 
 		$topic->update($request->all());
 
-		return redirect()->route('topics.index')
-			->with('success', 'Topic updated successfully');
+		/*return redirect()->route('topics.index')
+			->with('success', 'Topic updated successfully');*/
+		return response()->json(['success' => _i('Topic saved successfully.')]);
 	}
 
 	/**
@@ -104,7 +161,8 @@ class TopicController extends Controller {
 	 */
 	public function destroy(Topic $topic) {
 		$topic->delete();
-		return redirect()->route('topics.index')
-			->with('success', 'Topic deleted successfully');
+		/*return redirect()->route('topics.index')
+			->with('success', 'Topic deleted successfully');*/
+		return response()->json(['success' => _i('Topic deleted successfully.')]);
 	}
 }

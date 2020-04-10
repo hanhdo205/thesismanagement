@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Topic;
 use App\User;
+use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -29,79 +30,31 @@ class OpponentController extends Controller {
 	public function index(Request $request) {
 		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
 		$last_topic_id = array_key_first($topics->toArray());
+
+		if ($request->ajax()) {
+			$data = DB::table('reviews')
+				->join('topics', 'reviews.topic_id', '=', 'topics.id')
+				->join('users', 'reviews.user_id', '=', 'users.id')
+				->where('reviews.topic_id', $request->input('topic_id'))
+				->select('users.id', 'users.name', 'reviews.request_status')
+				->get();
+			return Datatables::of($data)
+				->addColumn('checkbox', function ($row) {
+
+					$checkbox = '<label class="custom-check"><input type="checkbox" name="opponents[]" id="' . $row->id . '" class="field" value="' . $row->id . '"><span class="checkmark"></span></label>';
+					return $checkbox;
+				})
+				->addColumn('status', function ($row) {
+					$status = _i($row->request_status);
+					return $status;
+				})
+				->rawColumns(['status'])
+				->rawColumns(['checkbox'])
+				->addIndexColumn()
+				->make(true);
+		}
+
 		return view('opponents.index', compact(['topics', 'last_topic_id']));
-		/*$data = $essays = self::opponentList($last_topic_id);
-			return view('opponents.index', compact(['data', 'topics', 'last_topic_id']))
-		*/
-	}
-
-	public function opponentList($topic_id) {
-		$rows = DB::table('reviews')
-			->join('topics', 'reviews.topic_id', '=', 'topics.id')
-			->join('users', 'reviews.user_id', '=', 'users.id')
-			->where('reviews.topic_id', $topic_id)
-			->select('users.id', 'users.name', 'reviews.review_status')
-			->paginate(5);
-		return $rows;
-	}
-
-	/**
-	 * Ajax for listing
-	 */
-	public function opponentAjaxList(Request $request) {
-		$columns = [
-			0 => 'id',
-			1 => 'no',
-			2 => 'name',
-			3 => 'status',
-		];
-		$order_by = 'id';
-		$order_sort = 'desc';
-		$offset = 0;
-		$limit = '';
-		if ($request->input('order')) {
-			$order_by = $columns[$request->input('order')[0]['column']];
-			$order_sort = $request->input('order')[0]['dir'];
-		}
-		if ($request->input('length') != -1) {
-			$offset = $request->input('start');
-			$limit = $request->input('length');
-		}
-		DB::statement(DB::raw("SET @row = '0'"));
-		$rows = DB::table('reviews')
-			->join('topics', 'reviews.topic_id', '=', 'topics.id')
-			->join('users', 'reviews.user_id', '=', 'users.id')
-			->where('reviews.topic_id', $request->input('topic_id'))
-			->select(DB::raw("@row:=@row+1 AS no"), 'users.id', 'users.name', 'reviews.request_status')
-			->offset($offset)
-			->limit($limit)
-			->orderBy($order_by, $order_sort)
-			->get();
-		$data = [];
-
-		$totalData = count($rows);
-		$totalFiltered = count($rows);
-
-		foreach ($rows as $key => $value) {
-			$sub_data = [];
-			$sub_data[] = '<label class="custom-check">
-										<input type="checkbox" name="opponents[]" id="' . $value->id . '" class="field" value="' . $value->id . '">
-										<span class="checkmark"></span>
-									</label>';
-			$sub_data[] = $value->no;
-			$sub_data[] = $value->name;
-			$sub_data[] = $value->request_status;
-			$data[] = $sub_data;
-		}
-
-		$json_data = array(
-			"draw" => intval($request->input('draw')),
-			"recordsTotal" => $totalData,
-			"recordsFiltered" => $totalFiltered,
-			"data" => $data,
-		);
-		echo json_encode($json_data);
-		die();
 	}
 
 	/**
@@ -205,6 +158,6 @@ class OpponentController extends Controller {
 			->update(['request_status' => $request->input('request_status')]);
 
 		return back()
-			->with('success', _i('Thank you for your confirmation.'));
+			->with('success', [_i('Thank you for your confirmation.'), $request->input('request_status')]);
 	}
 }

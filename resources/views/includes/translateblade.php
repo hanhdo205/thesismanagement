@@ -23,3 +23,16 @@
 {{ __('opponent-confirmation') }}
 {{ __('Admin') }}
 {{ __('Teacher') }}
+{{ __('not_yet') }}
+{{ __('fresh') }}
+{{ __('mail_send') }}
+{{ __('u_yes') }}
+{{ __('u_no') }}
+{{ __('u_reviewing') }}
+{{ __('u_finish') }}
+{{ __('pending') }}
+{{ __('reviewing') }}
+{{ __('reviewed') }}
+{{ __('good') }}
+{{ __('bad') }}
+

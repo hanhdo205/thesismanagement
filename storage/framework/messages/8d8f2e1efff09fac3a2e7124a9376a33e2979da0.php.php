@@ -47,3 +47,29 @@
 <?php echo e(__('Admin')); ?>
 
 <?php echo e(__('Teacher')); ?>
+
+<?php echo e(__('not_yet')); ?>
+
+<?php echo e(__('fresh')); ?>
+
+<?php echo e(__('mail_send')); ?>
+
+<?php echo e(__('u_yes')); ?>
+
+<?php echo e(__('u_no')); ?>
+
+<?php echo e(__('u_reviewing')); ?>
+
+<?php echo e(__('u_finish')); ?>
+
+<?php echo e(__('pending')); ?>
+
+<?php echo e(__('reviewing')); ?>
+
+<?php echo e(__('reviewed')); ?>
+
+<?php echo e(__('good')); ?>
+
+<?php echo e(__('bad')); ?>
+
+
