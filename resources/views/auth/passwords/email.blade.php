@@ -3,9 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ _i('Reset Password') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,31 +12,34 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="clearfix">
+                        <div class="col-sm-12 text-center mb-3">
+                        <a class="navbar-brand" href="{{ url('/') }}">査読管理システム</a>
+                      </div>
+                      <h4 class="pt-3">{{ _i('Did you forget your password?') }}</h4>
+                      <p class="text-muted">{{ _i('Provide your email that you used to register. We will send you information on how to reset your password.') }}</p>
+                    </div>
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" class="mb-5" action="{{ route('password.email') }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ _i('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
+                        <div class="input-prepend input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                  <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                              <input class="form-control @error('email') is-invalid @enderror" id="email" size="16" name="email" type="email" placeholder="{{ _i('E-Mail Address') }}" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                              <span class="input-group-append">
+                                <button class="btn btn-primary" type="submit" name="forgetpass">{{ _i('Send') }}</button>
+                              </span>
+                              @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
-                        </div>
+                            @enderror
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ _i('Send Password Reset Link') }}
-                                </button>
                             </div>
-                        </div>
+
                     </form>
                 </div>
             </div>

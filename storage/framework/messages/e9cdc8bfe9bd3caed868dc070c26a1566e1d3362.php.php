@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title', _i('査読対応確認')); ?>
+<?php $__env->startSection('title', _i('Review request mail template')); ?>
 <?php $__env->startSection('description', _i('The SIS management')); ?>
 <?php $__env->startSection('keyword', _i('management')); ?>
 
@@ -12,8 +12,8 @@
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="/">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">査読対応確認</li>
+		<li class="breadcrumb-item"><a href="/"><?php echo e(_i('Home')); ?></a></li>
+		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('Review request mail template')); ?></li>
 	</ol>
 </nav>
 <div id="page-inner">
@@ -21,7 +21,8 @@
 		<div class="col-xl-6">
 			<div class="card">
 				<div class="card-header">
-					査読対応確認
+					<?php echo e(_i('Review request mail template')); ?>
+
 				</div>
 				<div class="card-body">
 				<?php echo Form::open(array('route' => 'opponents.sendmail','method'=>'POST')); ?>

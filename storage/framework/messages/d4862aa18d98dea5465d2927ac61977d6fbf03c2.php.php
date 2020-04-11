@@ -1,8 +1,8 @@
 
 
-<?php $__env->startSection('title', 'TOPページ'); ?>
-<?php $__env->startSection('description', 'The SIS management'); ?>
-<?php $__env->startSection('keyword', 'management'); ?>
+<?php $__env->startSection('title', _i('Home page')); ?>
+<?php $__env->startSection('description', _i('The SIS management')); ?>
+<?php $__env->startSection('keyword', _i('management')); ?>
 
 <?php
 	$data = Config::get('sampledata.data');
@@ -11,13 +11,14 @@
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item active" aria-current="page">Home</li>
+		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('Home')); ?></li>
 	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card mb-3">
 		<div class="card-header">
-			直近の演題提出状況
+			<?php echo e(_i('Lastest essays')); ?>
+
 		</div>
 		<div class="card-body">
 			<div class="card-text">
@@ -25,25 +26,27 @@
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th class="fix-width">No.</th>
-								<th>タイトル</th>
-								<th>氏名</th>
-								<th>提出日</th>
+								<th class="fix-width"><?php echo e(_i('No.')); ?></th>
+								<th><?php echo e(_i('Title')); ?></th>
+								<th><?php echo e(_i('Student name')); ?></th>
+								<th><?php echo e(_i('Registration date')); ?></th>
 							</tr>
 						</thead>
 						<tbody>
-						<?php $__currentLoopData = $data['abstract']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $abstract): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<?php
-								$date = date_create($abstract['date']);
-								$abs_date = date_format($date,"Y年m月d日");
-							?>
+						<?php if(count($lastestEssays) == 0): ?>
 							<tr>
-								<td class="fix-width"><?php echo e($abstract['id']); ?></td>
-								<td><?php echo e($abstract['title']); ?></td>
-								<td><?php echo e($abstract['name']); ?></td>
-								<td><?php echo e($abs_date); ?></td>
+								<td colspan="4"><?php echo e(_i('There is no data.')); ?></td>
 							</tr>
-						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						<?php else: ?>
+							<?php $__currentLoopData = $lastestEssays; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $essay): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<tr>
+									<td class="fix-width"><?php echo e(++$i); ?></td>
+									<td><?php echo e($essay->essay_title); ?></td>
+									<td><?php echo e($essay->student_name); ?></td>
+									<td><?php echo e(Carbon\Carbon::parse($essay->created_at)->format('Y年m月d日')); ?></td>
+								</tr>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						<?php endif; ?>
 						</tbody>
 					</table>
 				</div>
@@ -52,7 +55,8 @@
 	</div>
 	<div class="card">
 		<div class="card-header">
-			直近の査読提出状況
+			<?php echo e(_i('Lastest reviews')); ?>
+
 		</div>
 		<div class="card-body">
 			<div class="card-text">
@@ -60,31 +64,33 @@
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th class="fix-width">No.</th>
-								<th>タイトル</th>
-								<th>氏名</th>
-								<th>提出日</th>
+								<th class="fix-width"><?php echo e(_i('No.')); ?></th>
+								<th><?php echo e(_i('Title')); ?></th>
+								<th><?php echo e(_i('Student name')); ?></th>
+								<th><?php echo e(_i('Registration date')); ?></th>
 							</tr>
 						</thead>
 						<tbody>
-						<?php $__currentLoopData = $data['review']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<?php
-								$rv_date = date_create($review['date']);
-								$review_date = date_format($rv_date,"Y年m月d日");
-							?>
+						<?php if(count($lastestReview) == 0): ?>
 							<tr>
-								<td class="fix-width"><?php echo e($review['id']); ?></td>
-								<td><?php echo e($review['title']); ?></td>
-								<td><?php echo e($review['name']); ?></td>
-								<td><?php echo e($review_date); ?></td>
+								<td colspan="4"><?php echo e(_i('There is no data.')); ?></td>
 							</tr>
-						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						<?php else: ?>
+							<?php $__currentLoopData = $lastestReview; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<tr>
+									<td class="fix-width"><?php echo e(++$i); ?></td>
+									<td><?php echo e($review->essay_title); ?></td>
+									<td><?php echo e($review->student_name); ?></td>
+									<td><?php echo e(Carbon\Carbon::parse($review->updated_at)->format('Y年m月d日')); ?></td>
+								</tr>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						<?php endif; ?>
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
-	</div>	 
+	</div>
 </div>
 <!-- /. PAGE INNER  -->
 <?php $__env->stopSection(); ?>

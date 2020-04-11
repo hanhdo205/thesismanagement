@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">{{ _i('Confirmation to become a member of the thesis') }}</div>
 
@@ -45,7 +45,7 @@
 						    </div>
 						    <div class="col-xs-12 col-sm-12 col-md-12">
 						        <div class="form-group">
-						            <strong>{{ _i('Registration date') }}</strong>
+						            <strong>{{ _i('Period') }}</strong>
 						            {{ $rows->start_date . ' ~ ' . $rows->end_date }}
 						        </div>
 						    </div>

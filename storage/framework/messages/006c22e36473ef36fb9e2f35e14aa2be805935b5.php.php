@@ -10,13 +10,14 @@
 	<div class="inline my-2 my-lg-0">
 		<div class="btn-group">
 			<button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			My account
+			<?php echo e(_i('My account')); ?>
+
 			</button>
 			<div class="dropdown-menu dropdown-menu-right">
 				<a class="dropdown-item" href="#"><?php echo e(_i('My profile')); ?></a>
-				<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role-list')): ?>
+				<!-- <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role-list')): ?>
 				<a class="dropdown-item" href="<?php echo e(route('roles.index')); ?>"><?php echo e(_i('Manage Role')); ?></a>
-				<?php endif; ?>
+				<?php endif; ?> -->
 				<div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                    onclick="event.preventDefault();

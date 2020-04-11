@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', '査読依頼')
-@section('description', 'The SIS management')
-@section('keyword', 'management')
+@section('title', _i('Review request form'))
+@section('description', _i('The SIS management'))
+@section('keyword', _i('management'))
 
 @section('content')
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="/">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">査読依頼</li>
+		<li class="breadcrumb-item"><a href="/">{{ _i('Home') }}</a></li>
+		<li class="breadcrumb-item active" aria-current="page">{{ _i('Review request form') }}</li>
 	</ol>
 </nav>
 <div id="page-inner">
@@ -16,7 +16,7 @@
 		<div class="col-xl-6">
 			<div class="card">
 				<div class="card-header">
-					査読依頼
+					{{ _i('Review request form') }}
 				</div>
 				<div class="card-body">
 					<div>以下の演題に対して査読依頼を実施しますか？</div>

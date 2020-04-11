@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 LaravelGettext::setLocale('ja_JP');
 
-Auth::routes();
+//Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/endai_teisyutu/{id}', 'EssayController@createEssay')->name('topic.endai_teisyutu');
 Route::post('/endai_teisyutu/register', 'EssayController@storeEssay')->name('register.endai_teisyutu');
@@ -25,42 +26,22 @@ Route::post('/request/confirmed', 'OpponentController@requestReply')->name('requ
 Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('/', 'HomeController@index')->name('home');
-
-	Route::resource('roles', 'RoleController');
-	Route::resource('users', 'UserController');
-	Route::resource('topics', 'TopicController');
-	Route::resource('opponents', 'OpponentController');
-	Route::resource('essays', 'EssayController');
-
+	Route::post('/opponents/confirmation', 'OpponentController@confirmation')->name('opponents.confirmation');
+	Route::post('/opponents/send', 'OpponentController@sendMail')->name('opponents.sendmail');
 	Route::post('/essays-export', 'EssayController@export')->name('essays.export');
 	Route::post('/review/request', 'EssayController@reviewRequest')->name('review.request');
 	Route::post('import_csv', 'ImExController@import')->name('import_csv');
 	Route::post('create-new-opponent', 'UserController@register');
-	Route::post('/opponents/confirmation', 'OpponentController@confirmation')->name('opponents.confirmation');
-	Route::post('/opponents/send', 'OpponentController@sendMail')->name('opponents.sendmail');
+
 	Route::post('/review/send', 'EssayController@sendMail')->name('review.sendmail');
+
+	Route::resource('roles', 'RoleController');
+	//Route::resource('users', 'UserController');
+	Route::resource('topics', 'TopicController');
+	Route::resource('opponents', 'OpponentController')->only([
+		'index',
+	]);;
+	Route::resource('essays', 'EssayController')->only([
+		'index', 'edit', 'update',
+	]);
 });
-
-Route::get('/academic', function () {
-	return view('academic');
-});
-
-Route::get('/abstract', function () {
-	return view('abstract');
-});
-
-Route::get('/review', function () {
-	return view('review');
-});
-
-Route::post('/review/confirmation', function () {
-	return view('review.confirmation');
-});
-
-Route::post('/review/detail', function () {
-	return view('review.detail');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

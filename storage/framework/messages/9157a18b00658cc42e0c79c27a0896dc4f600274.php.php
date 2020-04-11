@@ -7,7 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <p><?php echo e(_i('Are you sure you want to delete?')); ?></p>
+                <p><?php echo e(_i('Are you sure want to delete ?')); ?></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo e(_i('Cancel')); ?></button>

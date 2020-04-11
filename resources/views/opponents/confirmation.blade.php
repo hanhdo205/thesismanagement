@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', _i('査読対応確認'))
+@section('title', _i('Review request mail template'))
 @section('description', _i('The SIS management'))
 @section('keyword', _i('management'))
 
@@ -12,8 +12,8 @@
 @section('content')
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="/">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">査読対応確認</li>
+		<li class="breadcrumb-item"><a href="/">{{ _i('Home') }}</a></li>
+		<li class="breadcrumb-item active" aria-current="page">{{ _i('Review request mail template') }}</li>
 	</ol>
 </nav>
 <div id="page-inner">
@@ -21,7 +21,7 @@
 		<div class="col-xl-6">
 			<div class="card">
 				<div class="card-header">
-					査読対応確認
+					{{ _i('Review request mail template') }}
 				</div>
 				<div class="card-body">
 				{!! Form::open(array('route' => 'opponents.sendmail','method'=>'POST')) !!}

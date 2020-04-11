@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', _i('演題管理'))
+@section('title', _i('Essays management'))
 @section('description', _i('The SIS management'))
 @section('keyword', _i('management'))
 
@@ -14,16 +14,21 @@
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/">Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page">演題管理</li>
+		<li class="breadcrumb-item active" aria-current="page">{{ _i('Essays management') }}</li>
 	</ol>
 </nav>
 <div id="page-inner">
 	<div class="card">
 		<div class="card-header">
-			演題管理
+			{{ _i('Essays management') }}
 		</div>
 		<div class="card-body">
 			<div class="card-text">
+				@if ($message = Session::get('success'))
+					<script>
+						toastr.success('{{ $message }}');
+					</script>
+				@endif
 				{!! Form::open(array('id' => 'reviewRequest','route' => 'review.request','method'=>'POST')) !!}
 				<div class="form-group">
 					<div class="form-inline">
@@ -31,7 +36,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>演題提出URL： <a href="{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}" id="topic_url">{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}</a></label>
+					<label>{{ _i('Submit form URL') }}： <a href="{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}" id="topic_url">{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}</a></label>
 				</div>
 				<div class="form-group">
 					<div class="form-inline custom-inline">
@@ -49,7 +54,7 @@
 
 				<div class="form-group">
 					<div class="form-inline">
-						{!! Form::select('select', ['mail'=>'Review request','csv'=>'CSV Download'],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2','placeholder' => _i('Please select...'))) !!}
+						{!! Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2','placeholder' => _i('Please select...'))) !!}
 						{!! Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5')) !!}
 					</div>
 				</div>

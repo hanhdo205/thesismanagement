@@ -26,7 +26,7 @@ $(function () {
     });
      
     $('#createNewTopic').click(function () {
-        $('#saveBtn').val(translate.new_topic);
+        $('#saveBtn').val(translate.save_btn);
         $('#topic_id').val('');
         $('#topicForm').trigger("reset");
         $('#modelHeading').html(translate.new_topic);
@@ -37,7 +37,7 @@ $(function () {
       var topic_id = $(this).data('id');
       $.get(topics.index +'/' + topic_id +'/edit', function (data) {
           $('#modelHeading').html(translate.edit_topic);
-          $('#saveBtn').val(translate.edit_topic);
+          $('#saveBtn').val(translate.save_btn);
           $('#ajaxModel').modal('show');
           $('#topic_id').val(data.id);
           $('#title').val(data.title);

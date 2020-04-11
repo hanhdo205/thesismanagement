@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2020-04-10 11:07+0000\n"
-"PO-Revision-Date: 2020-04-10 11:07+0000\n"
+"POT-Creation-Date: 2020-04-11 11:12+0000\n"
+"PO-Revision-Date: 2020-04-11 11:12+0000\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: en_US\n"
@@ -38,14 +38,190 @@ msgstr ""
 msgid "click here to request another"
 msgstr ""
 
-#: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:22
+#: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:13
+msgid "My account"
+msgstr ""
+
+#: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:17
+msgid "My profile"
+msgstr ""
+
+#: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:19
+msgid "Manage Role"
+msgstr ""
+
+#: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:25
 msgid "Logout"
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:3
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:11
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:17
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:11
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:11
+#: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:11
+msgid "Role Management"
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:4
+#: ../storage/framework/messages/10c28851d01832c532ff342883ba95fd98349b4d.php.php:4
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:4
+#: ../storage/framework/messages/41ba87d576dbc43579f7784ea2cc17d6f066d3dd.php.php:4
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:4
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:4
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:4
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:4
+#: ../storage/framework/messages/9610eb826db5ccc8a531bfa5a75d7221d3c9dd3c.php.php:4
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:4
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:4
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:4
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:4
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:4
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:4
+#: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:4
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:4
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:4
+#: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:4
+msgid "The SIS management"
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:5
+#: ../storage/framework/messages/10c28851d01832c532ff342883ba95fd98349b4d.php.php:5
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:5
+#: ../storage/framework/messages/41ba87d576dbc43579f7784ea2cc17d6f066d3dd.php.php:5
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:5
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:5
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:5
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:5
+#: ../storage/framework/messages/9610eb826db5ccc8a531bfa5a75d7221d3c9dd3c.php.php:5
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:5
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:5
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:5
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:5
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:5
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:5
+#: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:5
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:5
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:5
+#: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:5
+msgid "management"
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:10
+#: ../storage/framework/messages/10c28851d01832c532ff342883ba95fd98349b4d.php.php:10
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:10
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:17
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:10
+#: ../storage/framework/messages/9610eb826db5ccc8a531bfa5a75d7221d3c9dd3c.php.php:10
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:10
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:18
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:15
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:10
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:15
+#: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:10
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:10
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:15
+#: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:10
+msgid "Home"
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:21
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:3
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:12
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:18
+msgid "Create New Role"
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:35
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:53
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:44
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:33
+msgid "No."
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:36
+#: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:13
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:31
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:54
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:41
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:42
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:46
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:47
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:38
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:39
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:43
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:44
+#: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:30
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:34
+msgid "Name"
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:37
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:37
+msgid "Action"
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:44
+#: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:60
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:52
+#: Http/Controllers/TopicController.php:60
+msgid "Show"
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:46
+#: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:62
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:53
+#: Http/Controllers/TopicController.php:62
+msgid "Edit"
+msgstr ""
+
+#: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:51
+#: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:64
+#: ../storage/framework/messages/9157a18b00658cc42e0c79c27a0896dc4f600274.php.php:14
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:56
+#: Http/Controllers/TopicController.php:64
+msgid "Delete"
+msgstr ""
+
+#: ../storage/framework/messages/10c28851d01832c532ff342883ba95fd98349b4d.php.php:11
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:3
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:19
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:25
+msgid "Topic management"
+msgstr ""
+
+#: ../storage/framework/messages/10c28851d01832c532ff342883ba95fd98349b4d.php.php:26
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:35
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:111
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:112
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:43
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:43
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:45
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:104
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:105
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:146
+msgid "Title"
+msgstr ""
+
+#: ../storage/framework/messages/10c28851d01832c532ff342883ba95fd98349b4d.php.php:33
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:46
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:152
+msgid "Period"
+msgstr ""
+
+#: ../storage/framework/messages/10c28851d01832c532ff342883ba95fd98349b4d.php.php:40
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:158
+msgid "Registration form for essay writing competetion URL"
 msgstr ""
 
 #: ../storage/framework/messages/1c75fcf38583744f276efa6a915b34a6cb555949.php.php:6
 #: ../storage/framework/messages/1c75fcf38583744f276efa6a915b34a6cb555949.php.php:46
 #: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:97
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:67
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:68
 #: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:71
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:64
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:65
 msgid "Confirm Password"
 msgstr ""
 
@@ -54,31 +230,211 @@ msgid "Please confirm your password before continuing."
 msgstr ""
 
 #: ../storage/framework/messages/1c75fcf38583744f276efa6a915b34a6cb555949.php.php:16
-#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:41
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:43
 #: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:69
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:60
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:61
 #: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:43
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:57
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:58
 msgid "Password"
 msgstr ""
 
 #: ../storage/framework/messages/1c75fcf38583744f276efa6a915b34a6cb555949.php.php:52
-#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:90
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:92
 msgid "Forgot Your Password?"
 msgstr ""
 
-#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:6
-#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:84
+#: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:44
+#: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:53
+#: Http/Controllers/TopicController.php:44
+#: Http/Controllers/TopicController.php:53
+msgid "Available"
+msgstr ""
+
+#: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:47
+#: Http/Controllers/TopicController.php:47
+msgid "Expired"
+msgstr ""
+
+#: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:50
+#: Http/Controllers/TopicController.php:50
+msgid "Comming soon"
+msgstr ""
+
+#: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:111
+#: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:153
+#: Http/Controllers/TopicController.php:111
+#: Http/Controllers/TopicController.php:153
+msgid "Topic saved successfully."
+msgstr ""
+
+#: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:166
+#: Http/Controllers/TopicController.php:166
+msgid "Topic deleted successfully."
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:3
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:17
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:23
+#: ../storage/framework/messages/41ba87d576dbc43579f7784ea2cc17d6f066d3dd.php.php:3
+#: ../storage/framework/messages/41ba87d576dbc43579f7784ea2cc17d6f066d3dd.php.php:11
+#: ../storage/framework/messages/41ba87d576dbc43579f7784ea2cc17d6f066d3dd.php.php:17
+msgid "Essays management"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:32
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:33
+msgid "Please select topic"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:37
+msgid "Submit form URL"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:43
+msgid "Enter student name"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:46
+msgid "None"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:46
+msgid "Good"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:46
+msgid "Not good"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:46
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:61
+msgid "Review result"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:49
+msgid "Search"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:58
+msgid "Review request"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:58
+msgid "CSV Download"
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:58
+msgid "Please select..."
+msgstr ""
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:60
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:50
+msgid "Send"
+msgstr ""
+
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:8
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:86
 msgid "Login"
 msgstr ""
 
-#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:13
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:15
 #: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:41
 #: ../storage/framework/messages/b28877d31316cb7d1d62cedb54353e0a93563ae2.php.php:20
 #: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:15
 msgid "E-Mail Address"
 msgstr ""
 
-#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:74
+#: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:76
 msgid "Remember Me"
+msgstr ""
+
+#: ../storage/framework/messages/3c8ee589ca3b1508cc7860bf62bd3e4d279d0ebe.php.php:181
+#: Http/Controllers/EssayController.php:223
+msgid "Registration successfully."
+msgstr ""
+
+#: ../storage/framework/messages/41ba87d576dbc43579f7784ea2cc17d6f066d3dd.php.php:22
+msgid "There no topic"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:12
+msgid "Registration form for essay writing competetion"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:24
+msgid "Whoops!"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:24
+msgid "There were some problems with your input."
+msgstr "正しく入力されていない項目があります。メッセージをご確認の上、もう一度ご入力ください。"
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:42
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:50
+msgid "Registration date"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:57
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:58
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:127
+msgid "Full name"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:64
+msgid "Gender"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:68
+msgid "Male"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:72
+msgid "Female"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:79
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:80
+msgid "Date of birth"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:86
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:87
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:122
+msgid "Email address"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:97
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:98
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:31
+msgid "Belong to"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:104
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:105
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:37
+msgid "Major"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:120
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:87
+msgid "No file chosen"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:123
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:90
+msgid "Choose file"
+msgstr ""
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:135
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:76
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:78
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:125
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:80
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:56
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:77
+msgid "Submit"
 msgstr ""
 
 #: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:6
@@ -86,8 +442,387 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:13
-msgid "Name"
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:3
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:12
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:18
+msgid "Show User"
+msgstr ""
+
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:11
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:16
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:16
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:3
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:11
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:17
+msgid "User management"
+msgstr ""
+
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:22
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:21
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:26
+#: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:21
+msgid "Back"
+msgstr ""
+
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:38
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:53
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:54
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:50
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:51
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:35
+msgid "Email"
+msgstr ""
+
+#: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:45
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:36
+msgid "Roles"
+msgstr ""
+
+#: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:9
+msgid "Topic list"
+msgstr ""
+
+#: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:13
+msgid "Essays list"
+msgstr ""
+
+#: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:17
+msgid "Student list"
+msgstr ""
+
+#: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:22
+msgid "Opponent list"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:3
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:18
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:24
+msgid "Opponent management"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:39
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:78
+msgid "Import from CSV"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:40
+msgid "Add new"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:55
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:49
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:47
+msgid "Status"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:62
+msgid "Go to letter confirm"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:93
+msgid "※Data format .csv<br>※Maximum upload file size: 2MB"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:100
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:135
+#: ../storage/framework/messages/9157a18b00658cc42e0c79c27a0896dc4f600274.php.php:13
+msgid "Cancel"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:101
+msgid "Import"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:113
+msgid "Add New Opponent"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:123
+msgid "Enter email"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:128
+msgid "Enter full name"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:136
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:78
+msgid "Save"
+msgstr ""
+
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:153
+msgid "New opponent added successfully"
+msgstr ""
+
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:3
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:11
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:19
+msgid "Essay result detail"
+msgstr ""
+
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:25
+msgid "Student name"
+msgstr ""
+
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:55
+msgid "Reviewer"
+msgstr ""
+
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:67
+msgid "Link to download"
+msgstr ""
+
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:73
+msgid "Comments"
+msgstr ""
+
+#: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:77
+msgid "Save changes"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:1
+msgid "user-list"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:3
+msgid "user-create"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:5
+msgid "user-edit"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:7
+msgid "user-delete"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:9
+msgid "role-list"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:11
+msgid "role-create"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:13
+msgid "role-edit"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:15
+msgid "role-delete"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:17
+msgid "topic-list"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:19
+msgid "topic-create"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:21
+msgid "topic-edit"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:23
+msgid "topic-delete"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:25
+msgid "essay-list"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:27
+msgid "essay-create"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:29
+msgid "essay-edit"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:31
+msgid "essay-delete"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:33
+msgid "user"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:35
+msgid "role"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:37
+msgid "topic"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:39
+msgid "essay"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:41
+msgid "opponent"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:43
+msgid "opponent-sendrequest"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:45
+msgid "opponent-confirmation"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:47
+msgid "Admin"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:49
+msgid "Teacher"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:51
+msgid "not_yet"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:53
+msgid "fresh"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:55
+msgid "mail_send"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:57
+msgid "u_yes"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:59
+msgid "u_no"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:61
+msgid "u_reviewing"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:63
+msgid "u_finish"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:65
+msgid "pending"
+msgstr "Wait for review"
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:67
+msgid "reviewing"
+msgstr "Reviewing now"
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:69
+msgid "reviewed"
+msgstr "Finish review"
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:71
+msgid "good"
+msgstr ""
+
+#: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:73
+msgid "bad"
+msgstr ""
+
+#: ../storage/framework/messages/9157a18b00658cc42e0c79c27a0896dc4f600274.php.php:6
+msgid "Delete Confirmation"
+msgstr ""
+
+#: ../storage/framework/messages/9157a18b00658cc42e0c79c27a0896dc4f600274.php.php:10
+msgid "Are you sure you want to delete?"
+msgstr ""
+
+#: ../storage/framework/messages/9610eb826db5ccc8a531bfa5a75d7221d3c9dd3c.php.php:3
+#: ../storage/framework/messages/9610eb826db5ccc8a531bfa5a75d7221d3c9dd3c.php.php:11
+#: ../storage/framework/messages/9610eb826db5ccc8a531bfa5a75d7221d3c9dd3c.php.php:19
+#: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:3
+#: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:11
+#: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:19
+msgid "Review request form"
+msgstr ""
+
+#: ../storage/framework/messages/9610eb826db5ccc8a531bfa5a75d7221d3c9dd3c.php.php:23
+msgid "There no reviewer yet"
+msgstr ""
+
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:3
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:12
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:18
+msgid "Edit Role"
+msgstr ""
+
+#: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:48
+#: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:45
+#: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:37
+msgid "Permission"
+msgstr ""
+
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:3
+msgid "Request reply"
+msgstr ""
+
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:12
+msgid "Confirmation to become a member of the thesis"
+msgstr ""
+
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:63
+msgid "Can you join to become a member of the thesis?"
+msgstr ""
+
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:67
+msgid "Yes"
+msgstr ""
+
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:71
+msgid "No"
+msgstr ""
+
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:29
+msgid "Add new topic"
+msgstr ""
+
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:73
+msgid "Save Changes"
+msgstr ""
+
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:74
+msgid "Are you sure want to delete ?"
+msgstr ""
+
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:75
+msgid "Sending.."
+msgstr ""
+
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:76
+msgid "Edit Topic"
+msgstr ""
+
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:77
+msgid "Create New Topic"
+msgstr ""
+
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:111
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:112
+msgid "Start date"
+msgstr ""
+
+#: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:119
+msgid "End date"
+msgstr ""
+
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:3
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:17
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:23
+msgid "Edit User"
+msgstr ""
+
+#: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:74
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:71
+msgid "Role"
 msgstr ""
 
 #: ../storage/framework/messages/b28877d31316cb7d1d62cedb54353e0a93563ae2.php.php:6
@@ -98,4 +833,40 @@ msgstr ""
 
 #: ../storage/framework/messages/b28877d31316cb7d1d62cedb54353e0a93563ae2.php.php:50
 msgid "Send Password Reset Link"
+msgstr ""
+
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:3
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:17
+#: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:23
+#: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:20
+msgid "Create New User"
+msgstr ""
+
+#: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:3
+#: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:11
+#: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:17
+msgid "Show Role"
+msgstr ""
+
+#: ../storage/framework/messages/e7ad86f0337b810ed6f1637c5d6f271409301c34.php.php:161
+#: Http/Controllers/OpponentController.php:163
+msgid "Thank you for your confirmation."
+msgstr ""
+
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:3
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:16
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:24
+msgid "Review request mail template"
+msgstr ""
+
+#: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:37
+msgid "Send review request"
+msgstr ""
+
+#: Http/Controllers/EssayController.php:173
+msgid "Essay updated successfully"
+msgstr ""
+
+#: Http/Controllers/OpponentController.php:125
+msgid "The emails were send."
 msgstr ""

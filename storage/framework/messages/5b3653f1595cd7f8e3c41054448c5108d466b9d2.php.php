@@ -12,15 +12,17 @@
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/login.css')); ?>" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="<?php echo e(asset('css/custom.css')); ?>" rel="stylesheet">
      <!-- Datepicker styles-->
-    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="<?php echo e(asset('css/jquery-ui.css')); ?>" rel="stylesheet">
     <?php echo $__env->yieldContent('content'); ?>
     <!-- Jquery scripts -->
-    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="<?php echo e(asset('js/jquery-1.12.4.js')); ?>"></script>
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
     <!-- Datepicker script -->
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="<?php echo e(asset('js/jquery-ui.js')); ?>"></script>
     <script src="<?php echo e(asset('js/datepicker-ja.js')); ?>"></script>
     <!-- Custom script -->
     <script src="<?php echo e(asset('js/guess.js')); ?>"></script>

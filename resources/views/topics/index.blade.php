@@ -9,7 +9,7 @@
 <link  href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 <link  href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 <!-- Datepicker styles-->
-<link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+<link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -44,7 +44,7 @@
 								<th>{{ _i('Title') }}</th>
 								<th>{{ _i('Period') }}</th>
 								<th>{{ _i('Status') }}</th>
-								<th>{{ _i('Action') }}</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -74,12 +74,13 @@
 		sending:'{{ _i("Sending..") }}',
 		edit_topic:'{{ _i("Edit Topic") }}',
 		new_topic:'{{ _i("Create New Topic") }}',
+		save_btn:'{{ _i("Save") }}',
 	};
 </script>
 <script src="{{ asset('js/topics-index.js') }}"></script>
 
 <!-- Datepicker script -->
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
 <script src="{{ asset('js/datepicker-ja.js') }}"></script>
 <!-- Custom script -->
 <script src="{{ asset('js/datepicker-custom.js') }}"></script>

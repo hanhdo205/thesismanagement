@@ -11,6 +11,6 @@ class Essay extends Model {
 	 * @var array
 	 */
 	protected $fillable = [
-		'essay_title', 'essay_file', 'student_name', 'student_gender', 'student_dob', 'student_email', 'topic_id', 'reviewer_id', 'review_result', 'review_status',
+		'essay_title', 'essay_belong', 'essay_major', 'essay_file', 'student_name', 'student_gender', 'student_dob', 'student_email', 'topic_id', 'reviewer_id', 'review_result', 'review_comment', 'review_status',
 	];
 }

@@ -3,6 +3,7 @@
 //opponents status
 define('REVIEW_WAIT_FOR_ASKING', 'fresh');
 define('REVIEW_WAIT_FOR_ANSWER', 'mail_send');
+define('REVIEW_MAIL_FAIL', 'mail_fail');
 define('REVIEW_WAIT_FOR_ASSIGN', 'u_yes');
 define('REVIEW_REFUSE', 'u_no');
 define('REVIEWING_STATUS_REPORT', 'u_reviewing');

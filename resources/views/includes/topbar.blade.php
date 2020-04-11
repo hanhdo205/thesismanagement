@@ -10,13 +10,13 @@
 	<div class="inline my-2 my-lg-0">
 		<div class="btn-group">
 			<button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			My account
+			{{ _i('My account') }}
 			</button>
 			<div class="dropdown-menu dropdown-menu-right">
 				<a class="dropdown-item" href="#">{{ _i('My profile') }}</a>
-				@can('role-list')
+				<!-- @can('role-list')
 				<a class="dropdown-item" href="{{ route('roles.index') }}">{{ _i('Manage Role') }}</a>
-				@endcan
+				@endcan -->
 				<div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();

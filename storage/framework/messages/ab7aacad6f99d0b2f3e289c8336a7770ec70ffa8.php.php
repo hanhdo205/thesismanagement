@@ -8,6 +8,8 @@
 <!-- Datatable -->
 <link  href="<?php echo e(asset('css/datatables/dataTables.bootstrap4.min.css')); ?>" rel="stylesheet">
 <link  href="<?php echo e(asset('css/datatables/responsive.bootstrap4.min.css')); ?>" rel="stylesheet">
+<!-- Datepicker styles-->
+<link href="<?php echo e(asset('css/jquery-ui.css')); ?>" rel="stylesheet">
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -43,7 +45,7 @@
 								<th><?php echo e(_i('Title')); ?></th>
 								<th><?php echo e(_i('Period')); ?></th>
 								<th><?php echo e(_i('Status')); ?></th>
-								<th><?php echo e(_i('Action')); ?></th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -73,9 +75,16 @@
 		sending:'<?php echo e(_i("Sending..")); ?>',
 		edit_topic:'<?php echo e(_i("Edit Topic")); ?>',
 		new_topic:'<?php echo e(_i("Create New Topic")); ?>',
+		save_btn:'<?php echo e(_i("Save")); ?>',
 	};
 </script>
 <script src="<?php echo e(asset('js/topics-index.js')); ?>"></script>
+
+<!-- Datepicker script -->
+<script src="<?php echo e(asset('js/jquery-ui.js')); ?>"></script>
+<script src="<?php echo e(asset('js/datepicker-ja.js')); ?>"></script>
+<!-- Custom script -->
+<script src="<?php echo e(asset('js/datepicker-custom.js')); ?>"></script>
 
 <div class="modal fade" id="ajaxModel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

@@ -7,6 +7,7 @@ use App\Exports\EssaysExport;
 use App\Topic;
 use Carbon\Carbon;
 use DataTables;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -32,54 +33,48 @@ class EssayController extends Controller {
 	 */
 	public function index(Request $request) {
 		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
-		/*if ($topics->isEmpty()) {
-			return view('essays.empty');
-		}*/
 
 		$last_topic_id = array_key_first($topics->toArray());
-		//return view('essays.index', compact(['topics', 'last_topic_id']));
-		/*$essays = self::essayList($last_topic_id);
-			return view('essays.index', compact(['essays', 'topics', 'last_topic_id']))
-		*/
+		
 		if ($request->ajax()) {
 			$topic_id = $request->input('topic_id');
 			$student_name = $request->input('student_name');
 			$review_result = $request->input('review_result');
 			switch (true) {
-			case (($student_name != '') && ($review_result != '')):
-				$data = DB::table('essays')
-					->join('topics', 'essays.topic_id', '=', 'topics.id')
-					->where('essays.topic_id', $topic_id)
-					->where(function ($query) use ($student_name, $review_result) {
-						$query->where('essays.student_name', 'LIKE', '%' . $student_name . '%')
-							->orWhere('essays.review_result', '=', $review_result);
-					})
-					->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.review_result', 'essays.created_at')
-					->get();
-				break;
-			case ($request->input('student_name') != ''):
-				$data = DB::table('essays')
-					->join('topics', 'essays.topic_id', '=', 'topics.id')
-					->where('essays.topic_id', $topic_id)
-					->where('essays.student_name', 'LIKE', '%' . $student_name . '%')
-					->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.review_result', 'essays.created_at')
-					->get();
-				break;
-			case ($request->input('review_result') != ''):
-				$data = DB::table('essays')
-					->join('topics', 'essays.topic_id', '=', 'topics.id')
-					->where('essays.topic_id', $topic_id)
-					->where('essays.review_result', '=', $review_result)
-					->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.review_result', 'essays.created_at')
-					->get();
-				break;
-			default:
-				$data = DB::table('essays')
-					->join('topics', 'essays.topic_id', '=', 'topics.id')
-					->where('essays.topic_id', $topic_id)
-					->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.review_result', 'essays.created_at')
-					->get();
-				break;
+				case (($student_name != '') && ($review_result != '')):
+					$data = DB::table('essays')
+						->join('topics', 'essays.topic_id', '=', 'topics.id')
+						->where('essays.topic_id', $topic_id)
+						->where(function ($query) use ($student_name, $review_result) {
+							$query->where('essays.student_name', 'LIKE', '%' . $student_name . '%')
+								->orWhere('essays.review_result', '=', $review_result);
+						})
+						->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+						->get();
+					break;
+				case ($request->input('student_name') != ''):
+					$data = DB::table('essays')
+						->join('topics', 'essays.topic_id', '=', 'topics.id')
+						->where('essays.topic_id', $topic_id)
+						->where('essays.student_name', 'LIKE', '%' . $student_name . '%')
+						->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+						->get();
+					break;
+				case ($request->input('review_result') != ''):
+					$data = DB::table('essays')
+						->join('topics', 'essays.topic_id', '=', 'topics.id')
+						->where('essays.topic_id', $topic_id)
+						->where('essays.review_result', '=', $review_result)
+						->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+						->get();
+					break;
+				default:
+					$data = DB::table('essays')
+						->join('topics', 'essays.topic_id', '=', 'topics.id')
+						->where('essays.topic_id', $topic_id)
+						->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+						->get();
+					break;
 			}
 
 			return Datatables::of($data)
@@ -88,9 +83,11 @@ class EssayController extends Controller {
 					$checkbox = '<label class="custom-check"><input type="checkbox" name="essays[]" id="' . $row->id . '" class="field" value="' . $row->id . '"><span class="checkmark"></span></label>';
 					return $checkbox;
 				})
-				->addColumn('filename', function ($row) {
-					$filename = Storage::url($row->essay_file);
-					return $filename;
+				->addColumn('detail', function ($row) {
+					if($row->reviewer_id) {
+						$detail =  route('essays.edit',$row->id);
+					} else $detail ='';
+					return $detail;
 				})
 				->addColumn('status', function ($row) {
 					$status = _i($row->review_status);
@@ -107,7 +104,7 @@ class EssayController extends Controller {
 				->rawColumns(['date'])
 				->rawColumns(['status'])
 				->rawColumns(['result'])
-				->rawColumns(['filename'])
+				->rawColumns(['detail'])
 				->rawColumns(['checkbox'])
 				->addIndexColumn()
 				->make(true);
@@ -129,6 +126,46 @@ class EssayController extends Controller {
 			'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile), //mime type of used format
 		);
 		return response()->json($response);
+	}
+	
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  \App\Topic  $topic
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit(Essay $essay) {
+		$rows = DB::table('essays')
+			->join('users', 'users.id', '=', 'essays.reviewer_id')
+			->where('essays.id', $essay->id)
+			->select('essays.*', 'users.name AS reviewer')
+			->first();
+			
+		return view('essays.edit', compact('rows'));
+	}
+	
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \App\Topic  $topic
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(Request $request, Essay $essay) {
+		request()->validate([
+			'essay_title' => 'required',
+			'essay_belong' => 'required',
+			'essay_major' => 'required',
+			'student_name' => 'required',
+			'student_name' => 'required',
+		]);
+		$input = $request->all();
+		$essay->update($input);
+		
+		
+
+		return redirect()->route('essays.index')
+			->with('success', _i('Essay updated successfully'));
 	}
 
 	/**
@@ -154,8 +191,9 @@ class EssayController extends Controller {
 	public function storeEssay(Request $request) {
 		request()->validate([
 			'essay_title' => 'required',
+			'essay_belong' => 'required',
+			'essay_major' => 'required',
 			'essay_file' => 'required|mimes:doc,docx,pdf,txt|max:2048',
-			//'essay_file' => 'required',
 			'student_name' => 'required',
 			'student_gender' => 'required',
 			'student_dob' => 'required',
@@ -166,6 +204,8 @@ class EssayController extends Controller {
 		Essay::create([
 			'topic_id' => $request->input('topic_id'),
 			'essay_title' => $request->input('essay_title'),
+			'essay_belong' => $request->input('essay_title'),
+			'essay_major' => $request->input('essay_major'),
 			'student_name' => $request->input('student_name'),
 			'student_gender' => $request->input('student_gender'),
 			'student_dob' => $request->input('student_dob'),
@@ -185,6 +225,7 @@ class EssayController extends Controller {
 	public function reviewRequest(Request $request) {
 		$essays_request = $request->input('essays');
 		$topic_id = $request->input('topic');
+		
 		$essays = Essay::whereIn('id', $essays_request)->get();
 		if (empty($essays)) {
 			return abort(404);
@@ -224,7 +265,9 @@ class EssayController extends Controller {
 					->where('request_status', REVIEW_WAIT_FOR_ASSIGN)
 					->pluck('user_id')
 					->toArray();
-		
+		if (empty($opponents)) {
+			return view('review.empty');
+		}
 		switch (true) {
 			case (count($opponents) > count($essays)):
 				$opponents = array_slice($opponents,0,count($essays));
@@ -246,39 +289,42 @@ class EssayController extends Controller {
 				break;
 		}
 				
-		if($key == 'opponent') {
+		if($key == 'opponent') { //opponent is a key
 			foreach($combine as $key => $value) {
-				
+				$user = User::find($key);
+				$to_name = $user->name;
+				$to_email = $user->email;
+				$essay = DB::table('essays')
+					->where('essays.id', $value)
+					->first();
+				$file_to_download = Storage::url($essay->essay_file);
+				$data = array(
+					'Name' => $user->name,
+					'Link' => $file_to_download)
+				);
+				try {
+					Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
+						$message->to($to_email, $to_name)
+							->subject('査読対応確認');
+						$message->from('hanhdo205@gmail.com', 'thesisManagement');
+					});
+					$reviewer_status = REVIEWING_STATUS_REPORT;
+				} catch (Exception $ex) {
+					$reviewer_status = REVIEW_MAIL_FAIL;
+				}
+
+				DB::table('reviews')
+					->updateOrInsert(
+						['topic_id' => $value, 'user_id' => $key],
+						['request_status' => $reviewer_status]
+					);
+				DB::table('essays')
+					->updateOrInsert(
+						['id' => $value],
+						['review_status' => REVIEWING]
+					);
 			}
 		}
-
-		// foreach ($opponents as $key => $value) {
-			// $user = User::find($value);
-			// $to_name = $user->name;
-			// $to_email = $user->email;
-			// $token = Str::random(32);
-			// $data = array(
-				// 'Name' => $user->name,
-				// 'Link' => url('/request/confirm/' . $token),
-			// );
-			// try {
-				// Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
-					// $message->to($to_email, $to_name)
-						// ->subject('査読対応確認');
-					// $message->from('hanhdo205@gmail.com', 'thesisManagement');
-				// });
-				// $reviewer_status = 'mail_send';
-			// } catch (Exception $ex) {
-				// $reviewer_status = 'mail_fail';
-			// }
-
-			// DB::table('reviews')
-				// ->updateOrInsert(
-					// ['topic_id' => $topic_id, 'user_id' => $value],
-					// ['request_status' => $reviewer_status, 'review_token' => $token]
-				// );
-		// }
-
 		return view('opponents.send');
 	}
 }

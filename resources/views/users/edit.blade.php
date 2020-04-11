@@ -29,7 +29,7 @@
 			<div class="card-text">
 				@if (count($errors) > 0)
 				  <div class="alert alert-danger">
-				    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+				    <strong>{{ _i('Whoops!') }}</strong> {{ _i('There were some problems with your input.') }}<br><br>
 				    <ul>
 				       @foreach ($errors->all() as $error)
 				         <li>{{ $error }}</li>

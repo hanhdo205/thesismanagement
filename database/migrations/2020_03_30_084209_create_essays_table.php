@@ -14,6 +14,8 @@ class CreateEssaysTable extends Migration {
 		Schema::create('essays', function (Blueprint $table) {
 			$table->id();
 			$table->string('essay_title');
+			$table->string('essay_belong');
+			$table->string('essay_major');
 			$table->string('essay_file');
 			$table->string('student_name');
 			$table->char('student_gender', 6);

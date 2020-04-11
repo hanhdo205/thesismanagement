@@ -9,6 +9,7 @@ use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
 class OpponentController extends Controller {
@@ -44,6 +45,11 @@ class OpponentController extends Controller {
 					$checkbox = '<label class="custom-check"><input type="checkbox" name="opponents[]" id="' . $row->id . '" class="field" value="' . $row->id . '"><span class="checkmark"></span></label>';
 					return $checkbox;
 				})
+				->addColumn('status', function ($row) {
+					$status = _i($row->request_status);
+					return $status;
+				})
+				->rawColumns(['status'])
 				->rawColumns(['checkbox'])
 				->addIndexColumn()
 				->make(true);
@@ -104,9 +110,9 @@ class OpponentController extends Controller {
 						->subject('査読対応確認');
 					$message->from('hanhdo205@gmail.com', 'thesisManagement');
 				});
-				$reviewer_status = 'mail_send';
+				$reviewer_status = REVIEW_WAIT_FOR_ANSWER;
 			} catch (Exception $ex) {
-				$reviewer_status = 'mail_fail';
+				$reviewer_status = REVIEW_MAIL_FAIL;
 			}
 
 			DB::table('reviews')
@@ -115,8 +121,9 @@ class OpponentController extends Controller {
 					['request_status' => $reviewer_status, 'review_token' => $token]
 				);
 		}
-
-		return view('opponents.send');
+		return Redirect::route('opponents.index')
+			->with(['success' => _i('The emails were send.'), 'topic_id' => $topic_id]);
+		//return view('opponents.send');
 	}
 
 	/**

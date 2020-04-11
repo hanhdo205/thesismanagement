@@ -25,6 +25,14 @@
 		</div>
 		<div class="card-body">
 			<div class="card-text">
+				@if ($message = Session::get('success'))
+					<script>
+						toastr.success('{{ $message }}');
+					</script>
+					@php
+						$last_topic_id = Session::get('topic_id');
+					@endphp
+				@endif
 				{!! Form::open(array('route' => 'opponents.confirmation','method'=>'POST', 'class' => 'opponent_management')) !!}
 				<div class="form-group">
 					<div class="form-inline">

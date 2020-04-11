@@ -3,98 +3,84 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="card">
-                <div class="card-header"><?php echo e(_i('Login')); ?></div>
 
                 <div class="card-body">
+                    <h4 class="text-logo sign-in text-center mt-3 mb-5"><?php echo e(_i('Sign in')); ?></h4>
                     <form method="POST" action="<?php echo e(route('login')); ?>">
                         <?php echo csrf_field(); ?>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right"><?php echo e(_i('E-Mail Address')); ?></label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control <?php $__errorArgs = ['email'];
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                              </span>
+                            </div>
+                            <input id="email" class="form-control <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="email" value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus>
-
-                                <?php $__errorArgs = ['email'];
+unset($__errorArgs, $__bag); ?>" type="email" name="email" value="<?php echo e(old('email')); ?>" placeholder="<?php echo e(_i('E-Mail Address')); ?>">
+                            <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                <?php unset($message);
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                            </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"><?php echo e(_i('Password')); ?></label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="fa fa-key" aria-hidden="true"></i>
+                              </span>
+                            </div>
+                            <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="current-password">
-
-                                <?php $__errorArgs = ['password'];
+unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="current-password" placeholder="<?php echo e(_i('Password')); ?>">
+                            <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                <?php unset($message);
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                            </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" id="remember" class="form-check-input" name="remember"  <?php echo e(old('remember') ? 'checked' : ''); ?>><label for="remember" class="remember-me form-check-label" ><?php echo e(_i('Remember Me')); ?></label>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                              <button class="sign-in btn btn-primary px-4" type="submit" name="submitlogin"><?php echo e(_i('Login')); ?></button>
 
-                                    <label class="form-check-label" for="remember">
-                                        <?php echo e(_i('Remember Me')); ?>
-
-                                    </label>
-                                </div>
                             </div>
+                            <?php if(Route::has('password.request')): ?>
+                            <div class="col-6 nopadding">
+                              <a href="<?php echo e(route('password.request')); ?>" class="forgotten-password btn btn-link px-0"><?php echo e(_i('Forgot Your Password?')); ?></a>
+                            </div>
+                            <?php endif; ?>
+
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <?php echo e(_i('Login')); ?>
-
-                                </button>
-
-                                <?php if(Route::has('password.request')): ?>
-                                    <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>">
-                                        <?php echo e(_i('Forgot Your Password?')); ?>
-
-                                    </a>
-                                <?php endif; ?>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>

@@ -130,8 +130,8 @@ $(function () {
 	        	{data: 'checkbox', name: 'checkbox'},
 	            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
 	            {data: 'essay_title', name: 'essay_title',fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-						if(oData.filename) {
-							$(nTd).html('<a href="'+oData.filename+'">'+oData.essay_title+"</a>");
+						if(oData.detail) {
+							$(nTd).html('<a href="'+oData.detail+'">'+oData.essay_title+"</a>");
 						}
 					}},
 	            {data: 'student_name', name: 'student_name'},

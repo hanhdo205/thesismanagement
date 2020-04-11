@@ -13,8 +13,8 @@ $(function () {
 			}
 		}
 	}
+
 	//date picker
-	$( function() {
 	var dateFormat = "yy/mm/dd",
 	dob = $( "#dateOfBirth" )
 	    .datepicker({
@@ -25,6 +25,10 @@ $(function () {
 		      $('.ui-datepicker-title').addClass('d-flex justify-content-center');
 		  }
 	  });
-    
-	});
+    if($('div').hasClass('alert-danger')) {
+		$('body').on('click', '.hide_error', function () {
+			$('input').removeClass('is-invalid');
+			$('.text-danger').html('');
+		});
+	}
 });

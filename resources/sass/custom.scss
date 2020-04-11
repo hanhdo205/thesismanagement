@@ -15,8 +15,51 @@ body {
     }
 }
 
+/* -- Use Fieldset Legend with bootstrap -- */
+fieldset {
+    &.form-border {
+        border: 1px solid #ced4da !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow:  0px 0px 0px 0px #000;
+        box-shadow:  0px 0px 0px 0px #000;
+    }
+    legend {
+        &.form-border {
+            font-size: 1.2em !important;
+            font-weight: bold !important;
+            text-align: left !important;
+            width:auto;
+            padding:0 10px;
+            border-bottom:none;
+        }
+    }
+}
 
-	
+
+/* -- Select2 v.4 Bootstrap v.4 -- */
+.select2-container {
+    &.select2-container--default {
+        .select2-selection--single {
+            height: 37px;
+            border: none;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            .select2-selection__rendered {
+                line-height: 37px;
+            }
+            .select2-selection__arrow {
+                height: 37px;
+                right: 2px;
+            }
+        }
+        .select2-results__option--highlighted[aria-selected] {
+            background-color: #3490dc;
+            color: #fff;
+        }
+    }
+}   
+
 .custom-inline {
 	.alert {
 		margin-bottom: 0;

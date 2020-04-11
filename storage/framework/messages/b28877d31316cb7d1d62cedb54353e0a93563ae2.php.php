@@ -1,9 +1,8 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header"><?php echo e(_i('Reset Password')); ?></div>
 
                 <div class="card-body">
                     <?php if(session('status')): ?>
@@ -12,24 +11,34 @@
 
                         </div>
                     <?php endif; ?>
+                    <div class="clearfix">
+                        <div class="col-sm-12 text-center mb-3">
+                        <a class="navbar-brand" href="<?php echo e(url('/')); ?>">査読管理システム</a>
+                      </div>
+                      <h4 class="pt-3"><?php echo e(_i('Did you forget your password?')); ?></h4>
+                      <p class="text-muted"><?php echo e(_i('Provide your email that you used to register. We will send you information on how to reset your password.')); ?></p>
+                    </div>
 
-                    <form method="POST" action="<?php echo e(route('password.email')); ?>">
+                    <form method="POST" class="mb-5" action="<?php echo e(route('password.email')); ?>">
                         <?php echo csrf_field(); ?>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right"><?php echo e(_i('E-Mail Address')); ?></label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control <?php $__errorArgs = ['email'];
+                        <div class="input-prepend input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                  <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                              <input class="form-control <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="email" value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus>
-
-                                <?php $__errorArgs = ['email'];
+unset($__errorArgs, $__bag); ?>" id="email" size="16" name="email" type="email" placeholder="<?php echo e(_i('E-Mail Address')); ?>" value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus>
+                              <span class="input-group-append">
+                                <button class="btn btn-primary" type="submit" name="forgetpass"><?php echo e(_i('Send')); ?></button>
+                              </span>
+                              <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -37,21 +46,13 @@ $message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
-                                <?php unset($message);
+                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                            </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <?php echo e(_i('Send Password Reset Link')); ?>
-
-                                </button>
                             </div>
-                        </div>
+
                     </form>
                 </div>
             </div>

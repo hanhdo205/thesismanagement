@@ -6,20 +6,20 @@
 			</li>
 			@can('topic-list')
 			<li class="{{ request()->is('topics') ? 'active' : '' }}">
-				<a href="{{ route('topics.index') }}"><i class="fa fa-clipboard "></i>学術大会管理</a>
+				<a href="{{ route('topics.index') }}"><i class="fa fa-clipboard "></i>{{ _i('Topic list') }}</a>
 			</li>
 			@endcan
 			<li class="{{ request()->is('essays') || request()->is('essays/request') ? 'active' : '' }}">
-				<a href="/essays"><i class="fa fa-clipboard "></i>演題管理</a>
+				<a href="/essays"><i class="fa fa-clipboard "></i>{{ _i('Essays list') }}</a>
 			</li>
 			@can('user-list')
 			<li>
-				<a href="{{ route('users.index') }}"><i class="fa fa-clipboard"></i>演題提出者管理</a>
+				<a href=""><i class="fa fa-clipboard"></i>{{ _i('Student list') }}</a>
 			</li>
 			@endcan
 			@can('user-list')
 			<li class="{{ request()->is('opponents') ||  request()->is('review/confirmation') ||  request()->is('review/detail') ? 'active' : '' }}">
-				<a href="/opponents"><i class="fa fa-clipboard"></i>査読者管理</a>
+				<a href="/opponents"><i class="fa fa-clipboard"></i>{{ _i('Opponent list') }}</a>
 			</li>
 			@endcan
 		</ul>

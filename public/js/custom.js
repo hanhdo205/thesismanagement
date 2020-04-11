@@ -7,7 +7,8 @@ $(function () {
     });
 	let flag = true;
 	if($('select').hasClass('select2')) {
-		$('.select2').select2();
+		$('.select2').select2({
+		});
 	}
 	
 	//perfectScrollbar plugin for sidebar
