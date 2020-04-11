@@ -242,7 +242,7 @@ class EssayController extends Controller {
 	}
 
 	/**
-	 * Send mail.
+	 * Collect data to send mail.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
@@ -292,40 +292,48 @@ class EssayController extends Controller {
 				
 		if($key == 'opponent') { //opponent is a key
 			foreach($combine as $key => $value) {
-				$user = User::find($key);
-				$to_name = $user->name;
-				$to_email = $user->email;
-				$essay = DB::table('essays')
-					->where('essays.id', $value)
-					->first();
-				$file_to_download = Storage::url($essay->essay_file);
-				$data = array(
-					'Name' => $user->name,
-					'Link' => $file_to_download
-				);
-				try {
-					Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
-						$message->to($to_email, $to_name)
-							->subject('査読対応確認');
-						$message->from('hanhdo205@gmail.com', 'thesisManagement');
-					});
-					$reviewer_status = REVIEWING_STATUS_REPORT;
-				} catch (Exception $ex) {
-					$reviewer_status = REVIEW_MAIL_FAIL;
-				}
-
-				DB::table('reviews')
-					->updateOrInsert(
-						['topic_id' => $value, 'user_id' => $key],
-						['request_status' => $reviewer_status]
-					);
-				DB::table('essays')
-					->updateOrInsert(
-						['id' => $value],
-						['review_status' => REVIEWING]
-					);
+				self::doSendMail($key, $value);
+			}
+		} else { //essay is a key
+			foreach($combine as $key => $value) {
+				self::doSendMail($value, $key);
 			}
 		}
 		return view('opponents.send');
+	}
+	
+	public function doSendMail($user_id, $essay_id) {
+		$user = User::find($user_id);
+		$to_name = $user->name;
+		$to_email = $user->email;
+		$essay = DB::table('essays')
+			->where('essays.id', $essay_id)
+			->first();
+		$file_to_download = Storage::url($essay->essay_file);
+		$data = array(
+			'Name' => $user->name,
+			'Link' => $file_to_download
+		);
+		try {
+			Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
+				$message->to($to_email, $to_name)
+					->subject('査読対応確認');
+				$message->from('hanhdo205@gmail.com', 'thesisManagement');
+			});
+			$reviewer_status = REVIEWING_STATUS_REPORT;
+		} catch (Exception $ex) {
+			$reviewer_status = REVIEW_MAIL_FAIL;
+		}
+
+		DB::table('reviews')
+			->updateOrInsert(
+				['topic_id' => $essay_id, 'user_id' => $user_id],
+				['request_status' => $reviewer_status]
+			);
+		DB::table('essays')
+			->updateOrInsert(
+				['id' => $essay_id],
+				['review_status' => REVIEWING]
+			);
 	}
 }
