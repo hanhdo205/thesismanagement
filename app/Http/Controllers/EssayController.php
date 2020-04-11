@@ -300,7 +300,7 @@ class EssayController extends Controller {
 				$file_to_download = Storage::url($essay->essay_file);
 				$data = array(
 					'Name' => $user->name,
-					'Link' => $file_to_download)
+					'Link' => $file_to_download
 				);
 				try {
 					Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
