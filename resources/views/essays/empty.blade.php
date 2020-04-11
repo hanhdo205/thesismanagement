@@ -18,7 +18,7 @@
 		</div>
 		<div class="card-body">
 			<div class="card-text">
-				{{ _i('There no topic') }}
+				{{ _i('There is no data.') }}
 			</div>
 		</div>
 	</div>
