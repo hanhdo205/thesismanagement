@@ -15,7 +15,7 @@ class CreateReviewsTable extends Migration {
 			$table->id();
 			$table->bigInteger('topic_id')->unsigned();
 			$table->bigInteger('user_id')->unsigned();
-			$table->char('request_status', 10)->nullable()->default('fresh');
+			$table->char('request_status', 11)->nullable()->default('fresh');
 			$table->string('review_token')->nullable();
 			$table->timestamps();
 		});
