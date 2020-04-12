@@ -41,8 +41,8 @@
 				</div>
 				<div class="form-group">
 					<div id="action-button" class="form-inline">
-						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5" href="javascript:void(0);" data-toggle="modal" data-target="#importUsers">{{ _i('Import from CSV') }}</a>
-						<a class="form-control btn btn-primary pl-5 pr-5" href="javascript:void(0);" data-toggle="modal" data-target="#newUser">{{ _i('Add new') }}</a>
+						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5 mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#importUsers">{{ _i('Import from CSV') }}</a>
+						<a class="form-control btn btn-primary pl-5 pr-5 mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#newUser">{{ _i('Add new') }}</a>
 					</div>
 				</div>
 				<div class="table-scroll mb-5">

@@ -57,8 +57,8 @@
 
 				<div class="form-group">
 					<div class="form-inline">
-						{!! Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2','placeholder' => _i('Please select...'))) !!}
-						{!! Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5')) !!}
+						{!! Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2','placeholder' => _i('Please select...'))) !!}
+						{!! Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2')) !!}
 					</div>
 				</div>
 				<div class="table-scroll">

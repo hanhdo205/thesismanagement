@@ -14,6 +14,12 @@ body.modal-open {
   padding-right: 0 !important;
 }
 
+@media (min-width: 768px) {
+  .navbar-expand-lg .navbar-toggler {
+    display: none;
+  }
+}
+
 /* -- Use Fieldset Legend with bootstrap -- */
 
 fieldset.form-border {
@@ -188,5 +194,11 @@ fieldset legend.form-border {
   height: 10px;
   border-radius: 50%;
   background: #0093B4;
+}
+
+@media (min-width: 768px) {
+  .navbar-expand-lg .navbar-toggler {
+    display: none;
+  }
 }
 
