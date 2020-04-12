@@ -1,13 +1,8 @@
 
 
-<?php $__env->startSection('title', _i('Edit User')); ?>
+<?php $__env->startSection('title', _i('My profile')); ?>
 <?php $__env->startSection('description', _i('The SIS management')); ?>
 <?php $__env->startSection('keyword', _i('management')); ?>
-
-<?php $__env->startPush('head'); ?>
-<!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-<?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
 <?php
@@ -15,13 +10,11 @@
 	$mail_err = '';
 	$password_err = '';
 	$confirm_password_err = '';
-	$roles_err = '';
 ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="<?php echo e(url('/')); ?>"><?php echo e(_i('Home')); ?></a></li>
-		<li class="breadcrumb-item"><a href="<?php echo e(route('users.index')); ?>"><?php echo e(_i('User management')); ?></a></li>
-		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('Edit User')); ?></li>
+		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('My profile')); ?></li>
 	</ol>
 </nav>
 <div id="page-inner">
@@ -29,8 +22,7 @@
 		<div class="col-xl-6">
 			<div class="card">
 				<div class="card-header">
-					<?php echo e(_i('Edit User')); ?>
-
+					<?php echo e(_i('My profile')); ?>
 
 				</div>
 				<div class="card-body">
@@ -61,11 +53,6 @@
 							    	$confirm_password_err = ' is-invalid';
 							    ?>
 							<?php endif; ?>
-							<?php if($errors->first('roles')): ?>
-							    <?php
-							    	$roles_err = ' is-invalid';
-							    ?>
-							<?php endif; ?>
 
 						<?php endif; ?>
 						<?php if($message = Session::get('success')): ?>
@@ -78,7 +65,7 @@
 							<div class="row">
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
-							            <strong><?php echo e(_i('Name')); ?>:</strong>
+							            <strong><?php echo e(_i('Name')); ?></strong>
 							            <?php echo Form::text('name', null, array('placeholder' => _i('Name'),'class' => 'form-control' . $name_err)); ?>
 
 							            <span class="text-danger"><?php echo e($errors->first('name')); ?></span>
@@ -108,17 +95,12 @@
 							            <span class="text-danger"><?php echo e($errors->first('confirm-password')); ?></span>
 							        </div>
 							    </div>
-							    <div class="col-xs-12 col-sm-12 col-md-12">
-							        <div class="form-group">
-							            <strong><?php echo e(_i('Role')); ?>:</strong>
-							            <?php echo Form::select('roles[]', $roles,$userRole, array('class' => 'form-control select2' . $roles_err,'multiple')); ?>
 
-							            <span class="text-danger"><?php echo e($errors->first('roles')); ?></span>
-							        </div>
-							    </div>
+							            <?php echo Form::select('roles[]', $roles,$userRole, array('class' => 'd-none form-control','multiple')); ?>
+
+
 							    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 							    	<?php echo Form::submit(_i('Update profile'), array('class' => 'btn btn-primary')); ?>
-
 
 							    </div>
 							</div>
@@ -132,9 +114,4 @@
 </div>
 <!-- /. PAGE INNER  -->
 <?php $__env->stopSection(); ?>
-
-<?php $__env->startPush('foot'); ?>
-<!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

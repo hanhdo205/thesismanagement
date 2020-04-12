@@ -30,17 +30,17 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/opponents/send', 'OpponentController@sendMail')->name('opponents.sendmail');
 	Route::post('/essays-export', 'EssayController@export')->name('essays.export');
 	Route::post('/review/request', 'EssayController@reviewRequest')->name('review.request');
+	Route::get('/submiter', 'EssayController@submiterList')->name('essays.submiter');
 	Route::post('import_csv', 'ImExController@import')->name('import_csv');
 	Route::post('create-new-opponent', 'UserController@register');
+	Route::get('users/profile', 'UserController@profile')->name('users.profile');
 
 	Route::post('/review/send', 'EssayController@sendMail')->name('review.sendmail');
 
-	Route::resource('roles', 'RoleController');
-	//Route::resource('users', 'UserController');
+	//Route::resource('roles', 'RoleController')->except(['update']);
+	Route::resource('users', 'UserController')->only(['update']);
 	Route::resource('topics', 'TopicController');
-	Route::resource('opponents', 'OpponentController')->only([
-		'index',
-	]);;
+	Route::resource('opponents', 'OpponentController')->only(['index']);
 	Route::resource('essays', 'EssayController')->only([
 		'index', 'edit', 'update',
 	]);

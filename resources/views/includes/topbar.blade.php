@@ -13,10 +13,7 @@
 			{{ _i('My account') }}
 			</button>
 			<div class="dropdown-menu dropdown-menu-right">
-				<a class="dropdown-item" href="#">{{ _i('My profile') }}</a>
-				<!-- @can('role-list')
-				<a class="dropdown-item" href="{{ route('roles.index') }}">{{ _i('Manage Role') }}</a>
-				@endcan -->
+				<a class="dropdown-item" href="{{ route('users.profile') }}">{{ _i('My profile') }}</a>
 				<div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();

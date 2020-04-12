@@ -33,19 +33,36 @@
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>{{ _i('Name') }}:</strong>
-					            {!! Form::text('name', null, array('placeholder' => _i('Name'),'class' => 'form-control')) !!}
+					            <strong>{{ _i('Role name') }}:</strong>
+					            {!! Form::text('name', null, array('placeholder' => _i('Role name'),'class' => 'form-control')) !!}
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
 					            <strong>{{ _i('Permission') }}:</strong>
 					            <br/>
+					            @php
+					            $new_permission = [];
+					            @endphp
 					            @foreach($permission as $value)
-					                <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-					                {{ $value->name }}</label>
-					            <br/>
+					            	@php
+					            	$permission_arr = explode("-", $value->name);
+					            	$group_permission = $permission_arr[0];
+					            	$new_permission[$group_permission][] = ['id' => $value->id,'name'=>$value->name];
+					            	@endphp
 					            @endforeach
+					            <div class="row">
+						            @foreach($new_permission as $key => $group)
+						            	<div class="col-md-3">
+							            	<strong>{{ _i($key) }} </strong><br/>
+							            	@foreach($group as $gr)
+						            			<label>{{ Form::checkbox('permission[]', $gr['id'], false, array('class' => 'name')) }}
+							                	{{ _i($gr['name']) }}</label>
+							            		<br/>
+							            	@endforeach
+						            	</div>
+						            @endforeach
+					        	</div>
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">

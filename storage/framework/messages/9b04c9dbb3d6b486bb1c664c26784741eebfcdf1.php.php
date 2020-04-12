@@ -38,8 +38,8 @@
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong><?php echo e(_i('Name')); ?>:</strong>
-					            <?php echo Form::text('name', null, array('placeholder' => _i('Name'),'class' => 'form-control')); ?>
+					            <strong><?php echo e(_i('Role name')); ?>:</strong>
+					            <?php echo Form::text('name', null, array('placeholder' => _i('Role name'),'class' => 'form-control')); ?>
 
 					        </div>
 					    </div>

@@ -11,14 +11,10 @@
 
                         </div>
                     <?php endif; ?>
-                    <div class="clearfix">
-                        <div class="col-sm-12 text-center mb-3">
-                        <a class="navbar-brand" href="<?php echo e(url('/')); ?>">査読管理システム</a>
-                      </div>
+                    <div class="clearfix mt-3">
                       <h4 class="pt-3"><?php echo e(_i('Did you forget your password?')); ?></h4>
                       <p class="text-muted"><?php echo e(_i('Provide your email that you used to register. We will send you information on how to reset your password.')); ?></p>
                     </div>
-
                     <form method="POST" class="mb-5" action="<?php echo e(route('password.email')); ?>">
                         <?php echo csrf_field(); ?>
                         <div class="input-prepend input-group">

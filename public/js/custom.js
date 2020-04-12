@@ -13,4 +13,11 @@ $(function () {
 	
 	//perfectScrollbar plugin for sidebar
 	$('#main-menu').perfectScrollbar();
+
+	if($('div').hasClass('alert-danger')) {
+		$('body').on('click', '.hide_error', function () {
+			$('input').removeClass('is-invalid');
+			$('.text-danger').html('');
+		});
+	}
 });

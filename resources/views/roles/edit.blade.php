@@ -36,8 +36,8 @@
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>{{ _i('Name') }}:</strong>
-					            {!! Form::text('name', null, array('placeholder' => _i('Name'),'class' => 'form-control')) !!}
+					            <strong>{{ _i('Role name') }}:</strong>
+					            {!! Form::text('name', null, array('placeholder' => _i('Role name'),'class' => 'form-control')) !!}
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">

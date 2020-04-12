@@ -35,8 +35,8 @@
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong><?php echo e(_i('Name')); ?>:</strong>
-					            <?php echo Form::text('name', null, array('placeholder' => _i('Name'),'class' => 'form-control')); ?>
+					            <strong><?php echo e(_i('Role name')); ?>:</strong>
+					            <?php echo Form::text('name', null, array('placeholder' => _i('Role name'),'class' => 'form-control')); ?>
 
 					        </div>
 					    </div>
@@ -44,12 +44,29 @@
 					        <div class="form-group">
 					            <strong><?php echo e(_i('Permission')); ?>:</strong>
 					            <br/>
+					            <?php
+					            $new_permission = [];
+					            ?>
 					            <?php $__currentLoopData = $permission; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-					                <label><?php echo e(Form::checkbox('permission[]', $value->id, false, array('class' => 'name'))); ?>
-
-					                <?php echo e($value->name); ?></label>
-					            <br/>
+					            	<?php
+					            	$permission_arr = explode("-", $value->name);
+					            	$group_permission = $permission_arr[0];
+					            	$new_permission[$group_permission][] = ['id' => $value->id,'name'=>$value->name];
+					            	?>
 					            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					            <div class="row">
+						            <?php $__currentLoopData = $new_permission; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $group): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						            	<div class="col-md-3">
+							            	<strong><?php echo e(_i($key)); ?> </strong><br/>
+							            	<?php $__currentLoopData = $group; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						            			<label><?php echo e(Form::checkbox('permission[]', $gr['id'], false, array('class' => 'name'))); ?>
+
+							                	<?php echo e(_i($gr['name'])); ?></label>
+							            		<br/>
+							            	<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						            	</div>
+						            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					        	</div>
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">

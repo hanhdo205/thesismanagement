@@ -7,6 +7,7 @@ use App\User;
 use DB;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 
@@ -148,6 +149,19 @@ class UserController extends Controller {
 
 		return view('users.edit', compact('user', 'roles', 'userRole'));
 	}
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function profile() {
+		$user = Auth::user();
+		$roles = Role::pluck('name', 'name')->all();
+		$userRole = $user->roles->pluck('name', 'name')->all();
+
+		return view('users.profile', compact('user', 'roles', 'userRole'));
+	}
 
 	/**
 	 * Update the specified resource in storage.
@@ -177,8 +191,9 @@ class UserController extends Controller {
 
 		$user->assignRole($request->input('roles'));
 
-		return redirect()->route('users.index')
-			->with('success', 'User updated successfully');
+		/*return redirect()->route('users.index')
+			->with('success', 'Profile updated successfully');*/
+		return redirect()->back()->with('success', 'Profile updated successfully');
 	}
 
 	/**

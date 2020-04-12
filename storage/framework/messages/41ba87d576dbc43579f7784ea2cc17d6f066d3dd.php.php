@@ -19,7 +19,7 @@
 		</div>
 		<div class="card-body">
 			<div class="card-text">
-				<?php echo e(_i('There no topic')); ?>
+				<?php echo e(_i('There is no data.')); ?>
 
 			</div>
 		</div>

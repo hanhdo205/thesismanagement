@@ -14,10 +14,7 @@
 
 			</button>
 			<div class="dropdown-menu dropdown-menu-right">
-				<a class="dropdown-item" href="#"><?php echo e(_i('My profile')); ?></a>
-				<!-- <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role-list')): ?>
-				<a class="dropdown-item" href="<?php echo e(route('roles.index')); ?>"><?php echo e(_i('Manage Role')); ?></a>
-				<?php endif; ?> -->
+				<a class="dropdown-item" href="<?php echo e(route('users.profile')); ?>"><?php echo e(_i('My profile')); ?></a>
 				<div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                    onclick="event.preventDefault();

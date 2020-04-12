@@ -72,4 +72,8 @@
 
 <?php echo e(__('bad')); ?>
 
+<?php echo e(__('male')); ?>
+
+<?php echo e(__('female')); ?>
+
 

@@ -5,7 +5,7 @@
 @section('keyword', _i('management'))
 
 @section('content')
- @php
+@php
 	$student_name_err = '';
 	$student_dob_err = '';
 	$student_email_err = '';

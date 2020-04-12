@@ -69,11 +69,11 @@
 									</label>
 								</th>
 								<th class="fix-width">No.</th>
-								<th>タイトル</th>
-								<th>氏名</th>
-								<th>ステータス</th>
-								<th>査読結果</th>
-								<th>提出日</th>
+								<th>{{ _i('Title') }}</th>
+								<th>{{ _i('Student name') }}</th>
+								<th>{{ _i('Status') }}</th>
+								<th>{{ _i('Review resuly') }}</th>
+								<th>{{ _i('Date create') }}</th>
 							</tr>
 						</thead>
 						<tbody></tbody>

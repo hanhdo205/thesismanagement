@@ -48,10 +48,9 @@
 						      @endif
 						    </td>
 						    <td nowrap>
-						       <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">{{ _i('Show') }}</a>
-						       <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">{{ _i('Edit') }}</a>
+						       <a class="btn btn-sm btn-primary" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 						        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'id' => 'formDelete_'.$user->id,'style'=>'display:inline']) !!}
-						            {!! Form::button(_i('Delete'), ['id' => 'btn-delete','class' => 'btnDel btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']) !!}
+						            {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', ['id' => 'btn-delete','class' => 'btnDel btn-sm btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']) !!}
 						        {!! Form::close() !!}
 						    </td>
 						  </tr>

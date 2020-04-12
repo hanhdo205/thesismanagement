@@ -113,6 +113,34 @@ class EssayController extends Controller {
 				return view('essays.index', compact(['topics', 'last_topic_id']));
 		} else return view('essays.empty');
 	}
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function submiterList(Request $request) {
+		
+		if ($request->ajax()) {
+			$data = DB::table('essays')->get();
+			$grouped = $data->groupBy('student_email');
+			
+			return Datatables::of($data)
+				->addColumn('gender', function ($row) {
+					$gender = _i($row->student_gender);
+					return $gender;
+				})
+				->addColumn('dob', function ($row) {
+							$dob = Carbon::createFromFormat('Y/m/d',$row->student_dob)->format('Y年m月d日');;
+							return $dob;
+						})
+				->rawColumns(['gender'])
+				->rawColumns(['dob'])
+				->addIndexColumn()
+				->make(true);
+		}
+
+		return view('essays.submiter');
+	}
 
 	/**
 	 * @return \Illuminate\Support\Collection

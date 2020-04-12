@@ -1,13 +1,8 @@
 @extends('layouts.app')
 
-@section('title', _i('Edit User'))
+@section('title', _i('My profile'))
 @section('description', _i('The SIS management'))
 @section('keyword', _i('management'))
-
-@push('head')
-<!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-@endpush
 
 @section('content')
 @php
@@ -15,13 +10,11 @@
 	$mail_err = '';
 	$password_err = '';
 	$confirm_password_err = '';
-	$roles_err = '';
 @endphp
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{ url('/') }}">{{ _i('Home') }}</a></li>
-		<li class="breadcrumb-item"><a href="{{ route('users.index') }}">{{ _i('User management') }}</a></li>
-		<li class="breadcrumb-item active" aria-current="page">{{ _i('Edit User') }}</li>
+		<li class="breadcrumb-item active" aria-current="page">{{ _i('My profile') }}</li>
 	</ol>
 </nav>
 <div id="page-inner">
@@ -29,8 +22,7 @@
 		<div class="col-xl-6">
 			<div class="card">
 				<div class="card-header">
-					{{ _i('Edit User') }}
-
+					{{ _i('My profile') }}
 				</div>
 				<div class="card-body">
 					<div class="card-text">
@@ -59,11 +51,6 @@
 							    	$confirm_password_err = ' is-invalid';
 							    @endphp
 							@endif
-							@if($errors->first('roles'))
-							    @php
-							    	$roles_err = ' is-invalid';
-							    @endphp
-							@endif
 
 						@endif
 						@if ($message = Session::get('success'))
@@ -75,7 +62,7 @@
 							<div class="row">
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
-							            <strong>{{ _i('Name') }}:</strong>
+							            <strong>{{ _i('Name') }}</strong>
 							            {!! Form::text('name', null, array('placeholder' => _i('Name'),'class' => 'form-control' . $name_err)) !!}
 							            <span class="text-danger">{{ $errors->first('name') }}</span>
 							        </div>
@@ -101,16 +88,11 @@
 							            <span class="text-danger">{{ $errors->first('confirm-password') }}</span>
 							        </div>
 							    </div>
-							    <div class="col-xs-12 col-sm-12 col-md-12">
-							        <div class="form-group">
-							            <strong>{{ _i('Role') }}:</strong>
-							            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control select2' . $roles_err,'multiple')) !!}
-							            <span class="text-danger">{{ $errors->first('roles') }}</span>
-							        </div>
-							    </div>
+
+							            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'd-none form-control','multiple')) !!}
+
 							    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 							    	{!! Form::submit(_i('Update profile'), array('class' => 'btn btn-primary')) !!}
-
 							    </div>
 							</div>
 						{!! Form::close() !!}
@@ -122,8 +104,3 @@
 </div>
 <!-- /. PAGE INNER  -->
 @endsection
-
-@push('foot')
-<!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-@endpush

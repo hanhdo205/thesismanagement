@@ -12,14 +12,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="clearfix">
-                        <div class="col-sm-12 text-center mb-3">
-                        <a class="navbar-brand" href="{{ url('/') }}">査読管理システム</a>
-                      </div>
+                    <div class="clearfix mt-3">
                       <h4 class="pt-3">{{ _i('Did you forget your password?') }}</h4>
                       <p class="text-muted">{{ _i('Provide your email that you used to register. We will send you information on how to reset your password.') }}</p>
                     </div>
-
                     <form method="POST" class="mb-5" action="{{ route('password.email') }}">
                         @csrf
                         <div class="input-prepend input-group">

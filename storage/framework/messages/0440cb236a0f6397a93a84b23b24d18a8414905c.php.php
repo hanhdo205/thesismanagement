@@ -41,14 +41,14 @@
 					        <td><?php echo e(++$i); ?></td>
 					        <td><?php echo e(_i($role->name)); ?></td>
 					        <td nowrap>
-					            <a class="btn btn-info" href="<?php echo e(route('roles.show',$role->id)); ?>"><?php echo e(_i('Show')); ?></a>
+					            <a class="btn btn-sm btn-info" href="<?php echo e(route('roles.show',$role->id)); ?>"><i class="fa fa-eye" aria-hidden="true"></i></a>
 					            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role-edit')): ?>
-					                <a class="btn btn-primary" href="<?php echo e(route('roles.edit',$role->id)); ?>"><?php echo e(_i('Edit')); ?></a>
+					                <a class="btn btn-sm btn-primary" href="<?php echo e(route('roles.edit',$role->id)); ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 					            <?php endif; ?>
 					            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role-delete')): ?>
 					                <?php echo Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'id' => 'formDelete_'.$role->id,'style'=>'display:inline']); ?>
 
-					                    <?php echo Form::button(_i('Delete'), ['class' => 'btnDel btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']); ?>
+					                    <?php echo Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', ['class' => 'btnDel btn-sm btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']); ?>
 
 					                <?php echo Form::close(); ?>
 

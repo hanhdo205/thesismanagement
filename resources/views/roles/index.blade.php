@@ -40,13 +40,13 @@
 					        <td>{{ ++$i }}</td>
 					        <td>{{ _i($role->name) }}</td>
 					        <td nowrap>
-					            <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">{{ _i('Show') }}</a>
+					            <a class="btn btn-sm btn-info" href="{{ route('roles.show',$role->id) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
 					            @can('role-edit')
-					                <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">{{ _i('Edit') }}</a>
+					                <a class="btn btn-sm btn-primary" href="{{ route('roles.edit',$role->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 					            @endcan
 					            @can('role-delete')
 					                {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'id' => 'formDelete_'.$role->id,'style'=>'display:inline']) !!}
-					                    {!! Form::button(_i('Delete'), ['class' => 'btnDel btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']) !!}
+					                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', ['class' => 'btnDel btn-sm btn btn-danger','data-toggle' => 'modal','data-target' => '#confirm']) !!}
 					                {!! Form::close() !!}
 					            @endcan
 					        </td>

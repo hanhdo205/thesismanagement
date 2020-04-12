@@ -5,7 +5,7 @@
 <?php $__env->startSection('keyword', _i('management')); ?>
 
 <?php $__env->startSection('content'); ?>
- <?php
+<?php
 	$student_name_err = '';
 	$student_dob_err = '';
 	$student_email_err = '';
