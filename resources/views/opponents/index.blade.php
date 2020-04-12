@@ -92,7 +92,7 @@
 					</span>
 				</span>
 				<small class="help-block"> {!! _i('※Data format .csv<br>※Maximum upload file size: 2MB') !!}</small>
-				{!! Form::file('file', array('id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;')) !!}
+				{!! Form::file('csv_upload_file', array('id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;')) !!}
             {!! Form::close() !!}
       	</div>
       	<div class="modal-footer">

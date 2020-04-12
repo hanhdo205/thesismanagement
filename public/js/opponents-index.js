@@ -122,7 +122,7 @@ $(function () {
 		if(flag) {
 			var csvFormData = new FormData();
 			csvFormData.append('topic_id', $('#topic_select').val());
-			csvFormData.append('file', $('#csv_upload_file').prop('files')[0]);
+			csvFormData.append('csv_upload_file', $('#csv_upload_file').prop('files')[0]);
 			flag = false;
 			$.ajax({
 			  url: opponents.import_csv,

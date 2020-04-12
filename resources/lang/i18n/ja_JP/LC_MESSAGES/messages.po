@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
 "POT-Creation-Date: 2020-04-11 23:33+0700\n"
-"PO-Revision-Date: 2020-04-11 23:34+0700\n"
+"PO-Revision-Date: 2020-04-12 15:46+0700\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: ja_JP\n"
@@ -867,7 +867,7 @@ msgstr "変更"
 
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:75
 msgid "Sending.."
-msgstr ""
+msgstr "処理中.."
 
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:76
 msgid "Edit Topic"
