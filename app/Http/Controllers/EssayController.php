@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Redirect;
 
 class EssayController extends Controller {
 	/**
@@ -271,7 +272,7 @@ class EssayController extends Controller {
 	}
 
 	/**
-	 * Collect data to send mail.
+	 * Collect data to send request review to each teacher.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
@@ -284,7 +285,7 @@ class EssayController extends Controller {
 
 		$contents = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body><p>' . nl2br($mailbody) . '</p></body></html>';
 
-		//Store the content on a file with .blad.php extension in the view/email folder
+		//Store the content on a file with .blade.php extension in the view/emails folder
 		$myfile = fopen("../resources/views/emails/revierequest.blade.php", "w") or die("Unable to open file!");
 
 		fwrite($myfile, $contents);
@@ -300,17 +301,18 @@ class EssayController extends Controller {
 		}
 		switch (true) {
 			case (count($opponents) > count($essays)):
-				$opponents = array_slice($opponents,0,count($essays));
-				$combine = array_combine($opponents, $essays);
+				$new_opponents = array_slice($opponents,0,count($essays));
+				$combine = array_combine($new_opponents, $essays);
 				$key = 'opponent';
 				break;
 			case (count($opponents) < count($essays)):
 				$multiple = ceil(count($essays)/count($opponents));
+				$new_opponents = [];
 				for($i=0;$i<$multiple;$i++) {
-					$new_opponent = array_merge($opponents, $opponents);
+					$new_opponents = array_merge($opponents, $new_opponents);
 				}
-				$opponents = array_slice($new_opponent,0,count($essays));
-				$combine = array_combine($essays, $opponents);
+				$new_opponents = array_slice($new_opponents,0,count($essays));
+				$combine = array_combine($essays, $new_opponents);
 				$key = 'essay';
 				break;
 			default:
@@ -318,33 +320,43 @@ class EssayController extends Controller {
 				$key = 'opponent';
 				break;
 		}
-				
+						
 		if($key == 'opponent') { //opponent is a key
-			foreach($combine as $key => $value) {
-				self::doSendMail($key, $value);
+			foreach($combine as $user => $essay) {
+				$essay_arr = [$essay];
+				self::doSendMail($topic_id, $user, $essay_arr);
 			}
 		} else { //essay is a key
+			$multi_essay_per_opponent = [];
 			foreach($combine as $key => $value) {
-				self::doSendMail($value, $key);
+				$multi_essay_per_opponent[$value][] = $key;
+			}
+			foreach($multi_essay_per_opponent as $user => $essay_arr) {
+				self::doSendMail($topic_id, $user, $essay_arr);
 			}
 		}
-		return view('opponents.send');
+		return Redirect::route('essays.index')
+			->with(['success' => _i('The emails were send.'), 'topic_id' => $topic_id]);
 	}
 	
-	public function doSendMail($user_id, $essay_id) {
+	public function doSendMail($topic_id, $user_id, $essay_arr) {
 		$user = User::find($user_id);
 		$to_name = $user->name;
 		$to_email = $user->email;
-		$essay = DB::table('essays')
-			->where('essays.id', $essay_id)
-			->first();
-		$file_to_download = Storage::url($essay->essay_file);
+		$essays = DB::table('essays')
+			->whereIn('essays.id', $essay_arr)
+			->get();
+		$file_to_download = [];
+		foreach ($essays as $essay) {
+			$file_to_download[] = url(Storage::url($essay->essay_file));
+		}	
+		
 		$data = array(
 			'Name' => $user->name,
 			'Link' => $file_to_download
 		);
 		try {
-			Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
+			Mail::send(['html' => 'emails.reviewrequest'], $data, function ($message) use ($to_name, $to_email) {
 				$message->to($to_email, $to_name)
 					->subject('査読対応確認');
 				$message->from('hanhdo205@gmail.com', 'thesisManagement');
@@ -356,13 +368,15 @@ class EssayController extends Controller {
 
 		DB::table('reviews')
 			->updateOrInsert(
-				['topic_id' => $essay_id, 'user_id' => $user_id],
+				['topic_id' => $topic_id, 'user_id' => $user_id],
 				['request_status' => $reviewer_status]
 			);
-		DB::table('essays')
-			->updateOrInsert(
-				['id' => $essay_id],
-				['review_status' => REVIEWING]
-			);
+		foreach ($essays as $essay) {
+			DB::table('essays')
+				->updateOrInsert(
+					['id' => $essay->id],
+					['review_status' => REVIEWING]
+				);
+		}
 	}
 }

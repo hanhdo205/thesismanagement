@@ -26,9 +26,6 @@ class TopicController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Request $request) {
-		/*$topics = Topic::latest()->paginate(5);
-			return view('topics.index', compact('topics'))
-		*/
 		if ($request->ajax()) {
 			$data = Topic::latest()->get();
 			return Datatables::of($data)
@@ -90,13 +87,6 @@ class TopicController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request) {
-		/*request()->validate([
-				'title' => 'required',
-				'start_date' => 'required',
-				'end_date' => 'required',
-			]);
-
-		*/
 		$validator = Validator::make($request->all(), [
 			'title' => 'required',
 			'start_date' => 'required',

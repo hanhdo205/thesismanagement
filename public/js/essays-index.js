@@ -31,6 +31,10 @@ $(function () {
 			  
 	    });
 
+	    $( document ).ajaxComplete(function( event, request, settings ) {
+		  checkbox_callback();
+		});
+
 		//call a function in success of datatable ajax call
 		function checkbox_callback() {
 			$('#selectAll').on('click', function(){

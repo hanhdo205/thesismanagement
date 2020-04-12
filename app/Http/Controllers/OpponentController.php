@@ -83,7 +83,11 @@ class OpponentController extends Controller {
 
 		if (preg_match_all("/{(.*?)}/", $mailbody, $m)) {
 			foreach ($m[1] as $i => $varname) {
-				$mailbody = str_replace($m[0][$i], sprintf('{{ $%s }}', $varname), $mailbody);
+				if ($varname == 'Link') {
+					$mailbody = str_replace($m[0][$i], sprintf('<a href="{{ $%s }}">{{ $%s }}</a>', $varname, $varname), $mailbody);
+				} else {
+					$mailbody = str_replace($m[0][$i], sprintf('{{ $%s }}', $varname), $mailbody);
+				}
 			}
 		}
 

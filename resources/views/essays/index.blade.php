@@ -28,6 +28,9 @@
 					<script>
 						toastr.success('{{ $message }}');
 					</script>
+					@php
+						$last_topic_id = Session::get('topic_id');
+					@endphp
 				@endif
 				{!! Form::open(array('id' => 'reviewRequest','route' => 'review.request','method'=>'POST')) !!}
 				<div class="form-group">
@@ -72,7 +75,7 @@
 								<th>{{ _i('Title') }}</th>
 								<th>{{ _i('Student name') }}</th>
 								<th>{{ _i('Status') }}</th>
-								<th>{{ _i('Review resuly') }}</th>
+								<th>{{ _i('Review result') }}</th>
 								<th>{{ _i('Date create') }}</th>
 							</tr>
 						</thead>

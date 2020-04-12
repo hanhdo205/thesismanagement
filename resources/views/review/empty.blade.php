@@ -19,7 +19,7 @@
 					{{ _i('Review request form') }}
 				</div>
 				<div class="card-body">
-					<div>{{ _i('There no reviewer yet') }}</div>
+					<div>{{ _i('There no reviewer yet or all they are in reviewing') }}</div>
 				</div>
 			</div>
 		</div>

@@ -77,6 +77,10 @@ $(function () {
 		});
 	}
 
+	$( document ).ajaxComplete(function( event, request, settings ) {
+		  checkbox_callback();
+		});
+
 	//dataTable
 	function fetch_data($topic_id) {
 		dataTable = $('.data-table').DataTable({
