@@ -156,4 +156,7 @@
         </div>
     </div>
 </div>
+<!-- Delete confirm-->
+@include('includes.footer')
+<!-- End Delete confirm -->
 @endpush

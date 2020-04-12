@@ -53,7 +53,6 @@
                         @yield('content')
                     </div>
                     <!-- /. PAGE WRAPPER  -->
-                    @include('includes.footer')
             </div>
             <!-- /# WRAPPER  -->
 

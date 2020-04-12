@@ -61,3 +61,9 @@
 </div>
 <!-- /. PAGE INNER  -->
 @endsection
+
+@push('foot')
+<!-- Delete confirm-->
+@include('includes.footer')
+<!-- End Delete confirm -->
+@endpush

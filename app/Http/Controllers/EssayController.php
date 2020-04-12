@@ -125,8 +125,12 @@ class EssayController extends Controller {
 		if ($request->ajax()) {
 			$data = DB::table('essays')->get();
 			$grouped = $data->groupBy('student_email');
+			$new_data = [];
+			foreach($grouped as $group) {
+				$new_data[] = $group[0];
+			}
 			
-			return Datatables::of($data)
+			return Datatables::of($new_data)
 				->addColumn('gender', function ($row) {
 					$gender = _i($row->student_gender);
 					return $gender;
