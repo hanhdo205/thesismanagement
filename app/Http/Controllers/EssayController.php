@@ -24,9 +24,9 @@ class EssayController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	function __construct() {
-		//$this->middleware('permission:essay-list|essay-create|essay-edit|essay-delete', ['only' => ['index', 'show']]);
+		$this->middleware('permission:essay-list|submiter-list|review-request', ['only' => ['index', 'submiterList','reviewRequest',]]);
 		//$this->middleware('permission:essay-create', ['only' => ['create', 'store']]);
-		//$this->middleware('permission:essay-edit', ['only' => ['edit', 'update']]);
+		//$this->middleware('permission:essay-edit', ['only' => ['edit']]);
 	}
 
 	/**
@@ -227,8 +227,6 @@ class EssayController extends Controller {
 		}
 		$essay->update($input);
 
-		// return redirect()->route('essays.index')
-			// ->with('success', _i('Essay updated successfully'));
 		return back()
 			->with('success', _i('Essay updated successfully'));
 	}

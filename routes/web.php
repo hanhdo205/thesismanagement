@@ -21,13 +21,6 @@ Auth::routes(['register' => false]);
 Route::get('/endai_teisyutu/{id}', 'EssayController@create')->name('topic.endai_teisyutu');
 Route::post('/endai_teisyutu/register', 'EssayController@store')->name('register.endai_teisyutu');
 Route::get('/essays/review/{id}/{token}', 'EssayController@review')->name('essays.review');
-/*Route::group(['prefix' => 'token'], function () {
-Route::group(['prefix' => '{token}'], function ($token) {
-
-Route::get('essays/{id}', 'EssayController@show');
-
-});
-});*/
 Route::get('/request/confirm/{review_token}', 'OpponentController@requestConfirmation');
 Route::post('/request/confirmed', 'OpponentController@requestReply')->name('request.reply');
 Route::resource('essays', 'EssayController')->only([
