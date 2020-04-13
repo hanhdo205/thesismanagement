@@ -60,7 +60,7 @@
 								</div>
 								<div class="form-group mb-3">
 									<label for="essay_title">{{ _i('Link to download') }}</label>
-									<a  href="{{ Storage::url($rows->essay_file) }}" class="btn btn-light btn-lg btn-block"><i class="fa fa-download" aria-hidden="true"></i> {{ _i('Download') }}</a>
+									<a  href="{{ Storage::url($rows->essay_file) }}" class="btn btn-warning btn-lg btn-block"><i class="fa fa-download" aria-hidden="true"></i> {{ _i('Download') }}</a>
 								</div>
 							</div>
 
