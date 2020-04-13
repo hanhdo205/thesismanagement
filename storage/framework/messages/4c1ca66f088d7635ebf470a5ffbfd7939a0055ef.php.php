@@ -53,7 +53,6 @@
                         <?php echo $__env->yieldContent('content'); ?>
                     </div>
                     <!-- /. PAGE WRAPPER  -->
-                    <?php echo $__env->make('includes.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
             <!-- /# WRAPPER  -->
 

@@ -1,5 +1,6 @@
 $(function () {
     "use strict";
+    let flag = true,
     dataTable = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
@@ -62,30 +63,34 @@ $(function () {
     $('#saveBtn').click(function (e) {
         e.preventDefault();
         $(this).html(translate.sending);
-    
-        $.ajax({
-          data: $('#topicForm').serialize(),
-          url: topics.store,
-          type: "POST",
-          dataType: 'json',
-          success: function (data) {
-          		if(data.error) {
-          			data.error.forEach(function(e) {
-							  toastr.error(e);
-							});
-          		} else {
-	              $('#topicForm').trigger("reset");
-	              $('#ajaxModel').modal('hide');
-	              dataTable.draw();
-	              toastr.success(data.success);
-	         	}
-          },
-          error: function (data) {
-          		//toastr.error(data);
-              console.log('Error:', data);
-              $('#saveBtn').html(translate.save_changes);
-          }
-      });
+        toastr.remove();
+        if(flag) {
+          flag = false;
+          $.ajax({
+            data: $('#topicForm').serialize(),
+            url: topics.store,
+            type: "POST",
+            dataType: 'json',
+            success: function (data) {
+            		if(data.error) {
+            			data.error.forEach(function(e) {
+  							  toastr.error(e);
+  							});
+            		} else {
+  	              $('#topicForm').trigger("reset");
+  	              $('#ajaxModel').modal('hide');
+  	              dataTable.draw();
+  	              toastr.success(data.success);
+  	         	}
+            },
+            error: function (data) {
+            		//toastr.error(data);
+                console.log('Error:', data);
+                $('#saveBtn').html(translate.save_changes);
+            }
+          });
+          flag = true;
+        }
     });
     
     $('body').on('click', '.deleteTopic', function () {

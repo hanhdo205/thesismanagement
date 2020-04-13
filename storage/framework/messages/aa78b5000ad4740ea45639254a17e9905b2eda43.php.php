@@ -26,12 +26,16 @@ class HomeController extends Controller {
 	}
 
 	public function lastestEssays() {
-		$rows = Essay::orderBy('id', 'desc')->take(5)->get();
+		$rows = Essay::select('essay_title', 'student_name', 'created_at')
+			->orderBy('id', 'desc')
+			->take(5)
+			->get();
 		return $rows;
 	}
 
 	public function lastestReview() {
-		$rows = Essay::where('review_status', REVIEWED)
+		$rows = Essay::select('essay_title', 'student_name', 'updated_at')
+			->where('review_status', REVIEWED)
 			->orderBy('updated_at', 'desc')
 			->take(5)
 			->get();

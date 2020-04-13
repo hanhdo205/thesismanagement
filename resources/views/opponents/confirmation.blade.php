@@ -24,7 +24,7 @@
 					{{ _i('Review request mail template') }}
 				</div>
 				<div class="card-body">
-				{!! Form::open(array('route' => 'opponents.sendmail','method'=>'POST')) !!}
+				{!! Form::open(array('route' => 'opponents.sendmail','method'=>'POST','id'=>'sendMail')) !!}
 				{!! Form::hidden('topic_id', $topic) !!}
 						<div class="form-group">
 							<label for="mailcontent">メール内容</label>
@@ -42,7 +42,7 @@
 							{!! Form::select('opponents[]', $opponents, $checkboxs, array('id' => 'destination','class' => 'form-control select2','multiple')) !!}
 						</div>
 						<div class="d-flex justify-content-end">
-							{!! Form::submit(_i('Send'), array('class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4')) !!}
+							{!! Form::button(_i('Send'), array('id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4')) !!}
 						</div>
 					{!! Form::close() !!}
 
@@ -55,6 +55,13 @@
 @endsection
 
 @push('foot')
+<script type="text/javascript">
+	var translate = {
+		no_destination:'{{ _i("No item selected") }}',
+		no_content:'{{ _i("Email content can not be blank") }}',
+	};
+</script>
+<script src="{{ asset('js/opponents-confirmation.js') }}"></script>
 <!-- Select2 script -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 @endpush

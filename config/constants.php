@@ -18,3 +18,8 @@ define('REVIEWED', 'reviewed');
 define('RESULT_NONE', 'not_yet');
 define('RESULT_GOOD', 'good');
 define('RESULT_BAD', 'bad');
+
+return [
+	'from_email' => env('MAIL_FROM_ADDRESS', 'hanhdo205@gmail.com'),
+	'from_name' => env('MAIL_FROM_NAME', 'thesisManagement'),
+];

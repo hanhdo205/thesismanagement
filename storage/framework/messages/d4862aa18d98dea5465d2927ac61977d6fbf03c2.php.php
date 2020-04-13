@@ -35,7 +35,7 @@
 						<tbody>
 						<?php if(count($lastestEssays) == 0): ?>
 							<tr>
-								<td colspan="4"><?php echo e(_i('There is no data.')); ?></td>
+								<td colspan="4" align="center"><?php echo e(_i('There is no data.')); ?></td>
 							</tr>
 						<?php else: ?>
 							<?php $__currentLoopData = $lastestEssays; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $essay): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -73,7 +73,7 @@
 						<tbody>
 						<?php if(count($lastestReview) == 0): ?>
 							<tr>
-								<td colspan="4"><?php echo e(_i('There is no data.')); ?></td>
+								<td colspan="4" align="center"><?php echo e(_i('There is no data.')); ?></td>
 							</tr>
 						<?php else: ?>
 							<?php $__currentLoopData = $lastestReview; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

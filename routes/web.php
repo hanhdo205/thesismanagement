@@ -18,14 +18,26 @@ LaravelGettext::setLocale('ja_JP');
 //Auth::routes();
 Auth::routes(['register' => false]);
 
-Route::get('/endai_teisyutu/{id}', 'EssayController@createEssay')->name('topic.endai_teisyutu');
-Route::post('/endai_teisyutu/register', 'EssayController@storeEssay')->name('register.endai_teisyutu');
+Route::get('/endai_teisyutu/{id}', 'EssayController@create')->name('topic.endai_teisyutu');
+Route::post('/endai_teisyutu/register', 'EssayController@store')->name('register.endai_teisyutu');
+Route::get('/essays/review/{id}/{token}', 'EssayController@review')->name('essays.review');
+/*Route::group(['prefix' => 'token'], function () {
+Route::group(['prefix' => '{token}'], function ($token) {
+
+Route::get('essays/{id}', 'EssayController@show');
+
+});
+});*/
 Route::get('/request/confirm/{review_token}', 'OpponentController@requestConfirmation');
 Route::post('/request/confirmed', 'OpponentController@requestReply')->name('request.reply');
+Route::resource('essays', 'EssayController')->only([
+	'create', 'store', 'update',
+]);
 
 Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('/', 'HomeController@index')->name('home');
+	Route::get('/home', 'HomeController@index')->name('home');
 	Route::post('/opponents/confirmation', 'OpponentController@confirmation')->name('opponents.confirmation');
 	Route::post('/opponents/send', 'OpponentController@sendMail')->name('opponents.sendmail');
 	Route::post('/essays-export', 'EssayController@export')->name('essays.export');
@@ -42,6 +54,6 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('topics', 'TopicController');
 	Route::resource('opponents', 'OpponentController')->only(['index']);
 	Route::resource('essays', 'EssayController')->only([
-		'index', 'edit', 'update',
+		'index', 'edit',
 	]);
 });

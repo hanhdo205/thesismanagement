@@ -11,6 +11,9 @@ $(function () {
     	$selectBtn.prop('disabled', true);
 
 		fetch_data(parseInt($topic));
+		$('#requestSelect').on('change', function () {
+				request_select($(this).val());
+			});
 
 		$('#topic_select').on('change', function () {
 			 $topic = $(this).val();
@@ -26,6 +29,30 @@ $(function () {
 	    $('#searchBtn').on('click', function(){
 		 	$student_name = $('#student_name').val();
 			$review_result = $('#review_result').val();
+			let $review_result_text = $('#review_result').children("option:selected").text();
+			let $topic_text = $('#topic_select').children("option:selected").text();
+			var search = [
+				{name:'<strong>' + $topic_text + '</strong>'},
+				{name:'<strong>' + $student_name + '</strong>'},
+				{name:'<strong>' + $review_result_text + '</strong>'},
+			]
+			$('.search_text').show();
+			switch(true) {
+			  case ($student_name && $review_result != ''):
+			    $('.search_text').html(sprintf(search_text_both,{search:search}));
+			    break;
+			  case ($student_name && $review_result == ''):
+			    $('.search_text').html(sprintf(search_text_name,{search:search}));
+			    break;
+			  case ($student_name == '' && $review_result != ''):
+			    $('.search_text').html(sprintf(search_text_result,{search:search}));
+			    break;
+			  default:
+			    $('.search_text').html('');
+			    $('.search_text').hide();
+			    break;
+			}
+
 			$('.data-table').DataTable().destroy();
 			fetch_data(parseInt($topic));
 			  
@@ -33,7 +60,20 @@ $(function () {
 
 	    $( document ).ajaxComplete(function( event, request, settings ) {
 		  checkbox_callback();
+		  request_select($('#requestSelect').val());
 		});
+
+	    if($('div').hasClass('search_text_alert')) {
+				$('body').on('click', '.reset_search', function () {
+					$student_name = '';
+					$review_result = '';
+					$('#student_name').val('');
+					$('#review_result').val('');
+					$('.data-table').DataTable().destroy();
+					fetch_data(parseInt($topic));
+				});
+			}
+
 
 		//call a function in success of datatable ajax call
 		function checkbox_callback() {
@@ -60,11 +100,18 @@ $(function () {
 				    $selectBtn.prop('disabled', true);
 				  }
 			});
-
 			$('#requestSelect').on('change', function () {
-				if($(this).val()=='csv') {
+				request_select($(this).val());
+			});
+
+		}
+
+		//do action when dropdown
+		function request_select($val) {
+			
 				    //ajax for download csv
 					$selectBtn.click(function(e){
+						if($val=='csv') {
 						e.preventDefault();
 						if(flag) {
 							let $csvFormData = new FormData();
@@ -95,14 +142,12 @@ $(function () {
 							});
 							flag = true;
 						}
-					});
-				} else if($(this).val()=='mail') {
-					$('#selectBtn').click(function(e) {
+						} else if($val=='mail') {
 						e.preventDefault();
 						$('#reviewRequest').submit();
-					 });
-				}
-			});
+						}
+					});
+				
 		}
 
 		//dataTable

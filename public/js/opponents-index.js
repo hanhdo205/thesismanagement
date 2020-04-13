@@ -119,6 +119,7 @@ $(function () {
 	//ajax for upload csv
 	$('#csv_upload_button').click(function(e){
 		e.preventDefault();
+		toastr.remove();
 		if(flag) {
 			var csvFormData = new FormData();
 			csvFormData.append('topic_id', $('#topic_select').val());
@@ -151,6 +152,7 @@ $(function () {
 	//ajax for create new opponent
 	$('#new_opponent_button').click(function(e){
 		e.preventDefault();
+		toastr.remove();
 		if(flag) {
 			var csvFormData = new FormData();
 			csvFormData.append('topic_id', $('#topic_select').val());

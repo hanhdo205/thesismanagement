@@ -29,6 +29,9 @@
 					<script>
 						toastr.success('<?php echo e($message); ?>');
 					</script>
+					<?php
+						$last_topic_id = Session::get('topic_id');
+					?>
 				<?php endif; ?>
 				<?php echo Form::open(array('id' => 'reviewRequest','route' => 'review.request','method'=>'POST')); ?>
 
@@ -60,9 +63,9 @@
 
 				<div class="form-group">
 					<div class="form-inline">
-						<?php echo Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2','placeholder' => _i('Please select...'))); ?>
+						<?php echo Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2','placeholder' => _i('Please select...'))); ?>
 
-						<?php echo Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5')); ?>
+						<?php echo Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2')); ?>
 
 					</div>
 				</div>
@@ -80,7 +83,7 @@
 								<th><?php echo e(_i('Title')); ?></th>
 								<th><?php echo e(_i('Student name')); ?></th>
 								<th><?php echo e(_i('Status')); ?></th>
-								<th><?php echo e(_i('Review resuly')); ?></th>
+								<th><?php echo e(_i('Review result')); ?></th>
 								<th><?php echo e(_i('Date create')); ?></th>
 							</tr>
 						</thead>

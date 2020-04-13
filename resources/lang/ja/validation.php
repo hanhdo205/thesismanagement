@@ -131,6 +131,8 @@ return [
 		'essay_file' => 'File Upload',
 		'student_email' => 'メールアドレス',
 		'student_dob' => 'Date of birth',
+		'review_result' => '査読結果',
+		'review_comment' => '査読者コメント',
 	],
 
 ];

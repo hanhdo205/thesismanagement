@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', _('Show Role'))
+@section('title', _i('Show Role'))
 @section('description', _i('The SIS management'))
 @section('keyword', _i('management'))
 

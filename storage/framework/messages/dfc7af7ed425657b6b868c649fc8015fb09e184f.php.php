@@ -60,6 +60,6 @@
 <script src="<?php echo e(asset('js/datatables/responsive.bootstrap4.min.js')); ?>"></script>
 <script type="text/javascript">
 	var essays = {submiter:'<?php echo e(route("essays.submiter")); ?>'};
-</script><script src="<?php echo e(asset('js/submiter-index.js')); ?>"></script>
+</script><script src="<?php echo e(asset('js/essays-submiter.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

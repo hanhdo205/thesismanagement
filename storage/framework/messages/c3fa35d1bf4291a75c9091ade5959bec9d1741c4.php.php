@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title', _('Show Role')); ?>
+<?php $__env->startSection('title', _i('Show Role')); ?>
 <?php $__env->startSection('description', _i('The SIS management')); ?>
 <?php $__env->startSection('keyword', _i('management')); ?>
 

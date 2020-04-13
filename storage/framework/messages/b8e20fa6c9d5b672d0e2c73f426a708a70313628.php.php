@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6">
             <div class="card">
                 <div class="card-header"><?php echo e(_i('Reset Password')); ?></div>
 

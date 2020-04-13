@@ -92,8 +92,9 @@
                 <h4 class="modal-title" id="modelHeading"></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
+            {!! Form::open(array('id' => 'topicForm','name' => 'topicForm', 'class' => 'form-horizontal')) !!}
             <div class="modal-body">
-                {!! Form::open(array('id' => 'topicForm','name' => 'topicForm', 'class' => 'form-horizontal')) !!}
+
                 {!! Form::hidden('topic_id', null, array('id' => 'topic_id')) !!}
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
@@ -115,12 +116,16 @@
 					        </div>
 					    </div>
 
-					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					    	{!! Form::submit(_i('Submit'), array('id' => 'saveBtn','class' => 'btn btn-primary', 'value' => 'create')) !!}
-					    </div>
+
 					</div>
-				{!! Form::close() !!}
+
             </div>
+            <div class="modal-footer">
+            	<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+			    	{!! Form::submit(_i('Submit'), array('id' => 'saveBtn','class' => 'btn btn-primary pr-5 pl-5', 'value' => 'create')) !!}
+			    </div>
+		    </div>
+		    {!! Form::close() !!}
         </div>
     </div>
 </div>

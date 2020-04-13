@@ -20,7 +20,7 @@
 
 				</div>
 				<div class="card-body">
-					<div><?php echo e(_i('There no reviewer yet')); ?></div>
+					<div><?php echo e(_i('There no reviewer yet or all they are in reviewing')); ?></div>
 				</div>
 			</div>
 		</div>

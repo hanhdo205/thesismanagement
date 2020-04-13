@@ -61,6 +61,7 @@
 						{!! Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2')) !!}
 					</div>
 				</div>
+				<span class="search_text"><div class="alert alert-secondary alert-dismissible search_text_alert d-none" role="alert"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div></span>
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" cellspacing="0" width="100%">
 						<thead>
@@ -100,6 +101,10 @@
 <script type="text/javascript">
 	var essays = {index:'{{ route("essays.index") }}',export:'{{ route("essays.export") }}'};
 	var last_topic_id = '{{ $last_topic_id }}';
+	var search_text_both = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert">{{ _i("Search result for %(search[0].name)s with student name is %(search[1].name)s or review result is %(search[2].name)s") }}<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="{{ _i("Reset search") }}"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
+	var search_text_name = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert">{{ _i("Search result for %(search[0].name)s with student name is %(search[1].name)s") }}<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="{{ _i("Reset search") }}"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
+	var search_text_result = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert">{{ _i("Search result for %(search[0].name)s with review result is %(search[2].name)s") }}<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="{{ _i("Reset search") }}"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
 </script>
 <script src="{{ asset('js/essays-index.js') }}"></script>
+<script src="{{ asset('js/sprintf.js') }}"></script>
 @endpush

@@ -25,7 +25,7 @@
 
 				</div>
 				<div class="card-body">
-				<?php echo Form::open(array('route' => 'opponents.sendmail','method'=>'POST')); ?>
+				<?php echo Form::open(array('route' => 'opponents.sendmail','method'=>'POST','id'=>'sendMail')); ?>
 
 				<?php echo Form::hidden('topic_id', $topic); ?>
 
@@ -47,7 +47,7 @@
 
 						</div>
 						<div class="d-flex justify-content-end">
-							<?php echo Form::submit(_i('Send'), array('class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4')); ?>
+							<?php echo Form::button(_i('Send'), array('id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4')); ?>
 
 						</div>
 					<?php echo Form::close(); ?>
@@ -62,6 +62,13 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('foot'); ?>
+<script type="text/javascript">
+	var translate = {
+		no_destination:'<?php echo e(_i("No item selected")); ?>',
+		no_content:'<?php echo e(_i("Email content can not be blank")); ?>',
+	};
+</script>
+<script src="<?php echo e(asset('js/opponents-confirmation.js')); ?>"></script>
 <!-- Select2 script -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <?php $__env->stopPush(); ?>

@@ -30,6 +30,11 @@
 							    <button class="close hide_error" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 							  </div>
 						@endif
+						@if ($message = Session::get('success'))
+							<script>
+								toastr.success('{{ $message }}');
+							</script>
+						@endif
 					{!! Form::model($rows, ['method' => 'PATCH','route' => ['essays.update', $rows->id]]) !!}
 						<div class="form-group row">
 							<label for="student_name" class="col-sm-3 col-form-label">{{ _i('Student name') }}</label>
@@ -62,13 +67,14 @@
 						<div class="form-group row">
 							<label for="review_status" class="col-sm-3 col-form-label">{{ _i('Status') }}</label>
 							<div class="col-sm-9">
-								{!! Form::select('review_status', ['pending' => _i('pending'),'reviewing' => _i('reviewing'),'reviewed' => _i('reviewed')], $rows->review_status, array('class' => 'form-control select2')) !!}
+								{!! Form::select('review_status', ['pending' => _i('pending'),'reviewing' => _i('reviewing'),'reviewed' => _i('reviewed')], $rows->review_status, array('class' => 'form-control')) !!}
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="reviewer" class="col-sm-3 col-form-label">{{ _i('Reviewer') }}</label>
 							<div class="col-sm-9">
-								{!! Form::select('reviewer_id', [$rows->reviewer_id => $rows->reviewer], $rows->reviewer_id, array('class' => 'form-control select2')) !!}
+								{!! Form::select('reviewer_id', [$rows->reviewer_id => $rows->reviewer], $rows->reviewer_id, array('class' => 'form-control')) !!}
+								{!! Form::hidden('review_result', null, array()) !!}
 							</div>
 						</div>
 						<div class="form-group row">

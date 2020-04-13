@@ -4,4 +4,4 @@
 第3回学術大会の査読依頼をさせていただければと思います。<br />
 以下のリンクより、査読対応、可否をご回答くださいませ。<br />
 <br />
-<?php echo e($Link); ?></p></body></html>
+<a href="<?php echo e($Link); ?>"><?php echo e($Link); ?></a></p></body></html>

@@ -66,4 +66,10 @@
 </div>
 <!-- /. PAGE INNER  -->
 <?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('foot'); ?>
+<!-- Delete confirm-->
+<?php echo $__env->make('includes.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<!-- End Delete confirm -->
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

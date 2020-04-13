@@ -44,8 +44,8 @@
 				</div>
 				<div class="form-group">
 					<div id="action-button" class="form-inline">
-						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5" href="javascript:void(0);" data-toggle="modal" data-target="#importUsers"><?php echo e(_i('Import from CSV')); ?></a>
-						<a class="form-control btn btn-primary pl-5 pr-5" href="javascript:void(0);" data-toggle="modal" data-target="#newUser"><?php echo e(_i('Add new')); ?></a>
+						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5 mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#importUsers"><?php echo e(_i('Import from CSV')); ?></a>
+						<a class="form-control btn btn-primary pl-5 pr-5 mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#newUser"><?php echo e(_i('Add new')); ?></a>
 					</div>
 				</div>
 				<div class="table-scroll mb-5">
@@ -99,7 +99,7 @@
 					</span>
 				</span>
 				<small class="help-block"> <?php echo _i('※Data format .csv<br>※Maximum upload file size: 2MB'); ?></small>
-				<?php echo Form::file('file', array('id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;')); ?>
+				<?php echo Form::file('csv_upload_file', array('id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;')); ?>
 
             <?php echo Form::close(); ?>
 

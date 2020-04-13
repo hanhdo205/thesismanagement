@@ -93,8 +93,9 @@
                 <h4 class="modal-title" id="modelHeading"></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
+            <?php echo Form::open(array('id' => 'topicForm','name' => 'topicForm', 'class' => 'form-horizontal')); ?>
+
             <div class="modal-body">
-                <?php echo Form::open(array('id' => 'topicForm','name' => 'topicForm', 'class' => 'form-horizontal')); ?>
 
                 <?php echo Form::hidden('topic_id', null, array('id' => 'topic_id')); ?>
 
@@ -121,14 +122,18 @@
 					        </div>
 					    </div>
 
-					    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-					    	<?php echo Form::submit(_i('Submit'), array('id' => 'saveBtn','class' => 'btn btn-primary', 'value' => 'create')); ?>
 
-					    </div>
 					</div>
-				<?php echo Form::close(); ?>
 
             </div>
+            <div class="modal-footer">
+            	<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+			    	<?php echo Form::submit(_i('Submit'), array('id' => 'saveBtn','class' => 'btn btn-primary', 'value' => 'create')); ?>
+
+			    </div>
+		    </div>
+		    <?php echo Form::close(); ?>
+
         </div>
     </div>
 </div>
@@ -164,5 +169,8 @@
         </div>
     </div>
 </div>
+<!-- Delete confirm-->
+<?php echo $__env->make('includes.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<!-- End Delete confirm -->
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

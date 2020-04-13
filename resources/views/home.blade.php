@@ -34,7 +34,7 @@
 						<tbody>
 						@if(count($lastestEssays) == 0)
 							<tr>
-								<td colspan="4">{{ _i('There is no data.') }}</td>
+								<td colspan="4" align="center">{{ _i('There is no data.') }}</td>
 							</tr>
 						@else
 							@foreach($lastestEssays as $essay)
@@ -71,7 +71,7 @@
 						<tbody>
 						@if(count($lastestReview) == 0)
 							<tr>
-								<td colspan="4">{{ _i('There is no data.') }}</td>
+								<td colspan="4" align="center">{{ _i('There is no data.') }}</td>
 							</tr>
 						@else
 							@foreach($lastestReview as $review)
