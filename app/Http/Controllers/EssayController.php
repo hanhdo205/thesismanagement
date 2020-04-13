@@ -186,12 +186,16 @@ class EssayController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function review(Request $request) {
-		
 		$rows = DB::table('essays')
 			->join('users', 'users.id', '=', 'essays.reviewer_id')
+			->join('reviews', 'reviews.user_id', '=', 'essays.reviewer_id')
 			->where('essays.id', $request->id)
+			->where('reviews.review_token', $request->token)
 			->select('essays.*', 'users.name AS reviewer')
 			->first();
+		if (empty($topic)) {
+			return abort(404);
+		}
 		return view('essays.review', compact('rows'));
 	}
 	
