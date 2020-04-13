@@ -9,9 +9,11 @@
 				<a href="{{ route('topics.index') }}"><i class="fa fa-clipboard "></i>{{ _i('Topic list') }}</a>
 			</li>
 			@endcan
+			@can('user-list')
 			<li class="{{ request()->is('essays') || request()->is('essays/request') ? 'active' : '' }}">
 				<a href="{{ route('essays.index') }}"><i class="fa fa-clipboard "></i>{{ _i('Essays list') }}</a>
 			</li>
+			@endcan
 			@can('user-list')
 			<li class="{{ request()->is('submiter') ? 'active' : '' }}">
 				<a href="{{ route('essays.submiter') }}"><i class="fa fa-clipboard"></i>{{ _i('Student list') }}</a>
