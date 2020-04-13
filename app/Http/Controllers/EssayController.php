@@ -193,7 +193,7 @@ class EssayController extends Controller {
 			->where('reviews.review_token', $request->token)
 			->select('essays.*', 'users.name AS reviewer')
 			->first();
-		if (empty($topic)) {
+		if (empty($rows)) {
 			return abort(404);
 		}
 		return view('essays.review', compact('rows'));
