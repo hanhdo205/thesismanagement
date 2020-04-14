@@ -20,6 +20,10 @@ body.modal-open {
   }
 }
 
+.spinner-border {
+  display: none;
+}
+
 /* -- Use Fieldset Legend with bootstrap -- */
 
 fieldset.form-border {

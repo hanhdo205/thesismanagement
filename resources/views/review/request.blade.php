@@ -17,19 +17,21 @@
 			<div class="card">
 				<div class="card-header">
 					{{ _i('Review request form') }}
+
 				</div>
 				<div class="card-body">
 					<div>以下の演題に対して査読依頼を実施しますか？</div>
 					<div>問題ない場合は、査読依頼ボタンを押してください。</div>
 					<div class="mb-3">査読依頼を先生へとメールで依頼します。</div>
-							{!! Form::open(array('route' => 'review.sendmail','method'=>'POST')) !!}
+							{!! Form::open(['route' => 'review.sendmail','method'=>'POST','id' => 'reviewSendMail', 'class' => 'review_send_mail']) !!}
 							{!! Form::hidden('topic_id', $topic_id) !!}
 							{!! Form::hidden('essays', $essay_lst) !!}
 								<div class="form-group">
-									{!! Form::textarea('mailbody', $textarea, array('id' => 'mailcontent','class' => 'form-control','rows' => '10')) !!}
+									{!! Form::textarea('mailbody', $textarea, ['id' => 'mailcontent','class' => 'form-control','rows' => '10']) !!}
 								</div>
 								<div class="d-flex justify-content-end">
-									{!! Form::submit(_i('Send review request'), array('class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4')) !!}
+									<span class="spinner-border mr-3" role="status" aria-hidden="true"></span>
+									{!! Form::submit(_i('Send review request'), ['class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4']) !!}
 								</div>
 							{!! Form::close() !!}
 
@@ -40,3 +42,7 @@
 </div>
 <!-- /. PAGE INNER  -->
 @endsection
+
+@push('foot')
+<script src="{{ asset('js/review-request.js') }}"></script>
+@endpush

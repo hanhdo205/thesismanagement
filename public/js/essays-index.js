@@ -1,7 +1,7 @@
 $(function () {
     "use strict";
 		let $topic = $('#topic_select').val(),
-		$checkbox,$student_name,$review_result,
+		$checkbox,$student_name,$review_result,$val,
 		flag = true,
 		$url = $('#topic_url').attr('href'),
     	$parts = $url.split("/"),
@@ -12,7 +12,7 @@ $(function () {
 
 		fetch_data(parseInt($topic));
 		$('#requestSelect').on('change', function () {
-				request_select($(this).val());
+				$val = $(this).val();
 			});
 
 		$('#topic_select').on('change', function () {
@@ -60,7 +60,6 @@ $(function () {
 
 	    $( document ).ajaxComplete(function( event, request, settings ) {
 		  checkbox_callback();
-		  request_select($('#requestSelect').val());
 		});
 
 	    if($('div').hasClass('search_text_alert')) {
@@ -100,55 +99,52 @@ $(function () {
 				    $selectBtn.prop('disabled', true);
 				  }
 			});
+
+			$val = $('#requestSelect').val();
+			
 			$('#requestSelect').on('change', function () {
-				request_select($(this).val());
+				$val = $(this).val();
 			});
 
 		}
 
 		//do action when dropdown
-		function request_select($val) {
-			
-				    //ajax for download csv
-					$selectBtn.click(function(e){
-						if($val=='csv') {
-						e.preventDefault();
-						if(flag) {
-							let $csvFormData = new FormData();
-							let $essays = $("table tbody input:checkbox:checked").map(function(){
-						      return $(this).val();
-						    }).get();
-							$csvFormData.append('essays', $essays);
-							flag = false;
-							$.ajax({
-							  url: essays.export,
-							  type: 'POST',
-							  processData: false, // important
-							  contentType: false, // important
-							  dataType : 'json',
-							  data: $csvFormData,
-							  success: function (response, textStatus, request) {
-						        var a = document.createElement("a");
-						        a.href = response.file; 
-						        a.download = response.name;
-						        document.body.appendChild(a);
-						        a.click();
-						        a.remove();
-						      },
-						      error: function (ajaxContext) {
-						      	console.log('Export error: '+ajaxContext.responseText);
-						        //toastr.error('Export error: '+ajaxContext.responseText);
-						      }
-							});
-							flag = true;
-						}
-						} else if($val=='mail') {
-						e.preventDefault();
-						$('#reviewRequest').submit();
-						}
-					});
-				
-		}
+		$selectBtn.click(function(e){
+			e.preventDefault();
+			if($val=='csv') {
+					if(flag) {
+						let $csvFormData = new FormData();
+						let $essays = $("table tbody input:checkbox:checked").map(function(){
+					      return $(this).val();
+					    }).get();
+						$csvFormData.append('essays', $essays);
+						flag = false;
+						$.ajax({
+						  url: essays.export,
+						  type: 'POST',
+						  processData: false, // important
+						  contentType: false, // important
+						  dataType : 'json',
+						  data: $csvFormData,
+						  success: function (response, textStatus, request) {
+					        var a = document.createElement("a");
+					        a.href = response.file; 
+					        a.download = response.name;
+					        document.body.appendChild(a);
+					        a.click();
+					        a.remove();
+					      },
+					      error: function (ajaxContext) {
+					      	console.log('Export error: '+ajaxContext.responseText);
+					        //toastr.error('Export error: '+ajaxContext.responseText);
+					      }
+						});
+						flag = true;
+					}
+			} else if($val=='mail') {
+					$('#reviewRequest').submit();
+			}
+		});
 
 		//dataTable
 		function fetch_data($topic_id) {
