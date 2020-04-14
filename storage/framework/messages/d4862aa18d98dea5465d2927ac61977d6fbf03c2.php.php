@@ -29,7 +29,7 @@
 								<th class="fix-width"><?php echo e(_i('No.')); ?></th>
 								<th><?php echo e(_i('Title')); ?></th>
 								<th><?php echo e(_i('Student name')); ?></th>
-								<th><?php echo e(_i('Registration date')); ?></th>
+								<th><?php echo e(_i('Submission date')); ?></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -67,7 +67,7 @@
 								<th class="fix-width"><?php echo e(_i('No.')); ?></th>
 								<th><?php echo e(_i('Title')); ?></th>
 								<th><?php echo e(_i('Student name')); ?></th>
-								<th><?php echo e(_i('Registration date')); ?></th>
+								<th><?php echo e(_i('Submission date')); ?></th>
 							</tr>
 						</thead>
 						<tbody>

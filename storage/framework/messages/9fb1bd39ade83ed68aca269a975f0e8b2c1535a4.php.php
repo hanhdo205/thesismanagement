@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title', _i('Request reply')); ?>
+<?php $__env->startSection('title', _i('Confirmation to become a member of the thesis')); ?>
 <?php $__env->startSection('description', _i('The SIS management')); ?>
 <?php $__env->startSection('keyword', _i('management')); ?>
 
@@ -29,7 +29,7 @@
 						<?php endif; ?>
 						<?php if(count($errors) > 0): ?>
 						    <div class="alert alert-danger">
-						        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+						        <?php echo e(_i('There were some problems with your input.')); ?><br><br>
 						        <ul>
 						        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						            <li><?php echo e($error); ?></li>
@@ -53,7 +53,7 @@
 						        </div>
 						    </div>
 						</div>
-						<?php echo Form::open(array('route' => 'request.reply','method'=>'POST')); ?>
+						<?php echo Form::open(['route' => 'request.reply','method'=>'POST']); ?>
 
 						<?php echo Form::hidden('review_token', $review_token); ?>
 
@@ -62,11 +62,11 @@
 							        <div class="form-group">
 							            <strong><?php echo e(_i('Can you join to become a member of the thesis?')); ?></strong>
 							            <div class="form-group mt-3">
-								            <?php echo Form::radio('request_status', 'u_yes' , $yes,  array('id'=>'yes')); ?>
+								            <?php echo Form::radio('request_status', 'u_yes' , $yes,  ['id'=>'yes']); ?>
 
 											<?php echo Form::label('yes', _i('Yes')); ?>
 
-								            <?php echo Form::radio('request_status', 'u_no' , $no,  array('id'=>'no')); ?>
+								            <?php echo Form::radio('request_status', 'u_no' , $no,  ['id'=>'no']); ?>
 
 	  										<?php echo Form::label('no', _i('No')); ?>
 
@@ -75,7 +75,7 @@
 							    </div>
 
 							    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-							    	<?php echo Form::submit(_i('Submit'), array('class' => 'btn btn-primary')); ?>
+							    	<?php echo Form::submit(_i('Submit'), ['class' => 'btn btn-primary']); ?>
 
 							    </div>
 							</div>

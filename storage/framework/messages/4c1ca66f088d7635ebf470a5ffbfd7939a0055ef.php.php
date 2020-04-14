@@ -47,6 +47,9 @@
     </head>
     <body>
             <div id="wrapper">
+                    <?php
+                        $user = auth()->user();
+                    ?>
                     <?php echo $__env->make('includes.topbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     <?php echo $__env->make('includes.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     <div id="page-wrapper">

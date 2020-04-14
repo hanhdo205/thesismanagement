@@ -47,6 +47,9 @@
     </head>
     <body>
             <div id="wrapper">
+                    @php
+                        $user = auth()->user();
+                    @endphp
                     @include('includes.topbar')
                     @include('includes.sidebar')
                     <div id="page-wrapper">

@@ -9,16 +9,17 @@
 	</div>
 	<div class="inline my-2 my-lg-0">
 		<div class="btn-group">
-			<button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			{{ _i('My account') }}
-			</button>
-			<div class="dropdown-menu dropdown-menu-right">
-				<a class="dropdown-item" href="{{ route('users.profile') }}">{{ _i('My profile') }}</a>
-				<div class="dropdown-divider"></div>
+			<span type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			{{ _i('Welcome, %s',$user->name) }}
+			</span>
+			<div class="dropdown-menu dropdown-menu-right mt-0 mb-0 pt-0 pb-0">
+				<div class="dropdown-header text-center">{{ _i('Account') }}</div>
+				<a class="dropdown-item" href="{{ route('users.profile') }}"><i class="fa fa-user" aria-hidden="true"></i> {{ _i('My profile') }}</a>
+				<div class="dropdown-divider mb-0 mt-0"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                    {{ _i('Logout') }}
+                    <i class="fa fa-key" aria-hidden="true"></i> {{ _i('Logout') }}
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2020-04-14 12:11+0700\n"
-"PO-Revision-Date: 2020-04-14 12:19+0700\n"
+"POT-Creation-Date: 2020-04-14 13:41+0700\n"
+"PO-Revision-Date: 2020-04-14 13:45+0700\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: ja_JP\n"
@@ -39,17 +39,22 @@ msgid "click here to request another"
 msgstr ""
 
 #: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:13
-msgid "My account"
-msgstr "アカウント"
+#, php-format
+msgid "Welcome, %s"
+msgstr "ようこそ！%s様"
 
 #: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:17
+msgid "Account"
+msgstr "アカウント"
+
+#: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:18
 #: ../storage/framework/messages/c33a7e13ea772f0e135f8ef41f35b1e8e4047210.php.php:3
 #: ../storage/framework/messages/c33a7e13ea772f0e135f8ef41f35b1e8e4047210.php.php:17
 #: ../storage/framework/messages/c33a7e13ea772f0e135f8ef41f35b1e8e4047210.php.php:25
 msgid "My profile"
 msgstr "プロフィール"
 
-#: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:22
+#: ../storage/framework/messages/006c22e36473ef36fb9e2f35e14aa2be805935b5.php.php:23
 msgid "Logout"
 msgstr "ログアウト"
 
@@ -251,6 +256,7 @@ msgstr "演題詳細"
 
 #: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:30
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:85
+#: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:32
 #: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:40
 #: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:39
 #: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:21
@@ -432,6 +438,8 @@ msgid "Send"
 msgstr "実行"
 
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:88
+#: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:32
+#: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:70
 msgid "Submission date"
 msgstr "提出日"
 
@@ -879,9 +887,6 @@ msgid "Permission"
 msgstr "Phân quyền"
 
 #: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:3
-msgid "Request reply"
-msgstr "Trả lời yêu cầu tham gia chấm bài"
-
 #: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:12
 msgid "Confirmation to become a member of the thesis"
 msgstr "Form xác nhận tham gia hội đồng giáo viên phản biện"
@@ -996,11 +1001,6 @@ msgstr ""
 msgid "Lastest essays"
 msgstr "直近の演題提出状況"
 
-#: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:32
-#: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:70
-msgid "Registration date"
-msgstr "提出日"
-
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:58
 msgid "Lastest reviews"
 msgstr "直近の査読提出状況"
@@ -1027,6 +1027,12 @@ msgstr "メール内容 は、必ず指定してください。"
 #: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:39
 msgid "Send review request"
 msgstr "査読依頼"
+
+#~ msgid "Request reply"
+#~ msgstr "Trả lời yêu cầu tham gia chấm bài"
+
+#~ msgid "Registration date"
+#~ msgstr "提出日"
 
 #~ msgid "Date create"
 #~ msgstr "Ngày nộp"

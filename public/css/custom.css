@@ -24,6 +24,12 @@ body.modal-open {
   display: none;
 }
 
+.dropdown-header {
+  background: #e4e7ea;
+  border-bottom: 1px solid #c8ced3;
+  padding: 0 0.5rem;
+}
+
 /* -- Use Fieldset Legend with bootstrap -- */
 
 fieldset.form-border {

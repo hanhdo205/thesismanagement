@@ -73,13 +73,13 @@
 								toastr.success('<?php echo e($message); ?>');
 							</script>
 						<?php endif; ?>
-						<?php echo Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]); ?>
+						<?php echo Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id],'novalidate']); ?>
 
 							<div class="row">
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong><?php echo e(_i('Name')); ?>:</strong>
-							            <?php echo Form::text('name', null, array('placeholder' => _i('Name'),'class' => 'form-control' . $name_err)); ?>
+							            <?php echo Form::text('name', null, ['placeholder' => _i('Name'),'class' => 'form-control' . $name_err]); ?>
 
 							            <span class="text-danger"><?php echo e($errors->first('name')); ?></span>
 							        </div>
@@ -87,7 +87,7 @@
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong><?php echo e(_i('Email')); ?></strong>
-							            <?php echo Form::text('email', null, array('placeholder' => _i('Email'),'class' => 'form-control' . $mail_err)); ?>
+							            <?php echo Form::text('email', null, ['placeholder' => _i('Email'),'class' => 'form-control' . $mail_err]); ?>
 
 							            <span class="text-danger"><?php echo e($errors->first('email')); ?></span>
 							        </div>
@@ -95,7 +95,7 @@
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong><?php echo e(_i('New password')); ?></strong>
-							            <?php echo Form::password('password', array('placeholder' => _i('New password'),'class' => 'form-control' . $password_err)); ?>
+							            <?php echo Form::password('password', ['placeholder' => _i('New password'),'class' => 'form-control' . $password_err]); ?>
 
 							            <span class="text-danger"><?php echo e($errors->first('password')); ?></span>
 							        </div>
@@ -103,7 +103,7 @@
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong><?php echo e(_i('Confirm Password')); ?></strong>
-							            <?php echo Form::password('confirm-password', array('placeholder' => _i('Confirm Password'),'class' => 'form-control' . $confirm_password_err)); ?>
+							            <?php echo Form::password('confirm-password', ['placeholder' => _i('Confirm Password'),'class' => 'form-control' . $confirm_password_err]); ?>
 
 							            <span class="text-danger"><?php echo e($errors->first('confirm-password')); ?></span>
 							        </div>
@@ -111,13 +111,13 @@
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong><?php echo e(_i('Role')); ?>:</strong>
-							            <?php echo Form::select('roles[]', $roles,$userRole, array('class' => 'form-control select2' . $roles_err,'multiple')); ?>
+							            <?php echo Form::select('roles[]', $roles,$userRole, ['class' => 'form-control select2' . $roles_err,'multiple']); ?>
 
 							            <span class="text-danger"><?php echo e($errors->first('roles')); ?></span>
 							        </div>
 							    </div>
 							    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-							    	<?php echo Form::submit(_i('Update profile'), array('class' => 'btn btn-primary')); ?>
+							    	<?php echo Form::submit(_i('Update profile'), ['class' => 'btn btn-primary']); ?>
 
 
 							    </div>

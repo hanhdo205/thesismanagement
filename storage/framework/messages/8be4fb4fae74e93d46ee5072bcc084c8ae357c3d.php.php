@@ -34,11 +34,11 @@
 						$last_topic_id = Session::get('topic_id');
 					?>
 				<?php endif; ?>
-				<?php echo Form::open(array('route' => 'opponents.confirmation','method'=>'POST', 'class' => 'opponent_management')); ?>
+				<?php echo Form::open(['route' => 'opponents.confirmation','method'=>'POST', 'class' => 'opponent_management']); ?>
 
 				<div class="form-group">
 					<div class="form-inline">
-						<?php echo Form::select('topic', $topics,$last_topic_id, array('id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic'))); ?>
+						<?php echo Form::select('topic', $topics,$last_topic_id, ['id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic')]); ?>
 
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 				</div>
 				<div class="form-group">
 					<div class="d-flex justify-content-center">
-						<?php echo Form::submit(_i('Go to letter confirm'), array('id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5')); ?>
+						<?php echo Form::submit(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5']); ?>
 
 					</div>
 				</div>
@@ -89,17 +89,17 @@
         </button>
       	</div>
       	<div class="modal-body">
-        	<?php echo Form::open(array('id' => 'csv_upload_form','method'=>'POST', 'enctype' => 'multipart/form-data')); ?>
+        	<?php echo Form::open(['id' => 'csv_upload_form','method'=>'POST', 'enctype' => 'multipart/form-data']); ?>
 
                 <span class="input-group div-select-csv-file">
-                	<?php echo Form::text('csv_file_name_txt',null,array('class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off')); ?>
+                	<?php echo Form::text('csv_file_name_txt',null,['class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off']); ?>
 
 					<span class="input-group-append">
 						<label for="csv_upload_file" class="btn btn-primary"><?php echo e(_i('Choose file')); ?></label></span>
 					</span>
 				</span>
 				<small class="help-block"> <?php echo _i('※Data format .csv<br>※Maximum upload file size: 2MB'); ?></small>
-				<?php echo Form::file('csv_upload_file', array('id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;')); ?>
+				<?php echo Form::file('csv_upload_file', ['id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']); ?>
 
             <?php echo Form::close(); ?>
 
@@ -124,16 +124,16 @@
         </button>
       	</div>
       	<div class="modal-body">
-        	<?php echo Form::open(array('id' => 'new_user_form','method'=>'POST')); ?>
+        	<?php echo Form::open(['id' => 'new_user_form','method'=>'POST','novalidate']); ?>
 
 				<div class="form-group">
 					<label for="inputEmail"><?php echo e(_i('Email address')); ?></label>
-					<?php echo Form::email('email',null,array('id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off')); ?>
+					<?php echo Form::email('email',null,['id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off']); ?>
 
 				</div>
 				<div class="form-group">
 					<label for="inputName"><?php echo e(_i('Full name')); ?></label>
-					<?php echo Form::text('name',null,array('id' => 'inputName','class' => 'fullname input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off')); ?>
+					<?php echo Form::text('name',null,['id' => 'inputName','class' => 'fullname input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off']); ?>
 
 				</div>
             <?php echo Form::close(); ?>
