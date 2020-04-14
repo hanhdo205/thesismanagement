@@ -70,45 +70,45 @@
 								toastr.success('{{ $message }}');
 							</script>
 						@endif
-						{!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
+						{!! Form::open(['route' => 'users.store','method'=>'POST','novalidate']) !!}
 							<div class="row">
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong>{{ _i('Name') }}:</strong>
-							            {!! Form::text('name', null, array('placeholder' => _i('Name'),'class' => 'form-control' . $name_err)) !!}
+							            {!! Form::text('name', null, ['placeholder' => _i('Name'),'class' => 'form-control' . $name_err]) !!}
 							            <span class="text-danger">{{ $errors->first('name') }}</span>
 							        </div>
 							    </div>
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong>{{ _i('Email') }}</strong>
-							            {!! Form::text('email', null, array('placeholder' => _i('Email'),'class' => 'form-control' . $mail_err)) !!}
+							            {!! Form::text('email', null, ['placeholder' => _i('Email'),'class' => 'form-control' . $mail_err]) !!}
 							            <span class="text-danger">{{ $errors->first('email') }}</span>
 							        </div>
 							    </div>
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong>{{ _i('New password') }}</strong>
-							            {!! Form::password('password', array('placeholder' => _i('New password'),'class' => 'form-control' . $password_err)) !!}
+							            {!! Form::password('password', ['placeholder' => _i('New password'),'class' => 'form-control' . $password_err]) !!}
 							            <span class="text-danger">{{ $errors->first('password') }}</span>
 							        </div>
 							    </div>
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong>{{ _i('Confirm Password') }}</strong>
-							            {!! Form::password('confirm-password', array('placeholder' => _i('Confirm Password'),'class' => 'form-control' . $confirm_password_err)) !!}
+							            {!! Form::password('confirm-password', ['placeholder' => _i('Confirm Password'),'class' => 'form-control' . $confirm_password_err]) !!}
 							            <span class="text-danger">{{ $errors->first('confirm-password') }}</span>
 							        </div>
 							    </div>
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong>{{ _i('Role') }}</strong>
-							            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control select2' . $roles_err,'multiple')) !!}
+							            {!! Form::select('roles[]', $roles,[], ['class' => 'form-control select2' . $roles_err,'multiple']) !!}
 							            <span class="text-danger">{{ $errors->first('roles') }}</span>
 							        </div>
 							    </div>
 							    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-							    	{!! Form::submit(_i('Submit'), array('class' => 'btn btn-primary')) !!}
+							    	{!! Form::submit(_i('Submit'), ['class' => 'btn btn-primary']) !!}
 							    </div>
 							</div>
 						{!! Form::close() !!}

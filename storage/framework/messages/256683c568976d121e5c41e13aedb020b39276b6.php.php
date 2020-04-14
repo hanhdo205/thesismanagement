@@ -42,7 +42,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label><?php echo e(_i('Submit form URL')); ?>： <a href="<?php echo e(route('topic.endai_teisyutu', ['id' => $last_topic_id])); ?>" id="topic_url"><?php echo e(route('topic.endai_teisyutu', ['id' => $last_topic_id])); ?></a></label>
+					<label class="mb-0"><?php echo e(_i('Submit form URL')); ?>： <a href="<?php echo e(route('topic.endai_teisyutu', ['id' => $last_topic_id])); ?>" id="topic_url"><?php echo e(route('topic.endai_teisyutu', ['id' => $last_topic_id])); ?></a></label>
 				</div>
 				<div class="form-group">
 					<div class="form-inline custom-inline">
@@ -69,6 +69,7 @@
 
 					</div>
 				</div>
+				<span class="search_text"><div class="alert alert-secondary alert-dismissible search_text_alert d-none" role="alert"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div></span>
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" cellspacing="0" width="100%">
 						<thead>
@@ -84,7 +85,7 @@
 								<th><?php echo e(_i('Student name')); ?></th>
 								<th><?php echo e(_i('Status')); ?></th>
 								<th><?php echo e(_i('Review result')); ?></th>
-								<th><?php echo e(_i('Date create')); ?></th>
+								<th><?php echo e(_i('Submission date')); ?></th>
 							</tr>
 						</thead>
 						<tbody></tbody>
@@ -109,7 +110,11 @@
 <script type="text/javascript">
 	var essays = {index:'<?php echo e(route("essays.index")); ?>',export:'<?php echo e(route("essays.export")); ?>'};
 	var last_topic_id = '<?php echo e($last_topic_id); ?>';
+	var search_text_both = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with student name is %(search[1].name)s or review result is %(search[2].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
+	var search_text_name = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with student name is %(search[1].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
+	var search_text_result = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with review result is %(search[2].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
 </script>
 <script src="<?php echo e(asset('js/essays-index.js')); ?>"></script>
+<script src="<?php echo e(asset('js/sprintf.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

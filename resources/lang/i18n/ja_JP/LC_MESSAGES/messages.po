@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2020-04-13 09:57+0700\n"
-"PO-Revision-Date: 2020-04-13 18:46+0700\n"
+"POT-Creation-Date: 2020-04-14 12:11+0700\n"
+"PO-Revision-Date: 2020-04-14 12:19+0700\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: ja_JP\n"
@@ -78,6 +78,7 @@ msgstr ""
 #: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:4
 #: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:4
 #: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:4
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:4
 #: ../storage/framework/messages/c33a7e13ea772f0e135f8ef41f35b1e8e4047210.php.php:4
 #: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:4
 #: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:4
@@ -104,6 +105,7 @@ msgstr ""
 #: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:5
 #: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:5
 #: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:5
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:5
 #: ../storage/framework/messages/c33a7e13ea772f0e135f8ef41f35b1e8e4047210.php.php:5
 #: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:5
 #: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:5
@@ -149,7 +151,7 @@ msgstr ""
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:29
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:67
 msgid "No."
-msgstr ""
+msgstr "Stt."
 
 #: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:36
 #: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:13
@@ -179,8 +181,8 @@ msgid "Topic management"
 msgstr "学術管理"
 
 #: ../storage/framework/messages/10c28851d01832c532ff342883ba95fd98349b4d.php.php:26
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:62
-#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:83
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:67
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:84
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:29
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:163
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:164
@@ -190,6 +192,7 @@ msgstr "学術管理"
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:105
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:106
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:151
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:64
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:30
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:68
 msgid "Title"
@@ -250,86 +253,96 @@ msgstr "演題詳細"
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:85
 #: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:40
 #: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:39
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:21
 #: ../storage/framework/messages/c33a7e13ea772f0e135f8ef41f35b1e8e4047210.php.php:32
 msgid "There were some problems with your input."
 msgstr ""
+"正しく入力されていない項目があります。メッセージをご確認の上、もう一度ご入力"
+"ください。"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:38
-#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:84
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:43
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:85
 #: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:25
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:37
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:31
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:69
 #: ../storage/framework/messages/dfc7af7ed425657b6b868c649fc8015fb09e184f.php.php:39
 msgid "Student name"
 msgstr "氏名"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:46
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:51
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:147
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:148
 #: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:31
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:46
 msgid "Belong to"
 msgstr "所属"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:54
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:59
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:155
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:156
 #: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:37
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:55
 msgid "Major"
 msgstr "専門"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:70
-#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:85
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:75
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:86
 #: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:63
 #: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:49
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:47
 msgid "Status"
 msgstr "ステータス"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:72
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:77
 #: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:65
 msgid "pending"
 msgstr "査読待ち"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:72
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:77
 #: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:67
 msgid "reviewing"
 msgstr "査読中"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:72
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:77
 #: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:69
 msgid "reviewed"
 msgstr "査読終了"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:77
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:82
 #: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:55
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:80
 msgid "Reviewer"
 msgstr "査読者"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:84
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:91
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:54
-#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:86
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:87
 #: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:61
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:85
 msgid "Review result"
 msgstr "査読結果"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:90
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:97
 #: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:67
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:73
 msgid "Link to download"
 msgstr "ファイルダウンロード"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:92
-#, fuzzy
-#| msgid "CSV Download"
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:99
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:74
 msgid "Download"
-msgstr "CSVダウンロード"
+msgstr "ダウンロード"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:96
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:103
 #: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:73
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:91
 msgid "Comments"
 msgstr "査読者コメント"
 
-#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:101
+#: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:108
 #: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:77
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:97
 msgid "Save changes"
 msgstr "変更"
 
@@ -355,12 +368,12 @@ msgstr "開催予定"
 #: Http/Controllers/TopicController.php:101
 #: Http/Controllers/TopicController.php:143
 msgid "Topic saved successfully."
-msgstr ""
+msgstr "Chủ đề/ đề tài được lưu thành công."
 
 #: ../storage/framework/messages/23bfb5e7a228fd92f0c1f7b4584c0118b07d1d66.php.php:156
 #: Http/Controllers/TopicController.php:156
 msgid "Topic deleted successfully."
-msgstr ""
+msgstr "Đã xóa chủ đề/ đề tài"
 
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:3
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:17
@@ -414,15 +427,41 @@ msgstr "選択してください"
 
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:68
 #: ../storage/framework/messages/b28877d31316cb7d1d62cedb54353e0a93563ae2.php.php:35
-#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:50
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:51
 msgid "Send"
 msgstr "実行"
 
-#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:87
-#, fuzzy
-#| msgid "user-create"
-msgid "Date create"
-msgstr "Tạo người dùng"
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:88
+msgid "Submission date"
+msgstr "提出日"
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:113
+msgid ""
+"Search result for %(search[0].name)s with student name is %(search[1].name)s "
+"or review result is %(search[2].name)s"
+msgstr ""
+"Kết quả tìm kiếm theo chủ đề %(search[0].name)s của các sinh viên có tên là "
+"%(search[1].name)s hoặc kết quả chấm bài là %(search[2].name)s"
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:113
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:114
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:115
+msgid "Reset search"
+msgstr "Xóa tìm kiếm"
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:114
+msgid ""
+"Search result for %(search[0].name)s with student name is %(search[1].name)s"
+msgstr ""
+"Kết quả tìm kiếm theo chủ đề %(search[0].name)s của các sinh viên có tên "
+"%(search[1].name)s"
+
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:115
+msgid ""
+"Search result for %(search[0].name)s with review result is %(search[2].name)s"
+msgstr ""
+"Kết quả tìm kiếm theo chủ đề %(search[0].name)s có kết quả chấm bài là "
+"%(search[2].name)s"
 
 #: ../storage/framework/messages/27c87bf22a187400f8528b239ca614ee5ade1f72.php.php:10
 msgid "Sign in"
@@ -443,22 +482,22 @@ msgstr "パスワードを記録する"
 msgid "Login"
 msgstr "サインイン"
 
-#: ../storage/framework/messages/3c8ee589ca3b1508cc7860bf62bd3e4d279d0ebe.php.php:203
-#: Http/Controllers/EssayController.php:203
+#: ../storage/framework/messages/3c8ee589ca3b1508cc7860bf62bd3e4d279d0ebe.php.php:231
+#: Http/Controllers/EssayController.php:231
 msgid "Essay updated successfully"
-msgstr ""
+msgstr "Đã cập nhật chấm bài"
 
-#: ../storage/framework/messages/3c8ee589ca3b1508cc7860bf62bd3e4d279d0ebe.php.php:252
-#: Http/Controllers/EssayController.php:252
+#: ../storage/framework/messages/3c8ee589ca3b1508cc7860bf62bd3e4d279d0ebe.php.php:280
+#: Http/Controllers/EssayController.php:280
 msgid "Registration successfully."
 msgstr ""
 
-#: ../storage/framework/messages/3c8ee589ca3b1508cc7860bf62bd3e4d279d0ebe.php.php:343
-#: ../storage/framework/messages/e7ad86f0337b810ed6f1637c5d6f271409301c34.php.php:129
-#: Http/Controllers/EssayController.php:343
-#: Http/Controllers/OpponentController.php:129
+#: ../storage/framework/messages/3c8ee589ca3b1508cc7860bf62bd3e4d279d0ebe.php.php:371
+#: ../storage/framework/messages/e7ad86f0337b810ed6f1637c5d6f271409301c34.php.php:106
+#: Http/Controllers/EssayController.php:371
+#: Http/Controllers/OpponentController.php:106
 msgid "The emails were send."
-msgstr ""
+msgstr "Đã gởi email thành công."
 
 #: ../storage/framework/messages/41ba87d576dbc43579f7784ea2cc17d6f066d3dd.php.php:22
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:38
@@ -468,13 +507,11 @@ msgstr "データはありません。"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:22
 msgid "Registration form for essay writing competetion"
-msgstr ""
+msgstr "Form đăng ký thi viết bài luận"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:95
-#, fuzzy
-#| msgid "Student list"
 msgid "Student info"
-msgstr "演題提出者管理"
+msgstr "Thông tin sinh viên"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:100
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:101
@@ -499,7 +536,7 @@ msgstr "女性"
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:124
 #: ../storage/framework/messages/dfc7af7ed425657b6b868c649fc8015fb09e184f.php.php:42
 msgid "Date of birth"
-msgstr ""
+msgstr "Ngày sinh"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:131
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:132
@@ -508,10 +545,12 @@ msgid "Email address"
 msgstr "メールアドレス"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:142
-#, fuzzy
-#| msgid "Essays list"
 msgid "Essay info"
-msgstr "演題管理"
+msgstr "Thông tin bài nộp"
+
+#: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:170
+msgid "Upload"
+msgstr "Upload"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:172
 #: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:95
@@ -573,7 +612,7 @@ msgstr "メールアドレス"
 #: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:45
 #: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:36
 msgid "Roles"
-msgstr ""
+msgstr "役割"
 
 #: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:5
 msgid "HOME"
@@ -583,18 +622,18 @@ msgstr ""
 msgid "Topic list"
 msgstr "学術大会管理"
 
-#: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:13
+#: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:14
 msgid "Essays list"
 msgstr "演題管理"
 
-#: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:17
+#: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:19
 #: ../storage/framework/messages/dfc7af7ed425657b6b868c649fc8015fb09e184f.php.php:3
 #: ../storage/framework/messages/dfc7af7ed425657b6b868c649fc8015fb09e184f.php.php:17
 #: ../storage/framework/messages/dfc7af7ed425657b6b868c649fc8015fb09e184f.php.php:23
 msgid "Student list"
 msgstr "演題提出者管理"
 
-#: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:22
+#: ../storage/framework/messages/8842939c315c56bfa63e79bb2fff0959cc708eea.php.php:24
 msgid "Opponent list"
 msgstr "査読者管理"
 
@@ -650,7 +689,7 @@ msgstr "はい"
 
 #: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:161
 msgid "New opponent added successfully"
-msgstr ""
+msgstr "Giáo viên đã được thêm"
 
 #: ../storage/framework/messages/8d8f2e1efff09fac3a2e7124a9376a33e2979da0.php.php:1
 msgid "user-list"
@@ -817,6 +856,8 @@ msgstr "査読依頼"
 #: ../storage/framework/messages/9610eb826db5ccc8a531bfa5a75d7221d3c9dd3c.php.php:23
 msgid "There no reviewer yet or all they are in reviewing"
 msgstr ""
+"Hiện chưa có giáo viên tham gia chấm bài hoặc các bài đang trong quá trình "
+"chấm điểm."
 
 #: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:3
 #: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:12
@@ -828,10 +869,8 @@ msgstr ""
 #: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:42
 #: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:38
 #: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:39
-#, fuzzy
-#| msgid "Full name"
 msgid "Role name"
-msgstr "氏名"
+msgstr ""
 
 #: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:48
 #: ../storage/framework/messages/b0c5fdcef1a86c66c9126a569d085e0cd60737f1.php.php:45
@@ -841,23 +880,23 @@ msgstr "Phân quyền"
 
 #: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:3
 msgid "Request reply"
-msgstr ""
+msgstr "Trả lời yêu cầu tham gia chấm bài"
 
 #: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:12
 msgid "Confirmation to become a member of the thesis"
-msgstr ""
+msgstr "Form xác nhận tham gia hội đồng giáo viên phản biện"
 
 #: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:63
 msgid "Can you join to become a member of the thesis?"
-msgstr ""
+msgstr "Bạn có thể tham gia hội đồng giáo viên phản biện?"
 
 #: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:67
 msgid "Yes"
-msgstr ""
+msgstr "Đồng ý"
 
 #: ../storage/framework/messages/9fb1bd39ade83ed68aca269a975f0e8b2c1535a4.php.php:71
 msgid "No"
-msgstr ""
+msgstr "Không đồng ý"
 
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:29
 msgid "Add new topic"
@@ -873,7 +912,7 @@ msgstr "処理中.."
 
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:76
 msgid "Edit Topic"
-msgstr ""
+msgstr "Chỉnh sửa chủ đề/ đề tài"
 
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:77
 msgid "Create New Topic"
@@ -882,11 +921,11 @@ msgstr "新規作成"
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:112
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:113
 msgid "Start date"
-msgstr ""
+msgstr "Ngày bắt đầu nhận bài"
 
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:120
 msgid "End date"
-msgstr ""
+msgstr "Ngày ngưng nhận bài"
 
 #: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:3
 #: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:24
@@ -906,7 +945,7 @@ msgstr "新しいパスワード"
 #: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:113
 #: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:112
 msgid "Role"
-msgstr ""
+msgstr "役割"
 
 #: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:120
 #: ../storage/framework/messages/c33a7e13ea772f0e135f8ef41f35b1e8e4047210.php.php:103
@@ -922,9 +961,9 @@ msgid ""
 "Provide your email that you used to register. We will send you information "
 "on how to reset your password."
 msgstr ""
-"登録されているメールアドレスを入力してください。パスワードリセットメールを"
-"送信します。メールアドレスを登録していない場合や、登録したメールアドレスが"
-"わからない場合は、管理者にお問い合わせください。"
+"登録されているメールアドレスを入力してください。パスワードリセットメールを送"
+"信します。メールアドレスを登録していない場合や、登録したメールアドレスがわか"
+"らない場合は、管理者にお問い合わせください。"
 
 #: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:6
 #: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:81
@@ -937,6 +976,11 @@ msgstr "パスワード更新"
 #: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:20
 msgid "Create New User"
 msgstr "ユーザー新規追加"
+
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:3
+#: ../storage/framework/messages/c0db15005ddd3c8b40590474b6d71f0fc90eade5.php.php:17
+msgid "Essay review form"
+msgstr "Form chấm bài"
 
 #: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:3
 #: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:11
@@ -961,10 +1005,10 @@ msgstr "提出日"
 msgid "Lastest reviews"
 msgstr "直近の査読提出状況"
 
-#: ../storage/framework/messages/e7ad86f0337b810ed6f1637c5d6f271409301c34.php.php:167
-#: Http/Controllers/OpponentController.php:167
+#: ../storage/framework/messages/e7ad86f0337b810ed6f1637c5d6f271409301c34.php.php:172
+#: Http/Controllers/OpponentController.php:172
 msgid "Thank you for your confirmation."
-msgstr ""
+msgstr "Cám ơn bạn đã trả lời."
 
 #: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:3
 #: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:16
@@ -972,17 +1016,20 @@ msgstr ""
 msgid "Review request mail template"
 msgstr "査読対応確認"
 
-#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:67
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:68
 msgid "No item selected"
 msgstr "送信先 は、必ず指定してください。"
 
-#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:68
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:69
 msgid "Email content can not be blank"
 msgstr "メール内容 は、必ず指定してください。"
 
-#: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:37
+#: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:39
 msgid "Send review request"
 msgstr "査読依頼"
+
+#~ msgid "Date create"
+#~ msgstr "Ngày nộp"
 
 #, fuzzy
 #~| msgid "Review result"

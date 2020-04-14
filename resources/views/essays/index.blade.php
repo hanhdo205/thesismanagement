@@ -77,7 +77,7 @@
 								<th>{{ _i('Student name') }}</th>
 								<th>{{ _i('Status') }}</th>
 								<th>{{ _i('Review result') }}</th>
-								<th>{{ _i('Date create') }}</th>
+								<th>{{ _i('Submission date') }}</th>
 							</tr>
 						</thead>
 						<tbody></tbody>

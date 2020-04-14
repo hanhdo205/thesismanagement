@@ -1,6 +1,6 @@
 @extends('layouts.guess')
 
-@section('title', _i('Request reply'))
+@section('title', _i('Confirmation to become a member of the thesis'))
 @section('description', _i('The SIS management'))
 @section('keyword', _i('management'))
 
@@ -28,7 +28,7 @@
 						@endif
 						@if (count($errors) > 0)
 						    <div class="alert alert-danger">
-						        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+						        {{ _i('There were some problems with your input.') }}<br><br>
 						        <ul>
 						        @foreach ($errors->all() as $error)
 						            <li>{{ $error }}</li>
@@ -50,23 +50,23 @@
 						        </div>
 						    </div>
 						</div>
-						{!! Form::open(array('route' => 'request.reply','method'=>'POST')) !!}
+						{!! Form::open(['route' => 'request.reply','method'=>'POST']) !!}
 						{!! Form::hidden('review_token', $review_token) !!}
 							<div class="row">
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong>{{ _i('Can you join to become a member of the thesis?') }}</strong>
 							            <div class="form-group mt-3">
-								            {!! Form::radio('request_status', 'u_yes' , $yes,  array('id'=>'yes')) !!}
+								            {!! Form::radio('request_status', 'u_yes' , $yes,  ['id'=>'yes']) !!}
 											{!! Form::label('yes', _i('Yes')) !!}
-								            {!! Form::radio('request_status', 'u_no' , $no,  array('id'=>'no')) !!}
+								            {!! Form::radio('request_status', 'u_no' , $no,  ['id'=>'no']) !!}
 	  										{!! Form::label('no', _i('No')) !!}
 								        </div>
 							        </div>
 							    </div>
 
 							    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-							    	{!! Form::submit(_i('Submit'), array('class' => 'btn btn-primary')) !!}
+							    	{!! Form::submit(_i('Submit'), ['class' => 'btn btn-primary']) !!}
 							    </div>
 							</div>
 						{!! Form::close() !!}

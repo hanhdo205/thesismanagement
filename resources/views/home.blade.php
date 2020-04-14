@@ -28,7 +28,7 @@
 								<th class="fix-width">{{ _i('No.') }}</th>
 								<th>{{ _i('Title') }}</th>
 								<th>{{ _i('Student name') }}</th>
-								<th>{{ _i('Registration date') }}</th>
+								<th>{{ _i('Submission date') }}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -65,7 +65,7 @@
 								<th class="fix-width">{{ _i('No.') }}</th>
 								<th>{{ _i('Title') }}</th>
 								<th>{{ _i('Student name') }}</th>
-								<th>{{ _i('Registration date') }}</th>
+								<th>{{ _i('Submission date') }}</th>
 							</tr>
 						</thead>
 						<tbody>

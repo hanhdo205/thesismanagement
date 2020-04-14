@@ -33,10 +33,10 @@
 						$last_topic_id = Session::get('topic_id');
 					@endphp
 				@endif
-				{!! Form::open(array('route' => 'opponents.confirmation','method'=>'POST', 'class' => 'opponent_management')) !!}
+				{!! Form::open(['route' => 'opponents.confirmation','method'=>'POST', 'class' => 'opponent_management']) !!}
 				<div class="form-group">
 					<div class="form-inline">
-						{!! Form::select('topic', $topics,$last_topic_id, array('id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic'))) !!}
+						{!! Form::select('topic', $topics,$last_topic_id, ['id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic')]) !!}
 					</div>
 				</div>
 				<div class="form-group">
@@ -64,7 +64,7 @@
 				</div>
 				<div class="form-group">
 					<div class="d-flex justify-content-center">
-						{!! Form::submit(_i('Go to letter confirm'), array('id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5')) !!}
+						{!! Form::submit(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5']) !!}
 					</div>
 				</div>
 				{!! Form::close() !!}
@@ -84,15 +84,15 @@
         </button>
       	</div>
       	<div class="modal-body">
-        	{!! Form::open(array('id' => 'csv_upload_form','method'=>'POST', 'enctype' => 'multipart/form-data')) !!}
+        	{!! Form::open(['id' => 'csv_upload_form','method'=>'POST', 'enctype' => 'multipart/form-data']) !!}
                 <span class="input-group div-select-csv-file">
-                	{!! Form::text('csv_file_name_txt',null,array('class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off')) !!}
+                	{!! Form::text('csv_file_name_txt',null,['class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off']) !!}
 					<span class="input-group-append">
 						<label for="csv_upload_file" class="btn btn-primary">{{ _i('Choose file') }}</label></span>
 					</span>
 				</span>
 				<small class="help-block"> {!! _i('※Data format .csv<br>※Maximum upload file size: 2MB') !!}</small>
-				{!! Form::file('csv_upload_file', array('id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;')) !!}
+				{!! Form::file('csv_upload_file', ['id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']) !!}
             {!! Form::close() !!}
       	</div>
       	<div class="modal-footer">
@@ -115,14 +115,14 @@
         </button>
       	</div>
       	<div class="modal-body">
-        	{!! Form::open(array('id' => 'new_user_form','method'=>'POST')) !!}
+        	{!! Form::open(['id' => 'new_user_form','method'=>'POST','novalidate']) !!}
 				<div class="form-group">
 					<label for="inputEmail">{{ _i('Email address') }}</label>
-					{!! Form::email('email',null,array('id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off')) !!}
+					{!! Form::email('email',null,['id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off']) !!}
 				</div>
 				<div class="form-group">
 					<label for="inputName">{{ _i('Full name') }}</label>
-					{!! Form::text('name',null,array('id' => 'inputName','class' => 'fullname input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off')) !!}
+					{!! Form::text('name',null,['id' => 'inputName','class' => 'fullname input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off']) !!}
 				</div>
             {!! Form::close() !!}
       	</div>

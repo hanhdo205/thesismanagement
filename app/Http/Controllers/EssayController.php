@@ -260,7 +260,7 @@ class EssayController extends Controller {
 			'student_name' => 'required',
 			'student_gender' => 'required',
 			'student_dob' => 'required',
-			'student_email' => 'required',
+			'student_email' => 'required|email',
 		]);
 
 		$path = $request->file('essay_file')->store('public/essays');

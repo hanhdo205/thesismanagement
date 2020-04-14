@@ -92,27 +92,27 @@
                 <h4 class="modal-title" id="modelHeading"></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            {!! Form::open(array('id' => 'topicForm','name' => 'topicForm', 'class' => 'form-horizontal')) !!}
+            {!! Form::open(['id' => 'topicForm','name' => 'topicForm', 'class' => 'form-horizontal','novalidate']) !!}
             <div class="modal-body">
 
-                {!! Form::hidden('topic_id', null, array('id' => 'topic_id')) !!}
+                {!! Form::hidden('topic_id', null, ['id' => 'topic_id']) !!}
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
 					            <strong>{{ _i('Title') }}:</strong>
-					            {!! Form::text('title', null, array('id' => 'title','class' => 'form-control','placeholder' => _i('Title'))) !!}
+					            {!! Form::text('title', null, ['id' => 'title','class' => 'form-control','placeholder' => _i('Title')]) !!}
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
 					            <strong>{{ _i('Start date') }}:</strong>
-					            {!! Form::text('start_date', null, array('placeholder' => _i('Start date'),'id' => 'startDate','class' => 'form-control','autocomplete' => 'off')) !!}
+					            {!! Form::text('start_date', null, ['placeholder' => _i('Start date'),'id' => 'startDate','class' => 'form-control','autocomplete' => 'off']) !!}
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
 					            <strong>{{ _I('End date') }}:</strong>
-					            {!! Form::text('end_date', null, array('placeholder' => _i('End date'),'id' => 'endDate', 'class' => 'form-control','autocomplete' => 'off')) !!}
+					            {!! Form::text('end_date', null, ['placeholder' => _i('End date'),'id' => 'endDate', 'class' => 'form-control','autocomplete' => 'off']) !!}
 					        </div>
 					    </div>
 
@@ -122,7 +122,7 @@
             </div>
             <div class="modal-footer">
             	<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-			    	{!! Form::submit(_i('Submit'), array('id' => 'saveBtn','class' => 'btn btn-primary pr-5 pl-5', 'value' => 'create')) !!}
+			    	{!! Form::submit(_i('Submit'), ['id' => 'saveBtn','class' => 'btn btn-primary pr-5 pl-5', 'value' => 'create']) !!}
 			    </div>
 		    </div>
 		    {!! Form::close() !!}

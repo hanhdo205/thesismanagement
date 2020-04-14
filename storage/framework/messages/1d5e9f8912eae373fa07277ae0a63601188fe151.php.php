@@ -32,6 +32,11 @@
 							    <button class="close hide_error" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 							  </div>
 						<?php endif; ?>
+						<?php if($message = Session::get('success')): ?>
+							<script>
+								toastr.success('<?php echo e($message); ?>');
+							</script>
+						<?php endif; ?>
 					<?php echo Form::model($rows, ['method' => 'PATCH','route' => ['essays.update', $rows->id]]); ?>
 
 						<div class="form-group row">
@@ -69,14 +74,16 @@
 						<div class="form-group row">
 							<label for="review_status" class="col-sm-3 col-form-label"><?php echo e(_i('Status')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::select('review_status', ['pending' => _i('pending'),'reviewing' => _i('reviewing'),'reviewed' => _i('reviewed')], $rows->review_status, array('class' => 'form-control select2')); ?>
+								<?php echo Form::select('review_status', ['pending' => _i('pending'),'reviewing' => _i('reviewing'),'reviewed' => _i('reviewed')], $rows->review_status, array('class' => 'form-control')); ?>
 
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="reviewer" class="col-sm-3 col-form-label"><?php echo e(_i('Reviewer')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::select('reviewer_id', [$rows->reviewer_id => $rows->reviewer], $rows->reviewer_id, array('class' => 'form-control select2')); ?>
+								<?php echo Form::select('reviewer_id', [$rows->reviewer_id => $rows->reviewer], $rows->reviewer_id, array('class' => 'form-control')); ?>
+
+								<?php echo Form::hidden('review_result', null, array()); ?>
 
 							</div>
 						</div>

@@ -11,6 +11,8 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <!-- Font-awesome style -->
+    <link href="<?php echo e(asset('css/font-awesome.css')); ?>" rel="stylesheet" />
     <link href="<?php echo e(asset('css/login.css')); ?>" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="<?php echo e(asset('css/custom.css')); ?>" rel="stylesheet">

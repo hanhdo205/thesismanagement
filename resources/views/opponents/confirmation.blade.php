@@ -24,7 +24,7 @@
 					{{ _i('Review request mail template') }}
 				</div>
 				<div class="card-body">
-				{!! Form::open(array('route' => 'opponents.sendmail','method'=>'POST','id'=>'sendMail')) !!}
+				{!! Form::open(['route' => 'opponents.sendmail','method'=>'POST','id'=>'sendMail']) !!}
 				{!! Form::hidden('topic_id', $topic) !!}
 						<div class="form-group">
 							<label for="mailcontent">メール内容</label>
@@ -34,16 +34,16 @@
 第3回学術大会の査読依頼をさせていただければと思います。
 以下のリンクより、査読対応、可否をご回答くださいませ。
 
-{Link}', array('id' => 'mailcontent','class' => 'form-control','rows' => '10')) !!}
+{Link}', ['id' => 'mailcontent','class' => 'form-control','rows' => '10']) !!}
 
 						</div>
 						<div class="form-group">
 							<label for="destination">送信先</label>
-							{!! Form::select('opponents[]', $opponents, $checkboxs, array('id' => 'destination','class' => 'form-control select2','multiple')) !!}
+							{!! Form::select('opponents[]', $opponents, $checkboxs, ['id' => 'destination','class' => 'form-control select2','multiple']) !!}
 						</div>
 						<div class="d-flex justify-content-end">
 							<span class="spinner-border mr-3" role="status" aria-hidden="true"></span>
-							{!! Form::button(_i('Send'), array('id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4')) !!}
+							{!! Form::button(_i('Send'), ['id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4']) !!}
 						</div>
 					{!! Form::close() !!}
 

@@ -100,34 +100,39 @@ class OpponentController extends Controller {
 		fclose($myfile);
 
 		foreach ($opponents as $key => $value) {
-			$user = User::find($value);
-			$to_name = $user->name;
-			$to_email = $user->email;
-			$token = Str::random(32);
-			$data = array(
-				'Name' => $user->name,
-				'Link' => url('/request/confirm/' . $token),
-			);
-			try {
-				Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email) {
-					$message->to($to_email, $to_name)
-						->subject('査読対応確認');
-					$message->from('hanhdo205@gmail.com', 'thesisManagement');
-				});
-				$reviewer_status = REVIEW_WAIT_FOR_ANSWER;
-			} catch (Exception $ex) {
-				$reviewer_status = REVIEW_MAIL_FAIL;
-			}
-
-			DB::table('reviews')
-				->updateOrInsert(
-					['topic_id' => $topic_id, 'user_id' => $value],
-					['request_status' => $reviewer_status, 'review_token' => $token]
-				);
+			self::doSendMail($value, $topic_id);
 		}
 		return Redirect::route('opponents.index')
 			->with(['success' => _i('The emails were send.'), 'topic_id' => $topic_id]);
-		//return view('opponents.send');
+	}
+
+	public function doSendMail($user_id, $topic_id) {
+		$user = User::find($user_id);
+		$to_name = $user->name;
+		$to_email = $user->email;
+		$from_email = env("MAIL_FROM_ADDRESS", "hanhdo205@gmail.com");
+		$from_name = env("MAIL_FROM_NAME", "thesisManagement");
+		$token = Str::random(32);
+		$data = array(
+			'Name' => $user->name,
+			'Link' => url('/request/confirm/' . $token),
+		);
+		try {
+			Mail::send(['html' => 'emails.opponents'], $data, function ($message) use ($to_name, $to_email, $from_email, $from_name) {
+				$message->to($to_email, $to_name)
+					->subject('査読対応確認');
+				$message->from($from_email, $from_name);
+			});
+			$reviewer_status = REVIEW_WAIT_FOR_ANSWER;
+		} catch (Exception $ex) {
+			$reviewer_status = REVIEW_MAIL_FAIL;
+		}
+
+		DB::table('reviews')
+			->updateOrInsert(
+				['topic_id' => $topic_id, 'user_id' => $user_id],
+				['request_status' => $reviewer_status, 'review_token' => $token]
+			);
 	}
 
 	/**

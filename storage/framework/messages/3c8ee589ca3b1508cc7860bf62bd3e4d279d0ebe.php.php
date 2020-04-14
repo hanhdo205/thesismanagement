@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class EssayController extends Controller {
 	/**
@@ -23,9 +24,9 @@ class EssayController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	function __construct() {
-		//$this->middleware('permission:essay-list|essay-create|essay-edit|essay-delete', ['only' => ['index', 'show']]);
+		$this->middleware('permission:essay-list|submiter-list|review-request', ['only' => ['index', 'submiterList','reviewRequest',]]);
 		//$this->middleware('permission:essay-create', ['only' => ['create', 'store']]);
-		//$this->middleware('permission:essay-edit', ['only' => ['edit', 'update']]);
+		//$this->middleware('permission:essay-edit', ['only' => ['edit']]);
 	}
 
 	/**
@@ -51,7 +52,7 @@ class EssayController extends Controller {
 									$query->where('essays.student_name', 'LIKE', '%' . $student_name . '%')
 										->orWhere('essays.review_result', '=', $review_result);
 								})
-								->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+								->select('topics.title','essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
 								->get();
 							break;
 						case ($request->input('student_name') != ''):
@@ -59,7 +60,7 @@ class EssayController extends Controller {
 								->join('topics', 'essays.topic_id', '=', 'topics.id')
 								->where('essays.topic_id', $topic_id)
 								->where('essays.student_name', 'LIKE', '%' . $student_name . '%')
-								->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+								->select('topics.title','essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
 								->get();
 							break;
 						case ($request->input('review_result') != ''):
@@ -67,7 +68,7 @@ class EssayController extends Controller {
 								->join('topics', 'essays.topic_id', '=', 'topics.id')
 								->where('essays.topic_id', $topic_id)
 								->where('essays.review_result', '=', $review_result)
-								->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+								->select('topics.title','essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
 								->get();
 							break;
 						default:
@@ -81,7 +82,6 @@ class EssayController extends Controller {
 
 					return Datatables::of($data)
 						->addColumn('checkbox', function ($row) {
-
 							$checkbox = '<label class="custom-check"><input type="checkbox" name="essays[]" id="' . $row->id . '" class="field" value="' . $row->id . '"><span class="checkmark"></span></label>';
 							return $checkbox;
 						})
@@ -180,6 +180,26 @@ class EssayController extends Controller {
 	}
 	
 	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  \App\Topic  $topic
+	 * @return \Illuminate\Http\Response
+	 */
+	public function review(Request $request) {
+		$rows = DB::table('essays')
+			->join('users', 'users.id', '=', 'essays.reviewer_id')
+			->join('reviews', 'reviews.user_id', '=', 'essays.reviewer_id')
+			->where('essays.id', $request->id)
+			->where('reviews.review_token', $request->token)
+			->select('essays.*', 'users.name AS reviewer')
+			->first();
+		if (empty($rows)) {
+			return abort(404);
+		}
+		return view('essays.review', compact('rows'));
+	}
+	
+	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
@@ -193,13 +213,21 @@ class EssayController extends Controller {
 			'essay_major' => 'required',
 			'student_name' => 'required',
 			'student_name' => 'required',
+			'review_comment' => 'required',
+			'review_result' => 'required',
 		]);
-		$input = $request->all();
+		if($request->input('review_result')) {
+			$input = [
+				'review_status' => REVIEWED,
+				'review_result' => $request->input('review_result'),
+				'review_comment' => $request->input('review_comment')
+			];
+		} else {
+			$input = $request->all();
+		}
 		$essay->update($input);
-		
-		
 
-		return redirect()->route('essays.index')
+		return back()
 			->with('success', _i('Essay updated successfully'));
 	}
 
@@ -208,7 +236,7 @@ class EssayController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function createEssay(Request $request) {
+	public function create(Request $request) {
 		$id = $request->id;
 		$topic = Topic::where('id', $id)->first();
 		if (empty($topic)) {
@@ -223,7 +251,7 @@ class EssayController extends Controller {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function storeEssay(Request $request) {
+	public function store(Request $request) {
 		request()->validate([
 			'essay_title' => 'required',
 			'essay_belong' => 'required',
@@ -232,14 +260,14 @@ class EssayController extends Controller {
 			'student_name' => 'required',
 			'student_gender' => 'required',
 			'student_dob' => 'required',
-			'student_email' => 'required',
+			'student_email' => 'required|email',
 		]);
 
 		$path = $request->file('essay_file')->store('public/essays');
 		Essay::create([
 			'topic_id' => $request->input('topic_id'),
 			'essay_title' => $request->input('essay_title'),
-			'essay_belong' => $request->input('essay_title'),
+			'essay_belong' => $request->input('essay_belong'),
 			'essay_major' => $request->input('essay_major'),
 			'student_name' => $request->input('student_name'),
 			'student_gender' => $request->input('student_gender'),
@@ -347,23 +375,27 @@ class EssayController extends Controller {
 		$user = User::find($user_id);
 		$to_name = $user->name;
 		$to_email = $user->email;
+		$from_email = env("MAIL_FROM_ADDRESS", "hanhdo205@gmail.com");
+		$from_name = env("MAIL_FROM_NAME", "thesisManagement");
+		$token = Str::random(32);
 		$essays = DB::table('essays')
 			->whereIn('essays.id', $essay_arr)
 			->get();
-		$file_to_download = [];
+		$essay_url = [];
 		foreach ($essays as $essay) {
-			$file_to_download[] = url(Storage::url($essay->essay_file));
+			// $file_to_download[] = url(Storage::url($essay->essay_file));
+			$essay_url[] = route('essays.review',['id' => $essay->id,'token' => $token]);
 		}	
 		
 		$data = array(
 			'Name' => $user->name,
-			'Link' => $file_to_download
+			'Link' => $essay_url
 		);
 		try {
-			Mail::send(['html' => 'emails.reviewrequest'], $data, function ($message) use ($to_name, $to_email) {
+			Mail::send(['html' => 'emails.reviewrequest'], $data, function ($message) use ($to_name, $to_email, $from_email, $from_name) {
 				$message->to($to_email, $to_name)
-					->subject('査読対応確認');
-				$message->from('hanhdo205@gmail.com', 'thesisManagement');
+					->subject('査読依頼');
+				$message->from($from_email, $from_name);
 			});
 			$reviewer_status = REVIEWING_STATUS_REPORT;
 		} catch (Exception $ex) {
@@ -373,13 +405,13 @@ class EssayController extends Controller {
 		DB::table('reviews')
 			->updateOrInsert(
 				['topic_id' => $topic_id, 'user_id' => $user_id],
-				['request_status' => $reviewer_status]
+				['request_status' => $reviewer_status,'review_token' => $token]
 			);
 		foreach ($essays as $essay) {
 			DB::table('essays')
 				->updateOrInsert(
 					['id' => $essay->id],
-					['review_status' => REVIEWING]
+					['review_status' => REVIEWING, 'reviewer_id' => $user_id]
 				);
 		}
 	}

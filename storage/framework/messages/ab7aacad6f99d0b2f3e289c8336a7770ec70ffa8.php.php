@@ -128,7 +128,7 @@
             </div>
             <div class="modal-footer">
             	<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-			    	<?php echo Form::submit(_i('Submit'), array('id' => 'saveBtn','class' => 'btn btn-primary', 'value' => 'create')); ?>
+			    	<?php echo Form::submit(_i('Submit'), array('id' => 'saveBtn','class' => 'btn btn-primary pr-5 pl-5', 'value' => 'create')); ?>
 
 			    </div>
 		    </div>

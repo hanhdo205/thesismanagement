@@ -21,7 +21,7 @@
 <?php else: ?>
     <!-- Styles -->
         <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
-         <!-- Font-awesome style -->
+        <!-- Font-awesome style -->
         <link href="<?php echo e(asset('css/font-awesome.css')); ?>" rel="stylesheet" />
         <!-- Styles for this template-->
         <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
