@@ -39,7 +39,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>{{ _i('Submit form URL') }}： <a href="{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}" id="topic_url">{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}</a></label>
+					<label class="mb-0">{{ _i('Submit form URL') }}： <a href="{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}" id="topic_url">{{ route('topic.endai_teisyutu', ['id' => $last_topic_id]) }}</a></label>
 				</div>
 				<div class="form-group">
 					<div class="form-inline custom-inline">
