@@ -9,7 +9,7 @@
 	</div>
 	<div class="inline my-2 my-lg-0">
 		<div class="btn-group">
-			<span type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			{{ _i('Welcome, %s',$user->name) }}
 			</span>
 			<div class="dropdown-menu dropdown-menu-right mt-0 mb-0 pt-0 pb-0">

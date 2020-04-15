@@ -100,7 +100,16 @@ class OpponentController extends Controller {
 		fclose($myfile);
 
 		foreach ($opponents as $key => $value) {
-			self::doSendMail($value, $topic_id);
+			$send_to = DB::table('reviews')
+				->where('user_id', $value)
+				->where(function ($query) {
+					$query->where('request_status', '=', REVIEW_WAIT_FOR_ASKING)
+						->orWhere('request_status', '==', REVIEW_MAIL_FAIL);
+				})
+				->value('user_id');
+			if ($send_to == $value) {
+				self::doSendMail($value, $topic_id);
+			}
 		}
 		return Redirect::route('opponents.index')
 			->with(['success' => _i('The emails were send.'), 'topic_id' => $topic_id]);

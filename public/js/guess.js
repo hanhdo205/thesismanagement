@@ -21,6 +21,7 @@ $(function () {
 	      locale: 'ja-jp',
 	      changeMonth: true,
 	      changeYear: true,
+	      maxDate: 0,
 	      create: function(input, inst) {
 		      $('.ui-datepicker-title').addClass('d-flex justify-content-center');
 		  }

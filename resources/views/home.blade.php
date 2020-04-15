@@ -76,7 +76,7 @@
 						@else
 							@foreach($lastestReview as $review)
 								<tr>
-									<td class="fix-width">{{ ++$i }}</td>
+									<td class="fix-width">{{ ++$j }}</td>
 									<td>{{ $review->essay_title }}</td>
 									<td>{{ $review->student_name }}</td>
 									<td>{{ Carbon\Carbon::parse($review->updated_at)->format('Y年m月d日') }}</td>

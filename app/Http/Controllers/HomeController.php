@@ -22,9 +22,14 @@ class HomeController extends Controller {
 	public function index() {
 		$lastestEssays = self::lastestEssays();
 		$lastestReview = self::lastestReview();
-		return view('home', compact(['lastestEssays', 'lastestReview']))->with('i');
+		return view('home', compact(['lastestEssays', 'lastestReview']))->with('i')->with('j');
 	}
 
+	/**
+	 * Get the lastet rows.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
 	public function lastestEssays() {
 		$rows = Essay::select('essay_title', 'student_name', 'created_at')
 			->orderBy('id', 'desc')
@@ -33,6 +38,11 @@ class HomeController extends Controller {
 		return $rows;
 	}
 
+	/**
+	 * Get the lastet reviews.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
 	public function lastestReview() {
 		$rows = Essay::select('essay_title', 'student_name', 'updated_at')
 			->where('review_status', REVIEWED)

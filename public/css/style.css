@@ -107,6 +107,16 @@ body {
   font-weight: 500;
 }
 
+.dropdown-toggle {
+  cursor: pointer;
+  color: #3c4b64;
+  font-weight: 600;
+}
+
+.dropdown-toggle:hover {
+  color: #212529;
+}
+
 /*==============================================
     TABLE STYLES   
     =============================================*/
