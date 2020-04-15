@@ -13,6 +13,8 @@
 	$essay_major_err = '';
 	$essay_title_err = '';
 	$essay_file_err = '';
+	$readonly = 'readonly';
+	$disabled = '';
 @endphp
 
 <div class="container">
@@ -33,7 +35,7 @@
 						    <div class="col-xs-12 col-sm-12 col-md-12">
 						        <div class="form-group">
 						            <strong>{{ _i('Period') }}</strong>
-						            {{ $topic->start_date . ' ~ ' . $topic->end_date }}
+						            {{ $topic->start_date . ' ~ ' . $topic->end_date }} ({{ $status }})
 						        </div>
 						    </div>
 						</div>
@@ -83,7 +85,14 @@
 				    <button class="close hide_error" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 				  </div>
 						@endif
-						{!! Form::open(['route' => 'register.endai_teisyutu','method'=>'POST', 'enctype'=>'multipart/form-data','novalidate']) !!}
+						{!! Form::open(['id' => 'register_essay','route' => 'register.endai_teisyutu','method'=>'POST', 'enctype'=>'multipart/form-data','novalidate']) !!}
+						@if($status != _i(AVAILABLE))
+							<fieldset disabled="disabled">
+								@php
+									$readonly = '';
+									$disabled = 'disabled';
+								@endphp
+						@endif
 						{!! Form::hidden('topic_id', $topic->id) !!}
 							<fieldset class="form-border">
 								<legend class="form-border">{{ _i('Student info') }}</legend>
@@ -152,10 +161,10 @@
 									    </div>
 									    <div class="col-xs-12 col-sm-12 col-md-12">
 								            <strong>{{ _i('Upload') }}</strong>
-								            <span class="input-group div-select-csv-file">
-							                	{!! Form::text('essay_file_name_txt',null,['class' => 'essay_file_name_txt input full upload form-control' . $essay_file_err, 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off']) !!}
+								            <span class="form-group input-group div-select-csv-file">
+							                	{!! Form::text('essay_file_name_txt',null,['class' => 'essay_file_name_txt input full upload form-control' . $essay_file_err, 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off',$readonly]) !!}
 												<span class="input-group-append">
-													<label for="essay_upload_file" class="btn btn-primary">{{ _i('Choose file') }}</label>
+													<label for="essay_upload_file" class="btn btn-primary" {{ $disabled }}>{{ _i('Choose file') }}</label>
 												</span>
 											</span>
 											<span class="text-danger">{{ $errors->first('essay_file') }}</span>
@@ -165,8 +174,11 @@
 						        </div>
 						    </fieldset>
 							<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-						    	{!! Form::submit(_i('Submit'), ['class' => 'btn btn-primary pl-5 pr-5 mt-5']) !!}
+						    	{!! Form::submit(_i('Submit'), ['class' => 'btn btn-primary pl-5 pr-5 mt-3']) !!}
 						    </div>
+						    @if($status != _i(AVAILABLE))
+							</fieldset>
+							@endif
 						{!! Form::close() !!}
 					</div>
                 </div>

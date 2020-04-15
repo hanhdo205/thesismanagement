@@ -35,7 +35,8 @@ class EssayController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Request $request) {
-		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
+		//$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
+		$topics = Topic::orderBy('id', 'desc')->pluck('title', 'id');
 
 		$last_topic_id = array_key_first($topics->toArray());
 		if($last_topic_id) {
@@ -239,10 +240,27 @@ class EssayController extends Controller {
 	public function create(Request $request) {
 		$id = $request->id;
 		$topic = Topic::where('id', $id)->first();
+		$start_date = Carbon::createFromDate($topic->start_date);
+		$end_date = Carbon::createFromDate($topic->end_date);
+		$now = Carbon::today();
+		switch (true) {
+			case ($end_date < $now):
+				$status = _i(EXPIRED);
+				break;
+			case ($start_date > $now):
+				$status = _i(COMMING_SOON);
+				break;
+			default:
+				$status = _i(AVAILABLE);
+				break;
+		}
+		
+		
+		
 		if (empty($topic)) {
 			return abort(404);
 		}
-		return view('essays.register', compact('topic'));
+		return view('essays.register', compact(['topic','status']));
 	}
 
 	/**

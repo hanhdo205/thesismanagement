@@ -1,5 +1,9 @@
 $(function () {
     "use strict";
+    let fileupload = document.getElementById('essay_upload_file');
+    $('.essay_file_name_txt').on('click', function(){
+            fileupload.click();
+        });
 	//style for upload file field
 	if($('#essay_upload_file').length) {
 		var fileSelectEle = document.getElementById('essay_upload_file');

@@ -38,16 +38,16 @@ class TopicController extends Controller {
 					$start_date = Carbon::createFromDate($row->start_date);
 					$end_date = Carbon::createFromDate($row->end_date);
 					$now = Carbon::today();
-					$status = _i('Available');
+					$status = _i(AVAILABLE);
 					switch (true) {
 					case ($end_date < $now):
-						$status = _i('Expired');
+						$status = _i(EXPIRED);
 						break;
 					case ($start_date > $now):
-						$status = _i('Comming soon');
+						$status = _i(COMMING_SOON);
 						break;
 					default:
-						$status = _i('Available');
+						$status = _i(AVAILABLE);
 						break;
 					}
 					return $status;

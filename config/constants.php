@@ -19,6 +19,11 @@ define('RESULT_NONE', 'not_yet');
 define('RESULT_GOOD', 'good');
 define('RESULT_BAD', 'bad');
 
+//toipc status
+define('EXPIRED', 'Expired');
+define('COMMING_SOON', 'Comming soon');
+define('AVAILABLE', 'Available');
+
 return [
 	'from_email' => env('MAIL_FROM_ADDRESS', 'hanhdo205@gmail.com'),
 	'from_name' => env('MAIL_FROM_NAME', 'thesisManagement'),
