@@ -29,7 +29,8 @@ class OpponentController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Request $request) {
-		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
+		//$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
+		$topics = Topic::orderBy('id', 'desc')->pluck('title', 'id');
 		$last_topic_id = array_key_first($topics->toArray());
 
 		if ($request->ajax()) {

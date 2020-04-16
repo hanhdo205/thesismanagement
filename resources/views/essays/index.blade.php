@@ -8,6 +8,8 @@
 <!-- Datatable -->
 <link  href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 <link  href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
+<!-- Select2 styles-->
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 @endpush
 
 @section('content')
@@ -35,7 +37,7 @@
 				{!! Form::open(array('id' => 'reviewRequest','route' => 'review.request','method'=>'POST')) !!}
 				<div class="form-group">
 					<div class="form-inline">
-						{!! Form::select('topic', $topics,$last_topic_id, array('id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic'))) !!}
+						{!! Form::select('topic', $topics,$last_topic_id, array('id' => 'topic_select','class' => 'field form-control select2','placeholder' => _i('Please select topic'))) !!}
 					</div>
 				</div>
 				<div class="form-group">
@@ -97,6 +99,8 @@
 <script src="{{ asset('js/datatables/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('js/datatables/responsive.bootstrap4.min.js') }}"></script>
+<!-- Select2 script -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <!-- Custom script -->
 <script type="text/javascript">
 	var essays = {index:'{{ route("essays.index") }}',export:'{{ route("essays.export") }}'};
