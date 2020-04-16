@@ -66,7 +66,7 @@
 				</div>
 				<div class="form-group">
 					<div class="d-flex justify-content-center">
-						{!! Form::submit(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5']) !!}
+						{!! Form::submit(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-3']) !!}
 					</div>
 				</div>
 				{!! Form::close() !!}
