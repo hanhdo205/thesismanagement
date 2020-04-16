@@ -7,6 +7,7 @@
 	<meta name="description" content="@yield('description')">
     <meta name="keyword" content="@yield('keyword')">
 	<title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
+    <link rel="icon" href="data:,">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @guest
