@@ -2,7 +2,6 @@ $(function () {
     "use strict";
     window.onload = function () {
     	sessionStorage.removeItem('essays');
-    	sessionStorage.removeItem('essaysAll');
     	//sessionStorage.removeItem('searchText');
 	}
 		let $topic = $('#topic_select').val(),
@@ -17,12 +16,10 @@ $(function () {
     	$route = $url.substr(0,$url.lastIndexOf('/')),
     	$selectBtn = $('#selectBtn'),
     	$essays = sessionStorage.getItem('essays'),
-    	$essaysAll = sessionStorage.getItem('essaysAll'),
     	$searchText = sessionStorage.getItem('searchText');
     	$selectBtn.prop('disabled', true);
 
 		fetch_data(parseInt($topic));
-		$(".selectAll").prop("checked", false);
 		$('#requestSelect').on('change', function () {
 				$val = $(this).val();
 			});
@@ -107,13 +104,11 @@ $(function () {
 			$('.selectAll').on('click', function(){
 				if($('.selectAll:checkbox:checked').length > 0) {
 				 $topic = $('#topic_select').val();
-				 sessionStorage.setItem('essaysAll',this.checked);
 				if (($topic > 0)) {
 				    $selectBtn.removeAttr('disabled');
 				  }
 				} else {
 				    $selectBtn.prop('disabled', true);
-				    sessionStorage.setItem('essaysAll',this.checked);
 				  }
 			});
 			//table check all rows
@@ -128,10 +123,8 @@ $(function () {
 				  $checkbox = $('[name="essays[]"]:checked');
 				  if($('[name="essays[]"]').length > $checkbox.length) {
 				  	$(".selectAll").prop("checked", false);
-				  	sessionStorage.setItem('essaysAll',false);
 				  } else {
 				  	$(".selectAll").prop("checked", true);
-				  	sessionStorage.setItem('essaysAll',true);
 				  }
 				if (($topic > 0) && ($checkbox.length > 0)) {
 				    $selectBtn.removeAttr('disabled');
@@ -149,22 +142,21 @@ $(function () {
 			});
 
 			// use for history go back, keep checkboxs status
-			/*if($essaysAll != '' && $essaysAll == 'true') {
-				$(".selectAll").prop("checked", true);
-	    	 	$('input[name="essays[]"]').each(function () {
+			if($('.selectAll:checkbox:checked').length > 0) {
+		    	 $('input[name="essays[]"]').each(function () {
 				 	$(this).prop('checked',true);
 				});
-	    	 	$selectBtn.removeAttr('disabled');
-		    } else if($essaysAll != '' && $essaysAll == 'false') {
+		    	 $selectBtn.removeAttr('disabled');
+		    } else {
 		    	$selectBtn.prop('disabled', true);
-		    	$('input[name="essays[]"]').each(function () {
+		    	 $('input[name="essays[]"]').each(function () {
 		    	 	if(jQuery.inArray($(this).attr('id'), [$essays]) !== -1) {
 			    	 	$(this).prop("checked", true);
 			    	 	$selectBtn.removeAttr('disabled');
 			    	}
 		    	 });
-		    }*/
-
+		    }
+			
 		}
 
 		//do action when dropdown
@@ -205,11 +197,6 @@ $(function () {
 				      return $(this).val();
 				    }).get();
 		    	sessionStorage.setItem('essays', $checked);
-		    	if($('[name="essays[]"]').length > $('[name="essays[]"]:checked').length) {
-				  	sessionStorage.setItem('essaysAll',false);
-				  } else {
-				  	sessionStorage.setItem('essaysAll',true);
-				  }
 				$('#reviewRequest').submit();
 			}
 		});
