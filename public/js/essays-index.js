@@ -39,7 +39,7 @@ $(function () {
 			  }
 	    });
 
-	    $(document).on('click','#searchBtn',function(){
+	    $('#searchBtn').on('click', function(){
 			get_search_text();
 			$('.data-table').DataTable().destroy();
 			fetch_data(parseInt($topic));
@@ -149,13 +149,13 @@ $(function () {
 			});
 
 			// use for history go back, keep checkboxs status
-			if($essaysAll == 'true') {
+			/*if($essaysAll != '' && $essaysAll == 'true') {
 				$(".selectAll").prop("checked", true);
 	    	 	$('input[name="essays[]"]').each(function () {
 				 	$(this).prop('checked',true);
 				});
 	    	 	$selectBtn.removeAttr('disabled');
-		    } else if($essaysAll == 'false') {
+		    } else if($essaysAll != '' && $essaysAll == 'false') {
 		    	$selectBtn.prop('disabled', true);
 		    	$('input[name="essays[]"]').each(function () {
 		    	 	if(jQuery.inArray($(this).attr('id'), [$essays]) !== -1) {
@@ -163,7 +163,7 @@ $(function () {
 			    	 	$selectBtn.removeAttr('disabled');
 			    	}
 		    	 });
-		    }
+		    }*/
 
 		}
 
