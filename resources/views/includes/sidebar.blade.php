@@ -4,23 +4,26 @@
 			<li class="{{ request()->is('/') ? 'active' : '' }}">
 				<a href="{{ url('/') }}" ><i class="fa fa-home "></i>{{ _i('HOME') }}</a>
 			</li>
-			@if($user->hasRole('Admin'))
+			@can('topic-list')
 			<li class="{{ request()->is('topics') ? 'active' : '' }}">
 				<a href="{{ route('topics.index') }}"><i class="fa fa-clipboard "></i>{{ _i('Topic list') }}</a>
 			</li>
-
+			@endcan
+			@can('essay-list')
 			<li class="{{ request()->is('essays') || request()->is('essays/request') ? 'active' : '' }}">
 				<a href="{{ route('essays.index') }}"><i class="fa fa-clipboard "></i>{{ _i('Essays list') }}</a>
 			</li>
-
+			@endcan
+			@can('submiter-list')
 			<li class="{{ request()->is('submiter') ? 'active' : '' }}">
 				<a href="{{ route('essays.submiter') }}"><i class="fa fa-clipboard"></i>{{ _i('Student list') }}</a>
 			</li>
-
+			@endcan
+			@can('user-list')
 			<li class="{{ request()->is('opponents') ||  request()->is('review/confirmation') ||  request()->is('review/detail') ? 'active' : '' }}">
 				<a href="{{ route('opponents.index') }}"><i class="fa fa-clipboard"></i>{{ _i('Opponent list') }}</a>
 			</li>
-			@endif
+			@endcan
 		</ul>
 	</div>
 </nav>
