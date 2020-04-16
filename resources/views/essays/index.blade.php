@@ -32,6 +32,8 @@
 					</script>
 					@php
 						$last_topic_id = Session::get('topic_id');
+						$student_name = Session::get('student_name');
+						$review_result = Session::get('review_result');
 					@endphp
 				@endif
 				{!! Form::open(array('id' => 'reviewRequest','route' => 'review.request','method'=>'POST')) !!}
@@ -47,9 +49,9 @@
 					<div class="form-inline custom-inline">
 						<div class="alert alert-secondary" role="alert">
 							<div class="form-inline">
-								{!! Form::text('student_name', null, array('id' => 'student_name','class' => 'form-control mt-1 mb-1 mr-sm-2','placeholder' => _i('Enter student name'))) !!}
+								{!! Form::text('student_name', $student_name, array('id' => 'student_name','class' => 'form-control mt-1 mb-1 mr-sm-2','placeholder' => _i('Enter student name'))) !!}
 
-								{!! Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],null, array('id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2','placeholder' => _i('Review result'))) !!}
+								{!! Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],$review_result, array('id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2','placeholder' => _i('Review result'))) !!}
 
 								{!! Form::button(_i('Search'), array('id' => 'searchBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mt-1 mb-1')) !!}
 							</div>
@@ -70,7 +72,7 @@
 							<tr>
 								<th class="fix-width text-center">
 									<label class="custom-check">
-										<input type="checkbox" id="selectAll" />
+										<input type="checkbox" class="selectAll" />
 										<span class="checkmark"></span>
 									</label>
 								</th>

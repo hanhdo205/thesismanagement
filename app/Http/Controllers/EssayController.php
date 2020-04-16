@@ -39,6 +39,8 @@ class EssayController extends Controller {
 		$topics = Topic::orderBy('id', 'desc')->pluck('title', 'id');
 
 		$last_topic_id = array_key_first($topics->toArray());
+		$student_name = '';
+		$review_result = '';
 
 		if ($request->ajax()) {
 			$topic_id = $request->input('topic_id');
@@ -113,7 +115,7 @@ class EssayController extends Controller {
 				->make(true);
 		}
 		if($last_topic_id) {
-				return view('essays.index', compact(['topics', 'last_topic_id']));
+				return view('essays.index', compact(['topics', 'last_topic_id', 'student_name','review_result']));
 		} else {
 			return view('essays.empty', compact('topics'));
 		}
@@ -308,6 +310,8 @@ class EssayController extends Controller {
 	public function reviewRequest(Request $request) {
 		$essays_request = $request->input('essays');
 		$topic_id = $request->input('topic');
+		$student_name = $request->input('student_name');
+		$review_result = $request->input('review_result');
 		
 		$essays = Essay::whereIn('id', $essays_request)->get();
 		if (empty($essays)) {
@@ -320,7 +324,7 @@ class EssayController extends Controller {
 			$essays_arr[] = $essay->id;
 		}
 		$essay_lst = implode(',', $essays_arr);
-		return view('review.request', compact(['essay_lst', 'textarea', 'topic_id']));
+		return view('review.request', compact(['essay_lst', 'textarea', 'topic_id','student_name','review_result']));
 	}
 
 	/**

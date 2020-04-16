@@ -1,10 +1,16 @@
 $(function () {
     "use strict";
+    window.onload = function () {
+    	sessionStorage.removeItem('opponents');
+	}
+
 	let flag = true,
 	$submit = $('#formSubmit'),
 	$action_btn = $('#action-button a'),
 	$topic = $('#topic_select').val(),
-	$checkbox;
+	$checkbox,
+	$opponents = sessionStorage.getItem('opponents');
+
 	$submit.prop('disabled', true);
 
 	if($topic > 0) {
@@ -13,7 +19,7 @@ $(function () {
 		$action_btn.click(false);
     	$action_btn.addClass('disabled');
 	}
-
+	
 	fetch_data(parseInt($topic));
 
 	$('#topic_select').on('change', function () {
@@ -21,7 +27,7 @@ $(function () {
 		  $checkbox = $('[name="opponents[]"]:checked');
 		  if ($topic > 0) {
 			$action_btn.removeClass('disabled');
-			$("#selectAll").prop("checked", false);
+			$(".selectAll").prop("checked", false);
 			$('.data-table').DataTable().destroy();
 			fetch_data(parseInt($topic));
 		  } else {
@@ -35,8 +41,8 @@ $(function () {
 		  }
     });
 	
-	$('#selectAll').on('click', function(){
-		if($('#selectAll:checkbox:checked').length > 0) {
+	$('.selectAll').on('click', function(){
+		if($('.selectAll:checkbox:checked').length > 0) {
 		 $topic = $('#topic_select').val();
 		if (($topic > 0)) {
 		    $submit.removeAttr('disabled');
@@ -63,18 +69,49 @@ $(function () {
 	//call a function in success of datatable ajax call
 	function checkbox_callback() {
 		//table check all rows
-		$('#selectAll').click(function(e){
+		$('.selectAll').click(function(e){
 			$('td input:checkbox').prop('checked',this.checked);
 		});
 		$('input[type=checkbox]').on('click', function(){
 			 $topic = $('#topic_select').val();
+			 let $checked = $("td input:checkbox:checked").map(function(){
+			      return $(this).val();
+			    }).get(); 
 			  $checkbox = $('[name="opponents[]"]:checked');
+			  if($('[name="opponents[]"]').length > $checkbox.length) {
+			  	$(".selectAll").prop("checked", false);
+			  } else {
+			  	$(".selectAll").prop("checked", true);
+			  }
 			if (($topic > 0) && ($checkbox.length > 0)) {
+				sessionStorage.setItem('opponents', $checked);
 			    $submit.removeAttr('disabled');
 			  } else {
 			    $submit.prop('disabled', true);
-			  }	
+			    sessionStorage.setItem('opponents', $checked);
+			  }
 		});
+
+		// use for history go back, keep checkboxs status
+		if($('.selectAll:checkbox:checked').length > 0) {
+	    	 $('input[name="opponents[]"]').each(function () {
+			 	$(this).prop('checked',true);
+			});
+	    	 $submit.removeAttr('disabled');
+	    } else {
+	    	 $('input[name="opponents[]"]').each(function () {
+	    	 	if(jQuery.inArray($(this).attr('id'), [$opponents]) !== -1) {
+		    	 	$(this).prop("checked", true);
+		    	 	$submit.removeAttr('disabled');
+		    	}
+	    	 });
+	    }
+	    $($submit).on('click', function(){
+	    	let $checked = $("td input:checkbox:checked").map(function(){
+			      return $(this).val();
+			    }).get();
+	    	sessionStorage.setItem('opponents', $checked);
+	    });
 	}
 
 	$( document ).ajaxComplete(function( event, request, settings ) {
@@ -110,9 +147,9 @@ $(function () {
 	            {data: 'name', name: 'name'},
 	            {data: 'status', name: 'status'},
 	        ],
-	        initComplete:function( settings, json){
+	        /*initComplete:function( settings, json){
 		            checkbox_callback();
-		        }
+		        }*/
 	    });
 	}
 

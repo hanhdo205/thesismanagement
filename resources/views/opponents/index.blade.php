@@ -53,7 +53,7 @@
 							<tr>
 								<th class="fix-width text-center sorting_disabled">
 									<label class="custom-check">
-										<input type="checkbox" id="selectAll" />
+										<input type="checkbox" class="selectAll" />
 										<span class="checkmark"></span>
 									</label>
 								</th>

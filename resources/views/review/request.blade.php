@@ -25,13 +25,15 @@
 					<div class="mb-3">査読依頼を先生へとメールで依頼します。</div>
 							{!! Form::open(['route' => 'review.sendmail','method'=>'POST','id' => 'reviewSendMail', 'class' => 'review_send_mail']) !!}
 							{!! Form::hidden('topic_id', $topic_id) !!}
+							{!! Form::hidden('student_name', $student_name) !!}
+							{!! Form::hidden('review_result', $review_result) !!}
 							{!! Form::hidden('essays', $essay_lst) !!}
 								<div class="form-group">
 									{!! Form::textarea('mailbody', $textarea, ['id' => 'mailcontent','class' => 'form-control','rows' => '10']) !!}
 								</div>
 								<div class="d-flex justify-content-end">
 									<span class="spinner-border mr-3" role="status" aria-hidden="true"></span>
-									{!! Form::submit(_i('Send review request'), ['class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4']) !!}
+									{!! Form::submit(_i('Send review request'), ['class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-4']) !!}
 								</div>
 							{!! Form::close() !!}
 

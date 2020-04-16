@@ -42,7 +42,6 @@ class OpponentController extends Controller {
 				->get();
 			return Datatables::of($data)
 				->addColumn('checkbox', function ($row) {
-
 					$checkbox = '<label class="custom-check"><input type="checkbox" name="opponents[]" id="' . $row->id . '" class="field" value="' . $row->id . '"><span class="checkmark"></span></label>';
 					return $checkbox;
 				})
