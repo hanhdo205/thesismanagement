@@ -102,7 +102,7 @@
 									        <div class="form-group">
 									            <strong>{{ _i('Full name') }}</strong>
 									            {!! Form::text('student_name', null, ['placeholder' => _i('Full name'),'class' => 'form-control' . $student_name_err]) !!}
-									            <span class="text-danger">{{ $errors->first('student_name') }}</span>
+									            <span class="invalid-feedback">{{ $errors->first('student_name') }}</span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
@@ -120,14 +120,14 @@
 									        <div class="form-group">
 									            <strong>{{ _i('Date of birth') }}</strong>
 									            {!! Form::text('student_dob', null, ['placeholder' => _i('Date of birth'),'id' => 'dateOfBirth','class' => 'form-control' . $student_dob_err,'autocomplete' => 'off']) !!}
-									            <span class="text-danger">{{ $errors->first('student_dob') }}</span>
+									            <span class="invalid-feedback">{{ $errors->first('student_dob') }}</span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
 									        <div class="form-group">
 									            <strong>{{ _i('Email address') }}</strong>
 									            {!! Form::email('student_email', null, ['placeholder' => _i('Email address'),'id' => 'emailAddress','class' => 'form-control' . $student_email_err,'autocomplete' => 'off']) !!}
-									            <span class="text-danger">{{ $errors->first('student_email') }}</span>
+									            <span class="invalid-feedback">{{ $errors->first('student_email') }}</span>
 									        </div>
 									    </div>
 								    </div>
@@ -142,21 +142,21 @@
 									        <div class="form-group">
 									            <strong>{{ _i('Belong to') }}</strong>
 									            {!! Form::text('essay_belong', null, array('placeholder' => _i('Belong to'),'class' => 'form-control' . $essay_belong_err)) !!}
-									            <span class="text-danger">{{ $errors->first('essay_belong') }}</span>
+									            <span class="invalid-feedback">{{ $errors->first('essay_belong') }}</span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
 									        <div class="form-group">
 									            <strong>{{ _i('Major') }}</strong>
 									            {!! Form::text('essay_major', null, ['placeholder' => _i('Major'),'class' => 'form-control' . $essay_major_err]) !!}
-									            <span class="text-danger">{{ $errors->first('essay_major') }}</span>
+									            <span class="invalid-feedback">{{ $errors->first('essay_major') }}</span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
 									        <div class="form-group">
 									            <strong>{{ _i('Title') }}</strong>
 									            {!! Form::text('essay_title', null, ['placeholder' => _i('Title'),'class' => 'form-control' . $essay_title_err]) !!}
-									            <span class="text-danger">{{ $errors->first('essay_title') }}</span>
+									            <span class="invalid-feedback">{{ $errors->first('essay_title') }}</span>
 									        </div>
 									    </div>
 									    <div class="col-xs-12 col-sm-12 col-md-12">
@@ -166,8 +166,9 @@
 												<span class="input-group-append">
 													<label for="essay_upload_file" class="btn btn-primary" {{ $disabled }}>{{ _i('Choose file') }}</label>
 												</span>
+												<span class="invalid-feedback">{{ $errors->first('essay_file') }}</span>
 											</span>
-											<span class="text-danger">{{ $errors->first('essay_file') }}</span>
+
 								            {!! Form::file('essay_file', ['id' => 'essay_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']) !!}
 								        </div>
 							        </div>

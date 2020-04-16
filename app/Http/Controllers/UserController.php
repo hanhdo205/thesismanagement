@@ -65,7 +65,7 @@ class UserController extends Controller {
 		$user->assignRole($request->input('roles'));
 
 		return redirect()->route('users.index')
-			->with('success', 'User created successfully');
+			->with('success', _i('User created successfully'));
 	}
 
 	/**
@@ -193,7 +193,7 @@ class UserController extends Controller {
 
 		/*return redirect()->route('users.index')
 			->with('success', 'Profile updated successfully');*/
-		return redirect()->back()->with('success', 'Profile updated successfully');
+		return redirect()->back()->with('success', _i('Profile updated successfully'));
 	}
 
 	/**
@@ -205,6 +205,6 @@ class UserController extends Controller {
 	public function destroy($id) {
 		User::find($id)->delete();
 		return redirect()->route('users.index')
-			->with('success', 'User deleted successfully');
+			->with('success', _i('User deleted successfully'));
 	}
 }
