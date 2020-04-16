@@ -39,82 +39,84 @@ class EssayController extends Controller {
 		$topics = Topic::orderBy('id', 'desc')->pluck('title', 'id');
 
 		$last_topic_id = array_key_first($topics->toArray());
+
+		if ($request->ajax()) {
+			$topic_id = $request->input('topic_id');
+			$student_name = $request->input('student_name');
+			$review_result = $request->input('review_result');
+			switch (true) {
+				case (($student_name != '') && ($review_result != '')):
+					$data = DB::table('essays')
+						->join('topics', 'essays.topic_id', '=', 'topics.id')
+						->where('essays.topic_id', $topic_id)
+						->where(function ($query) use ($student_name, $review_result) {
+							$query->where('essays.student_name', 'LIKE', '%' . $student_name . '%')
+								->orWhere('essays.review_result', '=', $review_result);
+						})
+						->select('topics.title','essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+						->get();
+					break;
+				case ($request->input('student_name') != ''):
+					$data = DB::table('essays')
+						->join('topics', 'essays.topic_id', '=', 'topics.id')
+						->where('essays.topic_id', $topic_id)
+						->where('essays.student_name', 'LIKE', '%' . $student_name . '%')
+						->select('topics.title','essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+						->get();
+					break;
+				case ($request->input('review_result') != ''):
+					$data = DB::table('essays')
+						->join('topics', 'essays.topic_id', '=', 'topics.id')
+						->where('essays.topic_id', $topic_id)
+						->where('essays.review_result', '=', $review_result)
+						->select('topics.title','essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+						->get();
+					break;
+				default:
+					$data = DB::table('essays')
+						->join('topics', 'essays.topic_id', '=', 'topics.id')
+						->where('essays.topic_id', $topic_id)
+						->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
+						->get();
+					break;
+			}
+
+			return Datatables::of($data)
+				->addColumn('checkbox', function ($row) {
+					$checkbox = '<label class="custom-check"><input type="checkbox" name="essays[]" id="' . $row->id . '" class="field" value="' . $row->id . '"><span class="checkmark"></span></label>';
+					return $checkbox;
+				})
+				->addColumn('detail', function ($row) {
+					if($row->reviewer_id) {
+						$detail =  route('essays.edit',$row->id);
+					} else $detail ='';
+					return $detail;
+				})
+				->addColumn('status', function ($row) {
+					$status = _i($row->review_status);
+					return $status;
+				})
+				->addColumn('result', function ($row) {
+					$result = _i($row->review_result);
+					return $result;
+				})
+				->addColumn('date', function ($row) {
+					$date = Carbon::createFromFormat('Y-m-d H:i:s',$row->created_at)->format('Y年m月d日');;
+					return $date;
+				})
+				->rawColumns(['date'])
+				->rawColumns(['status'])
+				->rawColumns(['result'])
+				->rawColumns(['detail'])
+				->rawColumns(['checkbox'])
+				->addIndexColumn()
+				->make(true);
+		}
 		if($last_topic_id) {
-				if ($request->ajax()) {
-					$topic_id = $request->input('topic_id');
-					$student_name = $request->input('student_name');
-					$review_result = $request->input('review_result');
-					switch (true) {
-						case (($student_name != '') && ($review_result != '')):
-							$data = DB::table('essays')
-								->join('topics', 'essays.topic_id', '=', 'topics.id')
-								->where('essays.topic_id', $topic_id)
-								->where(function ($query) use ($student_name, $review_result) {
-									$query->where('essays.student_name', 'LIKE', '%' . $student_name . '%')
-										->orWhere('essays.review_result', '=', $review_result);
-								})
-								->select('topics.title','essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
-								->get();
-							break;
-						case ($request->input('student_name') != ''):
-							$data = DB::table('essays')
-								->join('topics', 'essays.topic_id', '=', 'topics.id')
-								->where('essays.topic_id', $topic_id)
-								->where('essays.student_name', 'LIKE', '%' . $student_name . '%')
-								->select('topics.title','essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
-								->get();
-							break;
-						case ($request->input('review_result') != ''):
-							$data = DB::table('essays')
-								->join('topics', 'essays.topic_id', '=', 'topics.id')
-								->where('essays.topic_id', $topic_id)
-								->where('essays.review_result', '=', $review_result)
-								->select('topics.title','essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
-								->get();
-							break;
-						default:
-							$data = DB::table('essays')
-								->join('topics', 'essays.topic_id', '=', 'topics.id')
-								->where('essays.topic_id', $topic_id)
-								->select('essays.id', 'essays.essay_title', 'essays.essay_file', 'essays.student_name', 'essays.review_status', 'essays.reviewer_id','essays.review_result', 'essays.created_at')
-								->get();
-							break;
-					}
-
-					return Datatables::of($data)
-						->addColumn('checkbox', function ($row) {
-							$checkbox = '<label class="custom-check"><input type="checkbox" name="essays[]" id="' . $row->id . '" class="field" value="' . $row->id . '"><span class="checkmark"></span></label>';
-							return $checkbox;
-						})
-						->addColumn('detail', function ($row) {
-							if($row->reviewer_id) {
-								$detail =  route('essays.edit',$row->id);
-							} else $detail ='';
-							return $detail;
-						})
-						->addColumn('status', function ($row) {
-							$status = _i($row->review_status);
-							return $status;
-						})
-						->addColumn('result', function ($row) {
-							$result = _i($row->review_result);
-							return $result;
-						})
-						->addColumn('date', function ($row) {
-							$date = Carbon::createFromFormat('Y-m-d H:i:s',$row->created_at)->format('Y年m月d日');;
-							return $date;
-						})
-						->rawColumns(['date'])
-						->rawColumns(['status'])
-						->rawColumns(['result'])
-						->rawColumns(['detail'])
-						->rawColumns(['checkbox'])
-						->addIndexColumn()
-						->make(true);
-				}
-
 				return view('essays.index', compact(['topics', 'last_topic_id']));
-		} else return view('essays.empty');
+		} else {
+			return view('essays.empty', compact('topics'));
+		}
 	}
 	/**
 	 * Display a listing of the resource.
