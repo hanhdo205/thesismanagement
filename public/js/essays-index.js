@@ -2,14 +2,13 @@ $(function () {
     "use strict";
     window.onload = function () {
     	sessionStorage.removeItem('essays');
-    	//sessionStorage.removeItem('searchText');
 	}
 		let $topic = $('#topic_select').val(),
 		$checkbox,
 		$student_name = $('#student_name').val(),
 		$review_result = $('#review_result').val(),
 		$val,
-		flag = true,
+		$flag = true,
 		$url = $('#topic_url').attr('href'),
     	$parts = $url.split("/"),
     	$last_part = $parts[$parts.length-2],
@@ -68,7 +67,7 @@ $(function () {
 			$review_result = $('#review_result').val();
 			let $review_result_text = $('#review_result').children("option:selected").text();
 			let $topic_text = $('#topic_select').children("option:selected").text();
-			var search = [
+			let search = [
 				{name:'<strong>' + $topic_text + '</strong>'},
 				{name:'<strong>' + $student_name + '</strong>'},
 				{name:'<strong>' + $review_result_text + '</strong>'},
@@ -91,6 +90,7 @@ $(function () {
 			    $('.search_text').html($searchText);
 			    break;
 			  default:
+			  	sessionStorage.removeItem('searchText');
 			    $('.search_text').html('');
 			    $('.search_text').hide();
 			    break;
@@ -163,13 +163,13 @@ $(function () {
 		$selectBtn.click(function(e){
 			e.preventDefault();
 			if($val=='csv') {
-					if(flag) {
+					if($flag) {
 						let $csvFormData = new FormData();
 						let $essays = $("table tbody input:checkbox:checked").map(function(){
 					      return $(this).val();
 					    }).get();
 						$csvFormData.append('essays', $essays);
-						flag = false;
+						$flag = false;
 						$.ajax({
 						  url: essays.export,
 						  type: 'POST',
@@ -178,7 +178,7 @@ $(function () {
 						  dataType : 'json',
 						  data: $csvFormData,
 						  success: function (response, textStatus, request) {
-					        var a = document.createElement("a");
+					        let a = document.createElement("a");
 					        a.href = response.file; 
 					        a.download = response.name;
 					        document.body.appendChild(a);
@@ -187,10 +187,9 @@ $(function () {
 					      },
 					      error: function (ajaxContext) {
 					      	console.log('Export error: '+ajaxContext.responseText);
-					        //toastr.error('Export error: '+ajaxContext.responseText);
 					      }
 						});
-						flag = true;
+						$flag = true;
 					}
 			} else if($val=='mail') {
 				let $checked = $("td input:checkbox:checked").map(function(){

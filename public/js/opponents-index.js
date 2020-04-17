@@ -4,7 +4,7 @@ $(function () {
     	sessionStorage.removeItem('opponents');
 	}
 
-	let flag = true,
+	let $flag = true,
 	$submit = $('#formSubmit'),
 	$action_btn = $('#action-button a'),
 	$topic = $('#topic_select').val(),
@@ -31,7 +31,6 @@ $(function () {
 			$('.data-table').DataTable().destroy();
 			fetch_data(parseInt($topic));
 		  } else {
-		    //$action_btn.click(false);
 		    $action_btn.addClass('disabled');
 		  }
 		if (($topic > 0) && ($checkbox.length > 0)) {
@@ -54,7 +53,7 @@ $(function () {
 
 	//style for upload file field
 	if($('#csv_upload_file').length) {
-		var fileSelectEle = document.getElementById('csv_upload_file');
+		let fileSelectEle = document.getElementById('csv_upload_file');
 		fileSelectEle.onchange = function ()
 		{
 			//upload_image();
@@ -67,7 +66,7 @@ $(function () {
 	}
 
 	//call a function in success of datatable ajax call
-	function checkbox_callback() {
+	function ajax_callback() {
 		//table check all rows
 		$('.selectAll').click(function(e){
 			$('td input:checkbox').prop('checked',this.checked);
@@ -115,7 +114,7 @@ $(function () {
 	}
 
 	$( document ).ajaxComplete(function( event, request, settings ) {
-		  checkbox_callback();
+		  ajax_callback();
 		});
 
 	//dataTable
@@ -148,7 +147,7 @@ $(function () {
 	            {data: 'status', name: 'status'},
 	        ],
 	        /*initComplete:function( settings, json){
-		            checkbox_callback();
+		            ajax_callback();
 		        }*/
 	    });
 	}
@@ -157,11 +156,11 @@ $(function () {
 	$('#csv_upload_button').click(function(e){
 		e.preventDefault();
 		toastr.remove();
-		if(flag) {
-			var csvFormData = new FormData();
+		if($flag) {
+			let csvFormData = new FormData();
 			csvFormData.append('topic_id', $('#topic_select').val());
 			csvFormData.append('csv_upload_file', $('#csv_upload_file').prop('files')[0]);
-			flag = false;
+			$flag = false;
 			$.ajax({
 			  url: opponents.import_csv,
 			  type: 'POST',
@@ -182,7 +181,7 @@ $(function () {
 					}
 				   }
 			});
-			flag = true;
+			$flag = true;
 		}
 	});
 
@@ -190,12 +189,12 @@ $(function () {
 	$('#new_opponent_button').click(function(e){
 		e.preventDefault();
 		toastr.remove();
-		if(flag) {
-			var csvFormData = new FormData();
+		if($flag) {
+			let csvFormData = new FormData();
 			csvFormData.append('topic_id', $('#topic_select').val());
 			csvFormData.append('email', $('#inputEmail').val());
 			csvFormData.append('name', $('#inputName').val());
-			flag = false;
+			$flag = false;
 			$.ajax({
 			  url: opponents.create_new,
 			  type: 'POST',
@@ -219,7 +218,7 @@ $(function () {
 				   	}
 				   }
 			});
-			flag = true;
+			$flag = true;
 		}
 	});
 });

@@ -1,6 +1,6 @@
 $(function () {
     "use strict";
-		var table = $('.data-table').DataTable({
+		dataTable = $('.data-table').DataTable({
 	        processing: true,
 	        serverSide: true,
 	        searching: false,
@@ -25,20 +25,4 @@ $(function () {
 	        ],
 	        
 	    });
-
-	    var student_email, student_emails = []
-			table.rows().every(function(rowIdx, tableLoop, rowLoop) {
-				student_email = this.data().student_email;
-			  if (~student_emails.indexOf(student_email)) {
-			    this.nodes().to$().attr('excluded', 'true')
-			  } else {
-			    student_emails.push(student_email) 
-			  }
-			})
-
-			$.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
-			   return table.row(dataIndex).nodes().to$().attr('excluded') != 'true'
-			})
-
-			table.draw()
 });

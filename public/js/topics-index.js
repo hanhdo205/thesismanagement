@@ -35,7 +35,7 @@ $(function () {
     });
     
     $('body').on('click', '.editTopic', function () {
-      var topic_id = $(this).data('id');
+      let topic_id = $(this).data('id');
       $.get(topics.index +'/' + topic_id +'/edit', function (data) {
           $('#modelHeading').html(translate.edit_topic);
           $('#saveBtn').val(translate.save_btn);
@@ -47,8 +47,8 @@ $(function () {
       })
    });
     $('body').on('click', '.showTopic', function () {
-      var detail_url = $(this).data('url');
-      var topic_id = $(this).data('id');
+      let detail_url = $(this).data('url');
+      let topic_id = $(this).data('id');
       $.get(topics.index +'/' + topic_id +'/edit', function (data) {
           $('#detailHeading').html(data.title);
           $('#showDetail').modal('show');
@@ -95,7 +95,7 @@ $(function () {
     
     $('body').on('click', '.deleteTopic', function () {
      
-        var topic_id = $(this).data("id");
+        let topic_id = $(this).data("id");
         //confirm(translate.are_you_sure);
       	$('#confirm').modal('show');
       	// delete button click -> get form id

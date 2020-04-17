@@ -2,7 +2,7 @@
     "use strict";
     //date picker
     $( function() {
-	    var dateFormat = "yy/mm/dd",
+	    let dateFormat = "yy/mm/dd",
 	      from = $( "#startDate" )
 	        .datepicker({
 	          locale: 'ja-jp',
@@ -22,7 +22,7 @@
 	      });
 	 
 	    function getDate( element ) {
-	      var date;
+	      let date;
 	      try {
 	        date = $.datepicker.parseDate( dateFormat, element.value );
 	      } catch( error ) {

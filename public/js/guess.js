@@ -6,7 +6,7 @@ $(function () {
         });
 	//style for upload file field
 	if($('#essay_upload_file').length) {
-		var fileSelectEle = document.getElementById('essay_upload_file');
+		let fileSelectEle = document.getElementById('essay_upload_file');
 		fileSelectEle.onchange = function ()
 		{
 			//upload_image();
@@ -19,7 +19,7 @@ $(function () {
 	}
 
 	//date picker
-	var dateFormat = "yy/mm/dd",
+	let dateFormat = "yy/mm/dd",
 	dob = $( "#dateOfBirth" )
 	    .datepicker({
 	      locale: 'ja-jp',
