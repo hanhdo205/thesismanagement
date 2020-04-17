@@ -1,6 +1,6 @@
 $(function () {
     "use strict";
-    let flag = true,
+    let $flag = true,
     dataTable = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
@@ -64,8 +64,8 @@ $(function () {
         e.preventDefault();
         $(this).html(translate.sending);
         toastr.remove();
-        if(flag) {
-          flag = false;
+        if($flag) {
+          $flag = false;
           $.ajax({
             data: $('#topicForm').serialize(),
             url: topics.store,
@@ -84,19 +84,17 @@ $(function () {
   	         	}
             },
             error: function (data) {
-            		//toastr.error(data);
                 console.log('Error:', data);
                 $('#saveBtn').html(translate.save_changes);
             }
           });
-          flag = true;
+          $flag = true;
         }
     });
     
     $('body').on('click', '.deleteTopic', function () {
      
         let topic_id = $(this).data("id");
-        //confirm(translate.are_you_sure);
       	$('#confirm').modal('show');
       	// delete button click -> get form id
 		$('#confirm').on('click', '#delete-btn', function(e){
@@ -110,7 +108,6 @@ $(function () {
 	            	toastr.success(data.success);
 	            },
 	            error: function (data) {
-	            	//toastr.error(data);
 	                console.log('Error:', data);
 	            }
 	        });
