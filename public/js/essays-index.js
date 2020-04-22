@@ -103,6 +103,12 @@ $(function () {
 
 			if($('select').hasClass('custom-select')) {
 				$('.custom-select').select2({
+					language: {
+	                  noResults: function (params) {
+	                    return '見つかりません。';
+	                  }
+	                },
+                escapeMarkup: function (markup) { return markup; }
 				});
 			}
 
