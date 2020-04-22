@@ -8,6 +8,8 @@ $(function () {
 	        order: [[ 1, "asc" ]],
 	        columnDefs: [ {
 		        "targets": [0],
+		        "orderable": false,
+		        "searchable": false,
 		     }],
 	        language:
 				{
