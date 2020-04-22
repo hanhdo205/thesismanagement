@@ -43,8 +43,8 @@
 				</div>
 				<div class="form-group">
 					<div id="action-button" class="form-inline">
-						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5 mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#importUsers">{{ _i('Import from CSV') }}</a>
-						<a class="form-control btn btn-primary pl-5 pr-5 mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#newUser">{{ _i('Add new') }}</a>
+						<a class="form-control btn btn-primary mr-sm-2 mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#importUsers"><i class="fa fa-upload" aria-hidden="true"></i> {{ _i('Import from CSV') }}</a>
+						<a class="form-control btn btn-primary mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#newUser"><i class="fa fa-plus" aria-hidden="true"></i> {{ _i('Add new') }}</a>
 					</div>
 				</div>
 				<div class="table-scroll mb-5">
@@ -58,7 +58,7 @@
 									</label>
 								</th>
 								<th class="fix-width">{{ _i('No.') }}</th>
-								<th>{{ _i('Name') }}</th>
+								<th>{{ _i('Opponent name') }}</th>
 								<th>{{ _i('Status') }}</th>
 							</tr>
 						</thead>
@@ -90,7 +90,7 @@
                 <span class="input-group div-select-csv-file">
                 	{!! Form::text('csv_file_name_txt',null,['class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off']) !!}
 					<span class="input-group-append">
-						<label for="csv_upload_file" class="btn btn-primary">{{ _i('Choose file') }}</label></span>
+						<label for="csv_upload_file" class="btn btn-primary"><i class="fa fa-folder-open-o" aria-hidden="true"></i></label></span>
 					</span>
 				</span>
 				<small class="help-block"> {!! _i('※Data format .csv<br>※Maximum upload file size: 2MB') !!}</small>
@@ -119,18 +119,18 @@
       	<div class="modal-body">
         	{!! Form::open(['id' => 'new_user_form','method'=>'POST','novalidate']) !!}
 				<div class="form-group">
-					<label for="inputEmail">{{ _i('Email address') }}</label>
-					{!! Form::email('email',null,['id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off']) !!}
-				</div>
-				<div class="form-group">
 					<label for="inputName">{{ _i('Full name') }}</label>
 					{!! Form::text('name',null,['id' => 'inputName','class' => 'fullname input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off']) !!}
+				</div>
+				<div class="form-group">
+					<label for="inputEmail">{{ _i('Email address') }}</label>
+					{!! Form::email('email',null,['id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off']) !!}
 				</div>
             {!! Form::close() !!}
       	</div>
       	<div class="modal-footer">
         <button type="button" id="new_opponent_cancel" class="btn btn-secondary" data-dismiss="modal">{{ _i('Cancel') }}</button>
-        <button type="button" id="new_opponent_button" class="btn btn-primary">{{ _i('Save') }}</button>
+        <button type="button" id="new_opponent_button" class="btn btn-primary">{{ _i('Create Opponent') }}</button>
       </div>
     </div>
   </div>

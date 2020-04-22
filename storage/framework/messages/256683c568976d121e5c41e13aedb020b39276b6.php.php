@@ -15,7 +15,7 @@
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="/">Home</a></li>
+		<li class="breadcrumb-item"><a href="/"><?php echo e(_i('Home')); ?></a></li>
 		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('Essays management')); ?></li>
 	</ol>
 </nav>
@@ -58,7 +58,7 @@
 								<?php echo Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],$review_result, array('id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2 select2','placeholder' => _i('Review result'))); ?>
 
 
-								<?php echo Form::button(_i('Search'), array('id' => 'searchBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mt-1 mb-1 ml-sm-2')); ?>
+								<?php echo Form::button('<i class="fa fa-search" aria-hidden="true"></i> ' . _i('Search'), array('id' => 'searchBtn','class' => 'form-control btn btn-primary mt-1 mb-1 ml-sm-2')); ?>
 
 							</div>
 						</div>
@@ -69,7 +69,7 @@
 					<div class="form-inline">
 						<?php echo Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select...'))); ?>
 
-						<?php echo Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2')); ?>
+						<?php echo Form::button(_i('Do action'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2')); ?>
 
 					</div>
 				</div>

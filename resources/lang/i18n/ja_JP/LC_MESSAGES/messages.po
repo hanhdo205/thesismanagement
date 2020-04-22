@@ -1,22 +1,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2020-04-22 08:11+0000\n"
-"PO-Revision-Date: 2020-04-22 08:11+0000\n"
+"POT-Creation-Date: 2020-04-22 17:06+0700\n"
+"PO-Revision-Date: 2020-04-22 17:06+0700\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-KeywordsList: _;__;_i;_s;gettext;_n:1,2;ngettext:1,2;dgettext:2\n"
 "X-Poedit-Basepath: ../../../../../app\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: Http\n"
 "X-Poedit-SearchPath-1: ../resources/views\n"
 "X-Poedit-SearchPath-2: Console\n"
-"X-Poedit-SearchPath-3: ../storage/framework/messages/\n"
+"X-Poedit-SearchPath-3: ../storage/framework/messages\n"
 
 #: ../storage/framework/messages/001bcd7f45c17c330cc50fc93a16b3a3901d209c.php.php:6
 msgid "Verify Your Email Address"
@@ -124,6 +124,7 @@ msgstr ""
 #: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:10
 #: ../storage/framework/messages/10c28851d01832c532ff342883ba95fd98349b4d.php.php:10
 #: ../storage/framework/messages/1d5e9f8912eae373fa07277ae0a63601188fe151.php.php:15
+#: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:18
 #: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:10
 #: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:19
 #: ../storage/framework/messages/8ce18b34907d3d864795cf96509f61acc9baeb41.php.php:10
@@ -137,6 +138,7 @@ msgstr ""
 #: ../storage/framework/messages/c3fa35d1bf4291a75c9091ade5959bec9d1741c4.php.php:10
 #: ../storage/framework/messages/c4aa6bf56362366f58d785e7193ce82541461497.php.php:10
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:14
+#: ../storage/framework/messages/dfc7af7ed425657b6b868c649fc8015fb09e184f.php.php:18
 #: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:15
 #: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:10
 msgid "Home"
@@ -161,7 +163,6 @@ msgstr ""
 #: ../storage/framework/messages/0440cb236a0f6397a93a84b23b24d18a8414905c.php.php:37
 #: ../storage/framework/messages/4e1a1094f2a9be21db48215edc9d62de75573b60.php.php:13
 #: ../storage/framework/messages/840c93db846eeff37b16ac88957df7a5794ad299.php.php:31
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:64
 #: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:81
 #: ../storage/framework/messages/ad8cbf45a25ac0a9357f7bd718e394d742a865bc.php.php:82
 #: ../storage/framework/messages/c0910186c427d213df6e0ac9ab7425d45ee35521.php.php:80
@@ -442,9 +443,7 @@ msgid "Please select..."
 msgstr "選択してください"
 
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:72
-#: ../storage/framework/messages/b28877d31316cb7d1d62cedb54353e0a93563ae2.php.php:35
-#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:51
-msgid "Send"
+msgid "Do action"
 msgstr "実行"
 
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:92
@@ -528,7 +527,7 @@ msgstr "候補者の情報"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:111
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:112
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:137
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:132
 msgid "Full name"
 msgstr "氏名"
 
@@ -553,7 +552,7 @@ msgstr "生年月日"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:142
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:143
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:132
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:137
 msgid "Email address"
 msgstr "メールアドレス"
 
@@ -681,6 +680,10 @@ msgstr "CSV一括取り込み"
 msgid "Add new"
 msgstr "新規追加"
 
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:64
+msgid "Opponent name"
+msgstr "氏名"
+
 #: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:72
 msgid "Go to letter confirm"
 msgstr "査読対応確認"
@@ -704,16 +707,16 @@ msgid "Add New Opponent"
 msgstr "新規追加"
 
 #: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:133
-msgid "Enter email"
-msgstr "メールアドレス"
-
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:138
 msgid "Enter full name"
 msgstr "氏名"
 
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:138
+msgid "Enter email"
+msgstr "メールアドレス"
+
 #: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:146
-msgid "Save"
-msgstr "はい"
+msgid "Create Opponent"
+msgstr "追加"
 
 #: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:165
 msgid "New opponent added successfully"
@@ -1015,6 +1018,10 @@ msgstr ""
 "信します。メールアドレスを登録していない場合や、登録したメールアドレスがわか"
 "らない場合は、管理者にお問い合わせください。"
 
+#: ../storage/framework/messages/b28877d31316cb7d1d62cedb54353e0a93563ae2.php.php:35
+msgid "Send"
+msgstr "実行"
+
 #: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:6
 #: ../storage/framework/messages/b8e20fa6c9d5b672d0e2c73f426a708a70313628.php.php:81
 msgid "Reset Password"
@@ -1066,6 +1073,10 @@ msgstr "Cám ơn bạn đã trả lời."
 msgid "Review request mail template"
 msgstr "査読対応確認"
 
+#: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:51
+msgid "Send confirmation"
+msgstr "送信"
+
 #: ../storage/framework/messages/e9cdc8bfe9bd3caed868dc070c26a1566e1d3362.php.php:68
 msgid "No item selected"
 msgstr "送信先 は、必ず指定してください。"
@@ -1077,6 +1088,9 @@ msgstr "メール内容 は、必ず指定してください。"
 #: ../storage/framework/messages/f74238cc72e06f2b50fd4e17e990c1afc180d2c3.php.php:43
 msgid "Send review request"
 msgstr "査読依頼"
+
+#~ msgid "Save"
+#~ msgstr "はい"
 
 #~ msgid "Update"
 #~ msgstr "更新"

@@ -15,7 +15,7 @@
 <?php $__env->startSection('content'); ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="/">Home</a></li>
+		<li class="breadcrumb-item"><a href="/"><?php echo e(_i('Home')); ?></a></li>
 		<li class="breadcrumb-item active" aria-current="page"><?php echo e(_i('Student list')); ?></li>
 	</ol>
 </nav>

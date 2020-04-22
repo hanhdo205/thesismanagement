@@ -19,9 +19,7 @@ $(function () {
     	$selectBtn.prop('disabled', true);
 
 		fetch_data(parseInt($topic));
-		$('#requestSelect').on('change', function () {
-				$val = $(this).val();
-			});
+		
 
 		$('#topic_select').on('change', function () {
 			 $topic = $(this).val();
@@ -44,6 +42,14 @@ $(function () {
 			$selectBtn.prop('disabled', true);
         });
 
+        $val = $('#requestSelect').val();
+        request_icon();
+			
+		$('#requestSelect').on('change', function () {
+			$val = $(this).val();
+			request_icon();
+		});
+
 
 	    $( document ).ajaxComplete(function( event, request, settings ) {
 		  	ajax_callback();
@@ -56,6 +62,9 @@ $(function () {
 				$review_result = '';
 				$('#student_name').val('');
 				$('#review_result').val('');
+				$("#review_result").select2({
+				   placeholder: translate.review_result
+				 });
 				$('.data-table').DataTable().destroy();
 				fetch_data(parseInt($topic));
 			});
@@ -94,6 +103,18 @@ $(function () {
 			    $('.search_text').html('');
 			    $('.search_text').hide();
 			    break;
+			}
+		}
+
+		//request button icon
+		function request_icon() {
+			$selectBtn.find('i').removeAttr('class');
+			if($val=='csv') {
+				$selectBtn.find('i').addClass('fa fa-download');
+			} else if($val=='mail') {
+				$selectBtn.find('i').addClass('fa fa-envelope-o');
+			} else {
+				$selectBtn.find('i').addClass('fa fa-ban');
 			}
 		}
 
@@ -144,12 +165,6 @@ $(function () {
 				    $selectBtn.prop('disabled', true);
 				    sessionStorage.setItem('essays', $checked);
 				  }
-			});
-
-			$val = $('#requestSelect').val();
-			
-			$('#requestSelect').on('change', function () {
-				$val = $(this).val();
 			});
 
 			// use for history go back, keep checkboxs status

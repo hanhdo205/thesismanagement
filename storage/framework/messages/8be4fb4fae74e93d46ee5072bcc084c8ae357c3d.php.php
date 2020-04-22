@@ -46,8 +46,8 @@
 				</div>
 				<div class="form-group">
 					<div id="action-button" class="form-inline">
-						<a class="form-control btn btn-primary mr-sm-2 pl-5 pr-5 mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#importUsers"><?php echo e(_i('Import from CSV')); ?></a>
-						<a class="form-control btn btn-primary pl-5 pr-5 mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#newUser"><?php echo e(_i('Add new')); ?></a>
+						<a class="form-control btn btn-primary mr-sm-2 mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#importUsers"><i class="fa fa-upload" aria-hidden="true"></i> <?php echo e(_i('Import from CSV')); ?></a>
+						<a class="form-control btn btn-primary mb-2" href="javascript:void(0);" data-toggle="modal" data-target="#newUser"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo e(_i('Add new')); ?></a>
 					</div>
 				</div>
 				<div class="table-scroll mb-5">
@@ -61,7 +61,7 @@
 									</label>
 								</th>
 								<th class="fix-width"><?php echo e(_i('No.')); ?></th>
-								<th><?php echo e(_i('Name')); ?></th>
+								<th><?php echo e(_i('Opponent name')); ?></th>
 								<th><?php echo e(_i('Status')); ?></th>
 							</tr>
 						</thead>
@@ -129,13 +129,13 @@
         	<?php echo Form::open(['id' => 'new_user_form','method'=>'POST','novalidate']); ?>
 
 				<div class="form-group">
-					<label for="inputEmail"><?php echo e(_i('Email address')); ?></label>
-					<?php echo Form::email('email',null,['id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off']); ?>
+					<label for="inputName"><?php echo e(_i('Full name')); ?></label>
+					<?php echo Form::text('name',null,['id' => 'inputName','class' => 'fullname input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off']); ?>
 
 				</div>
 				<div class="form-group">
-					<label for="inputName"><?php echo e(_i('Full name')); ?></label>
-					<?php echo Form::text('name',null,['id' => 'inputName','class' => 'fullname input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off']); ?>
+					<label for="inputEmail"><?php echo e(_i('Email address')); ?></label>
+					<?php echo Form::email('email',null,['id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off']); ?>
 
 				</div>
             <?php echo Form::close(); ?>
@@ -143,7 +143,7 @@
       	</div>
       	<div class="modal-footer">
         <button type="button" id="new_opponent_cancel" class="btn btn-secondary" data-dismiss="modal"><?php echo e(_i('Cancel')); ?></button>
-        <button type="button" id="new_opponent_button" class="btn btn-primary"><?php echo e(_i('Save')); ?></button>
+        <button type="button" id="new_opponent_button" class="btn btn-primary"><?php echo e(_i('Create Opponent')); ?></button>
       </div>
     </div>
   </div>

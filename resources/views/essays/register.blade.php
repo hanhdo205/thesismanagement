@@ -166,9 +166,9 @@
 									    <div class="col-md-6">
 								            <strong>{{ _i('Upload') }}</strong>
 								            <span class="form-group input-group div-select-csv-file">
-							                	{!! Form::hidden('essay_file_name_txt',null,['class' => 'essay_file_name_txt input full upload form-control' . $essay_file_err, 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off',$readonly]) !!}
-												<span class="input-group">
-													<label for="essay_upload_file" class="btn btn-primary" {{ $disabled }}><i class="fa fa-upload" aria-hidden="true"></i> {{ _i('Choose file') }}</label>
+							                	{!! Form::text('essay_file_name_txt',null,['class' => 'essay_file_name_txt input full upload form-control' . $essay_file_err, 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off',$readonly]) !!}
+												<span class="input-group-append">
+													<label for="essay_upload_file" class="btn btn-primary" {{ $disabled }}><i class="fa fa-folder-open-o" aria-hidden="true"></i></label>
 												</span>
 												<span class="invalid-feedback">{{ $errors->first('essay_file') }}</span>
 											</span>

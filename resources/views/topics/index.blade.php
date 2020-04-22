@@ -27,7 +27,7 @@
 			{{ _i('Topic management') }}
 			@can('topic-create')
 				<span class="float-right">
-					<a class="btn btn-sm btn-primary" id="createNewTopic" href="javascript:void(0)"> {{ _i('Add new topic') }}</a>
+					<a class="btn btn-sm btn-primary" id="createNewTopic" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i>  {{ _i('Add new topic') }}</a>
 				</span>
             @endcan
 		</div>
