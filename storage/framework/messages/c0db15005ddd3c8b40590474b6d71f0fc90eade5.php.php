@@ -85,23 +85,19 @@
 									<label for="review_status"><?php echo e(_i('Review result')); ?></label>
 										<?php echo Form::select('review_result', ['good' => _i(RESULT_GOOD),'bad' => _i(RESULT_BAD)], $rows->review_result, array('class' => 'form-control select2', 'placeholder' => _i(RESULT_NONE) )); ?>
 
-										<span class="text-danger"><?php echo e($errors->first('review_result')); ?></span>
+										<span class="invalid-feedback"><?php echo e($errors->first('review_result')); ?></span>
 								</div>
 								<div class="form-group">
 									<label for="comment"><?php echo e(_i('Comments')); ?></label>
 									<?php echo Form::textarea('review_comment', null, array('id' => 'comment','class' => 'form-control','rows' => '5')); ?>
 
-									<span class="text-danger"><?php echo e($errors->first('review_comment')); ?></span>
+									<span class="invalid-feedback"><?php echo e($errors->first('review_comment')); ?></span>
 								</div>
 								<div class="d-flex justify-content-end">
 									<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4 mt-3"><?php echo e(_i('Save changes')); ?></button>
 								</div>
 							</div>
 						</div>
-
-
-
-
 					<?php echo Form::close(); ?>
 
 				</div>

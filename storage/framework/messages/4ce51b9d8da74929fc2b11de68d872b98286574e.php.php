@@ -13,6 +13,8 @@
 	$essay_major_err = '';
 	$essay_title_err = '';
 	$essay_file_err = '';
+	$readonly = 'readonly';
+	$disabled = '';
 ?>
 
 <div class="container">
@@ -34,8 +36,7 @@
 						    <div class="col-xs-12 col-sm-12 col-md-12">
 						        <div class="form-group">
 						            <strong><?php echo e(_i('Period')); ?></strong>
-						            <?php echo e($topic->start_date . ' ~ ' . $topic->end_date); ?>
-
+						            <?php echo e($topic->start_date . ' ~ ' . $topic->end_date); ?> (<?php echo e($status); ?>)
 						        </div>
 						    </div>
 						</div>
@@ -87,8 +88,15 @@
 				    <button class="close hide_error" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 				  </div>
 						<?php endif; ?>
-						<?php echo Form::open(['route' => 'register.endai_teisyutu','method'=>'POST', 'enctype'=>'multipart/form-data','novalidate']); ?>
+						<?php echo Form::open(['id' => 'register_essay','route' => 'register.endai_teisyutu','method'=>'POST', 'enctype'=>'multipart/form-data','novalidate']); ?>
 
+						<?php if($status != _i(AVAILABLE)): ?>
+							<fieldset disabled="disabled">
+								<?php
+									$readonly = '';
+									$disabled = 'disabled';
+								?>
+						<?php endif; ?>
 						<?php echo Form::hidden('topic_id', $topic->id); ?>
 
 							<fieldset class="form-border">
@@ -100,7 +108,7 @@
 									            <strong><?php echo e(_i('Full name')); ?></strong>
 									            <?php echo Form::text('student_name', null, ['placeholder' => _i('Full name'),'class' => 'form-control' . $student_name_err]); ?>
 
-									            <span class="text-danger"><?php echo e($errors->first('student_name')); ?></span>
+									            <span class="invalid-feedback"><?php echo e($errors->first('student_name')); ?></span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
@@ -123,7 +131,7 @@
 									            <strong><?php echo e(_i('Date of birth')); ?></strong>
 									            <?php echo Form::text('student_dob', null, ['placeholder' => _i('Date of birth'),'id' => 'dateOfBirth','class' => 'form-control' . $student_dob_err,'autocomplete' => 'off']); ?>
 
-									            <span class="text-danger"><?php echo e($errors->first('student_dob')); ?></span>
+									            <span class="invalid-feedback"><?php echo e($errors->first('student_dob')); ?></span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
@@ -131,7 +139,7 @@
 									            <strong><?php echo e(_i('Email address')); ?></strong>
 									            <?php echo Form::email('student_email', null, ['placeholder' => _i('Email address'),'id' => 'emailAddress','class' => 'form-control' . $student_email_err,'autocomplete' => 'off']); ?>
 
-									            <span class="text-danger"><?php echo e($errors->first('student_email')); ?></span>
+									            <span class="invalid-feedback"><?php echo e($errors->first('student_email')); ?></span>
 									        </div>
 									    </div>
 								    </div>
@@ -147,7 +155,7 @@
 									            <strong><?php echo e(_i('Belong to')); ?></strong>
 									            <?php echo Form::text('essay_belong', null, array('placeholder' => _i('Belong to'),'class' => 'form-control' . $essay_belong_err)); ?>
 
-									            <span class="text-danger"><?php echo e($errors->first('essay_belong')); ?></span>
+									            <span class="invalid-feedback"><?php echo e($errors->first('essay_belong')); ?></span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
@@ -155,7 +163,7 @@
 									            <strong><?php echo e(_i('Major')); ?></strong>
 									            <?php echo Form::text('essay_major', null, ['placeholder' => _i('Major'),'class' => 'form-control' . $essay_major_err]); ?>
 
-									            <span class="text-danger"><?php echo e($errors->first('essay_major')); ?></span>
+									            <span class="invalid-feedback"><?php echo e($errors->first('essay_major')); ?></span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
@@ -163,19 +171,20 @@
 									            <strong><?php echo e(_i('Title')); ?></strong>
 									            <?php echo Form::text('essay_title', null, ['placeholder' => _i('Title'),'class' => 'form-control' . $essay_title_err]); ?>
 
-									            <span class="text-danger"><?php echo e($errors->first('essay_title')); ?></span>
+									            <span class="invalid-feedback"><?php echo e($errors->first('essay_title')); ?></span>
 									        </div>
 									    </div>
 									    <div class="col-xs-12 col-sm-12 col-md-12">
 								            <strong><?php echo e(_i('Upload')); ?></strong>
-								            <span class="input-group div-select-csv-file">
-							                	<?php echo Form::text('essay_file_name_txt',null,['class' => 'essay_file_name_txt input full upload form-control' . $essay_file_err, 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off']); ?>
+								            <span class="form-group input-group div-select-csv-file">
+							                	<?php echo Form::text('essay_file_name_txt',null,['class' => 'essay_file_name_txt input full upload form-control' . $essay_file_err, 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off',$readonly]); ?>
 
 												<span class="input-group-append">
-													<label for="essay_upload_file" class="btn btn-primary"><?php echo e(_i('Choose file')); ?></label>
+													<label for="essay_upload_file" class="btn btn-primary" <?php echo e($disabled); ?>><?php echo e(_i('Choose file')); ?></label>
 												</span>
+												<span class="invalid-feedback"><?php echo e($errors->first('essay_file')); ?></span>
 											</span>
-											<span class="text-danger"><?php echo e($errors->first('essay_file')); ?></span>
+
 								            <?php echo Form::file('essay_file', ['id' => 'essay_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']); ?>
 
 								        </div>
@@ -183,9 +192,12 @@
 						        </div>
 						    </fieldset>
 							<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-						    	<?php echo Form::submit(_i('Submit'), ['class' => 'btn btn-primary pl-5 pr-5 mt-5']); ?>
+						    	<?php echo Form::submit(_i('Submit'), ['class' => 'btn btn-primary pl-5 pr-5 mt-3']); ?>
 
 						    </div>
+						    <?php if($status != _i(AVAILABLE)): ?>
+							</fieldset>
+							<?php endif; ?>
 						<?php echo Form::close(); ?>
 
 					</div>

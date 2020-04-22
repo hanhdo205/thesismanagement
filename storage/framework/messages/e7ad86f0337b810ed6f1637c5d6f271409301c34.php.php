@@ -29,7 +29,8 @@ class OpponentController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Request $request) {
-		$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
+		//$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
+		$topics = Topic::orderBy('id', 'desc')->pluck('title', 'id');
 		$last_topic_id = array_key_first($topics->toArray());
 
 		if ($request->ajax()) {
@@ -41,7 +42,6 @@ class OpponentController extends Controller {
 				->get();
 			return Datatables::of($data)
 				->addColumn('checkbox', function ($row) {
-
 					$checkbox = '<label class="custom-check"><input type="checkbox" name="opponents[]" id="' . $row->id . '" class="field" value="' . $row->id . '"><span class="checkmark"></span></label>';
 					return $checkbox;
 				})
@@ -100,7 +100,16 @@ class OpponentController extends Controller {
 		fclose($myfile);
 
 		foreach ($opponents as $key => $value) {
-			self::doSendMail($value, $topic_id);
+			$send_to = DB::table('reviews')
+				->where('user_id', $value)
+				->where(function ($query) {
+					$query->where('request_status', '=', REVIEW_WAIT_FOR_ASKING)
+						->orWhere('request_status', '==', REVIEW_MAIL_FAIL);
+				})
+				->value('user_id');
+			if ($send_to == $value) {
+				self::doSendMail($value, $topic_id);
+			}
 		}
 		return Redirect::route('opponents.index')
 			->with(['success' => _i('The emails were send.'), 'topic_id' => $topic_id]);

@@ -48,7 +48,7 @@
 						</div>
 						<div class="d-flex justify-content-end">
 							<span class="spinner-border mr-3" role="status" aria-hidden="true"></span>
-							<?php echo Form::button(_i('Send'), ['id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4']); ?>
+							<?php echo Form::button(_i('Send'), ['id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-4']); ?>
 
 						</div>
 					<?php echo Form::close(); ?>

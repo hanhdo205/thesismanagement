@@ -31,34 +31,36 @@ class TopicController extends Controller {
 			return Datatables::of($data)
 				->addIndexColumn()
 				->addColumn('period', function ($row) {
-					$duration = $row->start_date . ' ~ ' . $row->end_date;
+					$from = Carbon::createFromDate($row->start_date)->format('Y年m月d日');
+					$to = Carbon::createFromDate($row->end_date)->format('Y年m月d日');
+					$duration = $from . ' ～ ' . $to;
 					return $duration;
 				})
 				->addColumn('status', function ($row) {
 					$start_date = Carbon::createFromDate($row->start_date);
 					$end_date = Carbon::createFromDate($row->end_date);
 					$now = Carbon::today();
-					$status = _i(AVAILABLE);
+					$status = _i('Available');
 					switch (true) {
 					case ($end_date < $now):
-						$status = _i(EXPIRED);
+						$status = _i('Expired');
 						break;
 					case ($start_date > $now):
-						$status = _i(COMMING_SOON);
+						$status = _i('Comming soon');
 						break;
 					default:
-						$status = _i(AVAILABLE);
+						$status = _i('Available');
 						break;
 					}
-					return $status;
+					return _i($status);
 				})
 				->addColumn('action', function ($row) {
 
-					$btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-url="' . route('topic.endai_teisyutu', ['id' => $row->id]) . '" data-original-title="Show" class="edit btn btn-info btn-sm showTopic"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+					$btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-url="' . route('topic.endai_teisyutu', ['id' => $row->id]) . '" data-original-title="' . _i('Show') . '" title ="' . _i('Show') . '" class="edit btn btn-info btn-sm showTopic"><i class="fa fa-eye" aria-hidden="true"></i></a>';
 
-					$btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editTopic"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+					$btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="' . _i('Edit') . '" title ="' . _i('Edit') . '" class="edit btn btn-primary btn-sm editTopic"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
 
-					$btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteTopic"><i class="fa fa-trash-o" aria-hidden="true"></i></a>';
+					$btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="' . _i('Delete') . '" title ="' . _i('Delete') . '" class="btn btn-danger btn-sm deleteTopic"><i class="fa fa-trash-o" aria-hidden="true"></i></a>';
 
 					return $btn;
 				})

@@ -9,12 +9,12 @@
 	</div>
 	<div class="inline my-2 my-lg-0">
 		<div class="btn-group">
-			<button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<?php echo e(_i('Welcome, %s',$user->name)); ?>
 
-			</button>
+			</span>
 			<div class="dropdown-menu dropdown-menu-right mt-0 mb-0 pt-0 pb-0">
-				<h6 class="dropdown-header"><?php echo e(_i('Account')); ?></h6>
+				<div class="dropdown-header text-center"><?php echo e(_i('Account')); ?></div>
 				<a class="dropdown-item" href="<?php echo e(route('users.profile')); ?>"><i class="fa fa-user" aria-hidden="true"></i> <?php echo e(_i('My profile')); ?></a>
 				<div class="dropdown-divider mb-0 mt-0"></div>
                 <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"

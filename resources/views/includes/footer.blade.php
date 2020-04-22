@@ -8,7 +8,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">{{ _i('Cancel') }}</button>
-                <button type="button" class="btn btn-sm btn-primary" id="delete-btn">{{ _i('Delete') }}</button>
+                <button type="button" class="btn btn-sm btn-primary" id="delete-btn">{{ _i('Yes') }}</button>
             </div>
         </div>
     </div>

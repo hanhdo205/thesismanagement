@@ -76,6 +76,7 @@
 		edit_topic:'<?php echo e(_i("Edit Topic")); ?>',
 		new_topic:'<?php echo e(_i("Create New Topic")); ?>',
 		save_btn:'<?php echo e(_i("Save")); ?>',
+		update_btn:'<?php echo e(_i("Update")); ?>',
 	};
 </script>
 <script src="<?php echo e(asset('js/topics-index.js')); ?>"></script>
@@ -148,19 +149,19 @@
                 <div class="row">
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
-				            <strong><?php echo e(_i('Title')); ?></strong>
+				            <strong><?php echo e(_i('Title')); ?>: </strong>
 				            <span id="detailTitle"></span>
 				        </div>
 				    </div>
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
-				            <strong><?php echo e(_i('Period')); ?></strong>
+				            <strong><?php echo e(_i('Period')); ?>: </strong>
 				            <span id="detailStartDate"></span> ~ <span id="detailEndDate"></span>
 				        </div>
 				    </div>
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
-				            <strong><?php echo e(_i('Registration form for essay writing competetion URL')); ?></strong>
+				            <strong><?php echo e(_i('Registration form for essay writing competetion URL')); ?>: </strong>
 				            <a id="detailUrl" href="" target="_blank"></a>
 				        </div>
 				    </div>

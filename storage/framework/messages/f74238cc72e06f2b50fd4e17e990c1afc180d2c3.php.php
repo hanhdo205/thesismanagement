@@ -28,6 +28,10 @@
 
 							<?php echo Form::hidden('topic_id', $topic_id); ?>
 
+							<?php echo Form::hidden('student_name', $student_name); ?>
+
+							<?php echo Form::hidden('review_result', $review_result); ?>
+
 							<?php echo Form::hidden('essays', $essay_lst); ?>
 
 								<div class="form-group">
@@ -36,7 +40,7 @@
 								</div>
 								<div class="d-flex justify-content-end">
 									<span class="spinner-border mr-3" role="status" aria-hidden="true"></span>
-									<?php echo Form::submit(_i('Send review request'), ['class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4']); ?>
+									<?php echo Form::submit(_i('Send review request'), ['class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-4']); ?>
 
 								</div>
 							<?php echo Form::close(); ?>

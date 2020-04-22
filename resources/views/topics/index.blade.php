@@ -75,6 +75,7 @@
 		edit_topic:'{{ _i("Edit Topic") }}',
 		new_topic:'{{ _i("Create New Topic") }}',
 		save_btn:'{{ _i("Save") }}',
+		update_btn:'{{ _i("Update") }}',
 	};
 </script>
 <script src="{{ asset('js/topics-index.js') }}"></script>
@@ -140,19 +141,19 @@
                 <div class="row">
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
-				            <strong>{{ _i('Title') }}</strong>
+				            <strong>{{ _i('Title') }}: </strong>
 				            <span id="detailTitle"></span>
 				        </div>
 				    </div>
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
-				            <strong>{{ _i('Period') }}</strong>
+				            <strong>{{ _i('Period') }}: </strong>
 				            <span id="detailStartDate"></span> ~ <span id="detailEndDate"></span>
 				        </div>
 				    </div>
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
-				            <strong>{{ _i('Registration form for essay writing competetion URL') }}</strong>
+				            <strong>{{ _i('Registration form for essay writing competetion URL') }}: </strong>
 				            <a id="detailUrl" href="" target="_blank"></a>
 				        </div>
 				    </div>

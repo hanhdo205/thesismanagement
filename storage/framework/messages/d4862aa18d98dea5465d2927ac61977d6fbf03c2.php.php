@@ -78,7 +78,7 @@
 						<?php else: ?>
 							<?php $__currentLoopData = $lastestReview; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 								<tr>
-									<td class="fix-width"><?php echo e(++$i); ?></td>
+									<td class="fix-width"><?php echo e(++$j); ?></td>
 									<td><?php echo e($review->essay_title); ?></td>
 									<td><?php echo e($review->student_name); ?></td>
 									<td><?php echo e(Carbon\Carbon::parse($review->updated_at)->format('Y年m月d日')); ?></td>

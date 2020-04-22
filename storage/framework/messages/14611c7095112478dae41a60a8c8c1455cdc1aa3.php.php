@@ -35,7 +35,7 @@ class ImExController extends Controller {
 			Excel::import(new UsersImport($topic_id), request()->file('csv_upload_file'));
 			return response()->json([
 				'success' => 1,
-				'message' => 'CSV Upload Successfully',
+				'message' => _i('CSV Upload Successfully'),
 				'class_name' => 'alert-success',
 			]);
 		} else {

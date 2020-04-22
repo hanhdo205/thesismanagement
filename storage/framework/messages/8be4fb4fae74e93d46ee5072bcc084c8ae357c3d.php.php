@@ -8,6 +8,8 @@
 <!-- Datatable -->
 <link  href="<?php echo e(asset('css/datatables/dataTables.bootstrap4.min.css')); ?>" rel="stylesheet">
 <link  href="<?php echo e(asset('css/datatables/responsive.bootstrap4.min.css')); ?>" rel="stylesheet">
+<!-- Select2 styles-->
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -38,7 +40,7 @@
 
 				<div class="form-group">
 					<div class="form-inline">
-						<?php echo Form::select('topic', $topics,$last_topic_id, ['id' => 'topic_select','class' => 'field form-control','placeholder' => _i('Please select topic')]); ?>
+						<?php echo Form::select('topic', $topics,$last_topic_id, ['id' => 'topic_select','class' => 'field form-control select2','placeholder' => _i('Please select topic')]); ?>
 
 					</div>
 				</div>
@@ -54,7 +56,7 @@
 							<tr>
 								<th class="fix-width text-center sorting_disabled">
 									<label class="custom-check">
-										<input type="checkbox" id="selectAll" />
+										<input type="checkbox" class="selectAll" />
 										<span class="checkmark"></span>
 									</label>
 								</th>
@@ -67,7 +69,7 @@
 				</div>
 				<div class="form-group">
 					<div class="d-flex justify-content-center">
-						<?php echo Form::submit(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-3 pl-5 pr-5']); ?>
+						<?php echo Form::submit(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-3']); ?>
 
 					</div>
 				</div>
@@ -154,6 +156,8 @@
 <script src="<?php echo e(asset('js/datatables/dataTables.bootstrap4.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/datatables/dataTables.responsive.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/datatables/responsive.bootstrap4.min.js')); ?>"></script>
+<!-- Select2 script -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <!-- Custom script -->
 <script type="text/javascript">
 	var opponents = {index:'<?php echo e(route("opponents.index")); ?>',import_csv:'<?php echo e(url("import_csv")); ?>',create_new:'<?php echo e(url("create-new-opponent")); ?>'};

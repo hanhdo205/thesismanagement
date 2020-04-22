@@ -38,7 +38,7 @@ $(function () {
       let topic_id = $(this).data('id');
       $.get(topics.index +'/' + topic_id +'/edit', function (data) {
           $('#modelHeading').html(translate.edit_topic);
-          $('#saveBtn').val(translate.save_btn);
+          $('#saveBtn').val(translate.update_btn);
           $('#ajaxModel').modal('show');
           $('#topic_id').val(data.id);
           $('#title').val(data.title);

@@ -7,6 +7,7 @@
 	<meta name="description" content="<?php echo $__env->yieldContent('description'); ?>">
     <meta name="keyword" content="<?php echo $__env->yieldContent('keyword'); ?>">
 	<title><?php echo e(config('app.name', 'Laravel')); ?> - <?php echo $__env->yieldContent('title'); ?></title>
+    <link rel="icon" href="data:,">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 <?php if(auth()->guard()->guest()): ?>
