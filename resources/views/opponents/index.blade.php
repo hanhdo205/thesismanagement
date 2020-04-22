@@ -49,7 +49,7 @@
 				</div>
 				<div class="table-scroll mb-5">
 					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" width="100%">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th class="fix-width text-center sorting_disabled">
 									<label class="custom-check">

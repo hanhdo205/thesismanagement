@@ -38,7 +38,7 @@
 				@endif -->
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" cellspacing="0" width="100%">
-						<thead>
+						<thead  align="center">
 							<tr>
 								<th class="fix-width">{{ _i('No.') }}</th>
 								<th>{{ _i('Title') }}</th>

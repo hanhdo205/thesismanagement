@@ -28,6 +28,7 @@
 				@endif
 				<div class="table-scroll">
 					<table class="table table-bordered">
+						<thead  align="center">
 						 <tr>
 						   <th>{{ _i('No.') }}</th>
 						   <th>{{ _i('Name') }}</th>
@@ -35,6 +36,8 @@
 						   <th>{{ _i('Roles') }}</th>
 						   <th>{{ _i('Action') }}</th>
 						 </tr>
+						 </thead>
+						<tbody>
 						 @foreach ($data as $key => $user)
 						  <tr>
 						    <td>{{ ++$i }}</td>
@@ -55,6 +58,7 @@
 						    </td>
 						  </tr>
 						 @endforeach
+						 </tbody>
 					</table>
 				{!! $data->render() !!}
 				</div>

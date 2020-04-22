@@ -68,7 +68,7 @@
 				<span class="search_text"><div class="alert alert-secondary alert-dismissible search_text_alert d-none" role="alert"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div></span>
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" cellspacing="0" width="100%">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th class="fix-width text-center">
 									<label class="custom-check">

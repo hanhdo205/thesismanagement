@@ -30,11 +30,14 @@
 				@endif
 				<div class="table-scroll">
 					<table class="table table-bordered">
+						<thead  align="center">
 					  <tr>
 					     <th>{{ _i('No.') }}</th>
 					     <th>{{ _i('Name') }}</th>
 					     <th>{{ _i('Action') }}</th>
 					  </tr>
+					  </thead>
+						<tbody>
 					    @foreach ($roles as $key => $role)
 					    <tr>
 					        <td>{{ ++$i }}</td>
@@ -52,6 +55,7 @@
 					        </td>
 					    </tr>
 					    @endforeach
+					    </tbody>
 					</table>
 					{!! $roles->render() !!}
 				</div>

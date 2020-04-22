@@ -32,7 +32,7 @@
 
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered data-table table-hover" cellspacing="0" width="100%">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th class="fix-width">No.</th>
 								<th>{{ _i('Student name') }}</th>

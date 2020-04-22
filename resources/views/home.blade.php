@@ -23,7 +23,7 @@
 			<div class="card-text">
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered table-hover">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th class="fix-width">{{ _i('No.') }}</th>
 								<th>{{ _i('Title') }}</th>
@@ -60,7 +60,7 @@
 			<div class="card-text">
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered table-hover">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th class="fix-width">{{ _i('No.') }}</th>
 								<th>{{ _i('Title') }}</th>
