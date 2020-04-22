@@ -23,6 +23,11 @@ $(function () {
 	            {data: 'gender', name: 'gender'},
 	            {data: 'dob', name: 'dob'},
 	        ],
-	        
+	        initComplete:function( settings, json){
+	            if($('select').hasClass('custom-select')) {
+	              $('.custom-select').select2({
+	              });
+	            }
+	        }
 	    });
 });

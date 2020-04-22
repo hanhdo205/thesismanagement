@@ -101,6 +101,11 @@ $(function () {
 		function ajax_callback() {
 			get_search_text();
 
+			if($('select').hasClass('custom-select')) {
+				$('.custom-select').select2({
+				});
+			}
+
 			$('.selectAll').on('click', function(){
 				if($('.selectAll:checkbox:checked').length > 0) {
 				 $topic = $('#topic_select').val();

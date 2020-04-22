@@ -9,7 +9,7 @@
 <link  href="<?php echo e(asset('css/datatables/dataTables.bootstrap4.min.css')); ?>" rel="stylesheet">
 <link  href="<?php echo e(asset('css/datatables/responsive.bootstrap4.min.css')); ?>" rel="stylesheet">
 <!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="<?php echo e(asset('css/select2/select2.min.css')); ?>" rel="stylesheet" />
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -52,7 +52,7 @@
 				</div>
 				<div class="table-scroll mb-5">
 					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" width="100%">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th class="fix-width text-center sorting_disabled">
 									<label class="custom-check">
@@ -157,7 +157,7 @@
 <script src="<?php echo e(asset('js/datatables/dataTables.responsive.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/datatables/responsive.bootstrap4.min.js')); ?>"></script>
 <!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="<?php echo e(asset('js/select2/select2.min.js')); ?>"></script>
 <!-- Custom script -->
 <script type="text/javascript">
 	var opponents = {index:'<?php echo e(route("opponents.index")); ?>',import_csv:'<?php echo e(url("import_csv")); ?>',create_new:'<?php echo e(url("create-new-opponent")); ?>'};

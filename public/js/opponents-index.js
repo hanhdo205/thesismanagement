@@ -67,6 +67,10 @@ $(function () {
 
 	//call a function in success of datatable ajax call
 	function ajax_callback() {
+		if($('select').hasClass('custom-select')) {
+				$('.custom-select').select2({
+				});
+			}
 		//table check all rows
 		$('.selectAll').click(function(e){
 			$('td input:checkbox').prop('checked',this.checked);

@@ -31,11 +31,14 @@
 				<?php endif; ?>
 				<div class="table-scroll">
 					<table class="table table-bordered">
+						<thead  align="center">
 					  <tr>
 					     <th><?php echo e(_i('No.')); ?></th>
 					     <th><?php echo e(_i('Name')); ?></th>
 					     <th><?php echo e(_i('Action')); ?></th>
 					  </tr>
+					  </thead>
+						<tbody>
 					    <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					    <tr>
 					        <td><?php echo e(++$i); ?></td>
@@ -56,6 +59,7 @@
 					        </td>
 					    </tr>
 					    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					    </tbody>
 					</table>
 					<?php echo $roles->render(); ?>
 

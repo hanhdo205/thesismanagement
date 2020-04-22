@@ -24,7 +24,7 @@
 			<div class="card-text">
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered table-hover">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th class="fix-width"><?php echo e(_i('No.')); ?></th>
 								<th><?php echo e(_i('Title')); ?></th>
@@ -62,7 +62,7 @@
 			<div class="card-text">
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered table-hover">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th class="fix-width"><?php echo e(_i('No.')); ?></th>
 								<th><?php echo e(_i('Title')); ?></th>

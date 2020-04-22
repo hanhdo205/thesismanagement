@@ -9,7 +9,7 @@
 <link  href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 <link  href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 <!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="{{ asset('css/select2/select2.min.css') }}" rel="stylesheet" />
 @endpush
 
 @section('content')
@@ -51,9 +51,9 @@
 							<div class="form-inline">
 								{!! Form::text('student_name', $student_name, array('id' => 'student_name','class' => 'form-control mt-1 mb-1 mr-sm-2','placeholder' => _i('Enter student name'))) !!}
 
-								{!! Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],$review_result, array('id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2','placeholder' => _i('Review result'))) !!}
+								{!! Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],$review_result, array('id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2 select2','placeholder' => _i('Review result'))) !!}
 
-								{!! Form::button(_i('Search'), array('id' => 'searchBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mt-1 mb-1')) !!}
+								{!! Form::button(_i('Search'), array('id' => 'searchBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mt-1 mb-1 ml-sm-2')) !!}
 							</div>
 						</div>
 					</div>
@@ -61,8 +61,8 @@
 
 				<div class="form-group">
 					<div class="form-inline">
-						{!! Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2','placeholder' => _i('Please select...'))) !!}
-						{!! Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2')) !!}
+						{!! Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select...'))) !!}
+						{!! Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2')) !!}
 					</div>
 				</div>
 				<span class="search_text"><div class="alert alert-secondary alert-dismissible search_text_alert d-none" role="alert"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div></span>
@@ -102,7 +102,7 @@
 <script src="{{ asset('js/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('js/datatables/responsive.bootstrap4.min.js') }}"></script>
 <!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="{{ asset('js/select2/select2.min.js') }}"></script>
 <!-- Custom script -->
 <script type="text/javascript">
 	var essays = {index:'{{ route("essays.index") }}',export:'{{ route("essays.export") }}'};

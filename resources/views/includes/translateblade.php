@@ -37,4 +37,7 @@
 {{ __('bad') }}
 {{ __('male') }}
 {{ __('female') }}
+{{ __('Expired') }}
+{{ __('Comming soon') }}
+{{ __('Available') }}
 

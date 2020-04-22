@@ -8,6 +8,8 @@
 <!-- Datatable -->
 <link  href="<?php echo e(asset('css/datatables/dataTables.bootstrap4.min.css')); ?>" rel="stylesheet">
 <link  href="<?php echo e(asset('css/datatables/responsive.bootstrap4.min.css')); ?>" rel="stylesheet">
+<!-- Select2 styles-->
+<link href="<?php echo e(asset('css/select2/select2.min.css')); ?>" rel="stylesheet" />
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -33,7 +35,7 @@
 
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered data-table table-hover" cellspacing="0" width="100%">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th class="fix-width">No.</th>
 								<th><?php echo e(_i('Student name')); ?></th>
@@ -61,5 +63,7 @@
 <script type="text/javascript">
 	var essays = {submiter:'<?php echo e(route("essays.submiter")); ?>'};
 </script><script src="<?php echo e(asset('js/essays-submiter.js')); ?>"></script>
+<!-- Select2 script -->
+<script src="<?php echo e(asset('js/select2/select2.min.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

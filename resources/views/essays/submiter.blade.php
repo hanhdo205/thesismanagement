@@ -8,6 +8,8 @@
 <!-- Datatable -->
 <link  href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 <link  href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
+<!-- Select2 styles-->
+<link href="{{ asset('css/select2/select2.min.css') }}" rel="stylesheet" />
 @endpush
 
 @section('content')
@@ -60,4 +62,6 @@
 <script type="text/javascript">
 	var essays = {submiter:'{{ route("essays.submiter") }}'};
 </script><script src="{{ asset('js/essays-submiter.js') }}"></script>
+<!-- Select2 script -->
+<script src="{{ asset('js/select2/select2.min.js') }}"></script>
 @endpush

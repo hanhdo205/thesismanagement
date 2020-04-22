@@ -10,6 +10,8 @@
 <link  href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 <!-- Datepicker styles-->
 <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+<!-- Select2 styles-->
+<link href="{{ asset('css/select2/select2.min.css') }}" rel="stylesheet" />
 @endpush
 
 @section('content')
@@ -74,8 +76,8 @@
 		sending:'{{ _i("Sending..") }}',
 		edit_topic:'{{ _i("Edit Topic") }}',
 		new_topic:'{{ _i("Create New Topic") }}',
-		save_btn:'{{ _i("Save") }}',
-		update_btn:'{{ _i("Update") }}',
+		save_btn:'{{ _i("Create Topic") }}',
+		update_btn:'{{ _i("Update Topic") }}',
 	};
 </script>
 <script src="{{ asset('js/topics-index.js') }}"></script>
@@ -100,19 +102,19 @@
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>{{ _i('Title') }}:</strong>
+					            <strong>{{ _i('Title') }}</strong>
 					            {!! Form::text('title', null, ['id' => 'title','class' => 'form-control','placeholder' => _i('Title')]) !!}
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>{{ _i('Start date') }}:</strong>
+					            <strong>{{ _i('Start date') }}</strong>
 					            {!! Form::text('start_date', null, ['placeholder' => _i('Start date'),'id' => 'startDate','class' => 'form-control','autocomplete' => 'off']) !!}
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong>{{ _I('End date') }}:</strong>
+					            <strong>{{ _I('End date') }}</strong>
 					            {!! Form::text('end_date', null, ['placeholder' => _i('End date'),'id' => 'endDate', 'class' => 'form-control','autocomplete' => 'off']) !!}
 					        </div>
 					    </div>
@@ -148,7 +150,7 @@
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
 				            <strong>{{ _i('Period') }}: </strong>
-				            <span id="detailStartDate"></span> ~ <span id="detailEndDate"></span>
+				            <span id="detailStartDate"></span> ～ <span id="detailEndDate"></span>
 				        </div>
 				    </div>
 				    <div class="col-xs-12 col-sm-12 col-md-12">
@@ -165,4 +167,6 @@
 <!-- Delete confirm-->
 @include('includes.footer')
 <!-- End Delete confirm -->
+<!-- Select2 script -->
+<script src="{{ asset('js/select2/select2.min.js') }}"></script>
 @endpush

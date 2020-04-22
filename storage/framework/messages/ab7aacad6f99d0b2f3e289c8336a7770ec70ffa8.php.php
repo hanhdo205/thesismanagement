@@ -10,6 +10,8 @@
 <link  href="<?php echo e(asset('css/datatables/responsive.bootstrap4.min.css')); ?>" rel="stylesheet">
 <!-- Datepicker styles-->
 <link href="<?php echo e(asset('css/jquery-ui.css')); ?>" rel="stylesheet">
+<!-- Select2 styles-->
+<link href="<?php echo e(asset('css/select2/select2.min.css')); ?>" rel="stylesheet" />
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -39,7 +41,7 @@
 				<?php endif; ?> -->
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" cellspacing="0" width="100%">
-						<thead>
+						<thead  align="center">
 							<tr>
 								<th class="fix-width"><?php echo e(_i('No.')); ?></th>
 								<th><?php echo e(_i('Title')); ?></th>
@@ -75,8 +77,8 @@
 		sending:'<?php echo e(_i("Sending..")); ?>',
 		edit_topic:'<?php echo e(_i("Edit Topic")); ?>',
 		new_topic:'<?php echo e(_i("Create New Topic")); ?>',
-		save_btn:'<?php echo e(_i("Save")); ?>',
-		update_btn:'<?php echo e(_i("Update")); ?>',
+		save_btn:'<?php echo e(_i("Create Topic")); ?>',
+		update_btn:'<?php echo e(_i("Update Topic")); ?>',
 	};
 </script>
 <script src="<?php echo e(asset('js/topics-index.js')); ?>"></script>
@@ -103,21 +105,21 @@
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong><?php echo e(_i('Title')); ?>:</strong>
+					            <strong><?php echo e(_i('Title')); ?></strong>
 					            <?php echo Form::text('title', null, ['id' => 'title','class' => 'form-control','placeholder' => _i('Title')]); ?>
 
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong><?php echo e(_i('Start date')); ?>:</strong>
+					            <strong><?php echo e(_i('Start date')); ?></strong>
 					            <?php echo Form::text('start_date', null, ['placeholder' => _i('Start date'),'id' => 'startDate','class' => 'form-control','autocomplete' => 'off']); ?>
 
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
 					        <div class="form-group">
-					            <strong><?php echo e(_I('End date')); ?>:</strong>
+					            <strong><?php echo e(_I('End date')); ?></strong>
 					            <?php echo Form::text('end_date', null, ['placeholder' => _i('End date'),'id' => 'endDate', 'class' => 'form-control','autocomplete' => 'off']); ?>
 
 					        </div>
@@ -156,7 +158,7 @@
 				    <div class="col-xs-12 col-sm-12 col-md-12">
 				        <div class="form-group">
 				            <strong><?php echo e(_i('Period')); ?>: </strong>
-				            <span id="detailStartDate"></span> ~ <span id="detailEndDate"></span>
+				            <span id="detailStartDate"></span> ～ <span id="detailEndDate"></span>
 				        </div>
 				    </div>
 				    <div class="col-xs-12 col-sm-12 col-md-12">
@@ -173,5 +175,7 @@
 <!-- Delete confirm-->
 <?php echo $__env->make('includes.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- End Delete confirm -->
+<!-- Select2 script -->
+<script src="<?php echo e(asset('js/select2/select2.min.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

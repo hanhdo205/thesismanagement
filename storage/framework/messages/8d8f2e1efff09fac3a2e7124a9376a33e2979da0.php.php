@@ -76,4 +76,10 @@
 
 <?php echo e(__('female')); ?>
 
+<?php echo e(__('Expired')); ?>
+
+<?php echo e(__('Comming soon')); ?>
+
+<?php echo e(__('Available')); ?>
+
 

@@ -9,7 +9,7 @@
 <link  href="<?php echo e(asset('css/datatables/dataTables.bootstrap4.min.css')); ?>" rel="stylesheet">
 <link  href="<?php echo e(asset('css/datatables/responsive.bootstrap4.min.css')); ?>" rel="stylesheet">
 <!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="<?php echo e(asset('css/select2/select2.min.css')); ?>" rel="stylesheet" />
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -55,10 +55,10 @@
 								<?php echo Form::text('student_name', $student_name, array('id' => 'student_name','class' => 'form-control mt-1 mb-1 mr-sm-2','placeholder' => _i('Enter student name'))); ?>
 
 
-								<?php echo Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],$review_result, array('id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2','placeholder' => _i('Review result'))); ?>
+								<?php echo Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],$review_result, array('id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2 select2','placeholder' => _i('Review result'))); ?>
 
 
-								<?php echo Form::button(_i('Search'), array('id' => 'searchBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mt-1 mb-1')); ?>
+								<?php echo Form::button(_i('Search'), array('id' => 'searchBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mt-1 mb-1 ml-sm-2')); ?>
 
 							</div>
 						</div>
@@ -67,16 +67,16 @@
 
 				<div class="form-group">
 					<div class="form-inline">
-						<?php echo Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2','placeholder' => _i('Please select...'))); ?>
+						<?php echo Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select...'))); ?>
 
-						<?php echo Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2')); ?>
+						<?php echo Form::button(_i('Send'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2')); ?>
 
 					</div>
 				</div>
 				<span class="search_text"><div class="alert alert-secondary alert-dismissible search_text_alert d-none" role="alert"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div></span>
 				<div class="table-scroll">
 					<table class="table table-striped table-bordered data-table table-hover table-with-checkbox" cellspacing="0" width="100%">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th class="fix-width text-center">
 									<label class="custom-check">
@@ -111,7 +111,7 @@
 <script src="<?php echo e(asset('js/datatables/dataTables.responsive.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/datatables/responsive.bootstrap4.min.js')); ?>"></script>
 <!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="<?php echo e(asset('js/select2/select2.min.js')); ?>"></script>
 <!-- Custom script -->
 <script type="text/javascript">
 	var essays = {index:'<?php echo e(route("essays.index")); ?>',export:'<?php echo e(route("essays.export")); ?>'};

@@ -23,7 +23,13 @@ $(function () {
             {data: 'period', name: 'period'},
             {data: 'status', name: 'status'},
             {data: 'action', name: 'action'},
-        ]
+        ],
+        initComplete:function( settings, json){
+            if($('select').hasClass('custom-select')) {
+              $('.custom-select').select2({
+              });
+            }
+        }
     });
      
     $('#createNewTopic').click(function () {
@@ -50,11 +56,13 @@ $(function () {
       let detail_url = $(this).data('url');
       let topic_id = $(this).data('id');
       $.get(topics.index +'/' + topic_id +'/edit', function (data) {
+          let $from = data.start_date.split('/');
+          let $to = data.end_date.split('/');
           $('#detailHeading').html(data.title);
           $('#showDetail').modal('show');
           $('#detailTitle').html(data.title);
-          $('#detailStartDate').html(data.start_date);
-          $('#detailEndDate').html(data.end_date);
+          $('#detailStartDate').html($from[0] + '年' + $from[1] + '月' + $from[2] + '日');
+          $('#detailEndDate').html($to[0] + '年' + $to[1] + '月' + $to[2] + '日');
           $('#detailUrl').attr('href',detail_url);
           $('#detailUrl').html(detail_url);
       })

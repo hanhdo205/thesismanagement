@@ -9,7 +9,7 @@
 <link  href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 <link  href="{{ asset('css/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 <!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="{{ asset('css/select2/select2.min.css') }}" rel="stylesheet" />
 @endpush
 
 @section('content')
@@ -144,7 +144,7 @@
 <script src="{{ asset('js/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('js/datatables/responsive.bootstrap4.min.js') }}"></script>
 <!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="{{ asset('js/select2/select2.min.js') }}"></script>
 <!-- Custom script -->
 <script type="text/javascript">
 	var opponents = {index:'{{ route("opponents.index") }}',import_csv:'{{ url("import_csv") }}',create_new:'{{ url("create-new-opponent") }}'};

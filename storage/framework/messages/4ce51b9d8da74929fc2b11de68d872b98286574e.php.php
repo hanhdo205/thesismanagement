@@ -28,15 +28,18 @@
 						<div class="row">
 						    <div class="col-xs-12 col-sm-12 col-md-12">
 						        <div class="form-group">
-						            <strong><?php echo e(_i('Title')); ?></strong>
-						            <?php echo e($topic->title); ?>
-
+						            <strong><?php echo e(_i('Title')); ?>:
+						            <?php echo e($topic->title); ?></strong>
 						        </div>
 						    </div>
 						    <div class="col-xs-12 col-sm-12 col-md-12">
 						        <div class="form-group">
-						            <strong><?php echo e(_i('Period')); ?></strong>
-						            <?php echo e($topic->start_date . ' ~ ' . $topic->end_date); ?> (<?php echo e($status); ?>)
+						            <strong><?php echo e(_i('Period')); ?>:
+						            <?php
+						            $from = Carbon\Carbon::createFromDate($topic->start_date)->format('Y年m月d日');
+									$to = Carbon\Carbon::createFromDate($topic->end_date)->format('Y年m月d日');
+						            ?>
+						            <?php echo e($from . ' ～ ' . $to); ?> (<?php echo e($status); ?>)</strong>
 						        </div>
 						    </div>
 						</div>
@@ -174,13 +177,13 @@
 									            <span class="invalid-feedback"><?php echo e($errors->first('essay_title')); ?></span>
 									        </div>
 									    </div>
-									    <div class="col-xs-12 col-sm-12 col-md-12">
+									    <div class="col-md-6">
 								            <strong><?php echo e(_i('Upload')); ?></strong>
 								            <span class="form-group input-group div-select-csv-file">
-							                	<?php echo Form::text('essay_file_name_txt',null,['class' => 'essay_file_name_txt input full upload form-control' . $essay_file_err, 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off',$readonly]); ?>
+							                	<?php echo Form::hidden('essay_file_name_txt',null,['class' => 'essay_file_name_txt input full upload form-control' . $essay_file_err, 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off',$readonly]); ?>
 
-												<span class="input-group-append">
-													<label for="essay_upload_file" class="btn btn-primary" <?php echo e($disabled); ?>><?php echo e(_i('Choose file')); ?></label>
+												<span class="input-group">
+													<label for="essay_upload_file" class="btn btn-primary" <?php echo e($disabled); ?>><i class="fa fa-upload" aria-hidden="true"></i> <?php echo e(_i('Choose file')); ?></label>
 												</span>
 												<span class="invalid-feedback"><?php echo e($errors->first('essay_file')); ?></span>
 											</span>
@@ -192,7 +195,7 @@
 						        </div>
 						    </fieldset>
 							<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-						    	<?php echo Form::submit(_i('Submit'), ['class' => 'btn btn-primary pl-5 pr-5 mt-3']); ?>
+						    	<?php echo Form::submit(_i('Register Essay'), ['class' => 'btn btn-primary pl-5 pr-5 mt-3']); ?>
 
 						    </div>
 						    <?php if($status != _i(AVAILABLE)): ?>
