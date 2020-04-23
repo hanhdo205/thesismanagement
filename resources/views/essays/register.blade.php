@@ -6,15 +6,8 @@
 
 @section('content')
 @php
-	$student_name_err = '';
-	$student_dob_err = '';
-	$student_email_err = '';
-	$essay_belong_err = '';
-	$essay_major_err = '';
-	$essay_title_err = '';
-	$essay_file_err = '';
+	$student_name_err = $student_dob_err = $student_email_err = $essay_belong_err = $essay_major_err = $essay_title_err = $essay_file_err = $disabled = '';
 	$readonly = 'readonly';
-	$disabled = '';
 @endphp
 
 <div class="container">

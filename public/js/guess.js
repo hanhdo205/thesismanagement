@@ -9,7 +9,6 @@ $(function () {
 		let fileSelectEle = document.getElementById('essay_upload_file');
 		fileSelectEle.onchange = function ()
 		{
-			//upload_image();
 			if(fileSelectEle.value.length == 0) {
 				$('.essay_file_name_txt').val('');
 			} else {
@@ -32,7 +31,7 @@ $(function () {
 	  });
     if($('div').hasClass('alert-danger')) {
 		$('body').on('click', '.hide_error', function () {
-			$('input').removeClass('is-invalid');
+			$('input, span').removeClass('is-invalid');
 			$('.text-danger').html('');
 		});
 	}

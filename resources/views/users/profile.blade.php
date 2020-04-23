@@ -6,10 +6,7 @@
 
 @section('content')
 @php
-	$name_err = '';
-	$mail_err = '';
-	$password_err = '';
-	$confirm_password_err = '';
+	$name_err = $mail_err = $password_err = $confirm_password_err = '';
 @endphp
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
