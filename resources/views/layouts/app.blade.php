@@ -23,7 +23,7 @@
     <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <!-- Font-awesome style -->
-        <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
         <!-- Styles for this template-->
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <!-- Custom styles for this template-->
