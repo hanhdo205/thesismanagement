@@ -87,10 +87,10 @@
       	</div>
       	<div class="modal-body">
         	{!! Form::open(['id' => 'csv_upload_form','method'=>'POST', 'enctype' => 'multipart/form-data']) !!}
-                <span class="input-group div-select-csv-file">
+                <span class="form-group input-group div-select-csv-file">
                 	{!! Form::text('csv_file_name_txt',null,['class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off']) !!}
 					<span class="input-group-append">
-						<label for="csv_upload_file" class="btn btn-primary"><i class="fa fa-folder-open-o" aria-hidden="true"></i></label></span>
+						<label for="csv_upload_file" class="btn btn-primary"><i class="fa fa-folder-open-o" aria-hidden="true"></i></label>
 					</span>
 				</span>
 				<small class="help-block"> {!! _i('※Data format .csv<br>※Maximum upload file size: 2MB') !!}</small>
