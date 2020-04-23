@@ -49,11 +49,11 @@
 					<div class="form-inline custom-inline">
 						<div class="alert alert-secondary" role="alert">
 							<div class="form-inline">
-								{!! Form::text('student_name', $student_name, array('id' => 'student_name','class' => 'form-control mt-1 mb-1 mr-sm-2','placeholder' => _i('Enter student name'))) !!}
+								{!! Form::text('student_name', $student_name, ['id' => 'student_name','class' => 'form-control mt-1 mb-1 mr-sm-2','placeholder' => _i('Enter student name')]) !!}
 
-								{!! Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],$review_result, array('id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2 select2','placeholder' => _i('Review result'))) !!}
+								{!! Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],$review_result, ['id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2 select2','placeholder' => _i('Review result'),'data-minimum-results-for-search'=>'Infinity']) !!}
 
-								{!! Form::button('<i class="fa fa-search" aria-hidden="true"></i> ' . _i('Search'), array('id' => 'searchBtn','class' => 'form-control btn btn-primary mt-1 mb-1 ml-sm-2')) !!}
+								{!! Form::button('<i class="fa fa-search" aria-hidden="true"></i> ' . _i('Search'), ['id' => 'searchBtn','class' => 'form-control btn btn-primary mt-1 mb-1 ml-sm-2']) !!}
 							</div>
 						</div>
 					</div>
@@ -61,8 +61,8 @@
 
 				<div class="form-group">
 					<div class="form-inline">
-						{!! Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select...'))) !!}
-						{!! Form::button('<i class="fa fa-ban" aria-hidden="true"></i> ' . _i('Do action'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2')) !!}
+						{!! Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, ['id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select...'),'data-minimum-results-for-search'=>'Infinity']) !!}
+						{!! Form::button('<i class="fa fa-ban" aria-hidden="true"></i> ' . _i('Do action'), ['id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2', 'data-toggle'=>'popover', 'data-content'=>_i('Please select...')]) !!}
 					</div>
 				</div>
 				<span class="search_text"><div class="alert alert-secondary alert-dismissible search_text_alert d-none" role="alert"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div></span>

@@ -20,7 +20,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 @else
-    <!-- Styles -->
+        <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <!-- Font-awesome style -->
         <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />

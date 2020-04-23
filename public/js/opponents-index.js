@@ -74,7 +74,8 @@ $(function () {
 	                    return '見つかりません。';
                   }
 	                },
-                escapeMarkup: function (markup) { return markup; }
+	                minimumResultsForSearch: -1,
+                	escapeMarkup: function (markup) { return markup; }
 				});
 			}
 		//table check all rows

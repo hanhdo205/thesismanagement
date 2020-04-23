@@ -19,7 +19,6 @@ $(function () {
     	$selectBtn.prop('disabled', true);
 
 		fetch_data(parseInt($topic));
-		
 
 		$('#topic_select').on('change', function () {
 			 $topic = $(this).val();
@@ -127,9 +126,10 @@ $(function () {
 					language: {
 	                  noResults: function (params) {
 	                    return '見つかりません。';
-	                  }
+	                  },
 	                },
-                escapeMarkup: function (markup) { return markup; }
+	                minimumResultsForSearch: -1,
+                	escapeMarkup: function (markup) { return markup; }
 				});
 			}
 

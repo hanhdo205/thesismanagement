@@ -18217,7 +18217,7 @@ var widgetsTabs = $.ui.tabs;
 //>>css.theme: ../../themes/base/theme.css
 
 
-
+/*
 $.widget( "ui.tooltip", {
 	version: "1.12.1",
 	options: {
@@ -18700,7 +18700,7 @@ if ( $.uiBackCompat !== false ) {
 
 var widgetsTooltip = $.ui.tooltip;
 
-
+*/
 
 
 }));

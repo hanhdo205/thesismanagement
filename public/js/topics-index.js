@@ -25,14 +25,16 @@ $(function () {
             {data: 'action', name: 'action'},
         ],
         initComplete:function( settings, json){
+            $('[data-toggle="tooltip"]').tooltip();
             if($('select').hasClass('custom-select')) {
               $('.custom-select').select2({
                  language: {
-                  noResults: function (params) {
-                    return '見つかりません。';
-                  }
-                },
-                escapeMarkup: function (markup) { return markup; }
+                    noResults: function (params) {
+                      return '見つかりません。';
+                    }
+                  },
+                  minimumResultsForSearch: -1,
+                  escapeMarkup: function (markup) { return markup; }
               });
             }
         }
