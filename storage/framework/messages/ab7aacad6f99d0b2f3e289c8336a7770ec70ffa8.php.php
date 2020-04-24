@@ -28,7 +28,7 @@
 
 			<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('topic-create')): ?>
 				<span class="float-right">
-					<a class="btn btn-sm btn-primary" id="createNewTopic" href="javascript:void(0)"> <?php echo e(_i('Add new topic')); ?></a>
+					<a class="btn btn-sm btn-primary" id="createNewTopic" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i>  <?php echo e(_i('Add new topic')); ?></a>
 				</span>
             <?php endif; ?>
 		</div>
@@ -104,24 +104,27 @@
 
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
-					        <div class="form-group">
-					            <strong><?php echo e(_i('Title')); ?></strong>
-					            <?php echo Form::text('title', null, ['id' => 'title','class' => 'form-control','placeholder' => _i('Title')]); ?>
+					        <div class="form-group required">
+					            <label class='control-label'><strong><?php echo e(_i('Title')); ?></strong></label>
+					            <?php echo Form::text('title', null, ['id' => 'title','class' => 'form-control title','placeholder' => _i('Title')]); ?>
 
+					            <span class="invalid-feedback"><?php echo e(_i('This is a required field')); ?></span>
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
-					        <div class="form-group">
-					            <strong><?php echo e(_i('Start date')); ?></strong>
-					            <?php echo Form::text('start_date', null, ['placeholder' => _i('Start date'),'id' => 'startDate','class' => 'form-control','autocomplete' => 'off']); ?>
+					        <div class="form-group required">
+					            <label class='control-label'><strong><?php echo e(_i('Start date')); ?></strong></label>
+					            <?php echo Form::text('start_date', null, ['placeholder' => _i('Start date'),'id' => 'startDate','class' => 'form-control start_date','autocomplete' => 'off']); ?>
 
+					            <span class="invalid-feedback"><?php echo e(_i('This is a required field')); ?></span>
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
-					        <div class="form-group">
-					            <strong><?php echo e(_I('End date')); ?></strong>
-					            <?php echo Form::text('end_date', null, ['placeholder' => _i('End date'),'id' => 'endDate', 'class' => 'form-control','autocomplete' => 'off']); ?>
+					        <div class="form-group required">
+					            <label class='control-label'><strong><?php echo e(_I('End date')); ?></strong></label>
+					            <?php echo Form::text('end_date', null, ['placeholder' => _i('End date'),'id' => 'endDate', 'class' => 'form-control end_date','autocomplete' => 'off']); ?>
 
+					            <span class="invalid-feedback"><?php echo e(_i('This is a required field')); ?></span>
 					        </div>
 					    </div>
 
@@ -143,10 +146,7 @@
 <div class="modal fade" id="showDetail" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="detailHeading"></h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
+
             <div class="modal-body">
                 <div class="row">
 				    <div class="col-xs-12 col-sm-12 col-md-12">

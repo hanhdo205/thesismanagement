@@ -96,34 +96,34 @@
 								<div class="col-xs-12 col-sm-12 col-md-12">
 									<div class="row">
 									    <div class="col-md-6">
-									        <div class="form-group">
-									            <strong>{{ _i('Full name') }}</strong>
-									            {!! Form::text('student_name', null, ['placeholder' => _i('Full name'),'class' => 'form-control' . $student_name_err]) !!}
+									        <div class="form-group required">
+									            <label class='control-label'><strong>{{ _i('Full name') }}</strong></label>
+									            {!! Form::text('student_name', null, ['placeholder' => _i('Full name'),'required' => 'required','class' => 'form-control' . $student_name_err]) !!}
 									            <span class="invalid-feedback">{{ $errors->first('student_name') }}</span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
-									        <div class="form-group">
-									            <strong>{{ _i('Gender') }}</strong>
+									        <div class="form-group required">
+									            <label class='control-label'><strong>{{ _i('Gender') }}</strong></label>
 									            <div class="form-group mt-2">
 										            {!! Form::radio('student_gender', 'male' , true,  ['id'=>'male']) !!}
 													{!! Form::label('male', _i('Male')) !!}
 										            {!! Form::radio('student_gender', 'female' , false,  ['id'=>'female']) !!}
-			  										{!! Form::label('female', _i('Female')) !!}
+													{!! Form::label('female', _i('Female')) !!}
 										        </div>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
-									        <div class="form-group">
-									            <strong>{{ _i('Date of birth') }}</strong>
-									            {!! Form::text('student_dob', null, ['placeholder' => _i('Date of birth'),'id' => 'dateOfBirth','class' => 'form-control' . $student_dob_err,'autocomplete' => 'off']) !!}
+									        <div class="form-group required">
+									            <label class='control-label'><strong>{{ _i('Date of birth') }}</strong></label>
+									            {!! Form::text('student_dob', null, ['placeholder' => _i('Date of birth'),'required' => 'required','id' => 'dateOfBirth','class' => 'form-control' . $student_dob_err,'autocomplete' => 'off']) !!}
 									            <span class="invalid-feedback">{{ $errors->first('student_dob') }}</span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
-									        <div class="form-group">
-									            <strong>{{ _i('Email address') }}</strong>
-									            {!! Form::email('student_email', null, ['placeholder' => _i('Email address'),'id' => 'emailAddress','class' => 'form-control' . $student_email_err,'autocomplete' => 'off']) !!}
+									        <div class="form-group required">
+									            <label class='control-label'><strong>{{ _i('Email address') }}</strong></label>
+									            {!! Form::email('student_email', null, ['placeholder' => _i('Email address'),'required' => 'required','id' => 'emailAddress','class' => 'form-control' . $student_email_err,'autocomplete' => 'off']) !!}
 									            <span class="invalid-feedback">{{ $errors->first('student_email') }}</span>
 									        </div>
 									    </div>
@@ -136,37 +136,38 @@
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							    	<div class="row">
 									    <div class="col-md-6">
-									        <div class="form-group">
-									            <strong>{{ _i('Belong to') }}</strong>
-									            {!! Form::text('essay_belong', null, array('placeholder' => _i('Belong to'),'class' => 'form-control' . $essay_belong_err)) !!}
+									        <div class="form-group required">
+									            <label class='control-label'><strong>{{ _i('Belong to') }}</strong></label>
+									            {!! Form::text('essay_belong', null, array('placeholder' => _i('Belong to'),'required' => 'required','class' => 'form-control' . $essay_belong_err)) !!}
 									            <span class="invalid-feedback">{{ $errors->first('essay_belong') }}</span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
-									        <div class="form-group">
-									            <strong>{{ _i('Major') }}</strong>
-									            {!! Form::text('essay_major', null, ['placeholder' => _i('Major'),'class' => 'form-control' . $essay_major_err]) !!}
+									        <div class="form-group required">
+									            <label class='control-label'><strong>{{ _i('Major') }}</strong></label>
+									            {!! Form::text('essay_major', null, ['placeholder' => _i('Major'),'required' => 'required','class' => 'form-control' . $essay_major_err]) !!}
 									            <span class="invalid-feedback">{{ $errors->first('essay_major') }}</span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
-									        <div class="form-group">
-									            <strong>{{ _i('Title') }}</strong>
-									            {!! Form::text('essay_title', null, ['placeholder' => _i('Title'),'class' => 'form-control' . $essay_title_err]) !!}
+									        <div class="form-group required">
+									            <label class='control-label'><strong>{{ _i('Title') }}</strong></label>
+									            {!! Form::text('essay_title', null, ['placeholder' => _i('Title'),'required' => 'required','class' => 'form-control' . $essay_title_err]) !!}
 									            <span class="invalid-feedback">{{ $errors->first('essay_title') }}</span>
 									        </div>
 									    </div>
 									    <div class="col-md-6">
-								            <strong>{{ _i('Upload') }}</strong>
-								            <span class="input-group div-select-csv-file{{ $essay_file_err }}">
-							                	{!! Form::text('essay_file_name_txt',null,['class' => 'essay_file_name_txt input full upload form-control' . $essay_file_err, 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off',$readonly]) !!}
-												<span class="input-group-append">
-													<label for="essay_upload_file" class="btn btn-primary" {{ $disabled }}><i class="fa fa-folder-open-o" aria-hidden="true"></i></label>
+											<div class="form-group required">
+												<label class='control-label'><strong>{{ _i('Upload') }}</strong></label>
+												<span class="input-group div-select-csv-file{{ $essay_file_err }}">
+													{!! Form::text('essay_file_name_txt',null,['required' => 'required','class' => 'essay_file_name_txt input full upload form-control' . $essay_file_err, 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off',$readonly]) !!}
+													<span class="input-group-append">
+														<label for="essay_upload_file" class="btn btn-primary" {{ $disabled }}><i class="fa fa-folder-open-o" aria-hidden="true"></i></label>
+													</span>
 												</span>
-												
-											</span>
-											<span class="invalid-feedback">{{ $errors->first('essay_file') }}</span>
-								            {!! Form::file('essay_file', ['id' => 'essay_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']) !!}
+												<span class="invalid-feedback">{{ $errors->first('essay_file') }}</span>
+												{!! Form::file('essay_file', ['id' => 'essay_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']) !!}
+											</div>
 								        </div>
 							        </div>
 						        </div>

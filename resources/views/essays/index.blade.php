@@ -61,7 +61,7 @@
 
 				<div class="form-group">
 					<div class="form-inline">
-						{!! Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, ['id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select...'),'data-minimum-results-for-search'=>'Infinity']) !!}
+						{!! Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, ['id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select'),'data-minimum-results-for-search'=>'Infinity']) !!}
 						{!! Form::button('<i class="fa fa-ban" aria-hidden="true"></i> ' . _i('Do action'), ['id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2', 'data-toggle'=>'popover', 'data-content'=>_i('Please select...')]) !!}
 					</div>
 				</div>

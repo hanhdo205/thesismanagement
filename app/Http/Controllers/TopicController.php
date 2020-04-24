@@ -95,11 +95,18 @@ class TopicController extends Controller {
 		]);
 
 		if ($validator->fails()) {
-			return response()->json(['error' => $validator->errors()->all()]);
+			return response()->json(['error' => $validator->errors()]);
 		}
-		Topic::updateOrCreate(['id' => $request->topic_id],
+		$topic = Topic::updateOrCreate(['id' => $request->topic_id],
 			['title' => $request->title, 'start_date' => $request->start_date, 'end_date' => $request->end_date]);
-		return response()->json(['success' => _i('Topic saved successfully.')]);
+		// If true then created otherwise maybe updated
+		$wasRecentlyCreated = $topic->wasRecentlyCreated;
+		if ($wasRecentlyCreated) {
+			return response()->json(['success' => _i('Topic saved successfully')]);
+		} else {
+			return response()->json(['success' => _i('Topic updated successfully')]);
+		}
+
 	}
 
 	/**
@@ -141,7 +148,7 @@ class TopicController extends Controller {
 
 		/*return redirect()->route('topics.index')
 			->with('success', 'Topic updated successfully');*/
-		return response()->json(['success' => _i('Topic saved successfully.')]);
+		return response()->json(['success' => _i('Topic updated successfully')]);
 	}
 
 	/**
@@ -154,6 +161,6 @@ class TopicController extends Controller {
 		$topic->delete();
 		/*return redirect()->route('topics.index')
 			->with('success', 'Topic deleted successfully');*/
-		return response()->json(['success' => _i('Topic deleted successfully.')]);
+		return response()->json(['success' => _i('Topic deleted successfully')]);
 	}
 }

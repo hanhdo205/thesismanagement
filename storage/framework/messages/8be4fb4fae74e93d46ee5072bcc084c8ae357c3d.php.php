@@ -93,13 +93,16 @@
       	<div class="modal-body">
         	<?php echo Form::open(['id' => 'csv_upload_form','method'=>'POST', 'enctype' => 'multipart/form-data']); ?>
 
-                <span class="input-group div-select-csv-file">
-                	<?php echo Form::text('csv_file_name_txt',null,['class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off']); ?>
+	        	<div class="form-group required">
+	                <span class="input-group div-select-csv-file">
+	                	<?php echo Form::text('csv_file_name_txt',null,['class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off']); ?>
 
-					<span class="input-group-append">
-						<label for="csv_upload_file" class="btn btn-primary"><?php echo e(_i('Choose file')); ?></label></span>
+						<span class="input-group-append">
+							<label for="csv_upload_file" class="btn btn-primary"><i class="fa fa-folder-open-o" aria-hidden="true"></i></label>
+						</span>
 					</span>
-				</span>
+					<span class="invalid-feedback"></span>
+				</div>
 				<small class="help-block"> <?php echo _i('※Data format .csv<br>※Maximum upload file size: 2MB'); ?></small>
 				<?php echo Form::file('csv_upload_file', ['id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']); ?>
 
@@ -128,15 +131,17 @@
       	<div class="modal-body">
         	<?php echo Form::open(['id' => 'new_user_form','method'=>'POST','novalidate']); ?>
 
-				<div class="form-group">
-					<label for="inputName"><?php echo e(_i('Full name')); ?></label>
-					<?php echo Form::text('name',null,['id' => 'inputName','class' => 'fullname input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off']); ?>
+				<div class="form-group required">
+					<label for="inputName" class="control-label"><strong><?php echo e(_i('Full name')); ?></strong></label>
+					<?php echo Form::text('name',null,['id' => 'inputName','class' => 'name input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off']); ?>
 
+					<span class="invalid-feedback"><?php echo e(_i('This is a required field')); ?></span>
 				</div>
-				<div class="form-group">
-					<label for="inputEmail"><?php echo e(_i('Email address')); ?></label>
+				<div class="form-group required">
+					<label for="inputEmail" class="control-label"><strong><?php echo e(_i('Email address')); ?></strong></label>
 					<?php echo Form::email('email',null,['id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off']); ?>
 
+					<span class="invalid-feedback"><?php echo e(_i('This is a required field')); ?></span>
 				</div>
             <?php echo Form::close(); ?>
 

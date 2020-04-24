@@ -22,6 +22,11 @@ $(function () {
 	
 	fetch_data(parseInt($topic));
 
+	$('#newUser,#importUsers').on('hidden.bs.modal', function () {
+	    $('.div-select-csv-file').removeClass('is-invalid');
+	    $('input').removeClass('is-invalid');
+	});
+
 	$('#topic_select').on('change', function () {
 		 $topic = $(this).val();
 		  $checkbox = $('[name="opponents[]"]:checked');
@@ -182,13 +187,17 @@ $(function () {
 			  success:function(data)
 				   {
 				   	if(data.success==1) {
+				   		$('.csv_file_name_txt, .div-select-csv-file').removeClass('is-invalid');
 				   		$('#importUsers').modal('hide');
 						$('.csv_file_name_txt').val('');
 						$('#csv_upload_file').val('');
 						dataTable.draw();
 			   			toastr.success(data.message);
 				   	} else {
-				   		toastr.error(data.message);
+				   		//toastr.error(data.message);
+				   		$('.csv_file_name_txt, .div-select-csv-file').removeClass('is-invalid');
+				   		$('.csv_file_name_txt, .div-select-csv-file').addClass('is-invalid');
+				   		$('.invalid-feedback').html(data.message);
 					}
 				   }
 			});
@@ -207,27 +216,34 @@ $(function () {
 			csvFormData.append('name', $('#inputName').val());
 			$flag = false;
 			$.ajax({
-			  url: opponents.create_new,
-			  type: 'POST',
-			  processData: false, // important
-			  contentType: false, // important
-			  dataType : 'json',
-			  data: csvFormData,
-			  success:function(data)
-				   {
+			  	url: opponents.create_new,
+			  	type: 'POST',
+			  	processData: false, // important
+			  	contentType: false, // important
+			  	dataType : 'json',
+			  	data: csvFormData,
+			  	success:function(data) {
 				   	if(data.id) {
+				   		$('input').removeClass('is-invalid');
 				   		$('#newUser').modal('hide');
 				   		$('#inputEmail').val('');
 				   		$('#inputName').val('');
 				   		dataTable.draw();
 				   		toastr.success(translate.opponent_created);
 				   	} else {
-				   		data.error.forEach(function(e) {
+				   		/*data.error.forEach(function(e) {
 							  toastr.error(e);
-							});
+							});*/
+						$('input').removeClass('is-invalid');
+	                  	$.each(data.error,function(i){
+		                    $.each(data.error[i], function (key, val) {
+		                      	$('.' + i).addClass('is-invalid');
+		                      	$('.' + i).closest('div').find('span').html(val);
+	                  		});
+	                  	});
 				   		
 				   	}
-				   }
+				}
 			});
 			$flag = true;
 		}

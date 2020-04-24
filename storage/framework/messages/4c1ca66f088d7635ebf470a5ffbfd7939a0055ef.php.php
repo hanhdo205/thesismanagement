@@ -15,15 +15,15 @@
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/login.css')); ?>" rel="stylesheet">
     <!-- Font-awesome style -->
-    <link href="<?php echo e(asset('css/font-awesome.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('css/font-awesome.min.css')); ?>" rel="stylesheet" />
     <?php echo $__env->yieldContent('content'); ?>
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
 <?php else: ?>
-    <!-- Styles -->
+        <!-- Styles -->
         <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
         <!-- Font-awesome style -->
-        <link href="<?php echo e(asset('css/font-awesome.css')); ?>" rel="stylesheet" />
+        <link href="<?php echo e(asset('css/font-awesome.min.css')); ?>" rel="stylesheet" />
         <!-- Styles for this template-->
         <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
         <!-- Custom styles for this template-->

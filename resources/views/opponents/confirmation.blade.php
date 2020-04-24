@@ -26,8 +26,8 @@
 				<div class="card-body">
 				{!! Form::open(['route' => 'opponents.sendmail','method'=>'POST','id'=>'sendMail']) !!}
 				{!! Form::hidden('topic_id', $topic) !!}
-						<div class="form-group">
-							<label for="mailcontent">メール内容</label>
+						<div class="form-group required">
+							<label for="mailcontent" class="control-label">{{ _i('Mail content')}}</label>
 							{!! Form::textarea('mailbody', '{Name}先生
 
 いつも大変お世話になっております。
@@ -35,11 +35,13 @@
 以下のリンクより、査読対応、可否をご回答くださいませ。
 
 {Link}', ['id' => 'mailcontent','class' => 'form-control','rows' => '10']) !!}
+<span class="invalid-feedback">{{ _i('This is a required field') }}</span>
 
 						</div>
-						<div class="form-group">
-							<label for="destination">送信先</label>
+						<div class="form-group required">
+							<label for="destination" class="control-label">{{ _i('Receiver')}}</label>
 							{!! Form::select('opponents[]', $opponents, $checkboxs, ['id' => 'destination','class' => 'form-control select2','multiple']) !!}
+							<span class="invalid-feedback">{{ _i('This is a required field') }}</span>
 						</div>
 						<div class="d-flex justify-content-end">
 							<span class="spinner-border mr-3" role="status" aria-hidden="true"></span>

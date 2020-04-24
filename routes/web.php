@@ -36,9 +36,9 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/essays-export', 'EssayController@export')->name('essays.export');
 	Route::post('/review/request', 'EssayController@reviewRequest')->name('review.request');
 	Route::get('/submiter', 'EssayController@submiterList')->name('essays.submiter');
-	Route::post('import_csv', 'ImExController@import')->name('import_csv');
-	Route::post('create-new-opponent', 'UserController@register');
-	Route::get('users/profile', 'UserController@profile')->name('users.profile');
+	Route::post('/import_csv', 'ImExController@import')->name('import_csv');
+	Route::post('/create-new-opponent', 'UserController@register');
+	Route::get('/users/profile', 'UserController@profile')->name('users.profile');
 
 	Route::post('/review/send', 'EssayController@sendMail')->name('review.sendmail');
 

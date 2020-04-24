@@ -29,8 +29,8 @@
 
 				<?php echo Form::hidden('topic_id', $topic); ?>
 
-						<div class="form-group">
-							<label for="mailcontent">メール内容</label>
+						<div class="form-group required">
+							<label for="mailcontent" class="control-label"><?php echo e(_i('Mail content')); ?></label>
 							<?php echo Form::textarea('mailbody', '{Name}先生
 
 いつも大変お世話になっております。
@@ -39,12 +39,14 @@
 
 {Link}', ['id' => 'mailcontent','class' => 'form-control','rows' => '10']); ?>
 
+<span class="invalid-feedback"><?php echo e(_i('This is a required field')); ?></span>
 
 						</div>
-						<div class="form-group">
-							<label for="destination">送信先</label>
+						<div class="form-group required">
+							<label for="destination" class="control-label"><?php echo e(_i('Receiver')); ?></label>
 							<?php echo Form::select('opponents[]', $opponents, $checkboxs, ['id' => 'destination','class' => 'form-control select2','multiple']); ?>
 
+							<span class="invalid-feedback"><?php echo e(_i('This is a required field')); ?></span>
 						</div>
 						<div class="d-flex justify-content-end">
 							<span class="spinner-border mr-3" role="status" aria-hidden="true"></span>

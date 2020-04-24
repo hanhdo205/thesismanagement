@@ -87,12 +87,15 @@
       	</div>
       	<div class="modal-body">
         	{!! Form::open(['id' => 'csv_upload_form','method'=>'POST', 'enctype' => 'multipart/form-data']) !!}
-                <span class="form-group input-group div-select-csv-file">
-                	{!! Form::text('csv_file_name_txt',null,['class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off']) !!}
-					<span class="input-group-append">
-						<label for="csv_upload_file" class="btn btn-primary"><i class="fa fa-folder-open-o" aria-hidden="true"></i></label>
+	        	<div class="form-group required">
+	                <span class="input-group div-select-csv-file">
+	                	{!! Form::text('csv_file_name_txt',null,['class' => 'csv_file_name_txt input full upload form-control', 'placeholder' => _i('No file chosen'), 'autocomplete' => 'off']) !!}
+						<span class="input-group-append">
+							<label for="csv_upload_file" class="btn btn-primary"><i class="fa fa-folder-open-o" aria-hidden="true"></i></label>
+						</span>
 					</span>
-				</span>
+					<span class="invalid-feedback"></span>
+				</div>
 				<small class="help-block"> {!! _i('※Data format .csv<br>※Maximum upload file size: 2MB') !!}</small>
 				{!! Form::file('csv_upload_file', ['id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']) !!}
             {!! Form::close() !!}
@@ -118,13 +121,15 @@
       	</div>
       	<div class="modal-body">
         	{!! Form::open(['id' => 'new_user_form','method'=>'POST','novalidate']) !!}
-				<div class="form-group">
-					<label for="inputName">{{ _i('Full name') }}</label>
-					{!! Form::text('name',null,['id' => 'inputName','class' => 'fullname input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off']) !!}
+				<div class="form-group required">
+					<label for="inputName" class="control-label"><strong>{{ _i('Full name') }}</strong></label>
+					{!! Form::text('name',null,['id' => 'inputName','class' => 'name input full upload form-control', 'placeholder' => _i('Enter full name'), 'autocomplete' => 'off']) !!}
+					<span class="invalid-feedback">{{ _i('This is a required field') }}</span>
 				</div>
-				<div class="form-group">
-					<label for="inputEmail">{{ _i('Email address') }}</label>
+				<div class="form-group required">
+					<label for="inputEmail" class="control-label"><strong>{{ _i('Email address') }}</strong></label>
 					{!! Form::email('email',null,['id' => 'inputEmail','class' => 'email input full upload form-control', 'placeholder' => _i('Enter email'), 'autocomplete' => 'off']) !!}
+					<span class="invalid-feedback">{{ _i('This is a required field') }}</span>
 				</div>
             {!! Form::close() !!}
       	</div>

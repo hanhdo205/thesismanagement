@@ -41,6 +41,7 @@ $(function () {
     });
      
     $('#createNewTopic').click(function () {
+        $('input').removeClass('is-invalid');
         $('#saveBtn').val(translate.save_btn);
         $('#topic_id').val('');
         $('#topicForm').trigger("reset");
@@ -50,6 +51,7 @@ $(function () {
     
     $('body').on('click', '.editTopic', function () {
       let topic_id = $(this).data('id');
+      $('input').removeClass('is-invalid');
       $.get(topics.index +'/' + topic_id +'/edit', function (data) {
           $('#modelHeading').html(translate.edit_topic);
           $('#saveBtn').val(translate.update_btn);
@@ -89,8 +91,14 @@ $(function () {
             dataType: 'json',
             success: function (data) {
             		if(data.error) {
-            			data.error.forEach(function(e) {
-  							  toastr.error(e);
+                  /*data.error.forEach(function(e) {
+                    toastr.error(e);
+                  });*/
+                  $('input').removeClass('is-invalid');
+                  $.each(data.error,function(i){
+                    $.each(data.error[i], function (key, val) {
+                      $('.' + i).addClass('is-invalid');
+                  });
   							});
             		} else {
   	              $('#topicForm').trigger("reset");
@@ -101,7 +109,6 @@ $(function () {
             },
             error: function (data) {
                 console.log('Error:', data);
-                $('#saveBtn').html(translate.save_changes);
             }
           });
           $flag = true;

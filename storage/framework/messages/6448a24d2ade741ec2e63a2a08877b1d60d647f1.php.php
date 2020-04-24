@@ -81,7 +81,7 @@ class UserController extends Controller {
 		]);
 
 		if ($validator->fails()) {
-			return response()->json(['error' => $validator->errors()->all()]);
+			return response()->json(['error' => $validator->errors()]);
 		}
 		$email = $request->input('email');
 		$name = $request->input('name');

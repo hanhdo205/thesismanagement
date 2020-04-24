@@ -17,7 +17,7 @@ $(function () {
 		}
 	}
 
-	//date picker
+	//JqueryUI datePicker
 	let dateFormat = "yy/mm/dd",
 	dob = $( "#dateOfBirth" )
 	    .datepicker({

@@ -11,11 +11,7 @@
 
 <?php $__env->startSection('content'); ?>
 <?php
-	$name_err = '';
-	$mail_err = '';
-	$password_err = '';
-	$confirm_password_err = '';
-	$roles_err = '';
+	$name_err = $mail_err = $password_err = $confirm_password_err = $roles_err = '';
 ?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">

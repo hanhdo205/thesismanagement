@@ -101,21 +101,24 @@
                 {!! Form::hidden('topic_id', null, ['id' => 'topic_id']) !!}
 					<div class="row">
 					    <div class="col-xs-12 col-sm-12 col-md-12">
-					        <div class="form-group">
-					            <strong>{{ _i('Title') }}</strong>
-					            {!! Form::text('title', null, ['id' => 'title','class' => 'form-control','placeholder' => _i('Title')]) !!}
+					        <div class="form-group required">
+					            <label class='control-label'><strong>{{ _i('Title') }}</strong></label>
+					            {!! Form::text('title', null, ['id' => 'title','class' => 'form-control title','placeholder' => _i('Title')]) !!}
+					            <span class="invalid-feedback">{{ _i('This is a required field') }}</span>
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
-					        <div class="form-group">
-					            <strong>{{ _i('Start date') }}</strong>
-					            {!! Form::text('start_date', null, ['placeholder' => _i('Start date'),'id' => 'startDate','class' => 'form-control','autocomplete' => 'off']) !!}
+					        <div class="form-group required">
+					            <label class='control-label'><strong>{{ _i('Start date') }}</strong></label>
+					            {!! Form::text('start_date', null, ['placeholder' => _i('Start date'),'id' => 'startDate','class' => 'form-control start_date','autocomplete' => 'off']) !!}
+					            <span class="invalid-feedback">{{ _i('This is a required field') }}</span>
 					        </div>
 					    </div>
 					    <div class="col-xs-12 col-sm-12 col-md-12">
-					        <div class="form-group">
-					            <strong>{{ _I('End date') }}</strong>
-					            {!! Form::text('end_date', null, ['placeholder' => _i('End date'),'id' => 'endDate', 'class' => 'form-control','autocomplete' => 'off']) !!}
+					        <div class="form-group required">
+					            <label class='control-label'><strong>{{ _I('End date') }}</strong></label>
+					            {!! Form::text('end_date', null, ['placeholder' => _i('End date'),'id' => 'endDate', 'class' => 'form-control end_date','autocomplete' => 'off']) !!}
+					            <span class="invalid-feedback">{{ _i('This is a required field') }}</span>
 					        </div>
 					    </div>
 

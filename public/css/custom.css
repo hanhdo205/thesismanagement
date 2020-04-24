@@ -1,3 +1,8 @@
+.form-group.required .control-label:after {
+  content: "*";
+  color: red;
+}
+
 /*==============================================
     Overwrite Perfect scrollbar
     =============================================*/
@@ -20,6 +25,10 @@
 
 #register_essay label.btn-primary[disabled] {
   opacity: 0.65;
+}
+
+#csv_upload_form label.btn-primary {
+  margin-bottom: 0;
 }
 
 /*==============================================

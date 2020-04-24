@@ -52,13 +52,13 @@
 					<div class="form-inline custom-inline">
 						<div class="alert alert-secondary" role="alert">
 							<div class="form-inline">
-								<?php echo Form::text('student_name', $student_name, array('id' => 'student_name','class' => 'form-control mt-1 mb-1 mr-sm-2','placeholder' => _i('Enter student name'))); ?>
+								<?php echo Form::text('student_name', $student_name, ['id' => 'student_name','class' => 'form-control mt-1 mb-1 mr-sm-2','placeholder' => _i('Enter student name')]); ?>
 
 
-								<?php echo Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],$review_result, array('id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2 select2','placeholder' => _i('Review result'))); ?>
+								<?php echo Form::select('review_result', ['not_yet'=>_i('None'),'good'=>_i('Good'),'bad'=>_i('Not good')],$review_result, ['id' => 'review_result','class' => 'form-control mb-1 mt-1 mr-sm-2 select2','placeholder' => _i('Review result'),'data-minimum-results-for-search'=>'Infinity']); ?>
 
 
-								<?php echo Form::button('<i class="fa fa-search" aria-hidden="true"></i> ' . _i('Search'), array('id' => 'searchBtn','class' => 'form-control btn btn-primary mt-1 mb-1 ml-sm-2')); ?>
+								<?php echo Form::button('<i class="fa fa-search" aria-hidden="true"></i> ' . _i('Search'), ['id' => 'searchBtn','class' => 'form-control btn btn-primary mt-1 mb-1 ml-sm-2']); ?>
 
 							</div>
 						</div>
@@ -67,9 +67,9 @@
 
 				<div class="form-group">
 					<div class="form-inline">
-						<?php echo Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, array('id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select...'))); ?>
+						<?php echo Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, ['id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select'),'data-minimum-results-for-search'=>'Infinity']); ?>
 
-						<?php echo Form::button(_i('Do action'), array('id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2')); ?>
+						<?php echo Form::button('<i class="fa fa-ban" aria-hidden="true"></i> ' . _i('Do action'), ['id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2', 'data-toggle'=>'popover', 'data-content'=>_i('Please select...')]); ?>
 
 					</div>
 				</div>
@@ -119,6 +119,9 @@
 	var search_text_both = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with student name is %(search[1].name)s or review result is %(search[2].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
 	var search_text_name = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with student name is %(search[1].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
 	var search_text_result = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with review result is %(search[2].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
+	var translate = {
+		review_result:'<?php echo e(_i("Review result")); ?>',
+	};
 </script>
 <script src="<?php echo e(asset('js/essays-index.js')); ?>"></script>
 <script src="<?php echo e(asset('js/sprintf.js')); ?>"></script>
