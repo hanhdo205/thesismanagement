@@ -19,6 +19,7 @@ $(function () {
     	$selectBtn.prop('disabled', true);
 
 		fetch_data(parseInt($topic));
+		checkBox();
 
 		$('#topic_select').on('change', function () {
 			 $topic = $(this).val();
@@ -47,6 +48,8 @@ $(function () {
 		$('#requestSelect').on('change', function () {
 			$val = $(this).val();
 			request_icon();
+			$(this).removeClass('is-invalid');
+			$(this).closest('div').find('.select2-selection--single').removeClass('is-invalid');
 		});
 
 
@@ -67,6 +70,24 @@ $(function () {
 				$('.data-table').DataTable().destroy();
 				fetch_data(parseInt($topic));
 			});
+		}
+
+		// use for history go back, keep checkboxs status
+		function checkBox() {
+			if($('.selectAll:checkbox:checked').length > 0) {
+		    	 $('input[name="essays[]"]').each(function () {
+				 	$(this).prop('checked',true);
+				});
+		    	 $selectBtn.removeAttr('disabled');
+		    } else {
+		    	$selectBtn.prop('disabled', true);
+		    	 $('input[name="essays[]"]').each(function () {
+		    	 	if(jQuery.inArray($(this).attr('id'), [$essays]) !== -1) {
+			    	 	$(this).prop("checked", true);
+			    	 	$selectBtn.removeAttr('disabled');
+			    	}
+		    	 });
+		    }
 		}
 
 		//get searchText
@@ -120,6 +141,7 @@ $(function () {
 		//call a function in success of datatable ajax call
 		function ajax_callback() {
 			get_search_text();
+			checkBox();
 
 			if($('select').hasClass('custom-select')) {
 				$('.custom-select').select2({
@@ -166,23 +188,6 @@ $(function () {
 				    sessionStorage.setItem('essays', $checked);
 				  }
 			});
-
-			// use for history go back, keep checkboxs status
-			if($('.selectAll:checkbox:checked').length > 0) {
-		    	 $('input[name="essays[]"]').each(function () {
-				 	$(this).prop('checked',true);
-				});
-		    	 $selectBtn.removeAttr('disabled');
-		    } else {
-		    	$selectBtn.prop('disabled', true);
-		    	 $('input[name="essays[]"]').each(function () {
-		    	 	if(jQuery.inArray($(this).attr('id'), [$essays]) !== -1) {
-			    	 	$(this).prop("checked", true);
-			    	 	$selectBtn.removeAttr('disabled');
-			    	}
-		    	 });
-		    }
-			
 		}
 
 		//do action when dropdown
@@ -204,7 +209,7 @@ $(function () {
 						  dataType : 'json',
 						  data: $csvFormData,
 						  success: function (response, textStatus, request) {
-					        let a = document.createElement("a");
+					        let a = document.createElement('a');
 					        a.href = response.file; 
 					        a.download = response.name;
 					        document.body.appendChild(a);
@@ -223,6 +228,9 @@ $(function () {
 				    }).get();
 		    	sessionStorage.setItem('essays', $checked);
 				$('#reviewRequest').submit();
+			} else {
+				$('#requestSelect').addClass('is-invalid');
+				$('#requestSelect').closest('div').find('.select2-selection--single').addClass('is-invalid');
 			}
 		});
 

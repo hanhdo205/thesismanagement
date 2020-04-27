@@ -91,6 +91,10 @@ fieldset legend.form-border {
   right: 2px;
 }
 
+.select2-container.select2-container--default .select2-selection--single.is-invalid {
+  border: 1px solid #e3342f;
+}
+
 .select2-container.select2-container--default .select2-results__option--highlighted[aria-selected] {
   background-color: #3490dc;
   color: #fff;

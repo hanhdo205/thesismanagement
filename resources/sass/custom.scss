@@ -104,6 +104,9 @@ fieldset {
                 height: 37px;
                 right: 2px;
             }
+            &.is-invalid {
+                border: 1px solid #e3342f;
+            }
         }
         .select2-results__option--highlighted[aria-selected] {
             background-color: #3490dc;

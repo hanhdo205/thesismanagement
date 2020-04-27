@@ -13,7 +13,7 @@ $(function () {
                 return '見つかりません。';
               }
             },
-                escapeMarkup: function (markup) { return markup; }
+            escapeMarkup: function (markup) { return markup; }
 		});
 	}
 	
