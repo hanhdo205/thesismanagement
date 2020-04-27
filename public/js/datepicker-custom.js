@@ -2,7 +2,7 @@
     "use strict";
     //date picker
     $( function() {
-	    let dateFormat = "yy/mm/dd",
+	    var dateFormat = "yy/mm/dd",
 	      from = $( "#startDate" )
 	        .datepicker({
 	          locale: 'ja-jp',
@@ -20,6 +20,11 @@
 	      .on( "change", function() {
 	        from.datepicker( "option", "maxDate", getDate( this ) );
 	      });
+
+	     $('#ajaxModel').on('hidden.bs.modal', function (e) {
+			  to.datepicker( "option", "minDate", null );
+			  from.datepicker( "option", "maxDate", null );
+		})
 	 
 	    function getDate( element ) {
 	      let date;

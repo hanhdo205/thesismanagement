@@ -80,13 +80,14 @@
 		update_btn:'{{ _i("Update Topic") }}',
 	};
 </script>
+<!-- Custom script -->
+<script src="{{ asset('js/datepicker-custom.js') }}"></script>
 <script src="{{ asset('js/topics-index.js') }}"></script>
 
 <!-- Datepicker script -->
 <script src="{{ asset('js/jquery-ui.js') }}"></script>
 <script src="{{ asset('js/datepicker-ja.js') }}"></script>
-<!-- Custom script -->
-<script src="{{ asset('js/datepicker-custom.js') }}"></script>
+
 
 <div class="modal fade" id="ajaxModel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
