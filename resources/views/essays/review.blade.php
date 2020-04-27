@@ -42,21 +42,21 @@
 									<div class="alert alert-secondary" role="alert">
 									  	{{ $rows->essay_belong}}
 									</div>
-										{!! Form::hidden('essay_belong', null, array('id' => 'essay_belong','class' => 'form-control')) !!}
+										{!! Form::hidden('essay_belong', null, ['id' => 'essay_belong','class' => 'form-control']) !!}
 								</div>
 								<div class="form-group">
 									<label for="essay_major">{{ _i('Major') }}</label>
 									<div class="alert alert-secondary" role="alert">
 									  	{{ $rows->essay_major}}
 									</div>
-										{!! Form::hidden('essay_major', null, array('id' => 'essay_major','class' => 'form-control')) !!}
+										{!! Form::hidden('essay_major', null, ['id' => 'essay_major','class' => 'form-control']) !!}
 								</div>
 								<div class="form-group mb-3">
 									<label for="essay_title">{{ _i('Title') }}</label>
 									<div class="alert alert-secondary" role="alert">
 									  	{{ $rows->essay_title}}
 									</div>
-										{!! Form::hidden('essay_title', null, array('id' => 'essay_title','class' => 'form-control')) !!}
+										{!! Form::hidden('essay_title', null, ['id' => 'essay_title','class' => 'form-control']) !!}
 								</div>
 								<div class="form-group mb-3">
 									<label for="essay_title">{{ _i('Link to download') }}</label>
@@ -67,16 +67,16 @@
 						    <div class="col-lg-6 col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<label for="reviewer">{{ _i('Reviewer') }}</label>
-										{!! Form::select('reviewer_id', [$rows->reviewer_id => $rows->reviewer], $rows->reviewer_id, array('class' => 'form-control select2')) !!}
+										{!! Form::select('reviewer_id', [$rows->reviewer_id => $rows->reviewer], $rows->reviewer_id, ['class' => 'form-control select2','data-minimum-results-for-search'=>'Infinity']) !!}
 								</div>
 								<div class="form-group">
 									<label for="review_status">{{ _i('Review result') }}</label>
-										{!! Form::select('review_result', ['good' => _i(RESULT_GOOD),'bad' => _i(RESULT_BAD)], $rows->review_result, array('class' => 'form-control select2', 'placeholder' => _i(RESULT_NONE) )) !!}
+										{!! Form::select('review_result', ['good' => _i(RESULT_GOOD),'bad' => _i(RESULT_BAD)], $rows->review_result, ['class' => 'form-control select2', 'placeholder' => _i(RESULT_NONE) ,'data-minimum-results-for-search'=>'Infinity']) !!}
 										<span class="invalid-feedback">{{ $errors->first('review_result') }}</span>
 								</div>
 								<div class="form-group">
 									<label for="comment">{{ _i('Comments') }}</label>
-									{!! Form::textarea('review_comment', null, array('id' => 'comment','class' => 'form-control','rows' => '5')) !!}
+									{!! Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control','rows' => '5']) !!}
 									<span class="invalid-feedback">{{ $errors->first('review_comment') }}</span>
 								</div>
 								<div class="d-flex justify-content-end">
