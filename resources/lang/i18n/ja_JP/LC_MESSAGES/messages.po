@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
 "POT-Creation-Date: 2020-04-27 14:27+0700\n"
-"PO-Revision-Date: 2020-04-27 14:27+0700\n"
+"PO-Revision-Date: 2020-04-27 14:54+0700\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: ja_JP\n"
@@ -453,7 +453,7 @@ msgstr "実行"
 
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:72
 msgid "Reviews are in progress"
-msgstr "この演題は査読依頼中です。"
+msgstr "この演題は査読依頼中または査読中です。"
 
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:93
 #: ../storage/framework/messages/41ba87d576dbc43579f7784ea2cc17d6f066d3dd.php.php:49
