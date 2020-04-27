@@ -72,12 +72,12 @@
 								<div class="form-group">
 									<label for="review_status">{{ _i('Review result') }}</label>
 										{!! Form::select('review_result', ['good' => _i(RESULT_GOOD),'bad' => _i(RESULT_BAD)], $rows->review_result, ['class' => 'form-control select2', 'placeholder' => _i(RESULT_NONE) ,'data-minimum-results-for-search'=>'Infinity']) !!}
-										<span class="invalid-feedback">{{ $errors->first('review_result') }}</span>
+										<span class="text-danger">{{ $errors->first('review_result') }}</span>
 								</div>
 								<div class="form-group">
 									<label for="comment">{{ _i('Comments') }}</label>
 									{!! Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control','rows' => '5']) !!}
-									<span class="invalid-feedback">{{ $errors->first('review_comment') }}</span>
+									<span class="text-danger">{{ $errors->first('review_comment') }}</span>
 								</div>
 								<div class="d-flex justify-content-end">
 									<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4 mt-3">{{ _i('Save changes') }}</button>
