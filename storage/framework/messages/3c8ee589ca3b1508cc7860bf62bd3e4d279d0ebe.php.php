@@ -437,8 +437,8 @@ class EssayController extends Controller {
 	public function isReview(Request $request) {
 		$topic_id = $request->input('topic_id');
 		if (!checkIsInReview($topic_id)) {
-			return response()->json(['warning' => _i('Reviews are in progressGo to mail form')]);
+			return response()->json(['success' => false]);
 		}
-		return response()->json(['success' => _i('Go to mail form')]);
+		return response()->json(['success' => true]);
 	}
 }

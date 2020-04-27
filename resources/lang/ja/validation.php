@@ -133,6 +133,7 @@ return [
 		'student_dob' => '生年月日',
 		'review_result' => '査読結果',
 		'review_comment' => '査読者コメント',
+		'password' => 'パスワード',
 	],
 
 ];

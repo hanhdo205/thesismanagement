@@ -4,8 +4,6 @@ $(function () {
     	sessionStorage.removeItem('essays');
 	}
 
-	$('[data-toggle="popover"]').popover();
-
 		let $topic = $('#topic_select').val(),
 		$checkbox,
 		$student_name = $('#student_name').val(),
@@ -60,10 +58,12 @@ $(function () {
 
 	    $( document ).ajaxComplete(function( event, request, settings ) {
 		  	ajax_callback();
+		  	$('[data-toggle="tooltip"]').tooltip();
 		});
 
 	    if($('div').hasClass('search_text_alert')) {
 			$('body').on('click', '.reset_search', function () {
+				$('.reset_search').tooltip('hide');
 				sessionStorage.removeItem('searchText');
 				$student_name = '';
 				$review_result = '';

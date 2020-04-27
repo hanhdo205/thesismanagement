@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2020-04-27 14:27+0700\n"
-"PO-Revision-Date: 2020-04-27 14:54+0700\n"
+"POT-Creation-Date: 2020-04-27 14:56+0700\n"
+"PO-Revision-Date: 2020-04-27 15:16+0700\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: ja_JP\n"
@@ -472,7 +472,7 @@ msgstr "氏名または査読結果での検索結果"
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:121
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:122
 msgid "Reset search"
-msgstr "Xóa tìm kiếm"
+msgstr "検索条件リセット"
 
 #: ../storage/framework/messages/256683c568976d121e5c41e13aedb020b39276b6.php.php:121
 msgid ""
@@ -519,18 +519,6 @@ msgstr "提出できました。"
 #: Http/Controllers/OpponentController.php:115
 msgid "The emails were send."
 msgstr "送信しました。"
-
-#: ../storage/framework/messages/3c8ee589ca3b1508cc7860bf62bd3e4d279d0ebe.php.php:440
-#: Http/Controllers/EssayController.php:440
-msgid "Reviews are in progressGo to mail form"
-msgstr ""
-
-#: ../storage/framework/messages/3c8ee589ca3b1508cc7860bf62bd3e4d279d0ebe.php.php:442
-#: Http/Controllers/EssayController.php:442
-#, fuzzy
-#| msgid "Go to letter confirm"
-msgid "Go to mail form"
-msgstr "査読対応確認"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:17
 msgid "Registration form for essay writing competetion"
@@ -912,9 +900,7 @@ msgstr "査読依頼"
 
 #: ../storage/framework/messages/9610eb826db5ccc8a531bfa5a75d7221d3c9dd3c.php.php:23
 msgid "There no reviewer yet or all they are in reviewing"
-msgstr ""
-"Hiện chưa có giáo viên tham gia chấm bài hoặc các bài đang trong quá trình "
-"chấm điểm"
+msgstr "この演題は査読依頼中または査読中です。"
 
 #: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:3
 #: ../storage/framework/messages/9b04c9dbb3d6b486bb1c664c26784741eebfcdf1.php.php:12
