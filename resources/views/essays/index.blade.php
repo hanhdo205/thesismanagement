@@ -62,7 +62,7 @@
 				<div class="form-group">
 					<div class="form-inline">
 						{!! Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, ['id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select'),'data-minimum-results-for-search'=>'Infinity']) !!}
-						{!! Form::button('<i class="fa fa-ban" aria-hidden="true"></i> ' . _i('Do action'), ['id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2', 'data-toggle'=>'popover', 'data-content'=>_i('Please select...')]) !!}
+						{!! Form::button('<i class="fa fa-ban" aria-hidden="true"></i> ' . _i('Do action'), ['id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2', 'data-toggle'=>'popover', 'data-content'=>_i('Reviews are in progress')]) !!}
 						<span class="invalid-feedback" style="margin-top: -0.5rem;">{{ _i('Please select') }}</span>
 					</div>
 				</div>
@@ -106,7 +106,7 @@
 <script src="{{ asset('js/select2/select2.min.js') }}"></script>
 <!-- Custom script -->
 <script type="text/javascript">
-	var essays = {index:'{{ route("essays.index") }}',export:'{{ route("essays.export") }}'};
+	var essays = {index:'{{ route("essays.index") }}',export:'{{ route("essays.export") }}',check:'{{ route("review.check") }}'};
 	var last_topic_id = '{{ $last_topic_id }}';
 	var search_text_both = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert">{{ _i("Search result for %(search[0].name)s with student name is %(search[1].name)s or review result is %(search[2].name)s") }}<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="{{ _i("Reset search") }}"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
 	var search_text_name = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert">{{ _i("Search result for %(search[0].name)s with student name is %(search[1].name)s") }}<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="{{ _i("Reset search") }}"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';

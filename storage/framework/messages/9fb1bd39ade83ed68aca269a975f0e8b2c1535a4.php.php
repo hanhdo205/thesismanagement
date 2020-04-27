@@ -48,7 +48,11 @@
 						    <div class="col-xs-12 col-sm-12 col-md-12">
 						        <div class="form-group">
 						            <strong><?php echo e(_i('Period')); ?></strong>
-						            <?php echo e($rows->start_date . ' ~ ' . $rows->end_date); ?>
+						            <?php
+						            $from = Carbon\Carbon::createFromDate($rows->start_date)->format('Y年m月d日');
+									$to = Carbon\Carbon::createFromDate($rows->end_date)->format('Y年m月d日');
+						            ?>
+						            <?php echo e($from . ' ～ ' . $to); ?>
 
 						        </div>
 						    </div>
@@ -64,18 +68,18 @@
 							            <div class="form-group mt-3">
 								            <?php echo Form::radio('request_status', 'u_yes' , $yes,  ['id'=>'yes']); ?>
 
-											<?php echo Form::label('yes', _i('Yes')); ?>
+											<?php echo Form::label('yes', _i('Yes, I can')); ?>
 
 								            <?php echo Form::radio('request_status', 'u_no' , $no,  ['id'=>'no']); ?>
 
-	  										<?php echo Form::label('no', _i('No')); ?>
+	  										<?php echo Form::label('no', _i('No, I can not')); ?>
 
 								        </div>
 							        </div>
 							    </div>
 
 							    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-							    	<?php echo Form::submit(_i('Submit'), ['class' => 'btn btn-primary']); ?>
+							    	<?php echo Form::submit(_i('Confirm'), ['class' => 'btn btn-primary']); ?>
 
 							    </div>
 							</div>

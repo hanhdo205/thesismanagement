@@ -3,6 +3,9 @@ $(function () {
     window.onload = function () {
     	sessionStorage.removeItem('essays');
 	}
+
+	$('[data-toggle="popover"]').popover();
+
 		let $topic = $('#topic_select').val(),
 		$checkbox,
 		$student_name = $('#student_name').val(),
@@ -22,6 +25,7 @@ $(function () {
 		checkBox();
 
 		$('#topic_select').on('change', function () {
+			$('#selectBtn').popover('hide');
 			 $topic = $(this).val();
 			  if ($topic > 0) {
 			  	$(".selectAll").prop("checked", false);
@@ -46,6 +50,7 @@ $(function () {
         request_icon();
 			
 		$('#requestSelect').on('change', function () {
+			$('#selectBtn').popover('hide');
 			$val = $(this).val();
 			request_icon();
 			$(this).removeClass('is-invalid');
@@ -193,6 +198,7 @@ $(function () {
 		//do action when dropdown
 		$selectBtn.click(function(e){
 			e.preventDefault();
+			$('#selectBtn').popover('hide');
 			if($val=='csv') {
 					if($flag) {
 						let $csvFormData = new FormData();
@@ -227,7 +233,28 @@ $(function () {
 				      return $(this).val();
 				    }).get();
 		    	sessionStorage.setItem('essays', $checked);
-				$('#reviewRequest').submit();
+		    	if($flag) {
+						$flag = false;
+						let mailFormData = new FormData();
+						mailFormData.append('topic_id', $('#topic_select').val());
+						$.ajax({
+						  url: essays.check,
+						  type: 'POST',
+						  processData: false, // important
+						  contentType: false, // important
+						  dataType : 'json',
+						  data: mailFormData,
+						  success: function (data) {
+					        if(data.success) {
+					        	$('#selectBtn').popover('hide');
+					        	$('#reviewRequest').submit();
+					        } else {
+					        	$('#selectBtn').popover('show');
+					        }
+					      }
+						});
+						$flag = true;
+					}
 			} else {
 				$('#requestSelect').addClass('is-invalid');
 				$('#requestSelect').closest('div').find('.select2-selection--single').addClass('is-invalid');

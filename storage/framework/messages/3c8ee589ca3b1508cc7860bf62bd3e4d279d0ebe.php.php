@@ -339,19 +339,12 @@ class EssayController extends Controller {
 		$topic_id = $request->input('topic_id');
 		$essays = explode(',',$request->input('essays'));
 
-		// $contents = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body><p>' . nl2br($mailbody) . '</p></body></html>';
-
-		// $myfile = fopen("../resources/views/emails/reviewrequest.blade.php", "w") or die("Unable to open file!");
-
-		// fwrite($myfile, $contents);
-		// fclose($myfile);
-
 		$opponents = DB::table('reviews')
 					->where('topic_id', $topic_id)
 					->where('request_status', REVIEW_WAIT_FOR_ASSIGN)
 					->pluck('user_id')
 					->toArray();
-		if (empty($opponents)) {
+		if (!checkIsInReview()) {
 			return view('review.empty');
 		}
 		switch (true) {
@@ -404,6 +397,7 @@ class EssayController extends Controller {
 		$essays = DB::table('essays')
 			->whereIn('essays.id', $essay_arr)
 			->get();
+		$topic = Topic::where('id', $topic_id)->first();
 		$essay_url = [];
 		foreach ($essays as $essay) {
 			// $file_to_download[] = url(Storage::url($essay->essay_file));
@@ -412,6 +406,7 @@ class EssayController extends Controller {
 		
 		$data = array(
 			'Name' => $user->name,
+			'Topic' => $topic->title,
 			'Link' => $essay_url
 		);
 		try {
@@ -437,5 +432,13 @@ class EssayController extends Controller {
 					['review_status' => REVIEWING, 'reviewer_id' => $user_id]
 				);
 		}
+	}
+	
+	public function isReview(Request $request) {
+		$topic_id = $request->input('topic_id');
+		if (!checkIsInReview($topic_id)) {
+			return response()->json(['warning' => _i('Reviews are in progressGo to mail form')]);
+		}
+		return response()->json(['success' => _i('Go to mail form')]);
 	}
 }

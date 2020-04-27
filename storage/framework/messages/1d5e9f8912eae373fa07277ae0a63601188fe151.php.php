@@ -42,7 +42,7 @@
 						<div class="form-group row">
 							<label for="student_name" class="col-sm-3 col-form-label"><?php echo e(_i('Student name')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::text('student_name', null, array('id' => 'student_name','class' => 'form-control')); ?>
+								<?php echo Form::text('student_name', null, ['id' => 'student_name','class' => 'form-control']); ?>
 
 								<span class="text-danger"><?php echo e($errors->first('student_name')); ?></span>
 							</div>
@@ -50,7 +50,7 @@
 						<div class="form-group row">
 							<label for="essay_belong" class="col-sm-3 col-form-label"><?php echo e(_i('Belong to')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::text('essay_belong', null, array('id' => 'essay_belong','class' => 'form-control')); ?>
+								<?php echo Form::text('essay_belong', null, ['id' => 'essay_belong','class' => 'form-control']); ?>
 
 								<span class="text-danger"><?php echo e($errors->first('essay_belong')); ?></span>
 							</div>
@@ -58,7 +58,7 @@
 						<div class="form-group row">
 							<label for="essay_major" class="col-sm-3 col-form-label"><?php echo e(_i('Major')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::text('essay_major', null, array('id' => 'essay_major','class' => 'form-control')); ?>
+								<?php echo Form::text('essay_major', null, ['id' => 'essay_major','class' => 'form-control']); ?>
 
 								<span class="text-danger"><?php echo e($errors->first('essay_major')); ?></span>
 							</div>
@@ -66,7 +66,7 @@
 						<div class="form-group row mb-3">
 							<label for="essay_title" class="col-sm-3 col-form-label"><?php echo e(_i('Title')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::text('essay_title', null, array('id' => 'essay_title','class' => 'form-control')); ?>
+								<?php echo Form::text('essay_title', null, ['id' => 'essay_title','class' => 'form-control']); ?>
 
 								<span class="text-danger"><?php echo e($errors->first('essay_title')); ?></span>
 							</div>
@@ -74,14 +74,14 @@
 						<div class="form-group row">
 							<label for="review_status" class="col-sm-3 col-form-label"><?php echo e(_i('Status')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::select('review_status', ['pending' => _i('pending'),'reviewing' => _i('reviewing'),'reviewed' => _i('reviewed')], $rows->review_status, array('class' => 'form-control')); ?>
+								<?php echo Form::select('review_status', ['pending' => _i('pending'),'reviewing' => _i('reviewing'),'reviewed' => _i('reviewed')], $rows->review_status, ['class' => 'form-control select2','data-minimum-results-for-search'=>'Infinity']); ?>
 
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="reviewer" class="col-sm-3 col-form-label"><?php echo e(_i('Reviewer')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::select('reviewer_id', [$rows->reviewer_id => $rows->reviewer], $rows->reviewer_id, array('class' => 'form-control')); ?>
+								<?php echo Form::select('reviewer_id', [$rows->reviewer_id => $rows->reviewer], $rows->reviewer_id, ['class' => 'form-control select2','data-minimum-results-for-search'=>'Infinity']); ?>
 
 								<?php echo Form::hidden('review_result', null, array()); ?>
 
@@ -101,8 +101,9 @@
 						</div>
 						<div class="form-group">
 							<label for="comment"><?php echo e(_i('Comments')); ?></label>
-							<?php echo Form::textarea('review_comment', null, array('id' => 'comment','class' => 'form-control','rows' => '3')); ?>
+							<?php echo Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control','rows' => '3']); ?>
 
+							<span class="text-danger"><?php echo e($errors->first('review_comment')); ?></span>
 						</div>
 						<div class="d-flex justify-content-end">
 							<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4"><?php echo e(_i('Save changes')); ?></button>

@@ -69,8 +69,9 @@
 					<div class="form-inline">
 						<?php echo Form::select('select', ['mail'=>_i('Review request'),'csv'=>_i('CSV Download')],null, ['id' => 'requestSelect','class' => 'form-control mr-sm-2 mb-2 select2','placeholder' => _i('Please select'),'data-minimum-results-for-search'=>'Infinity']); ?>
 
-						<?php echo Form::button('<i class="fa fa-ban" aria-hidden="true"></i> ' . _i('Do action'), ['id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2', 'data-toggle'=>'popover', 'data-content'=>_i('Please select...')]); ?>
+						<?php echo Form::button('<i class="fa fa-ban" aria-hidden="true"></i> ' . _i('Do action'), ['id' => 'selectBtn','class' => 'form-control btn btn-primary pl-5 pr-5 mb-2 ml-sm-2 mt-2', 'data-toggle'=>'popover', 'data-content'=>_i('Reviews are in progress')]); ?>
 
+						<span class="invalid-feedback" style="margin-top: -0.5rem;"><?php echo e(_i('Please select')); ?></span>
 					</div>
 				</div>
 				<span class="search_text"><div class="alert alert-secondary alert-dismissible search_text_alert d-none" role="alert"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div></span>
@@ -114,7 +115,7 @@
 <script src="<?php echo e(asset('js/select2/select2.min.js')); ?>"></script>
 <!-- Custom script -->
 <script type="text/javascript">
-	var essays = {index:'<?php echo e(route("essays.index")); ?>',export:'<?php echo e(route("essays.export")); ?>'};
+	var essays = {index:'<?php echo e(route("essays.index")); ?>',export:'<?php echo e(route("essays.export")); ?>',check:'<?php echo e(route("review.check")); ?>'};
 	var last_topic_id = '<?php echo e($last_topic_id); ?>';
 	var search_text_both = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with student name is %(search[1].name)s or review result is %(search[2].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
 	var search_text_name = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with student name is %(search[1].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';

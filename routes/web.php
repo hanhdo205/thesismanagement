@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/users/profile', 'UserController@profile')->name('users.profile');
 
 	Route::post('/review/send', 'EssayController@sendMail')->name('review.sendmail');
+	Route::post('/review/check', 'EssayController@isReview')->name('review.check');
 
 	//Route::resource('roles', 'RoleController')->except(['update']);
 	Route::resource('users', 'UserController')->only(['update']);

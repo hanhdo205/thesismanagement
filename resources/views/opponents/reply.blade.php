@@ -62,15 +62,15 @@
 							            <strong>{{ _i('Can you join to become a member of the thesis?') }}</strong>
 							            <div class="form-group mt-3">
 								            {!! Form::radio('request_status', 'u_yes' , $yes,  ['id'=>'yes']) !!}
-											{!! Form::label('yes', _i('Yes')) !!}
+											{!! Form::label('yes', _i('Yes, I can')) !!}
 								            {!! Form::radio('request_status', 'u_no' , $no,  ['id'=>'no']) !!}
-	  										{!! Form::label('no', _i('No')) !!}
+	  										{!! Form::label('no', _i('No, I can not')) !!}
 								        </div>
 							        </div>
 							    </div>
 
 							    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-							    	{!! Form::submit(_i('Submit'), ['class' => 'btn btn-primary']) !!}
+							    	{!! Form::submit(_i('Confirm'), ['class' => 'btn btn-primary']) !!}
 							    </div>
 							</div>
 						{!! Form::close() !!}

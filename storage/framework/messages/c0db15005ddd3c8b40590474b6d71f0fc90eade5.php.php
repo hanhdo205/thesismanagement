@@ -48,7 +48,7 @@
 									  	<?php echo e($rows->essay_belong); ?>
 
 									</div>
-										<?php echo Form::hidden('essay_belong', null, array('id' => 'essay_belong','class' => 'form-control')); ?>
+										<?php echo Form::hidden('essay_belong', null, ['id' => 'essay_belong','class' => 'form-control']); ?>
 
 								</div>
 								<div class="form-group">
@@ -57,7 +57,7 @@
 									  	<?php echo e($rows->essay_major); ?>
 
 									</div>
-										<?php echo Form::hidden('essay_major', null, array('id' => 'essay_major','class' => 'form-control')); ?>
+										<?php echo Form::hidden('essay_major', null, ['id' => 'essay_major','class' => 'form-control']); ?>
 
 								</div>
 								<div class="form-group mb-3">
@@ -66,7 +66,7 @@
 									  	<?php echo e($rows->essay_title); ?>
 
 									</div>
-										<?php echo Form::hidden('essay_title', null, array('id' => 'essay_title','class' => 'form-control')); ?>
+										<?php echo Form::hidden('essay_title', null, ['id' => 'essay_title','class' => 'form-control']); ?>
 
 								</div>
 								<div class="form-group mb-3">
@@ -78,20 +78,20 @@
 						    <div class="col-lg-6 col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
 									<label for="reviewer"><?php echo e(_i('Reviewer')); ?></label>
-										<?php echo Form::select('reviewer_id', [$rows->reviewer_id => $rows->reviewer], $rows->reviewer_id, array('class' => 'form-control select2')); ?>
+										<?php echo Form::select('reviewer_id', [$rows->reviewer_id => $rows->reviewer], $rows->reviewer_id, ['class' => 'form-control select2','data-minimum-results-for-search'=>'Infinity']); ?>
 
 								</div>
 								<div class="form-group">
 									<label for="review_status"><?php echo e(_i('Review result')); ?></label>
-										<?php echo Form::select('review_result', ['good' => _i(RESULT_GOOD),'bad' => _i(RESULT_BAD)], $rows->review_result, array('class' => 'form-control select2', 'placeholder' => _i(RESULT_NONE) )); ?>
+										<?php echo Form::select('review_result', ['good' => _i(RESULT_GOOD),'bad' => _i(RESULT_BAD)], $rows->review_result, ['class' => 'form-control select2', 'placeholder' => _i(RESULT_NONE) ,'data-minimum-results-for-search'=>'Infinity']); ?>
 
-										<span class="invalid-feedback"><?php echo e($errors->first('review_result')); ?></span>
+										<span class="text-danger"><?php echo e($errors->first('review_result')); ?></span>
 								</div>
 								<div class="form-group">
 									<label for="comment"><?php echo e(_i('Comments')); ?></label>
-									<?php echo Form::textarea('review_comment', null, array('id' => 'comment','class' => 'form-control','rows' => '5')); ?>
+									<?php echo Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control','rows' => '5']); ?>
 
-									<span class="invalid-feedback"><?php echo e($errors->first('review_comment')); ?></span>
+									<span class="text-danger"><?php echo e($errors->first('review_comment')); ?></span>
 								</div>
 								<div class="d-flex justify-content-end">
 									<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4 mt-3"><?php echo e(_i('Save changes')); ?></button>
