@@ -92,6 +92,7 @@
 						<div class="form-group">
 							<label for="comment">{{ _i('Comments') }}</label>
 							{!! Form::textarea('review_comment', null, array('id' => 'comment','class' => 'form-control','rows' => '3')) !!}
+							<span class="text-danger">{{ $errors->first('review_comment') }}</span>
 						</div>
 						<div class="d-flex justify-content-end">
 							<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4">{{ _i('Save changes') }}</button>
