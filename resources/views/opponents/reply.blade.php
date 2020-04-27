@@ -46,7 +46,11 @@
 						    <div class="col-xs-12 col-sm-12 col-md-12">
 						        <div class="form-group">
 						            <strong>{{ _i('Period') }}</strong>
-						            {{ $rows->start_date . ' ~ ' . $rows->end_date }}
+						            @php
+						            $from = Carbon\Carbon::createFromDate($rows->start_date)->format('Y年m月d日');
+									$to = Carbon\Carbon::createFromDate($rows->end_date)->format('Y年m月d日');
+						            @endphp
+						            {{ $from . ' ～ ' . $to }}
 						        </div>
 						    </div>
 						</div>
