@@ -23,7 +23,7 @@ $(function () {
 		checkBox();
 
 		$('#topic_select').on('change', function () {
-			$('#selectBtn').popover('hide');
+			$selectBtn.popover('dispose');
 			 $topic = $(this).val();
 			  if ($topic > 0) {
 			  	$(".selectAll").prop("checked", false);
@@ -48,7 +48,7 @@ $(function () {
         request_icon();
 			
 		$('#requestSelect').on('change', function () {
-			$('#selectBtn').popover('hide');
+			$selectBtn.popover('dispose');
 			$val = $(this).val();
 			request_icon();
 			$(this).removeClass('is-invalid');
@@ -198,36 +198,36 @@ $(function () {
 		//do action when dropdown
 		$selectBtn.click(function(e){
 			e.preventDefault();
-			$('#selectBtn').popover('hide');
+			$selectBtn.popover('dispose');
 			if($val=='csv') {
-					if($flag) {
-						let $csvFormData = new FormData();
-						let $essays = $("table tbody input:checkbox:checked").map(function(){
-					      return $(this).val();
-					    }).get();
-						$csvFormData.append('essays', $essays);
-						$flag = false;
-						$.ajax({
-						  url: essays.export,
-						  type: 'POST',
-						  processData: false, // important
-						  contentType: false, // important
-						  dataType : 'json',
-						  data: $csvFormData,
-						  success: function (response, textStatus, request) {
-					        let a = document.createElement('a');
-					        a.href = response.file; 
-					        a.download = response.name;
-					        document.body.appendChild(a);
-					        a.click();
-					        a.remove();
-					      },
-					      error: function (ajaxContext) {
-					      	console.log('Export error: '+ajaxContext.responseText);
-					      }
-						});
-						$flag = true;
-					}
+				if($flag) {
+					let $csvFormData = new FormData();
+					let $essays = $("table tbody input:checkbox:checked").map(function(){
+				      return $(this).val();
+				    }).get();
+					$csvFormData.append('essays', $essays);
+					$flag = false;
+					$.ajax({
+					  url: essays.export,
+					  type: 'POST',
+					  processData: false, // important
+					  contentType: false, // important
+					  dataType : 'json',
+					  data: $csvFormData,
+					  success: function (response, textStatus, request) {
+				        let a = document.createElement('a');
+				        a.href = response.file; 
+				        a.download = response.name;
+				        document.body.appendChild(a);
+				        a.click();
+				        a.remove();
+				      },
+				      error: function (ajaxContext) {
+				      	console.log('Export error: '+ajaxContext.responseText);
+				      }
+					});
+					$flag = true;
+				}
 			} else if($val=='mail') {
 				let $checked = $("td input:checkbox:checked").map(function(){
 				      return $(this).val();
@@ -245,17 +245,19 @@ $(function () {
 						  dataType : 'json',
 						  data: mailFormData,
 						  success: function (data) {
-					        if(data.success) {
-					        	$('#selectBtn').popover('hide');
+					        if(data.success==true) {
+					        	$selectBtn.popover('dispose');
 					        	$('#reviewRequest').submit();
 					        } else {
-					        	$('#selectBtn').popover('show');
+					        	$selectBtn.popover('enable');
+					        	$selectBtn.popover('show');
 					        }
 					      }
 						});
 						$flag = true;
 					}
 			} else {
+				$selectBtn.popover('dispose');
 				$('#requestSelect').addClass('is-invalid');
 				$('#requestSelect').closest('div').find('.select2-selection--single').addClass('is-invalid');
 			}

@@ -344,7 +344,7 @@ class EssayController extends Controller {
 					->where('request_status', REVIEW_WAIT_FOR_ASSIGN)
 					->pluck('user_id')
 					->toArray();
-		if (!checkIsInReview()) {
+		if (empty($opponents)) {
 			return view('review.empty');
 		}
 		switch (true) {
