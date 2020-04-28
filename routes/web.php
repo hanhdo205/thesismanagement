@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::post('/opponents/confirmation', 'OpponentController@confirmation')->name('opponents.confirmation');
 	Route::post('/opponents/send', 'OpponentController@sendMail')->name('opponents.sendmail');
+	Route::post('/opponents/check', 'OpponentController@isWaiting')->name('opponents.check');
 	Route::post('/essays-export', 'EssayController@export')->name('essays.export');
 	Route::post('/review/request', 'EssayController@reviewRequest')->name('review.request');
 	Route::get('/submiter', 'EssayController@submiterList')->name('essays.submiter');

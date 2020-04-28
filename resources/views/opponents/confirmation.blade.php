@@ -25,7 +25,7 @@
 				</div>
 				<div class="card-body">
 				{!! Form::open(['route' => 'opponents.sendmail','method'=>'POST','id'=>'sendMail']) !!}
-				{!! Form::hidden('topic_id', $topic) !!}
+				{!! Form::hidden('topic_id', $topic, ['id' => 'topic_id','class' => 'form-control']) !!}
 						<div class="form-group required">
 							<label for="mailcontent" class="control-label">{{ _i('Mail content')}}</label>
 							{!! Form::textarea('mailbody', '{Name}先生
@@ -45,7 +45,7 @@
 						</div>
 						<div class="d-flex justify-content-end">
 							<span class="spinner-border mr-3" role="status" aria-hidden="true"></span>
-							{!! Form::button(_i('Send confirmation'), ['id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-4']) !!}
+							{!! Form::button(_i('Send confirmation'), ['id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-4','data-toggle'=>'popover', 'data-placement' => 'left', 'data-content'=>_i('Emails were send already!')]) !!}
 						</div>
 					{!! Form::close() !!}
 
@@ -63,6 +63,7 @@
 		no_destination:'{{ _i("No item selected") }}',
 		no_content:'{{ _i("Email content can not be blank") }}',
 	};
+	var opponents = {check:'{{ route("opponents.check") }}'};
 </script>
 <script src="{{ asset('js/opponents-confirmation.js') }}"></script>
 <!-- Select2 script -->

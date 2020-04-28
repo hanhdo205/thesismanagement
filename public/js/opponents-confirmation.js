@@ -1,6 +1,6 @@
 $(function () {
    "use strict";
-   let $list,$content,
+   let $list,$content,$flag = true,
    $form = $('#sendMail');
    $('#submitBtn').on('click', function(){
    		toastr.remove();
@@ -17,8 +17,36 @@ $(function () {
 	        return false;
 	    }
 	    else {
-			$form.submit();
-			$('.spinner-border').show();
+	    	if($flag) {
+				$flag = false;
+				let mailFormData = new FormData();
+				mailFormData.append('topic_id', $('#topic_id').val());
+				let $destination = [];
+		        $.each($("#destination option:selected"), function(){            
+		            $destination.push($(this).val());
+		        });
+				mailFormData.append('opponents', $destination);
+				$.ajax({
+				  url: opponents.check,
+				  type: 'POST',
+				  processData: false, // important
+				  contentType: false, // important
+				  dataType : 'json',
+				  data: mailFormData,
+				  success: function (data) {
+			        if(data.success==true) {
+			        	$('#submitBtn').popover('dispose');
+			        	$form.submit();
+						$('.spinner-border').show();
+			        } else {
+			        	$('#submitBtn').popover('enable');
+			        	$('#submitBtn').popover('show');
+			        }
+			      }
+				});
+				$flag = true;
+			}
+			
 	    }
     });
 });

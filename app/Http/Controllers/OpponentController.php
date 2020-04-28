@@ -99,21 +99,16 @@ class OpponentController extends Controller {
 		fwrite($myfile, $contents);
 		fclose($myfile);
 
-		$send_to = DB::table('reviews')
-			->whereIn('user_id', $opponents)
-			->where('topic_id', $topic_id)
-			->where(function ($query) {
-				$query->where('request_status', REVIEW_WAIT_FOR_ASKING)
-					->orWhere('request_status', REVIEW_MAIL_FAIL);
-			})
-			->get();
-		if (!empty($send_to)) {
+		$send_to = checkIsWaiting($topic_id, $opponents);
+		if ($send_to->count()) {
 			foreach ($send_to as $key => $value) {
 				self::doSendMail($value->user_id, $topic_id);
 			}
+			return Redirect::route('opponents.index')
+				->with(['success' => _i('The emails were send.'), 'topic_id' => $topic_id]);
 		}
 		return Redirect::route('opponents.index')
-			->with(['success' => _i('The emails were send.'), 'topic_id' => $topic_id]);
+			->with(['topic_id' => $topic_id]);
 	}
 
 	public function doSendMail($user_id, $topic_id) {
@@ -185,5 +180,14 @@ class OpponentController extends Controller {
 
 		return back()
 			->with('success', [_i('Thank you for your confirmation.'), $request->input('request_status')]);
+	}
+	public function isWaiting(Request $request) {
+		$topic_id = $request->input('topic_id');
+		$opponents = explode(',', $request->input('opponents'));
+		$waiting = checkIsWaiting($topic_id, $opponents);
+		if ($waiting->count()) {
+			return response()->json(['success' => true]);
+		}
+		return response()->json(['success' => false]);
 	}
 }

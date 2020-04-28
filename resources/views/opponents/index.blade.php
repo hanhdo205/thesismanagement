@@ -31,6 +31,8 @@
 					<script>
 						toastr.success('{{ $message }}');
 					</script>
+				@endif
+				@if (Session::get('topic_id'))
 					@php
 						$last_topic_id = Session::get('topic_id');
 					@endphp
