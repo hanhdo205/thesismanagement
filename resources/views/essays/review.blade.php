@@ -79,6 +79,7 @@
 									{!! Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control','rows' => '5']) !!}
 									<span class="text-danger">{{ $errors->first('review_comment') }}</span>
 								</div>
+								{!! Form::hidden('review_form', null, array()) !!}
 								<div class="d-flex justify-content-end">
 									<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4 mt-3">{{ _i('Save changes') }}</button>
 								</div>

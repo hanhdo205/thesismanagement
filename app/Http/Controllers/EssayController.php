@@ -276,7 +276,7 @@ class EssayController extends Controller {
 			'review_comment' => 'required',
 			'review_result' => 'required',
 		]);
-		if($request->input('review_result')) {
+		if($request->input('review_form')) {
 			$input = [
 				'review_status' => REVIEWED,
 				'review_result' => $request->input('review_result'),
