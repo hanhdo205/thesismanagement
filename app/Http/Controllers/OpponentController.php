@@ -99,16 +99,17 @@ class OpponentController extends Controller {
 		fwrite($myfile, $contents);
 		fclose($myfile);
 
-		foreach ($opponents as $key => $value) {
-			$send_to = DB::table('reviews')
-				->where('user_id', $value)
-				->where(function ($query) {
-					$query->where('request_status', '=', REVIEW_WAIT_FOR_ASKING)
-						->orWhere('request_status', '==', REVIEW_MAIL_FAIL);
-				})
-				->value('user_id');
-			if ($send_to == $value) {
-				self::doSendMail($value, $topic_id);
+		$send_to = DB::table('reviews')
+			->whereIn('user_id', $opponents)
+			->where('topic_id', $topic_id)
+			->where(function ($query) {
+				$query->where('request_status', REVIEW_WAIT_FOR_ASKING)
+					->orWhere('request_status', REVIEW_MAIL_FAIL);
+			})
+			->get();
+		if (!empty($send_to)) {
+			foreach ($send_to as $key => $value) {
+				self::doSendMail($value->user_id, $topic_id);
 			}
 		}
 		return Redirect::route('opponents.index')
@@ -154,12 +155,17 @@ class OpponentController extends Controller {
 		$rows = DB::table('reviews')
 			->join('topics', 'topics.id', '=', 'reviews.topic_id')
 			->where('reviews.review_token', $review_token)
-			->select('topics.title', 'topics.start_date', 'topics.end_date')
+			->select('reviews.request_status', 'topics.title', 'topics.start_date', 'topics.end_date')
 			->first();
 		if (empty($rows)) {
 			return abort(404);
 		}
-		return view('opponents.reply', compact(['rows', 'review_token']));
+		$request_status = $rows->request_status;
+		$available = false;
+		if ($request_status == REVIEW_WAIT_FOR_ANSWER) {
+			$available = true;
+		}
+		return view('opponents.reply', compact(['rows', 'review_token', 'available', 'request_status']));
 	}
 
 	/**

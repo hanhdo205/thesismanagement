@@ -333,7 +333,7 @@ class EssayController extends Controller {
 			'essay_title' => 'required',
 			'essay_belong' => 'required',
 			'essay_major' => 'required',
-			'essay_file' => 'required|mimes:doc,docx,pdf,txt|max:2048',
+			'essay_file' => 'required|mimes:doc,docx,pdf,txt|max:10240',
 			'student_name' => 'required',
 			'student_gender' => 'required',
 			'student_dob' => 'required',

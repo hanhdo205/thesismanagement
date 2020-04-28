@@ -206,7 +206,7 @@ $(function () {
 				      return $(this).val();
 				    }).get();
 					//$csvFormData.append('essays', $essays);
-					//$csvFormData.append('topic', $('#topic_select').text());
+					//$csvFormData.append('topic', $('#topic_select').val());
 					$flag = false;
 					/*$.ajax({
 					  url: essays.export,

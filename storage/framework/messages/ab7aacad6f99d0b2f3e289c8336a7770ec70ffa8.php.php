@@ -81,13 +81,14 @@
 		update_btn:'<?php echo e(_i("Update Topic")); ?>',
 	};
 </script>
+<!-- Custom script -->
+<script src="<?php echo e(asset('js/datepicker-custom.js')); ?>"></script>
 <script src="<?php echo e(asset('js/topics-index.js')); ?>"></script>
 
 <!-- Datepicker script -->
 <script src="<?php echo e(asset('js/jquery-ui.js')); ?>"></script>
 <script src="<?php echo e(asset('js/datepicker-ja.js')); ?>"></script>
-<!-- Custom script -->
-<script src="<?php echo e(asset('js/datepicker-custom.js')); ?>"></script>
+
 
 <div class="modal fade" id="ajaxModel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

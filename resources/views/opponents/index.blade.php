@@ -96,7 +96,7 @@
 					</span>
 					<span class="invalid-feedback"></span>
 				</div>
-				<small class="help-block"> {!! _i('※Data format .csv<br>※Maximum upload file size: 2MB') !!}</small>
+				<small class="help-block"> {!! _i('※Data format %s<br>※Maximum upload file size: %s', [ '.csv','2MB']) !!}</small>
 				{!! Form::file('csv_upload_file', ['id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']) !!}
             {!! Form::close() !!}
       	</div>

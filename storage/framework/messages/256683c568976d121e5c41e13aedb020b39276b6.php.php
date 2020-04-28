@@ -117,13 +117,14 @@
 <script type="text/javascript">
 	var essays = {index:'<?php echo e(route("essays.index")); ?>',export:'<?php echo e(route("essays.export")); ?>',check:'<?php echo e(route("review.check")); ?>'};
 	var last_topic_id = '<?php echo e($last_topic_id); ?>';
-	var search_text_both = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with student name is %(search[1].name)s or review result is %(search[2].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
-	var search_text_name = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with student name is %(search[1].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
-	var search_text_result = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with review result is %(search[2].name)s")); ?><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="<?php echo e(_i("Reset search")); ?>"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></span></div>';
+	var search_text_both = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with student name is %(search[1].name)s or review result is %(search[2].name)s")); ?><span class="d-inline-block" tabindex="0"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"  data-toggle="tooltip" data-placement="bottom" title="<?php echo e(_i("Reset search")); ?>"><span aria-hidden="true">×</span></button></span></div>';
+	var search_text_name = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with student name is %(search[1].name)s")); ?><span class="d-inline-block" tabindex="0"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="<?php echo e(_i("Reset search")); ?>"><span aria-hidden="true">×</span></button></span></div>';
+	var search_text_result = '<div class="alert alert-secondary alert-dismissible search_text_alert" role="alert"><?php echo e(_i("Search result for %(search[0].name)s with review result is %(search[2].name)s")); ?><span class="d-inline-block" tabindex="0"><button class="close reset_search" type="button" data-dismiss="alert" aria-label="Close"  data-toggle="tooltip" data-placement="bottom" title="<?php echo e(_i("Reset search")); ?>"><span aria-hidden="true">×</span></button></span></div>';
 	var translate = {
 		review_result:'<?php echo e(_i("Review result")); ?>',
 	};
 </script>
+<script src="<?php echo e(asset('js/jquery.fileDownload.js')); ?>"></script>
 <script src="<?php echo e(asset('js/essays-index.js')); ?>"></script>
 <script src="<?php echo e(asset('js/sprintf.js')); ?>"></script>
 <?php $__env->stopPush(); ?>

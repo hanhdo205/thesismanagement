@@ -6,7 +6,7 @@
                 <div class="card-header"><?php echo e(_i('Reset Password')); ?></div>
 
                 <div class="card-body">
-                    <form method="POST" action="<?php echo e(route('password.update')); ?>">
+                    <form method="POST" action="<?php echo e(route('password.update')); ?>" novalidate>
                         <?php echo csrf_field(); ?>
 
                         <input type="hidden" name="token" value="<?php echo e($token); ?>">

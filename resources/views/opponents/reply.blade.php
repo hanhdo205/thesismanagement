@@ -23,6 +23,7 @@
 							   @php
 							   		$yes = ($message[1] == 'u_yes') ? true : false;
 							   		$no = ($message[1] == 'u_no') ? true : false;
+							   		$available = false;
 							   @endphp
 							</div>
 						@endif
@@ -60,18 +61,32 @@
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong>{{ _i('Can you join to become a member of the thesis?') }}</strong>
-							            <div class="form-group mt-3">
-								            {!! Form::radio('request_status', 'u_yes' , $yes,  ['id'=>'yes']) !!}
-											{!! Form::label('yes', _i('Yes, I can')) !!}
-								            {!! Form::radio('request_status', 'u_no' , $no,  ['id'=>'no']) !!}
-	  										{!! Form::label('no', _i('No, I can not')) !!}
-								        </div>
+							            <span class="form-group mt-3">
+							            	@if($available)
+									            {!! Form::radio('request_status', 'u_yes' , $yes,  ['id'=>'yes']) !!}
+												{!! Form::label('yes', _i('Yes, I can')) !!}
+									            {!! Form::radio('request_status', 'u_no' , $no,  ['id'=>'no']) !!}
+		  										{!! Form::label('no', _i('No, I can not')) !!}
+		  									@else
+		  										@switch (true)
+		  											@case($request_status == REVIEW_WAIT_FOR_ASSIGN)
+												        {{ _i('Yes, I can') }}
+												        @break
+												    @case($request_status == REVIEW_REFUSE)
+												        {{ _i('No, I can not') }}
+												        @break
+												    @default
+												        {{ _i('Mail send failure') }}
+		  										@endswitch
+	  										@endif
+								        </span>
 							        </div>
 							    </div>
-
-							    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-							    	{!! Form::submit(_i('Confirm'), ['class' => 'btn btn-primary']) !!}
-							    </div>
+							    @if($available)
+								    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+								    	{!! Form::submit(_i('Confirm'), ['class' => 'btn btn-primary']) !!}
+								    </div>
+							    @endif
 							</div>
 						{!! Form::close() !!}
 					</div>

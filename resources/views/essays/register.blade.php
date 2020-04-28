@@ -167,6 +167,7 @@
 												</span>
 												<span class="invalid-feedback">{{ $errors->first('essay_file') }}</span>
 												{!! Form::file('essay_file', ['id' => 'essay_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']) !!}
+												<small class="help-block"> {!! _i('※Data format %s<br>※Maximum upload file size: %s', [ '.doc, .docx, .pdf','2MB']) !!}</small>
 											</div>
 								        </div>
 							        </div>
