@@ -27,7 +27,7 @@
 				<div class="card-body">
 				<?php echo Form::open(['route' => 'opponents.sendmail','method'=>'POST','id'=>'sendMail']); ?>
 
-				<?php echo Form::hidden('topic_id', $topic); ?>
+				<?php echo Form::hidden('topic_id', $topic, ['id' => 'topic_id','class' => 'form-control']); ?>
 
 						<div class="form-group required">
 							<label for="mailcontent" class="control-label"><?php echo e(_i('Mail content')); ?></label>
@@ -50,7 +50,7 @@
 						</div>
 						<div class="d-flex justify-content-end">
 							<span class="spinner-border mr-3" role="status" aria-hidden="true"></span>
-							<?php echo Form::button(_i('Send confirmation'), ['id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-4']); ?>
+							<?php echo Form::button(_i('Send confirmation'), ['id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-4','data-toggle'=>'popover', 'data-placement' => 'left', 'data-content'=>_i('Emails were send already!')]); ?>
 
 						</div>
 					<?php echo Form::close(); ?>
@@ -70,6 +70,7 @@
 		no_destination:'<?php echo e(_i("No item selected")); ?>',
 		no_content:'<?php echo e(_i("Email content can not be blank")); ?>',
 	};
+	var opponents = {check:'<?php echo e(route("opponents.check")); ?>'};
 </script>
 <script src="<?php echo e(asset('js/opponents-confirmation.js')); ?>"></script>
 <!-- Select2 script -->

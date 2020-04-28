@@ -24,6 +24,7 @@
 							   <?php
 							   		$yes = ($message[1] == 'u_yes') ? true : false;
 							   		$no = ($message[1] == 'u_no') ? true : false;
+							   		$available = false;
 							   ?>
 							</div>
 						<?php endif; ?>
@@ -65,23 +66,40 @@
 							    <div class="col-xs-12 col-sm-12 col-md-12">
 							        <div class="form-group">
 							            <strong><?php echo e(_i('Can you join to become a member of the thesis?')); ?></strong>
-							            <div class="form-group mt-3">
-								            <?php echo Form::radio('request_status', 'u_yes' , $yes,  ['id'=>'yes']); ?>
+							            <span class="form-group mt-3">
+							            	<?php if($available): ?>
+									            <?php echo Form::radio('request_status', 'u_yes' , $yes,  ['id'=>'yes']); ?>
 
-											<?php echo Form::label('yes', _i('Yes, I can')); ?>
+												<?php echo Form::label('yes', _i('Yes, I can')); ?>
 
-								            <?php echo Form::radio('request_status', 'u_no' , $no,  ['id'=>'no']); ?>
+									            <?php echo Form::radio('request_status', 'u_no' , $no,  ['id'=>'no']); ?>
 
-	  										<?php echo Form::label('no', _i('No, I can not')); ?>
+		  										<?php echo Form::label('no', _i('No, I can not')); ?>
 
-								        </div>
+		  									<?php else: ?>
+		  										<?php switch(true):
+		  											case ($request_status == REVIEW_WAIT_FOR_ASSIGN): ?>
+												        <?php echo e(_i('Yes, I can')); ?>
+
+												        <?php break; ?>
+												    <?php case ($request_status == REVIEW_REFUSE): ?>
+												        <?php echo e(_i('No, I can not')); ?>
+
+												        <?php break; ?>
+												    <?php default: ?>
+												        <?php echo e(_i('Mail send failure')); ?>
+
+		  										<?php endswitch; ?>
+	  										<?php endif; ?>
+								        </span>
 							        </div>
 							    </div>
+							    <?php if($available): ?>
+								    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+								    	<?php echo Form::submit(_i('Confirm'), ['class' => 'btn btn-primary']); ?>
 
-							    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-							    	<?php echo Form::submit(_i('Confirm'), ['class' => 'btn btn-primary']); ?>
-
-							    </div>
+								    </div>
+							    <?php endif; ?>
 							</div>
 						<?php echo Form::close(); ?>
 

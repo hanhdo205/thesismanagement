@@ -24,6 +24,8 @@ $(function () {
 
 		$('#topic_select').on('change', function () {
 			$selectBtn.popover('dispose');
+			$('.select2-selection--single').removeClass('is-invalid');
+			$('#requestSelect').removeClass('is-invalid');
 			 $topic = $(this).val();
 			  if ($topic > 0) {
 			  	$(".selectAll").prop("checked", false);
@@ -42,6 +44,8 @@ $(function () {
 			$(".selectAll").prop("checked", false);
 			$('td input:checkbox').prop('checked',false);
 			$selectBtn.prop('disabled', true);
+			$('.select2-selection--single').removeClass('is-invalid');
+			$('#requestSelect').removeClass('is-invalid');
         });
 
         $val = $('#requestSelect').val();

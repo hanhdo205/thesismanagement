@@ -93,6 +93,8 @@
 
 									<span class="text-danger"><?php echo e($errors->first('review_comment')); ?></span>
 								</div>
+								<?php echo Form::hidden('review_form', null, array()); ?>
+
 								<div class="d-flex justify-content-end">
 									<button type="submit" class="btn btn-primary col-sm-12 col-md-6 col-lg-6 col-xl-4 mt-3"><?php echo e(_i('Save changes')); ?></button>
 								</div>
