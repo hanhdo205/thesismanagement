@@ -201,17 +201,18 @@ $(function () {
 			$selectBtn.popover('dispose');
 			if($val=='csv') {
 				if($flag) {
-					let $csvFormData = new FormData();
+					//let $csvFormData = new FormData();
 					let $essays = $("table tbody input:checkbox:checked").map(function(){
 				      return $(this).val();
 				    }).get();
-					$csvFormData.append('essays', $essays);
+					//$csvFormData.append('essays', $essays);
+					//$csvFormData.append('topic', $('#topic_select').text());
 					$flag = false;
-					$.ajax({
+					/*$.ajax({
 					  url: essays.export,
 					  type: 'POST',
-					  processData: false, // important
-					  contentType: false, // important
+					  processData: false,
+					  contentType: false,
 					  dataType : 'json',
 					  data: $csvFormData,
 					  success: function (response, textStatus, request) {
@@ -225,6 +226,21 @@ $(function () {
 				      error: function (ajaxContext) {
 				      	console.log('Export error: '+ajaxContext.responseText);
 				      }
+					});*/
+					$.fileDownload(essays.export,{
+						httpMethod: 'post',
+						data: {
+							essays: $essays,
+							topic: $('#topic_select').val(),
+							_token: $('meta[name="csrf-token"]').attr('content')
+						},
+						successCallback: function (url) {
+							//insert success code
+
+						},
+						failCallback: function (html, url) {
+							//insert fail code
+						}
 					});
 					$flag = true;
 				}

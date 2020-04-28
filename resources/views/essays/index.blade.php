@@ -115,6 +115,7 @@
 		review_result:'{{ _i("Review result") }}',
 	};
 </script>
+<script src="{{ asset('js/jquery.fileDownload.js') }}"></script>
 <script src="{{ asset('js/essays-index.js') }}"></script>
 <script src="{{ asset('js/sprintf.js') }}"></script>
 @endpush

@@ -158,14 +158,69 @@ class EssayController extends Controller {
 	 */
 	public function export(Request $request) {
 		$essays = $request->input('essays');
-		Excel::store(new EssaysExport($essays), 'essays.csv');
+		$topic_id = $request->input('topic');
+		$topic = Topic::where('id', $topic_id)->first();
+		
+		ob_start();	
 
-		$myFile = file_get_contents(storage_path('app/essays.csv'));
-		$response = array(
-			'name' => 'essays.csv',
-			'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile), //mime type of used format
-		);
-		return response()->json($response);
+		$header_row = [
+			'No',
+			'タイトル',
+			'氏名',
+			'ステータス',
+			'査読結果',
+			'提出日',
+		];
+
+								
+		$f = fopen('php://temp', "r+");
+
+		$title_row = [sprintf('タイトル: %s',$topic->title)];
+		fputcsv($f, $title_row, ',' , '"');
+		fputcsv($f, $header_row, ',' , '"');
+
+		if (!$f) {
+			echo 'error';
+			exit;
+		}
+		
+		DB::statement(DB::raw("SET @row = '0'"));
+		$rows = DB::table('essays')
+			->whereIn('id', $essays)
+			->select(DB::raw("@row:=@row+1 AS no"), 'essay_title', 'student_name', 'review_status', 'review_result', 'created_at')
+			->get();
+		foreach($rows as $row) {
+			$_row = [
+				$row->no,
+				$row->essay_title,
+				$row->student_name,
+				_i($row->review_status),
+				_i($row->review_result),
+				date_format(date_create($row->created_at), "Y年m月d日"),
+			];
+			fputcsv($f, $_row, ',', '"'); 
+		}
+
+		header('Content-Type: text/csv');
+		header('Content-Disposition: attachment; filename=essays.csv');
+		
+		rewind($f);
+		while (($buf = fgets($f)) !== false) :
+			echo mb_convert_encoding($buf, 'SJIS-win', mb_internal_encoding());
+		endwhile;
+
+		fclose($f);
+
+		ob_flush();
+		
+		// Excel::store(new EssaysExport($essays), 'essays.csv');
+
+		// $myFile = file_get_contents(storage_path('app/essays.csv'));
+		// $response = array(
+			// 'name' => 'essays.csv',
+			// 'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile), //mime type of used format
+		// );
+		// return response()->json($response);
 	}
 	
 	/**
