@@ -39,6 +39,7 @@ $(function () {
 
 	    $('#searchBtn').on('click', function(){
 			get_search_text();
+			$selectBtn.popover('dispose');
 			$('.data-table').DataTable().destroy();
 			fetch_data(parseInt($topic));
 			$(".selectAll").prop("checked", false);
