@@ -5,6 +5,7 @@ $(function () {
 	}
 
 	let $flag = true,
+	$form = $('#opponentForm'),
 	$submit = $('#formSubmit'),
 	$action_btn = $('#action-button a'),
 	$topic = $('#topic_select').val(),
@@ -28,6 +29,7 @@ $(function () {
 	});
 
 	$('#topic_select').on('change', function () {
+		$($submit).popover('dispose');
 		 $topic = $(this).val();
 		  $checkbox = $('[name="opponents[]"]:checked');
 		  if ($topic > 0) {
@@ -69,6 +71,10 @@ $(function () {
 			}
 		}
 	}
+
+	$('.modal').on('shown.bs.modal', function (e) {
+		$($submit).popover('dispose');
+	})
 
 	//call a function in success of datatable ajax call
 	function ajax_callback() {
@@ -121,13 +127,41 @@ $(function () {
 		    	}
 	    	 });
 	    }
-	    $($submit).on('click', function(){
-	    	let $checked = $("td input:checkbox:checked").map(function(){
-			      return $(this).val();
-			    }).get();
-	    	sessionStorage.setItem('opponents', $checked);
-	    });
 	}
+
+	$($submit).on('click', function(){
+	    	if($flag) {
+				$flag = false;
+				let mailFormData = new FormData();
+				mailFormData.append('topic_id', $('#topic_select').val());
+				let $destination = $("td input:checkbox:checked").map(function(){
+						      return $(this).val();
+						    }).get();
+				sessionStorage.setItem('opponents', $destination);
+		        /*$.each($("#destination option:selected"), function(){            
+		            $destination.push($(this).val());
+		        });*/
+				mailFormData.append('opponents', $destination);
+				$.ajax({
+				  url: opponents.check,
+				  type: 'POST',
+				  processData: false, // important
+				  contentType: false, // important
+				  dataType : 'json',
+				  data: mailFormData,
+				  success: function (data) {
+			        if(data.success==true) {
+			        	$($submit).popover('dispose');
+			        	$form.submit();
+			        } else {
+			        	$($submit).popover('enable');
+			        	$($submit).popover('show');
+			        }
+			      }
+				});
+				$flag = true;
+			}
+	    });
 
 	$( document ).ajaxComplete(function( event, request, settings ) {
 		  ajax_callback();

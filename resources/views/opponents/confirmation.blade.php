@@ -45,7 +45,7 @@
 						</div>
 						<div class="d-flex justify-content-end">
 							<span class="spinner-border mr-3" role="status" aria-hidden="true"></span>
-							{!! Form::button(_i('Send confirmation'), ['id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-4','data-toggle'=>'popover', 'data-placement' => 'left', 'data-content'=>_i('Emails were send already!')]) !!}
+							{!! Form::button(_i('Send confirmation'), ['id' => 'submitBtn','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-4','data-toggle'=>'popover', 'data-placement' => 'left', 'data-content'=>_i('They are all received the emails already!')]) !!}
 						</div>
 					{!! Form::close() !!}
 

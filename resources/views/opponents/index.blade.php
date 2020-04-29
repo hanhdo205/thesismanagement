@@ -37,7 +37,7 @@
 						$last_topic_id = Session::get('topic_id');
 					@endphp
 				@endif
-				{!! Form::open(['route' => 'opponents.confirmation','method'=>'POST', 'class' => 'opponent_management']) !!}
+				{!! Form::open(['route' => 'opponents.confirmation','method'=>'POST', 'id' => 'opponentForm' ,'class' => 'opponent_management']) !!}
 				<div class="form-group">
 					<div class="form-inline">
 						{!! Form::select('topic', $topics,$last_topic_id, ['id' => 'topic_select','class' => 'field form-control select2','placeholder' => _i('Please select topic')]) !!}
@@ -68,7 +68,7 @@
 				</div>
 				<div class="form-group">
 					<div class="d-flex justify-content-center">
-						{!! Form::submit(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-3']) !!}
+						{!! Form::button(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-3','data-toggle'=>'popover', 'data-placement' => 'right', 'data-content'=>_i('They are all received the emails already!')]) !!}
 					</div>
 				</div>
 				{!! Form::close() !!}
@@ -97,8 +97,9 @@
 						</span>
 					</span>
 					<span class="invalid-feedback"></span>
+					<small class="help-block"> {!! _i('※Data format %s<br>※Maximum upload file size: %s', [ '.csv','2MB']) !!}</small>
 				</div>
-				<small class="help-block"> {!! _i('※Data format %s<br>※Maximum upload file size: %s', [ '.csv','2MB']) !!}</small>
+
 				{!! Form::file('csv_upload_file', ['id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']) !!}
             {!! Form::close() !!}
       	</div>
@@ -154,7 +155,7 @@
 <script src="{{ asset('js/select2/select2.min.js') }}"></script>
 <!-- Custom script -->
 <script type="text/javascript">
-	var opponents = {index:'{{ route("opponents.index") }}',import_csv:'{{ url("import_csv") }}',create_new:'{{ url("create-new-opponent") }}'};
+	var opponents = {index:'{{ route("opponents.index") }}',import_csv:'{{ url("import_csv") }}',create_new:'{{ url("create-new-opponent") }}',check:'{{ route("opponents.check") }}'};
 	var translate = {
 		opponent_created:'{{ _i("New opponent added successfully") }}',
 	};
