@@ -38,7 +38,7 @@
 						$last_topic_id = Session::get('topic_id');
 					?>
 				<?php endif; ?>
-				<?php echo Form::open(['route' => 'opponents.confirmation','method'=>'POST', 'class' => 'opponent_management']); ?>
+				<?php echo Form::open(['route' => 'opponents.confirmation','method'=>'POST', 'id' => 'opponentForm' ,'class' => 'opponent_management']); ?>
 
 				<div class="form-group">
 					<div class="form-inline">
@@ -71,7 +71,7 @@
 				</div>
 				<div class="form-group">
 					<div class="d-flex justify-content-center">
-						<?php echo Form::submit(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-3']); ?>
+						<?php echo Form::button(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-3','data-toggle'=>'popover', 'data-placement' => 'right', 'data-content'=>_i('All of them were received the emails already!')]); ?>
 
 					</div>
 				</div>
@@ -104,8 +104,9 @@
 						</span>
 					</span>
 					<span class="invalid-feedback"></span>
+					<small class="help-block"> <?php echo _i('※Data format %s<br>※Maximum upload file size: %s', [ '.csv','2MB']); ?></small>
 				</div>
-				<small class="help-block"> <?php echo _i('※Data format %s<br>※Maximum upload file size: %s', [ '.csv','2MB']); ?></small>
+
 				<?php echo Form::file('csv_upload_file', ['id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']); ?>
 
             <?php echo Form::close(); ?>
@@ -167,7 +168,7 @@
 <script src="<?php echo e(asset('js/select2/select2.min.js')); ?>"></script>
 <!-- Custom script -->
 <script type="text/javascript">
-	var opponents = {index:'<?php echo e(route("opponents.index")); ?>',import_csv:'<?php echo e(url("import_csv")); ?>',create_new:'<?php echo e(url("create-new-opponent")); ?>'};
+	var opponents = {index:'<?php echo e(route("opponents.index")); ?>',import_csv:'<?php echo e(url("import_csv")); ?>',create_new:'<?php echo e(url("create-new-opponent")); ?>',check:'<?php echo e(route("opponents.check")); ?>'};
 	var translate = {
 		opponent_created:'<?php echo e(_i("New opponent added successfully")); ?>',
 	};
