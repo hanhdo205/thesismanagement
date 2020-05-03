@@ -68,7 +68,7 @@
 				</div>
 				<div class="form-group">
 					<div class="d-flex justify-content-center">
-						{!! Form::button(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-3','data-toggle'=>'popover', 'data-placement' => 'right', 'data-content'=>_i('They are all received the emails already!')]) !!}
+						{!! Form::button(_i('Go to letter confirm'), ['id' => 'formSubmit','class' => 'btn btn-primary col-sm-12 col-md-6 col-lg-3 col-xl-3','data-toggle'=>'popover', 'data-placement' => 'right', 'data-content'=>_i('All of them were received the emails already!')]) !!}
 					</div>
 				</div>
 				{!! Form::close() !!}
