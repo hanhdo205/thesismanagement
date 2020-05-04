@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class OpponentController extends Controller {
@@ -32,7 +33,7 @@ class OpponentController extends Controller {
 		//$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
 		$topics = Topic::orderBy('id', 'desc')->pluck('title', 'id');
 		$last_topic_id = array_key_first($topics->toArray());
-
+		$sample = '<a href="' . url(Storage::url('sample.csv')) . '">sample.csv</a>';
 		if ($request->ajax()) {
 			$data = DB::table('reviews')
 				->join('topics', 'reviews.topic_id', '=', 'topics.id')
@@ -55,7 +56,7 @@ class OpponentController extends Controller {
 				->make(true);
 		}
 
-		return view('opponents.index', compact(['topics', 'last_topic_id']));
+		return view('opponents.index', compact(['topics', 'last_topic_id', 'sample']));
 	}
 
 	/**

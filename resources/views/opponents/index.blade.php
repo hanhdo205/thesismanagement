@@ -13,7 +13,6 @@
 @endpush
 
 @section('content')
-
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{ url('/') }}">{{ _i('Home') }}</a></li>
@@ -97,7 +96,7 @@
 						</span>
 					</span>
 					<span class="invalid-feedback"></span>
-					<small class="help-block"> {!! _i('※Data format %s<br>※Maximum upload file size: %s', [ '.csv','2MB']) !!}</small>
+					<small class="help-block"> {!! _i('※Data format %s<br>※Maximum upload file size: %s<br>※Sample CSV file: %s', [ '.csv','2 MB', $sample ] ) !!}</small>
 				</div>
 
 				{!! Form::file('csv_upload_file', ['id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']) !!}
