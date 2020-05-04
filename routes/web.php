@@ -33,7 +33,8 @@ Route::get('/storage/{file_name}', function ($file_name = null) {
 		echo $path;
 		//return response()->download($path);
 	}
-	return abort(404);
+	echo $path;
+	//return abort(404);
 });
 Route::get('/storage/essays/{file_name}', function ($file_name = null) {
 	$path = storage_path() . '/essays/' . $file_name;
@@ -41,7 +42,8 @@ Route::get('/storage/essays/{file_name}', function ($file_name = null) {
 		echo $path;
 		//return response()->download($path);
 	}
-	return abort(404);
+	echo $path;
+	//return abort(404);
 });
 
 Route::group(['middleware' => ['auth']], function () {
