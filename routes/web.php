@@ -40,7 +40,7 @@ Route::get('/storage/essays/{file_name}', function ($file_name = null) {
 
 Route::get('/storage/{file_name}', function ($file_name = null) {
 	$filePath = public_path() . '/sample.csv';
-	$fileContent = Storage::get($filePath);
+	$fileContent = file_get_contents($filePath);
 	$response = response($fileContent, 200, [
 		'Content-Type' => 'application/octet-stream',
 		'Content-Disposition' => 'attachment; filename="' . $file_name . '"',
