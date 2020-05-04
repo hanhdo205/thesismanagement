@@ -32,7 +32,10 @@ Route::get('/storage/essays/{file_name}', function ($file_name = null) {
 	$headers = array(
 		'Content-Type: application/octet-stream',
 	);
-	return Response::download($file, $file_name, $headers);
+	if (Storage::exists('/essays/' . $file_name);) {
+		return Response::download($file, $file_name, $headers);
+	}
+	return abort(404);
 });
 
 Route::group(['middleware' => ['auth']], function () {
