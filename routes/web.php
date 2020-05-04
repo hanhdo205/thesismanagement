@@ -27,17 +27,21 @@ Route::resource('essays', 'EssayController')->only([
 	'create', 'store', 'update',
 ]);
 
-Route::get('storage/{file_name}', function ($file_name = null) {
+Route::get('/storage/{file_name}', function ($file_name = null) {
 	$path = storage_path() . '/' . $file_name;
 	if (file_exists($path)) {
-		return response()->download($path);
+		echo $path;
+		//return response()->download($path);
 	}
+	return abort(404);
 });
-Route::get('storage/essays/{file_name}', function ($file_name = null) {
+Route::get('/storage/essays/{file_name}', function ($file_name = null) {
 	$path = storage_path() . '/essays/' . $file_name;
 	if (file_exists($path)) {
-		return response()->download($path);
+		echo $path;
+		//return response()->download($path);
 	}
+	return abort(404);
 });
 
 Route::group(['middleware' => ['auth']], function () {
