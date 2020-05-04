@@ -28,20 +28,18 @@ Route::resource('essays', 'EssayController')->only([
 ]);
 
 Route::get('/storage/{file_name}', function ($file_name = null) {
-	$path = storage_path() . '/' . $file_name;
+	$path = '/var/www/html/autodeploy/thesismanager/shared/storage/app/public' . '/' . $file_name;
 	if (file_exists($path)) {
 		return response()->download($path);
 	}
-	echo $path;
-	//return abort(404);
+	return abort(404);
 });
 Route::get('/storage/essays/{file_name}', function ($file_name = null) {
-	$path = storage_path() . '/essays/' . $file_name;
+	$path = '/var/www/html/autodeploy/thesismanager/shared/storage/app/public' . '/essays/' . $file_name;
 	if (file_exists($path)) {
 		return response()->download($path);
 	}
-	echo $path;
-	//return abort(404);
+	return abort(404);
 });
 
 Route::group(['middleware' => ['auth']], function () {
