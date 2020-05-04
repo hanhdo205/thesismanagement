@@ -6,7 +6,7 @@
 
 @push('head')
 <!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="{{ asset('css/select2/select2.min.css') }}" rel="stylesheet" />
 @endpush
 
 @section('content')
@@ -125,5 +125,5 @@
 
 @push('foot')
 <!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="{{ asset('js/select2/select2.min.js') }}"></script>
 @endpush

@@ -29,9 +29,27 @@ $(function () {
 		      $('.ui-datepicker-title').addClass('d-flex justify-content-center');
 		  }
 	  });
+
+	if($('select').hasClass('select2')) {
+		let $this = $('#reviewResult');
+		$('.select2').select2({
+			language: {
+              noResults: function (params) {
+                return '見つかりません。';
+              }
+            },
+            escapeMarkup: function (markup) { return markup; }
+		});
+		if($this.hasClass('is-invalid')) {
+			$this.closest('div').find('.select2-selection--single').addClass('is-invalid');
+	    }
+	}
+
+	
+
     if($('div').hasClass('alert-danger')) {
 		$('body').on('click', '.hide_error', function () {
-			$('input, span, textarea').removeClass('is-invalid');
+			$('input, span, textarea, select').removeClass('is-invalid');
 			$('.text-danger').html('');
 		});
 	}

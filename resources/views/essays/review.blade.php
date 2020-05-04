@@ -6,12 +6,12 @@
 
 @push('head')
 <!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="{{ asset('css/select2/select2.min.css') }}" rel="stylesheet" />
 @endpush
 
 @section('content')
 @php
-	$review_comment_err = '';
+	$review_comment_err = $review_result_err = '';
 @endphp
 <div class="container">
     <div class="row justify-content-center">
@@ -27,6 +27,11 @@
 						  @if($errors->first('review_comment'))
 							    @php
 							    	$review_comment_err = ' is-invalid';
+							    @endphp
+							@endif
+							 @if($errors->first('review_result'))
+							    @php
+							    	$review_result_err = ' is-invalid';
 							    @endphp
 							@endif
 						@endif
@@ -79,7 +84,7 @@
 								</div>
 								<div class="form-group">
 									<label for="review_status">{{ _i('Review result') }}</label>
-										{!! Form::select('review_result', ['good' => _i(RESULT_GOOD),'bad' => _i(RESULT_BAD)], $rows->review_result, ['class' => 'form-control select2', 'placeholder' => _i(RESULT_NONE) ,'data-minimum-results-for-search'=>'Infinity']) !!}
+										{!! Form::select('review_result', ['good' => _i(RESULT_GOOD),'bad' => _i(RESULT_BAD)], $rows->review_result, ['id' => 'reviewResult','class' => 'form-control select2' . $review_result_err, 'placeholder' => _i(RESULT_NONE) ,'data-minimum-results-for-search'=>'Infinity']) !!}
 										<span class="text-danger">{{ $errors->first('review_result') }}</span>
 								</div>
 								<div class="form-group">
@@ -104,5 +109,5 @@
 
 @push('foot')
 <!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="{{ asset('js/select2/select2.min.js') }}"></script>
 @endpush

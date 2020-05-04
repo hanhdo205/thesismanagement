@@ -18,6 +18,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
      <!-- Datepicker styles-->
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+    @stack('head')
     @yield('content')
     <!-- Jquery scripts -->
     <script src="{{ asset('js/jquery-1.12.4.js') }}"></script>
@@ -27,6 +28,7 @@
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script src="{{ asset('js/datepicker-ja.js') }}"></script>
     <!-- Custom script -->
+    @stack('foot')
     <script src="{{ asset('js/guess.js') }}"></script>
 </body>
 </html>
