@@ -38,6 +38,15 @@ Route::get('/storage/essays/{file_name}', function ($file_name = null) {
 	return abort(404);
 });
 
+Route::get('/storage/{file_name}', function ($file_name = null) {
+	$file = Storage::get($file_name);
+	$response = response($file, 200, [
+		'Content-Type' => 'application/octet-stream',
+		'Content-Disposition' => 'attachment; filename="' . $file_name . '"',
+	]);
+	return $response;
+});
+
 Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('/', 'HomeController@index')->name('home');
