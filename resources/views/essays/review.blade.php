@@ -10,6 +10,9 @@
 @endpush
 
 @section('content')
+@php
+	$review_comment_err = '';
+@endphp
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -21,6 +24,11 @@
 							    {{ _i('There were some problems with your input.') }}
 							    <button class="close hide_error" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 							  </div>
+						  @if($errors->first('review_comment'))
+							    @php
+							    	$review_comment_err = ' is-invalid';
+							    @endphp
+							@endif
 						@endif
 						@if ($message = Session::get('success'))
 							<div class="alert alert-success" role="alert">
@@ -76,7 +84,7 @@
 								</div>
 								<div class="form-group">
 									<label for="comment">{{ _i('Comments') }}</label>
-									{!! Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control','rows' => '5']) !!}
+									{!! Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control' . $review_comment_err,'rows' => '5']) !!}
 									<span class="text-danger">{{ $errors->first('review_comment') }}</span>
 								</div>
 								{!! Form::hidden('review_form', null, array()) !!}

@@ -22,7 +22,7 @@ $(function () {
 
 	if($('div').hasClass('alert-danger')) {
 		$('body').on('click', '.hide_error', function () {
-			$('input').removeClass('is-invalid');
+			$('input, textarea').removeClass('is-invalid');
 			$('.text-danger').html('');
 		});
 	}

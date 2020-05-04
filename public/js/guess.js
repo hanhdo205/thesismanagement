@@ -31,7 +31,7 @@ $(function () {
 	  });
     if($('div').hasClass('alert-danger')) {
 		$('body').on('click', '.hide_error', function () {
-			$('input, span').removeClass('is-invalid');
+			$('input, span, textarea').removeClass('is-invalid');
 			$('.text-danger').html('');
 		});
 	}

@@ -10,6 +10,9 @@
 @endpush
 
 @section('content')
+@php
+	$review_comment_err = $student_name_err = $essay_belong_err = $essay_major_err = $essay_title_err = '';
+@endphp
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/">{{ _i('Home') }}</a></li>
@@ -29,6 +32,31 @@
 							    {{ _i('There were some problems with your input.') }}
 							    <button class="close hide_error" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 							  </div>
+						 	@if($errors->first('review_comment'))
+							    @php
+							    	$review_comment_err = ' is-invalid';
+							    @endphp
+							@endif
+							@if($errors->first('student_name'))
+							    @php
+							    	$student_name_err = ' is-invalid';
+							    @endphp
+							@endif
+							@if($errors->first('essay_belong'))
+							    @php
+							    	$essay_belong_err = ' is-invalid';
+							    @endphp
+							@endif
+							@if($errors->first('essay_major'))
+							    @php
+							    	$essay_major_err = ' is-invalid';
+							    @endphp
+							@endif
+							@if($errors->first('essay_title'))
+							    @php
+							    	$essay_title_err = ' is-invalid';
+							    @endphp
+							@endif
 						@endif
 						@if ($message = Session::get('success'))
 							<script>
@@ -39,28 +67,28 @@
 						<div class="form-group row">
 							<label for="student_name" class="col-sm-3 col-form-label">{{ _i('Student name') }}</label>
 							<div class="col-sm-9">
-								{!! Form::text('student_name', null, ['id' => 'student_name','class' => 'form-control']) !!}
+								{!! Form::text('student_name', null, ['id' => 'student_name','class' => 'form-control' . $student_name_err]) !!}
 								<span class="text-danger">{{ $errors->first('student_name') }}</span>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="essay_belong" class="col-sm-3 col-form-label">{{ _i('Belong to') }}</label>
 							<div class="col-sm-9">
-								{!! Form::text('essay_belong', null, ['id' => 'essay_belong','class' => 'form-control']) !!}
+								{!! Form::text('essay_belong', null, ['id' => 'essay_belong','class' => 'form-control' . $essay_belong_err]) !!}
 								<span class="text-danger">{{ $errors->first('essay_belong') }}</span>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="essay_major" class="col-sm-3 col-form-label">{{ _i('Major') }}</label>
 							<div class="col-sm-9">
-								{!! Form::text('essay_major', null, ['id' => 'essay_major','class' => 'form-control']) !!}
+								{!! Form::text('essay_major', null, ['id' => 'essay_major','class' => 'form-control' . $essay_major_err]) !!}
 								<span class="text-danger">{{ $errors->first('essay_major') }}</span>
 							</div>
 						</div>
 						<div class="form-group row mb-3">
 							<label for="essay_title" class="col-sm-3 col-form-label">{{ _i('Title') }}</label>
 							<div class="col-sm-9">
-								{!! Form::text('essay_title', null, ['id' => 'essay_title','class' => 'form-control']) !!}
+								{!! Form::text('essay_title', null, ['id' => 'essay_title','class' => 'form-control' .$essay_title_err]) !!}
 								<span class="text-danger">{{ $errors->first('essay_title') }}</span>
 							</div>
 						</div>
@@ -91,7 +119,7 @@
 						</div>
 						<div class="form-group">
 							<label for="comment">{{ _i('Comments') }}</label>
-							{!! Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control','rows' => '3']) !!}
+							{!! Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control' . $review_comment_err,'rows' => '3']) !!}
 							<span class="text-danger">{{ $errors->first('review_comment') }}</span>
 						</div>
 						<div class="d-flex justify-content-end">
