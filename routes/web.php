@@ -32,7 +32,7 @@ Route::get('/storage/essays/{file_name}', function ($file_name = null) {
 	$headers = array(
 		'Content-Type: application/octet-stream',
 	);
-	if (Storage::exists('/essays/' . $file_name);) {
+	if (Storage::exists('/essays/' . $file_name)) {
 		return Response::download($file, $file_name, $headers);
 	}
 	return abort(404);
