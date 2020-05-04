@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2020-05-04 12:57+0700\n"
-"PO-Revision-Date: 2020-05-04 12:57+0700\n"
+"POT-Creation-Date: 2020-05-04 13:11+0700\n"
+"PO-Revision-Date: 2020-05-04 13:11+0700\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: ja_JP\n"
@@ -530,7 +530,7 @@ msgstr "候補者の情報"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:104
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:105
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:137
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:138
 msgid "Full name"
 msgstr "氏名"
 
@@ -555,7 +555,7 @@ msgstr "生年月日"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:135
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:136
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:143
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:144
 msgid "Email address"
 msgstr "メールアドレス"
 
@@ -573,6 +573,7 @@ msgid "No file chosen"
 msgstr "選択されていません"
 
 #: ../storage/framework/messages/4ce51b9d8da74929fc2b11de68d872b98286574e.php.php:186
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:107
 #, php-format
 msgid "※Data format %s<br>※Maximum upload file size: %s"
 msgstr "※ファイル形式 %s<br>※ファイルサイズ　最大%s"
@@ -698,26 +699,26 @@ msgstr ""
 "※ファイル形式 %s<br>※ファイルサイズ　最大%s<br>※サンプルファイルのダウンロー"
 "ド %s"
 
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:115
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:152
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:116
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:153
 #: ../storage/framework/messages/9157a18b00658cc42e0c79c27a0896dc4f600274.php.php:9
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:116
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:117
 msgid "Import"
 msgstr "はい"
 
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:128
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:129
 msgid "Add New Opponent"
 msgstr "新規追加"
 
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:138
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:139
 msgid "Enter full name"
 msgstr "氏名"
 
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:140
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:146
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:141
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:147
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:112
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:120
 #: ../storage/framework/messages/ab7aacad6f99d0b2f3e289c8336a7770ec70ffa8.php.php:128
@@ -726,15 +727,15 @@ msgstr "氏名"
 msgid "This is a required field"
 msgstr "入力してください"
 
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:144
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:145
 msgid "Enter email"
 msgstr "メールアドレス"
 
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:153
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:154
 msgid "Create Opponent"
 msgstr "追加"
 
-#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:172
+#: ../storage/framework/messages/8be4fb4fae74e93d46ee5072bcc084c8ae357c3d.php.php:173
 msgid "New opponent added successfully"
 msgstr "追加されました。"
 

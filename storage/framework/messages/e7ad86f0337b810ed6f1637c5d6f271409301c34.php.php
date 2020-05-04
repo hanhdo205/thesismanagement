@@ -33,7 +33,7 @@ class OpponentController extends Controller {
 		//$topics = Topic::whereDate('end_date', '>', NOW())->orderBy('id', 'desc')->pluck('title', 'id');
 		$topics = Topic::orderBy('id', 'desc')->pluck('title', 'id');
 		$last_topic_id = array_key_first($topics->toArray());
-		$sample = '<a href="' . url(Storage::url('sample.csv')) . '">sample.csv</a>';
+		$sample = '<a href="' . Storage::url('sample.csv') . '">sample.csv</a>';
 		if ($request->ajax()) {
 			$data = DB::table('reviews')
 				->join('topics', 'reviews.topic_id', '=', 'topics.id')
