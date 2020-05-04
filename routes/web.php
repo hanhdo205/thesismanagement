@@ -30,8 +30,7 @@ Route::resource('essays', 'EssayController')->only([
 Route::get('/storage/{file_name}', function ($file_name = null) {
 	$path = storage_path() . '/' . $file_name;
 	if (file_exists($path)) {
-		echo $path;
-		//return response()->download($path);
+		return response()->download($path);
 	}
 	echo $path;
 	//return abort(404);
@@ -39,8 +38,7 @@ Route::get('/storage/{file_name}', function ($file_name = null) {
 Route::get('/storage/essays/{file_name}', function ($file_name = null) {
 	$path = storage_path() . '/essays/' . $file_name;
 	if (file_exists($path)) {
-		echo $path;
-		//return response()->download($path);
+		return response()->download($path);
 	}
 	echo $path;
 	//return abort(404);
