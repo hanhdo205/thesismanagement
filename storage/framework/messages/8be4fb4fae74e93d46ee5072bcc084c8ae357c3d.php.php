@@ -13,7 +13,6 @@
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
-
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="<?php echo e(url('/')); ?>"><?php echo e(_i('Home')); ?></a></li>
@@ -104,7 +103,7 @@
 						</span>
 					</span>
 					<span class="invalid-feedback"></span>
-					<small class="help-block"> <?php echo _i('※Data format %s<br>※Maximum upload file size: %s', [ '.csv','2MB']); ?></small>
+					<small class="help-block"> <?php echo _i('※Data format %s<br>※Maximum upload file size: %s<br>※Sample CSV file: %s', [ '.csv','2 MB', $sample ] ); ?></small>
 				</div>
 
 				<?php echo Form::file('csv_upload_file', ['id' => 'csv_upload_file','class' => 'form-control', 'style' => 'visibility:hidden;height:0;padding:0;']); ?>

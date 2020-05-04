@@ -173,8 +173,8 @@ class UserController extends Controller {
 	public function update(Request $request, $id) {
 		$this->validate($request, [
 			'name' => 'required',
-			'email' => 'required|email|unique:users,email,' . $id,
-			'password' => 'same:confirm-password',
+			'email' => ['required', 'email', 'unique:users,email,' . $id],
+			'password' => ['required', 'string', 'min:8', 'same:confirm-password'],
 			'roles' => 'required',
 		]);
 

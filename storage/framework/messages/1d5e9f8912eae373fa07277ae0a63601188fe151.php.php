@@ -6,10 +6,13 @@
 
 <?php $__env->startPush('head'); ?>
 <!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="<?php echo e(asset('css/select2/select2.min.css')); ?>" rel="stylesheet" />
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
+<?php
+	$review_comment_err = $student_name_err = $essay_belong_err = $essay_major_err = $essay_title_err = '';
+?>
 <nav class="nav-breadcrumb" aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/"><?php echo e(_i('Home')); ?></a></li>
@@ -31,6 +34,31 @@
 
 							    <button class="close hide_error" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 							  </div>
+						 	<?php if($errors->first('review_comment')): ?>
+							    <?php
+							    	$review_comment_err = ' is-invalid';
+							    ?>
+							<?php endif; ?>
+							<?php if($errors->first('student_name')): ?>
+							    <?php
+							    	$student_name_err = ' is-invalid';
+							    ?>
+							<?php endif; ?>
+							<?php if($errors->first('essay_belong')): ?>
+							    <?php
+							    	$essay_belong_err = ' is-invalid';
+							    ?>
+							<?php endif; ?>
+							<?php if($errors->first('essay_major')): ?>
+							    <?php
+							    	$essay_major_err = ' is-invalid';
+							    ?>
+							<?php endif; ?>
+							<?php if($errors->first('essay_title')): ?>
+							    <?php
+							    	$essay_title_err = ' is-invalid';
+							    ?>
+							<?php endif; ?>
 						<?php endif; ?>
 						<?php if($message = Session::get('success')): ?>
 							<script>
@@ -42,7 +70,7 @@
 						<div class="form-group row">
 							<label for="student_name" class="col-sm-3 col-form-label"><?php echo e(_i('Student name')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::text('student_name', null, ['id' => 'student_name','class' => 'form-control']); ?>
+								<?php echo Form::text('student_name', null, ['id' => 'student_name','class' => 'form-control' . $student_name_err]); ?>
 
 								<span class="text-danger"><?php echo e($errors->first('student_name')); ?></span>
 							</div>
@@ -50,7 +78,7 @@
 						<div class="form-group row">
 							<label for="essay_belong" class="col-sm-3 col-form-label"><?php echo e(_i('Belong to')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::text('essay_belong', null, ['id' => 'essay_belong','class' => 'form-control']); ?>
+								<?php echo Form::text('essay_belong', null, ['id' => 'essay_belong','class' => 'form-control' . $essay_belong_err]); ?>
 
 								<span class="text-danger"><?php echo e($errors->first('essay_belong')); ?></span>
 							</div>
@@ -58,7 +86,7 @@
 						<div class="form-group row">
 							<label for="essay_major" class="col-sm-3 col-form-label"><?php echo e(_i('Major')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::text('essay_major', null, ['id' => 'essay_major','class' => 'form-control']); ?>
+								<?php echo Form::text('essay_major', null, ['id' => 'essay_major','class' => 'form-control' . $essay_major_err]); ?>
 
 								<span class="text-danger"><?php echo e($errors->first('essay_major')); ?></span>
 							</div>
@@ -66,7 +94,7 @@
 						<div class="form-group row mb-3">
 							<label for="essay_title" class="col-sm-3 col-form-label"><?php echo e(_i('Title')); ?></label>
 							<div class="col-sm-9">
-								<?php echo Form::text('essay_title', null, ['id' => 'essay_title','class' => 'form-control']); ?>
+								<?php echo Form::text('essay_title', null, ['id' => 'essay_title','class' => 'form-control' .$essay_title_err]); ?>
 
 								<span class="text-danger"><?php echo e($errors->first('essay_title')); ?></span>
 							</div>
@@ -101,7 +129,7 @@
 						</div>
 						<div class="form-group">
 							<label for="comment"><?php echo e(_i('Comments')); ?></label>
-							<?php echo Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control','rows' => '3']); ?>
+							<?php echo Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control' . $review_comment_err,'rows' => '3']); ?>
 
 							<span class="text-danger"><?php echo e($errors->first('review_comment')); ?></span>
 						</div>
@@ -120,6 +148,6 @@
 
 <?php $__env->startPush('foot'); ?>
 <!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="<?php echo e(asset('js/select2/select2.min.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

@@ -6,7 +6,7 @@
 
 <?php $__env->startPush('head'); ?>
 <!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="<?php echo e(asset('css/select2/select2.min.css')); ?>" rel="stylesheet" />
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -135,6 +135,6 @@
 
 <?php $__env->startPush('foot'); ?>
 <!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="<?php echo e(asset('js/select2/select2.min.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

@@ -18,6 +18,7 @@
     <link href="<?php echo e(asset('css/custom.css')); ?>" rel="stylesheet">
      <!-- Datepicker styles-->
     <link href="<?php echo e(asset('css/jquery-ui.css')); ?>" rel="stylesheet">
+    <?php echo $__env->yieldPushContent('head'); ?>
     <?php echo $__env->yieldContent('content'); ?>
     <!-- Jquery scripts -->
     <script src="<?php echo e(asset('js/jquery-1.12.4.js')); ?>"></script>
@@ -27,6 +28,7 @@
     <script src="<?php echo e(asset('js/jquery-ui.js')); ?>"></script>
     <script src="<?php echo e(asset('js/datepicker-ja.js')); ?>"></script>
     <!-- Custom script -->
+    <?php echo $__env->yieldPushContent('foot'); ?>
     <script src="<?php echo e(asset('js/guess.js')); ?>"></script>
 </body>
 </html>

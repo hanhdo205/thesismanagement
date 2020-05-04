@@ -35,7 +35,7 @@
 							    	$name_err = ' is-invalid';
 							    ?>
 							<?php endif; ?>
-							<?php if($errors->first('mail')): ?>
+							<?php if($errors->first('email')): ?>
 							    <?php
 							    	$mail_err = ' is-invalid';
 							    ?>
@@ -65,7 +65,7 @@
 							            <strong><?php echo e(_i('Name')); ?></strong>
 							            <?php echo Form::text('name', null, ['placeholder' => _i('Name'),'class' => 'form-control' . $name_err]); ?>
 
-							            <span class="text-danger"><?php echo e($errors->first('name')); ?></span>
+							            <span class="invalid-feedback"><?php echo e($errors->first('name')); ?></span>
 							        </div>
 							    </div>
 							    <div class="col-xs-12 col-sm-12 col-md-12">
@@ -73,7 +73,7 @@
 							            <strong><?php echo e(_i('Email')); ?></strong>
 							            <?php echo Form::text('email', null, ['placeholder' => _i('Email'),'class' => 'form-control' . $mail_err]); ?>
 
-							            <span class="text-danger"><?php echo e($errors->first('email')); ?></span>
+							            <span class="invalid-feedback"><?php echo e($errors->first('email')); ?></span>
 							        </div>
 							    </div>
 							    <div class="col-xs-12 col-sm-12 col-md-12">
@@ -81,7 +81,7 @@
 							            <strong><?php echo e(_i('New password')); ?></strong>
 							            <?php echo Form::password('password', ['placeholder' => _i('New password'),'class' => 'form-control' . $password_err]); ?>
 
-							            <span class="text-danger"><?php echo e($errors->first('password')); ?></span>
+							            <span class="invalid-feedback"><?php echo e($errors->first('password')); ?></span>
 							        </div>
 							    </div>
 							    <div class="col-xs-12 col-sm-12 col-md-12">
@@ -89,7 +89,7 @@
 							            <strong><?php echo e(_i('Confirm Password')); ?></strong>
 							            <?php echo Form::password('confirm-password', ['placeholder' => _i('Confirm Password'),'class' => 'form-control' . $confirm_password_err]); ?>
 
-							            <span class="text-danger"><?php echo e($errors->first('confirm-password')); ?></span>
+							            <span class="invalid-feedback"><?php echo e($errors->first('confirm-password')); ?></span>
 							        </div>
 							    </div>
 

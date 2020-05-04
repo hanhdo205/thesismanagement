@@ -6,10 +6,13 @@
 
 <?php $__env->startPush('head'); ?>
 <!-- Select2 styles-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="<?php echo e(asset('css/select2/select2.min.css')); ?>" rel="stylesheet" />
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
+<?php
+	$review_comment_err = $review_result_err = '';
+?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -22,6 +25,16 @@
 
 							    <button class="close hide_error" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 							  </div>
+						  <?php if($errors->first('review_comment')): ?>
+							    <?php
+							    	$review_comment_err = ' is-invalid';
+							    ?>
+							<?php endif; ?>
+							 <?php if($errors->first('review_result')): ?>
+							    <?php
+							    	$review_result_err = ' is-invalid';
+							    ?>
+							<?php endif; ?>
 						<?php endif; ?>
 						<?php if($message = Session::get('success')): ?>
 							<div class="alert alert-success" role="alert">
@@ -83,13 +96,13 @@
 								</div>
 								<div class="form-group">
 									<label for="review_status"><?php echo e(_i('Review result')); ?></label>
-										<?php echo Form::select('review_result', ['good' => _i(RESULT_GOOD),'bad' => _i(RESULT_BAD)], $rows->review_result, ['class' => 'form-control select2', 'placeholder' => _i(RESULT_NONE) ,'data-minimum-results-for-search'=>'Infinity']); ?>
+										<?php echo Form::select('review_result', ['good' => _i(RESULT_GOOD),'bad' => _i(RESULT_BAD)], $rows->review_result, ['id' => 'reviewResult','class' => 'form-control select2' . $review_result_err, 'placeholder' => _i(RESULT_NONE) ,'data-minimum-results-for-search'=>'Infinity']); ?>
 
 										<span class="text-danger"><?php echo e($errors->first('review_result')); ?></span>
 								</div>
 								<div class="form-group">
 									<label for="comment"><?php echo e(_i('Comments')); ?></label>
-									<?php echo Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control','rows' => '5']); ?>
+									<?php echo Form::textarea('review_comment', null, ['id' => 'comment','class' => 'form-control' . $review_comment_err,'rows' => '5']); ?>
 
 									<span class="text-danger"><?php echo e($errors->first('review_comment')); ?></span>
 								</div>
@@ -112,6 +125,6 @@
 
 <?php $__env->startPush('foot'); ?>
 <!-- Select2 script -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="<?php echo e(asset('js/select2/select2.min.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.guess', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
