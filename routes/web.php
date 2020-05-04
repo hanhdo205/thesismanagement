@@ -39,8 +39,9 @@ Route::get('/storage/essays/{file_name}', function ($file_name = null) {
 });
 
 Route::get('/storage/{file_name}', function ($file_name = null) {
-	$file = Storage::get($file_name);
-	$response = response($file, 200, [
+	$filePath = public_path() . '/' . $file_name;
+	$fileContent = Storage::get($filePath);
+	$response = response($fileContent, 200, [
 		'Content-Type' => 'application/octet-stream',
 		'Content-Disposition' => 'attachment; filename="' . $file_name . '"',
 	]);
