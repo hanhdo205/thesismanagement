@@ -134,6 +134,7 @@ return [
 		'review_result' => '査読結果',
 		'review_comment' => '査読者コメント',
 		'password' => 'パスワード',
+		'confirm-password' => '新しいパスワード再入力',
 	],
 
 ];
