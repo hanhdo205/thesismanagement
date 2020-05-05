@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
 "POT-Creation-Date: 2020-05-04 14:33+0700\n"
-"PO-Revision-Date: 2020-05-04 14:33+0700\n"
+"PO-Revision-Date: 2020-05-04 15:41+0700\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: ja_JP\n"
@@ -1074,7 +1074,7 @@ msgstr ""
 
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:3
 msgid "Home page"
-msgstr ""
+msgstr "ホーム"
 
 #: ../storage/framework/messages/d4862aa18d98dea5465d2927ac61977d6fbf03c2.php.php:20
 msgid "Lastest essays"
