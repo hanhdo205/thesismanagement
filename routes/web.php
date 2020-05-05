@@ -38,25 +38,15 @@ Route::get('/storage/essays/{file_name}', function ($file_name = null) {
 	return abort(404);
 });
 
-/*Route::get('/storage/{file_name}', function ($file_name = null) {
-$file = public_path() . '/' . $file_name;
-$headers = array(
-'Content-Type: application/octet-stream',
-);
-if (Storage::exists($file_name)) {
-return Response::download($file, $file_name, $headers);
-}
-return abort(404);
-});*/
-
 Route::get('/storage/{file_name}', function ($file_name = null) {
-	$filePath = url('/') . 'storage/sample.csv';
-	$fileContent = file_get_contents($filePath);
-	$response = response($fileContent, 200, [
-		'Content-Type' => 'application/octet-stream',
-		'Content-Disposition' => 'attachment; filename="' . $file_name . '"',
-	]);
-	return $response;
+	$file = public_path() . '/' . $file_name;
+	$headers = array(
+		'Content-Type: application/octet-stream',
+	);
+	if (Storage::exists($file_name)) {
+		return Response::download($file, $file_name, $headers);
+	}
+	return abort(404);
 });
 
 Route::group(['middleware' => ['auth']], function () {
